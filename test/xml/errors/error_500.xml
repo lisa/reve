@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<eveapi version="1">
+  <currentTime>__NOW__</currentTime>
+  <error code="500">GetName(#) is invalid or not loaded.</error>
+</eveapi>

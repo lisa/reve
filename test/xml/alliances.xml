@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2007-12-19 22:30:59</currentTime>
+  <result>
+    <rowset name="alliances" key="allianceID" columns="name,shortName,allianceID,executorCorpID,memberCount,startDate">
+      <row name="GoonSwarm" shortName="OHGOD" allianceID="824518128" executorCorpID="749147334" memberCount="5187" startDate="2006-06-03 00:50:00">
+        <rowset name="memberCorporations" key="corporationID" columns="corporationID,startDate">
+          <row corporationID="109788662" startDate="2007-09-09 19:12:00" />
+          <row corporationID="134300597" startDate="2006-10-04 19:50:00" />
+          <row corporationID="142446484" startDate="2006-06-17 13:19:00" />
+          <row corporationID="148470642" startDate="2007-11-05 17:47:00" />
+          <row corporationID="151905358" startDate="2006-07-20 01:51:00" />
+          <row corporationID="162748391" startDate="2007-09-10 23:26:00" />
+          <row corporationID="166054629" startDate="2007-06-15 14:37:00" />
+          <row corporationID="182784411" startDate="2007-04-22 08:45:00" />
+          <row corporationID="198814012" startDate="2007-12-10 13:01:00" />
+          <row corporationID="264837388" startDate="2007-10-13 01:27:00" />
+          <row corporationID="273468188" startDate="2006-09-05 14:55:00" />
+          <row corporationID="301571181" startDate="2007-01-09 01:59:00" />
+          <row corporationID="320162553" startDate="2007-04-17 18:52:00" />
+          <row corporationID="345460605" startDate="2006-10-04 01:21:00" />
+          <row corporationID="366919485" startDate="2006-10-05 04:50:00" />
+          <row corporationID="366934571" startDate="2007-11-11 00:58:00" />
+          <row corporationID="425524657" startDate="2006-10-09 14:19:00" />
+          <row corporationID="440606989" startDate="2006-12-21 02:16:00" />
+          <row corporationID="462315846" startDate="2007-04-15 06:37:00" />
+          <row corporationID="464003051" startDate="2007-03-26 04:37:00" />
+          <row corporationID="506391558" startDate="2007-02-24 17:02:00" />
+          <row corporationID="586742184" startDate="2007-08-01 03:47:00" />
+          <row corporationID="620565653" startDate="2007-06-14 01:54:00" />
+          <row corporationID="632094558" startDate="2007-10-06 00:06:00" />
+          <row corporationID="639241770" startDate="2006-06-04 20:03:00" />
+          <row corporationID="661309820" startDate="2007-07-18 23:16:00" />
+          <row corporationID="666949527" startDate="2007-02-25 15:11:00" />
+          <row corporationID="725842137" startDate="2006-06-04 06:13:00" />
+          <row corporationID="749147334" startDate="2006-06-03 00:50:00" />
+          <row corporationID="752548892" startDate="2006-06-04 06:13:00" />
+          <row corporationID="774512347" startDate="2007-05-08 12:53:00" />
+          <row corporationID="777850472" startDate="2007-11-05 17:47:00" />
+          <row corporationID="791739913" startDate="2006-06-08 20:47:00" />
+          <row corporationID="798728968" startDate="2006-06-08 20:47:00" />
+          <row corporationID="807578199" startDate="2006-06-05 00:03:00" />
+          <row corporationID="852873064" startDate="2006-08-24 03:14:00" />
+          <row corporationID="867485686" startDate="2006-11-13 14:19:00" />
+          <row corporationID="917715058" startDate="2006-08-30 13:10:00" />
+          <row corporationID="946026178" startDate="2007-10-31 05:30:00" />
+          <row corporationID="963741269" startDate="2007-05-02 17:25:00" />
+          <row corporationID="966890704" startDate="2006-12-10 01:43:00" />
+          <row corporationID="976414815" startDate="2007-02-06 00:22:00" />
+          <row corporationID="1044849054" startDate="2007-02-13 20:40:00" />
+          <row corporationID="1060719951" startDate="2007-08-21 22:44:00" />
+          <row corporationID="1092657890" startDate="2006-08-30 13:10:00" />
+          <row corporationID="1164340461" startDate="2007-10-22 00:54:00" />
+          <row corporationID="1168320461" startDate="2007-08-07 19:37:00" />
+          <row corporationID="1173467637" startDate="2007-11-12 06:22:00" />
+          <row corporationID="1510892525" startDate="2007-11-10 12:58:00" />
+          <row corporationID="1601999271" startDate="2007-10-24 18:44:00" />
+          <row corporationID="1643102946" startDate="2007-10-29 05:43:00" />
+          <row corporationID="1656546194" startDate="2007-10-30 16:30:00" />
+          <row corporationID="1669587463" startDate="2007-11-01 16:52:00" />
+          <row corporationID="1674914345" startDate="2007-11-19 19:06:00" />
+          <row corporationID="1723600819" startDate="2007-11-19 19:06:00" />
+          <row corporationID="1768582662" startDate="2007-11-13 00:15:00" />
+        </rowset>
+      </row>
+      <row name="Knights Of the Southerncross" shortName="KOS" allianceID="826025559" executorCorpID="128497929" memberCount="3810" startDate="2005-11-11 01:07:00">
+        <rowset name="memberCorporations" key="corporationID" columns="corporationID,startDate">
+          <row corporationID="121543271" startDate="2007-07-05 23:13:00" />
+          <row corporationID="127395516" startDate="2007-05-23 21:49:00" />
+          <row corporationID="128497929" startDate="2005-11-11 01:07:00" />
+          <row corporationID="145146698" startDate="2007-11-05 18:49:00" />
+          <row corporationID="149939958" startDate="2006-08-13 08:18:00" />
+          <row corporationID="152859689" startDate="2007-09-18 02:45:00" />
+          <row corporationID="196368070" startDate="2006-02-27 23:08:00" />
+          <row corporationID="204646672" startDate="2007-04-30 16:31:00" />
+          <row corporationID="211665191" startDate="2006-10-03 22:10:00" />
+          <row corporationID="236078521" startDate="2007-08-25 16:28:00" />
+          <row corporationID="241862414" startDate="2007-04-07 00:14:00" />
+          <row corporationID="272241800" startDate="2006-09-05 20:21:00" />
+          <row corporationID="289842183" startDate="2007-10-14 20:33:00" />
+          <row corporationID="298942571" startDate="2007-11-08 02:59:00" />
+          <row corporationID="307947949" startDate="2007-10-09 19:27:00" />
+          <row corporationID="334941285" startDate="2007-05-02 02:51:00" />
+          <row corporationID="347872789" startDate="2007-01-08 18:38:00" />
+          <row corporationID="363783652" startDate="2007-12-12 00:41:00" />
+          <row corporationID="381597667" startDate="2007-08-24 15:57:00" />
+          <row corporationID="387363746" startDate="2007-09-09 05:29:00" />
+          <row corporationID="433465966" startDate="2007-07-03 16:30:00" />
+          <row corporationID="441138237" startDate="2007-11-03 16:44:00" />
+          <row corporationID="473721389" startDate="2007-08-14 14:17:00" />
+          <row corporationID="483571645" startDate="2007-08-20 04:03:00" />
+          <row corporationID="528772830" startDate="2007-03-31 00:00:00" />
+          <row corporationID="530585073" startDate="2007-12-10 15:48:00" />
+          <row corporationID="534241294" startDate="2007-11-17 23:22:00" />
+          <row corporationID="541953458" startDate="2007-04-02 18:08:00" />
+          <row corporationID="553835714" startDate="2007-12-11 01:48:00" />
+          <row corporationID="582643049" startDate="2007-09-16 00:48:00" />
+          <row corporationID="583448794" startDate="2007-10-19 01:44:00" />
+          <row corporationID="588904421" startDate="2007-07-23 18:58:00" />
+          <row corporationID="598131495" startDate="2006-05-21 18:45:00" />
+          <row corporationID="600396665" startDate="2007-10-26 23:01:00" />
+          <row corporationID="609085454" startDate="2007-04-19 23:47:00" />
+          <row corporationID="611011305" startDate="2006-01-19 01:58:00" />
+          <row corporationID="657280693" startDate="2007-08-31 23:17:00" />
+          <row corporationID="663782292" startDate="2007-07-22 22:35:00" />
+          <row corporationID="690324851" startDate="2006-08-28 02:35:00" />
+          <row corporationID="740000503" startDate="2007-07-19 05:31:00" />
+          <row corporationID="759918557" startDate="2007-04-03 17:41:00" />
+          <row corporationID="795923095" startDate="2007-10-16 19:53:00" />
+          <row corporationID="830022913" startDate="2007-08-16 02:12:00" />
+          <row corporationID="852883611" startDate="2007-03-19 16:07:00" />
+          <row corporationID="861331987" startDate="2007-11-23 02:27:00" />
+          <row corporationID="871161669" startDate="2007-10-31 22:37:00" />
+          <row corporationID="878224338" startDate="2007-11-28 13:13:00" />
+          <row corporationID="911354212" startDate="2007-10-04 04:28:00" />
+          <row corporationID="921854522" startDate="2007-10-01 03:35:00" />
+          <row corporationID="932955714" startDate="2007-11-18 23:30:00" />
+          <row corporationID="949303857" startDate="2007-08-09 16:46:00" />
+          <row corporationID="949604925" startDate="2007-11-21 17:21:00" />
+          <row corporationID="955303572" startDate="2007-07-26 23:42:00" />
+          <row corporationID="957577947" startDate="2007-06-18 03:35:00" />
+          <row corporationID="995575543" startDate="2007-08-20 18:19:00" />
+          <row corporationID="1001972375" startDate="2007-10-12 22:20:00" />
+          <row corporationID="1084783281" startDate="2007-10-15 17:02:00" />
+          <row corporationID="1125120611" startDate="2006-06-07 05:23:00" />
+          <row corporationID="1126275812" startDate="2007-12-19 21:49:00" />
+          <row corporationID="1138843075" startDate="2007-10-12 01:14:00" />
+          <row corporationID="1152699150" startDate="2007-09-17 19:45:00" />
+          <row corporationID="1242224705" startDate="2007-11-11 16:22:00" />
+          <row corporationID="1253765816" startDate="2007-11-07 21:59:00" />
+          <row corporationID="1285587040" startDate="2007-12-12 00:41:00" />
+          <row corporationID="1285851200" startDate="2007-12-05 21:53:00" />
+          <row corporationID="1311226702" startDate="2007-11-01 16:28:00" />
+          <row corporationID="1334861542" startDate="2007-10-16 21:53:00" />
+          <row corporationID="1346417903" startDate="2006-05-07 00:00:00" />
+          <row corporationID="1371382370" startDate="2007-10-31 22:37:00" />
+          <row corporationID="1470856323" startDate="2007-12-04 19:03:00" />
+          <row corporationID="1479977680" startDate="2007-11-08 19:06:00" />
+          <row corporationID="1534045719" startDate="2007-05-04 02:32:00" />
+          <row corporationID="1591312213" startDate="2007-09-29 22:41:00" />
+          <row corporationID="1637982127" startDate="2007-11-29 23:32:00" />
+          <row corporationID="1654520560" startDate="2007-11-07 01:41:00" />
+          <row corporationID="1747003004" startDate="2007-11-10 00:11:00" />
+          <row corporationID="1748140007" startDate="2007-12-03 14:48:00" />
+          <row corporationID="1754359856" startDate="2007-05-23 22:49:00" />
+          <row corporationID="1841876681" startDate="2007-11-21 01:26:00" />
+          <row corporationID="1947310594" startDate="2007-12-05 21:53:00" />
+          <row corporationID="1991488321" startDate="2007-12-10 08:08:00" />
+        </rowset>
+      </row>
+      <row name="Band of Brothers" shortName="BOB" allianceID="632866070" executorCorpID="844498619" memberCount="2788" startDate="2005-07-07 17:51:00">
+        <rowset name="memberCorporations" key="corporationID" columns="corporationID,startDate">
+          <row corporationID="144749962" startDate="2005-07-08 18:29:00" />
+          <row corporationID="337511996" startDate="2007-09-03 12:14:00" />
+          <row corporationID="363058213" startDate="2005-07-08 20:29:00" />
+          <row corporationID="368552768" startDate="2006-09-07 18:38:00" />
+          <row corporationID="402487260" startDate="2007-08-10 22:00:00" />
+          <row corporationID="422422586" startDate="2007-09-04 13:57:00" />
+          <row corporationID="486396554" startDate="2007-06-21 15:22:00" />
+          <row corporationID="498167695" startDate="2005-07-07 17:51:00" />
+          <row corporationID="561425375" startDate="2005-07-08 18:29:00" />
+          <row corporationID="785462427" startDate="2007-06-24 03:49:00" />
+          <row corporationID="844498619" startDate="2006-12-14 23:53:00" />
+          <row corporationID="935907718" startDate="2006-04-03 14:16:00" />
+          <row corporationID="982307495" startDate="2007-04-29 10:38:00" />
+        </rowset>
+      </row>
+    </rowset>
+  </result>
+  <cachedUntil>2007-12-19 23:30:59</cachedUntil>
+</eveapi>

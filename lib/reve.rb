@@ -1,0 +1,897 @@
+#--
+# Code copyright Lisa Seelye, 2007-2008. www.crudvision.com
+# This library is licensed under the terms of the MIT license. For full text
+# see the LICENSE file distributed with this package.
+# (Also, send Raquel Smith some ISK if you would like to show appreciation ;-)
+#++
+
+begin
+  require 'hpricot'
+rescue LoadError
+  require 'rubygems'
+  require 'hpricot'
+end
+require 'net/http'
+require 'uri'
+require 'cgi'
+require 'fileutils'
+
+$:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+
+require 'reve/exceptions'
+require 'reve/extensions'
+require 'reve/classes'
+
+
+module Reve
+  # API Class.
+  # Basic Usage:
+  # api = Reve::API.new('my_UserID', 'my_apiKey')
+  # alliances = api.alliances # Returns an array of Reve::Classes::Alliance
+  #
+  # api.personal_wallet_blanace(:characterid => 892008733) # Returns an array of
+  # Reve::Classes::WalletBalance. Note that the CharacterID Number is required
+  # here.
+  #
+  # api.sovereignty :just_hash => true # Returns the hash for this call with no
+  # Alliance data with it.
+  #
+  # As of Revision 22 (28 August 2007) all API calls take a parameter, 
+  # :just_hash, to just get the hash that represents that particular API call;
+  # No data related to the call is returned if :just_hash is present
+  # 
+  # All API methods have the functionality to read XML from an arbitrary location. This could be another webserver, or a XML file on disk.
+  # To use this pass the hash option :url => +location+ where +location+ is a String or URI class. See format_url_request documentation for more details.
+  class API
+
+    @@alliances_url                = 'http://api.eve-online.com/eve/AllianceList.xml.aspx'
+    @@sovereignty_url              = 'http://api.eve-online.com/map/Sovereignty.xml.aspx'
+    @@reftypes_url                 = 'http://api.eve-online.com/eve/RefTypes.xml.aspx'
+    @@skill_tree_url               = 'http://api.eve-online.com/eve/SkillTree.xml.aspx'
+    @@member_tracking_url          = 'http://api.eve-online.com/corp/MemberTracking.xml.aspx'
+    @@corporate_wallet_balance_url = 'http://api.eve-online.com/corp/AccountBalance.xml.aspx'
+    @@personal_wallet_balance_url  = 'http://api.eve-online.com/char/AccountBalance.xml.aspx'
+    @@corporate_wallet_trans_url   = 'http://api.eve-online.com/corp/WalletTransactions.xml.aspx'
+    @@personal_wallet_trans_url    = 'http://api.eve-online.com/char/WalletTransactions.xml.aspx'
+    @@corporate_wallet_journal_url = 'http://api.eve-online.com/corp/WalletJournal.xml.aspx'
+    @@personal_wallet_journal_url  = 'http://api.eve-online.com/char/WalletJournal.xml.aspx'
+    @@characters_url               = 'http://api.eve-online.com/account/Characters.xml.aspx'
+    @@training_skill_url           = 'http://api.eve-online.com/char/SkillInTraining.xml.aspx'
+    @@character_sheet_url          = 'http://api.eve-online.com/char/CharacterSheet.xml.aspx'
+    @@starbases_url                = 'http://api.eve-online.com/corp/StarbaseList.xml.aspx'
+    @@starbasedetail_url           = 'http://api.eve-online.com/corp/StarbaseDetail.xml.aspx'
+    @@conqurable_outposts_url      = 'http://api.eve-online.com/eve/ConquerableStationList.xml.aspx'
+    @@corporation_sheet_url        = 'http://api.eve-online.com/corp/CorporationSheet.xml.aspx'
+    @@errors_url                   = 'http://api.eve-online.com/eve/ErrorList.xml.aspx'
+    @@map_jumps_url                = 'http://api.eve-online.com/map/Jumps.xml.aspx'
+    @@map_kills_url                = 'http://api.eve-online.com/map/Kills.xml.aspx'
+    @@personal_market_orders_url   = 'http://api.eve-online.com/char/MarketOrders.xml.aspx'
+    @@corporate_market_orders_url  = 'http://api.eve-online.com/corp/MarketOrders.xml.aspx'
+    @@personal_industry_jobs_url   = 'http://api.eve-online.com/char/IndustryJobs.xml.aspx'
+    @@corporate_industry_jobs_url  = 'http://api.eve-online.com/corp/IndustryJobs.xml.aspx'
+    @@personal_assets_url          = 'http://api.eve-online.com/char/AssetList.xml.aspx'
+    @@corporate_assets_url         = 'http://api.eve-online.com/corp/AssetList.xml.aspx'
+    @@personal_kills_url           = 'http://api.eve-online.com/char/KillLog.xml.aspx'
+    @@corporate_kills_url          = 'http://api.eve-online.com/corp/KillLog.xml.aspx'
+    @@character_id_url             = 'http://api.eve-online.com/eve/CharacterID.xml.aspx'   # ?names=CCP%20Garthagk,Raquel%20Smith
+    @@character_name_url           = 'http://api.eve-online.com/eve/CharacterName.xml.aspx' # ?ids=797400947,892008733
+    @@personal_faction_war_stats_url= 'http://api.eve-online.com/char/FacWarStats.xml.aspx'
+    @@corporate_faction_war_stats_url= 'http://api.eve-online.com/corp/FacWarStats.xml.aspx'
+    @@general_faction_war_stats_url= 'http://api.eve-online.com/eve/FacWarStats.xml.aspx'
+    @@top_faction_war_stats_url    = 'http://api.eve-online.com/eve/FacWarTopStats.xml.aspx'
+    @@faction_war_occupancy_url    = 'http://api.eve-online.com/map/FacWarSystems.xml.aspx'
+
+    cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
+                   :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
+                   :personal_wallet_balance_url, :corporate_wallet_balance_url, :member_tracking_url,
+                   :skill_tree_url, :reftypes_url, :sovereignty_url, :alliances_url, :starbases_url,
+                   :starbasedetail_url, :conqurable_outposts_url, :corporation_sheet_url, :map_jumps_url,
+                   :map_kills_url, :personal_market_orders_url, :corporate_market_orders_url,
+                   :personal_industry_jobs_url, :corporate_industry_jobs_url, :personal_assets_url,
+                   :corporate_assets_url, :personal_kills_url, :corporate_kills_url,
+                   :personal_faction_war_stats_url, :corporate_faction_war_stats_url,
+                   :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url
+  
+
+
+    attr_accessor :key, :userid, :charid
+    attr_accessor :http_user_agent, :save_path
+    attr_reader :current_time, :cached_until, :last_hash
+    
+    # Create a new API instance.
+    # current_time and cached_until are meaningful only for the LAST call made.
+    # Expects:
+    # * userid ( Integer | String ) - Your API userID
+    # * key ( String ) - Your API key (Full key or restricted key)
+    # * charid ( Integer | String ) - Default characterID for calls requiring it.
+    # NOTE: All values passed to the constructor are typecasted to a String for safety.
+    def initialize(userid = "", key = "", charid = "")
+      @userid = (userid || "").to_s
+      @key    = (key    || "").to_s
+      @charid = (charid || "").to_s
+      
+      @save_path = nil
+
+      @http_user_agent = "Reve"
+      @max_tries = 3
+
+      @current_time = nil
+      @cached_until = nil
+      @last_hash = nil
+    end
+    # Save XML to this directory with the format:
+    # :save_path/:userid/:method/:expires_at_in_unixtime.xml
+    # eg: ./xml/12345/characters/1200228878.xml
+    # or: ./xml/alliances/1200228878.xml
+    # If @save_path is nil then XML is not saved.
+    def save_path=(p)
+      @save_path = p
+    end
+    
+    # Convert Character names to Character ids.
+    # Expects a Hash as a parameter with these keys:
+    # * names ( Array ) - An Array of Character names to fetch the IDs of.
+    # See Also: character_name, Reve::Classes::Character, character_sheet
+    #--
+    # This is an odd method because the XML from this looks like:
+    # <rowset ...>
+    #   <row:name name="CCP Garthagk" characterID="797400947" xmlns:row="characterID" />
+    # </rowset>
+    # I have to hack the Hpricot::Doc document coming from process_query to
+    # gsub out the row:name -> row to make the XPath work. Hope it doesn't
+    # perform too slowly! (We don't, of course, care about the xmlns:row bit)
+    #++ 
+    def character_id(opts = {} )
+      names = opts[:names] || []
+      return [] if names.empty? # No names were passed.
+      opts[:names] = names.join(',')
+      args = postfields(opts)
+      h = compute_hash(  opts.merge(:url => @@character_id_url) )
+      return h if h
+      xml = process_query(nil,opts[:url] || @@character_id_url, true,opts)
+      xml = Hpricot::XML(xml.to_s.gsub('row:name','row')) # Namespaces are evil!!
+      ret = []
+      xml.search("//rowset/row").each do |elem|
+        ret << Reve::Classes::Character.new(elem)
+      end
+      ret
+    end
+    
+    # Convert Character names to Character names.
+    # Expects a Hash as a parameter with these keys:
+    # * ids ( Array ) - An Array of Character IDs to fetch the names of.
+    # See Also: character_name, Reve::Classes::Character, character_sheet
+    def character_name(opts = {})
+      ids = opts[:ids] || []
+      return [] if ids.empty?
+      opts[:ids] = ids.join(',')
+      compute_hash(  opts.merge(:url => @@character_name_url) ) ||
+        process_query(Reve::Classes::Character,opts[:url] || @@character_name_url,false,opts)
+    end
+
+    # Return a list of Alliances and member Corporations from
+    # http://api.eve-online.com/eve/AllianceList.xml.aspx
+    # Use the corporation_sheet method to get information for each member
+    # Corporation
+    # See also: Reve::Classes::Alliance, Reve::Classes::Corporation and
+    # corporation_sheet
+    def alliances(opts = {})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@alliances_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@alliances_url,true,args)
+      alliances = []
+      xml.search("/eveapi/result/rowset[@name='alliances']/row").each do |alliance|
+        alliance_obj = Reve::Classes::Alliance.new(alliance)
+        alliance.search("rowset[@name='memberCorporations']/row").each do |corporation|
+          alliance_obj.member_corporations << Reve::Classes::Corporation.new(corporation)
+        end
+        alliances << alliance_obj
+      end
+      alliances
+    end
+    
+    # Returns a list of the number of jumps for each system. If there are no
+    # jumps for a system it will not be included. See also Reve::Classes::MapJump
+    def map_jumps(opts = {})
+      compute_hash(  opts.merge(:url => @@map_jumps_url) ) ||
+        process_query(Reve::Classes::MapJump,opts[:url] || @@map_jumps_url,false)
+    end
+    
+    # Returns a list of the number of kills for each system. If there are no
+    # kills for a system it will not be included. See also Reve::Classes::MapKill
+    def map_kills(opts = {})
+      compute_hash(  opts.merge(:url => @@map_kills_url) ) ||
+        process_query(Reve::Classes::MapKill,opts[:url] || @@map_kills_url,false)
+    end
+    
+    # Returns a list of API Errors
+    def errors(opts = {})
+      compute_hash(  opts.merge(:url => @@errors_url) ) || 
+        process_query(Reve::Classes::APIError,opts[:url] || @@errors_url,false)
+    end
+    
+    # Returns the Sovereignty list from
+    # http://api.eve-online.com/map/Sovereignty.xml.aspx
+    # See also: Reve::Classes::Sovereignty
+    def sovereignty(opts = {})
+      compute_hash(  opts.merge(:url => @@sovereignty_url) ) || 
+        process_query(Reve::Classes::Sovereignty,opts[:url] || @@sovereignty_url,false)
+    end
+
+    # Returns a RefType list (whatever they are) from
+    # http://api.eve-online.com/eve/RefTypes.xml.aspx
+    # See also: Reve::Classes::RefType
+    def ref_types(opts = {})
+      compute_hash(  opts.merge(:url => @@reftypes_url) ) || 
+          process_query(Reve::Classes::RefType,opts[:url] || @@reftypes_url,false)
+    end
+
+    # Returns a list of ConqurableStations and outposts from
+    # http://api.eve-online.com/eve/ConquerableStationList.xml.aspx
+    # See also: Reve::Classes::ConqurableStation
+    def conqurable_stations(opts = {})
+      compute_hash(  opts.merge(:url => @@conqurable_outposts_url) ) ||
+          process_query(Reve::Classes::ConqurableStation, opts[:url] || @@conqurable_outposts_url, false)
+    end
+    
+    # Returns a list of Reve::Classes::MarketOrder objects for market orders that are up
+    # Pass the characterid of the Character to check for
+    def personal_market_orders(opts = {:characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_market_orders_url))
+      return h if h
+      process_query(Reve::Classes::PersonalMarketOrder, opts[:url] || @@personal_market_orders_url, false, args)
+    end
+    
+    # Returns a list of Reve::Classes::MarketOrder objects for market orders that are up on behalf of a Corporation
+    # Pass the characterid of the Character of whose corporation to check for
+    def corporate_market_orders(opts = {:characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_market_orders_url))
+      return h if h
+      process_query(Reve::Classes::CorporateMarketOrder, opts[:url] || @@corporate_market_orders_url, false, args)
+    end
+    
+    # Returns a list of Reve::Classes::PersonalIndustryJob objects.
+    def personal_industry_jobs(opts = {:characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_industry_jobs_url))
+      return h if h
+      process_query(Reve::Classes::PersonalIndustryJob, opts[:url] || @@personal_industry_jobs_url,false,args)
+    end
+    
+    # Returns a list of Reve::Classes::CorporateIndustryJob objects.
+    def corporate_industry_jobs(opts = {:characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_industry_jobs_url))
+      return h if h
+      process_query(Reve::Classes::CorporateIndustryJob, opts[:url] || @@corporate_industry_jobs_url,false,args)
+    end
+
+    # Returns the SkillTree from
+    # http://api.eve-online.com/eve/SkillTree.xml.aspx
+    # See also: Reve::Classes::SkillTree
+    # NOTE: This doesn't actually return a 'tree' yet.
+    def skill_tree(opts = {})
+      h = compute_hash(opts.merge(:url => @@skill_tree_url) )
+      return h if h
+      doc = process_query(nil,opts[:url] || @@skill_tree_url,true)
+      skills = []
+      (doc/'rowset[@name=skills]/row').each do |skill|
+        name = skill['typeName']
+        type_id = skill['typeID']
+        group_id = skill['groupID']
+        rank = (skill/:rank).inner_html
+        desc = (skill/:description).inner_html
+        required_skills = []
+        reqs = (skill/'rowset@name=[requiredskills]/row')
+        reqs.each do |required|
+          next if required.kind_of? Hpricot::Text # why is this needed? Why is this returned? How can I only get stuff with typeid and skilllevel?
+          required_skills << Reve::Classes::SkillRequirement.new(required) if required['typeID'] && required['skillLevel']
+        end
+        required_attribs = []
+        (skill/'requiredAttributes').each do |req|
+          pri = doc.at(req.xpath + "/primaryAttribute")
+          sec = doc.at(req.xpath + "/secondaryAttribute")
+          required_attribs << Reve::Classes::PrimaryAttribute.new(pri.inner_html)
+          required_attribs << Reve::Classes::SecondaryAttribute.new(sec.inner_html)
+        end
+        bonuses = []
+        res = (skill/'rowset@name=[skillBonusCollection]/row')
+        res.each do |bonus|
+          next if bonus.kind_of? Hpricot::Text
+          bonuses << Reve::Classes::SkillBonus.new(bonus) if bonus['bonusType'] && bonus['bonusValue']
+        end
+        skills << Reve::Classes::SkillTree.new(name,type_id,group_id,desc,rank,required_attribs,required_skills,bonuses)
+      end
+      skills
+    end
+
+    # Does big brother tracking from
+    # http://api.eve-online.com/corp/MemberTracking.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Look at players in this Character's Corporation
+    # See also: Reve::Classes::MemberTracking
+    def member_tracking(opts = {:characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@member_tracking_url))
+      return h if h
+      process_query(Reve::Classes::MemberTracking,opts[:url] || @@member_tracking_url,false,args)
+    end
+
+    # Gets one's own personal WalletBalance from
+    # http://api.eve-online.com/char/AccountBalance.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Look at this player's WalletBalance
+    # See also: Reve::Classes::WalletBalance and corporate_wallet_balance
+    def personal_wallet_balance(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_wallet_balance_url))
+      return h if h
+      process_query(Reve::Classes::WalletBalance,opts[:url] || @@personal_wallet_balance_url,false,args)
+    end
+
+    # Gets one's corporate WalletBalance from 
+    # http://api.eve-online.com/corp/AccountBalance.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Look at WalletBalance objects from this Character's Corporation
+    # See also:  Reve::Classes::WalletBalance and personal_wallet_balance
+    def corporate_wallet_balance(opts = { :characterd => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_wallet_balance_url))
+      return h if h
+      process_query(Reve::Classes::WalletBalance,opts[:url] || @@corporate_wallet_balance_url,false,args)
+    end
+
+    # Gets one's own personal WalletTransaction list from
+    # http://api.eve-online.com/char/WalletTransactions.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Look at this player's WalletTransaction list
+    # * before_trans_id ( Integer | String ) - Gets a list of WalletTransaction objects from before this Transaction ID.
+    # See also: Reve::Classes::WalletTransaction and
+    # corporate_wallet_transactions
+    def personal_wallet_transactions(opts = { :characterid => nil, :before_trans_id => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_wallet_trans_url) )
+      return h if h
+      process_query(Reve::Classes::PersonalWalletTransaction,opts[:url] || @@personal_wallet_trans_url,false,args)
+    end
+
+    # Gets one's corporate WalletTransaction list from
+    # http://api.eve-online.com/corp/WalletTransactions.xml.aspx
+    # Expects:
+    # * account_key ( Integer | String ) - Account key (1000-1006) to look at.
+    # * characterid ( Integer | String ) - Look at WalletTransaction objects from this Character's Corporation
+    # * before_trans_id ( Integer | String ) - Gets a list of WalletTransaction objects from before this Transaction ID.
+    # See also: Reve::Classes::WalletTransaction and
+    # personal_wallet_transactions
+    def corporate_wallet_transactions(opts = {:accountkey => nil, :characterid => nil, :beforerefid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_wallet_trans_url))
+      return h if h
+      process_query(Reve::Classes::CorporateWalletTransaction,opts[:url] || @@corporate_wallet_trans_url,false,args)
+    end
+
+    # Gets one's own corporate WalletJournal list from
+    # http://api.eve-online.com/corp/WalletJournal.xml.aspx
+    # Expects:
+    # * account_key ( Integer | String ) - Account key (1000-1006) to look at.
+    # * characterid ( Integer | String ) - Look at WalletJournal objects from this Character's Corporation
+    # * before_ref_id ( Integer | String ) - Gets a list of  WalletTransaction objects from before this RefID.
+    # See also: Reve::Classes::WalletJournal and personal_wallet_journal
+    def corporate_wallet_journal(opts = {:accountkey => nil, :characterid => nil, :beforerefid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_wallet_journal_url))
+      return h if h
+      process_query(Reve::Classes::WalletJournal,opts[:url] || @@corporate_wallet_journal_url,false,args)
+    end
+
+    # Gets one's own personal WalletJournal list from
+    # http://api.eve-online.com/char/WalletJournal.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Look at this player's WalletJournal list
+    # * before_ref_id ( Integer | String ) - Gets a list of WalletJournal objects from before this RefID.
+    # See also: Reve::Classes::WalletJournal and corporate_wallet_journal
+    def personal_wallet_journal(opts = { :characterid => nil, :beforerefid => nil} )
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_wallet_journal_url))
+      return h if h
+      process_query(Reve::Classes::WalletJournal,opts[:url] || @@personal_wallet_journal_url,false,args)
+    end
+    
+    # Gets the PersonalFactionWarStat for a character.
+    # Expects:
+    # * characterid ( Integer | String ) - Get this character's PersonalFactionWarStat.
+    # See Also Reve::Classes::PersonalFactionWarStat and corporate_faction_war_stats
+    def personal_faction_war_stats(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_faction_war_stats_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@personal_faction_war_stats_url,true,args)    
+      elems = {}
+      [ :factionID, :factionName, :enlisted, :currentRank, :highestRank, 
+        :killsYesterday, :killsLastWeek, :killsTotal, :victoryPointsYesterday,
+        :victoryPointsLastWeek, :victoryPointsTotal ].each do |elem|
+          elems[elem.to_s] = xml.search("/eveapi/result/" + elem.to_s).first.inner_html
+        end
+      Reve::Classes::PersonalFactionWarParticpant.new(elems)
+    end
+
+    # Gets the CorporateFactionWarStat for the Corporation a Character belongs to.
+    # Expects:
+    # * characterid ( Integer | String ) - Get this character's corp's CorporateFactionWarStat.
+    # See Also Reve::Classes::CorporateFactionWarStat and personal_faction_war_stats
+    def corporate_faction_war_stats(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_faction_war_stats_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@corporate_faction_war_stats_url,true,args)    
+      elems = {}
+      [ :factionID, :factionName, :enlisted, :pilots,
+        :killsYesterday, :killsLastWeek, :killsTotal, :victoryPointsYesterday,
+        :victoryPointsLastWeek, :victoryPointsTotal ].each do |elem|
+          elems[elem.to_s] = xml.search("/eveapi/result/" + elem.to_s).first.inner_html
+        end
+      Reve::Classes::CorporateFactionWarParticpant.new(elems)
+    end
+    
+    # Gets Faction-wide war stats.
+    # See also: Reve::Classes::EveFactionWarStat, Reve::Classes::FactionwideFactionWarParticpant, 
+    # Reve::Classes::FactionWar
+    def faction_war_stats(opts = {} )
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@general_faction_war_stats_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@general_faction_war_stats_url,true,args)
+      participants = xml.search("/eveapi/result/rowset[@name='factions']/row").collect do |faction|
+        Reve::Classes::FactionwideFactionWarParticpant.new(faction)
+      end
+      wars = xml.search("/eveapi/result/rowset[@name='factionWars']/row").collect do |faction_war|
+        Reve::Classes::FactionWar.new(faction_war)
+      end
+      totals = {}
+      [ :killsYesterday, :killsLastWeek, :killsTotal, :victoryPointsYesterday,
+        :victoryPointsLastWeek, :victoryPointsTotal ].each do |elem|
+        totals[elem.to_s] = xml.search("/eveapi/result/totals/" + elem.to_s).first.inner_html
+      end
+      Reve::Classes::EveFactionWarStat.new(totals, wars, participants)
+    end
+    
+    # Returns the occupancy data for each System.
+    # See also: Reve::Classes::FactionWarSystemStatus
+    def faction_war_system_stats(opts = {})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@faction_war_occupancy_url))
+      return h if h
+      process_query(Reve::Classes::FactionWarSystemStatus,opts[:url] || @@faction_war_occupancy_url,false,args)
+    end
+    alias_method :faction_war_occupancy, :faction_war_system_stats
+    
+    # Gets a list of the top 10 statistics for Characters, Corporations and 
+    # Factions in factional warfare. Read the notes on Reve::Classes::FactionWarTopStats.
+    def faction_war_top_stats(opts = {})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@top_faction_war_stats_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@top_faction_war_stats_url,true,args)
+      template = { :yesterday_kills => "KillsYesterday", :last_week_kills => "KillsLastWeek", :total_kills => "KillsTotal",
+                   :yesterday_victory_points => 'VictoryPointsYesterday', :last_week_victory_points => 'VictoryPointsLastWeek', :total_victory_points => 'VictoryPointsTotal' }
+      # Inject here to save 60 lines.
+      characters = template.inject({}) do |h,(key,val)|
+        klass = key.to_s =~ /kills/ ? Reve::Classes::CharacterFactionKills : Reve::Classes::CharacterFactionVictoryPoints
+        h[key] = pull_out_top_10_data(xml,klass,'characters',val)
+        h
+      end
+      corporations = template.inject({}) do |h,(key,val)|
+        klass = key.to_s =~ /kills/ ? Reve::Classes::CorporationFactionKills : Reve::Classes::CorporationFactionVictoryPoints
+        h[key] = pull_out_top_10_data(xml,klass,'corporations',val)
+        h
+      end
+      factions = template.inject({}) do |h,(key,val)|
+        klass = key.to_s =~ /kills/ ? Reve::Classes::FactionKills : Reve::Classes::FactionVictoryPoints
+        h[key] = pull_out_top_10_data(xml,klass,'factions',val)
+        h
+      end
+      Reve::Classes::FactionWarTopStats.new(characters,corporations,factions)
+    end
+
+    # Get a list of personal assets for the characterid.
+    # See the Reve::Classes::Asset and Reve::Classes::AssetContainer classes
+    # for attributes available.
+    def personal_assets_list(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_assets_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@personal_assets_url,true,args)
+      assets = []
+      xml.search("/eveapi/result/rowset[@name='assets']/row").each do |container|
+        asset_container = Reve::Classes::AssetContainer.new(container)
+        container.search("rowset[@name='contents']/row").each do |asset|
+          asset_container.assets << Reve::Classes::Asset.new(asset)
+        end
+        assets << asset_container
+      end
+      assets
+    end
+    
+    # Get a list of the Corporate Assets. Pass the characterid of the Corporate member See also assets_list method
+    def corporate_assets_list(opts = { :characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_assets_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@corporate_assets_url,true,args)
+      assets = []
+      xml.search("/eveapi/result/rowset/row").each do |container|
+        asset_container = Reve::Classes::AssetContainer.new(container)
+        container.search("rowset[@name='contents']/row").each do |asset|
+          asset_container.assets << Reve::Classes::Asset.new(asset)
+        end
+        assets << asset_container
+      end
+      assets
+    end
+
+    # Returns a Character list for the associated key and userid from
+    # http://api.eve-online.com/account/Characters.xml.aspx
+    # See also: Reve::Classes::Character
+    def characters(opts = {})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@characters_url))
+      return h if h
+      process_query(Reve::Classes::Character,opts[:url] || @@characters_url,false,args)
+    end
+
+    # Gets the SkillInTraining from
+    # http://api.eve-online.com/char/SkillInTraining.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Get the SkillInTraining for this Character
+    # See also: Reve::Classes::SkillInTraining
+    def skill_in_training(opts = {:characterid => nil})
+      args = postfields(opts)
+      ch = compute_hash(args.merge(:url => @@training_skill_url))
+      return ch if ch
+      h = {}
+      xml = process_query(nil,opts[:url] || @@training_skill_url,true,args)
+      xml.search("//result").each do |elem|
+        for field in [ 'currentTQTime', 'trainingEndTime','trainingStartTime','trainingTypeID','trainingStartSP','trainingDestinationSP','trainingToLevel','skillInTraining' ]
+          h[field] = (elem/field.intern).inner_html
+        end
+      end
+      Reve::Classes::SkillInTraining.new(h)
+    end
+    
+    # Returns a list of Reve::Classes::Starbase for characterid's Corporation.
+    # http://api.eve-online.com/corp/StarbaseList.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Get the Starbase list for this character's Corporation
+    # See also Reve::Classes::Starbase
+    def starbases(opts = { :characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@starbases_url))
+      return h if h
+      process_query(Reve::Classes::Starbase,opts[:url] || @@starbases_url,false,args)
+    end
+    
+    # Returns the fuel status for the Starbase whose item id is starbase_id
+    # http://api.eve-online.com/corp/StarbaseDetail.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Get the Starbase associated wih this character's Corporation
+    # * starbase_id ( Integer ) - Get the fuel for this Starbase. This is the Starbase's itemid.
+    # See also Reve::Classes::StarbaseFuel
+    def starbase_fuel(opts = { :characterid => nil, :starbaseid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@starbasedetail_url))
+      return h if h
+      ret = process_query(Reve::Classes::StarbaseFuel,opts[:url] || @@starbasedetail_url, false, args)
+      ret.each { |r| r.starbase_id = opts[:starbaseid] }
+      ret
+    end
+    
+    
+    # Get the last kills for the characterid passed.
+    # Expects:
+    # * Hash of arguments
+    # * * characterid ( Integer ) - The Character whose Kills to retrieve
+    # * * beforekillid ( Integer ) - (Optional) - Return the most recent kills before this killid.
+    def personal_kills(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_kills_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@personal_kills_url,true,args)
+      kills = []
+      xml.search("/eveapi/result/rowset/row").each do |e|
+        victim = Reve::Classes::KillVictim.new(e.search("victim").first) rescue next # cant find victim
+        attackers = []
+        losses = []
+        e.search("rowset[@name='attackers']/row").each do |attacker|
+          attackers << Reve::Classes::KillAttacker.new(attacker)
+        end
+        e.search("rowset[@name='items']/row").each do |lost_item|
+          lost = Reve::Classes::KillLoss.new(lost_item)
+          lost_item.search("rowset[@name='items']/row").each do |contained|
+            lost.contained_losses << Reve::Classes::KillLoss.new(contained)
+          end
+          losses << lost
+        end
+        kills << Reve::Classes::Kill.new(e, victim, attackers, losses)      
+      end
+      kills
+    end
+    
+    # See the options for personal_kills
+    def corporate_kills(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_kills_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@corporate_kills_url,true,args)
+      kills = []
+      xml.search("/eveapi/result/rowset/row").each do |e|
+        victim = Reve::Classes::KillVictim.new(e.search("victim").first) rescue next # cant find victim
+        attackers = []
+        losses = []
+        e.search("rowset[@name='attackers']/row").each do |attacker|
+          attackers << Reve::Classes::KillAttacker.new(attacker)
+        end
+        e.search("rowset[@name='items']/row").each do |lost_item|
+          lost = Reve::Classes::KillLoss.new(lost_item)
+          lost_item.search("rowset[@name='items']/row").each do |contained|
+            lost.contained_losses << Reve::Classes::KillLoss.new(contained)
+          end
+          losses << lost
+        end
+        kills << Reve::Classes::Kill.new(e, victim, attackers, losses)      
+      end
+      kills
+    end
+    
+    # Gets the CorporationSheet from http://api.eve-online.com/corp/CorporationSheet.xml.aspx
+    # Expects:
+    # * Hash of arguments:
+    # * * characterid ( Integer | String ) - Gets the CorporationSheet for this Character
+    # * * corporationid ( Integer ) - If the characterid isn't passed then send the corporation's id 
+    # (See the alliances method for a list) to get the details of a Corporation that belongs to an Alliance.
+    # See also: Reve::Classes::CorporationSheet
+    def corporation_sheet(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporation_sheet_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@corporation_sheet_url,true,args)
+
+      h = { 'graphicid' => 0, 'shape1' => 0, 'shape2' => 0, 'shape3' => 0, 'color1' => 0, 'color2' => 0, 'color3' => 0,  }
+      h.keys.each { |k| h[k] = xml.search("//result/logo/" + k + "/").to_s.to_i }
+      corporate_logo = Reve::Classes::CorporateLogo.new h
+      
+      wallet_divisions = xml.search("//result/rowset[@name='walletDivisions']/").collect { |k| k if k.kind_of? Hpricot::Elem } - [ nil ]
+      divisions = xml.search("//result/rowset[@name='divisions']/").collect { |k| k if k.kind_of? Hpricot::Elem } - [ nil ]
+      divisions.collect! { |d| Reve::Classes::CorporateDivision.new(d) }
+      wallet_divisions.collect! { |w| Reve::Classes::WalletDivision.new(w) }
+      
+      # Map the XML names to our own names and assign them to the temporary 
+      # hash +res+ to pass to Reve::Classes::CorporationSheet#new
+      res = Hash.new
+      { :corporationid => :id, :corporationname => :name, :ticker => :ticker, :ceoid => :ceo_id,
+        :ceoname => :ceo_name, :stationid => :station_id, :stationname => :station_name,
+        :description => :description, :url => :url, :allianceid => :alliance_id,
+        :alliancename => :alliance_name, :taxrate => :tax_rate, :membercount => :member_count,
+        :memberlimit => :member_limit, :shares => :shares }.each do |k,v|
+        res[v] = xml.search("//result/#{k.to_s}/").first.to_s.strip
+      end
+
+      Reve::Classes::CorporationSheet.new res, divisions, wallet_divisions, corporate_logo  
+    end
+
+    # Gets the CharacterSheet from
+    # http://api.eve-online.com/char/CharacterSheet.xml.aspx
+    # Expects:
+    # * characterid ( Fixnum ) - Get the CharacterSheet for this Character
+    # See also: Reve::Classes::CharacterSheet
+    def character_sheet(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@character_sheet_url))
+      return h if h
+      
+      xml = process_query(nil,opts[:url] || @@character_sheet_url,true,args)
+      cs = Reve::Classes::CharacterSheet.new
+
+      xml.search("//result/attributeEnhancers").each do |enh|
+        for kind in ['intelligenceBonus', 'memoryBonus', 'charismaBonus', 'perceptionBonus','willpowerBonus']
+          thing = nil
+          case kind
+          when 'intelligenceBonus'
+            thing = Reve::Classes::IntelligenceEnhancer
+          when 'memoryBonus'
+            thing = Reve::Classes::MemoryEnhancer
+          when 'charismaBonus'
+            thing = Reve::Classes::CharismaEnhancer
+          when 'perceptionBonus'
+            thing = Reve::Classes::PerceptionEnhancer
+          when 'willpowerBonus'
+            thing = Reve::Classes::WillpowerEnhancer
+          end
+          (enh/kind).each do |b|
+            name = (b/:augmentatorname).inner_html
+            value = (b/:augmentatorvalue).inner_html
+            cs.enhancers << thing.new(name,value)
+          end
+        end
+      end
+
+      (xml/:result).each do |elem|
+        for field in [ 'characterID', 'name', 'race', 'bloodLine', 'gender','corporationName','corporationID','balance' ]
+          cs.send("#{field.downcase}=",(elem/field.intern).first.inner_html)
+        end
+      end
+      (xml/:result/:attributes).each do |elem|
+        for attrib in [ 'intelligence','memory','charisma','perception','willpower' ]
+          cs.send("#{attrib}=",(elem/attrib.intern).first.inner_html)
+        end
+      end
+      (xml/:result/:rowset/:row).each do |elem|
+        cs.skills << Reve::Classes::Skill.new(elem)
+      end
+      cs
+    end
+
+
+    protected
+    # Sets up the post fields for Net::HTTP::Get hash for process_query method.
+    # See also format_url_request
+    # TODO: Consider moving this whole thing into process_query to avoid 
+    # calling this in every method!
+    def postfields(opts = {})
+      ret = { "userid" => @userid, "apikey" => @key, "characterid" => @charid }.merge(opts.stringify_keys)
+      ret.inject({}) do |n, (k,v)|
+        n[k.downcase] = v.to_s if v
+        n
+      end
+    end
+    
+    # Creates a hash for some hash of postfields. For each API method pass 
+    # :just_hash => to something to return a hash that can be matched to 
+    # the last_hash instance method created in process_query.
+    # This method is called in each API method before process_query and if 
+    # :just_hash was passed in args then a String will be returned, otherwise
+    # nil will be returned
+    # TODO: Consider moving this whole thing into process_query before the URI parsing
+    def compute_hash(args = {})
+      args.stringify_keys!
+      return nil unless args.include?('just_hash')
+      args.delete('just_hash')
+      url = args['url'].kind_of?(URI) ? args['url'].path : args['url']
+      args.delete('url')
+      spl = url.split '/'
+      ret = (spl[-2] + '/' + spl[-1]) + ':'
+      args.delete_if { |k,v| (v || "").to_s.length == 0 } # Delete keys if the value is nil
+      h = args.stringify_keys
+      ret += h.sort.flatten.collect{ |e| e.to_s }.join(':')
+      ret.gsub(/:$/,'')
+    end
+
+    # Processes a URL and for simple <rowset><row /><row /></rowset> results
+    # create an array of objects of type klass. Or just return the XML if
+    # just_xml is set true. args is from postfields
+    # This method will call check_exception to see if an Exception came from
+    # CCP.
+    # Expects:
+    # * klass ( Class ) - The class container for parsing. An array of these is returned in default behaviour.
+    # * url ( String ) - API URL
+    # * just_xml ( Boolean ) - Return only the XML and not attempt to parse //rowset/row. Useful if the XML is not in that form.
+    # * args ( Hash ) - Hash of arguments for the request. See postfields method.
+    def process_query(klass, url, just_xml = false, opts = {})
+
+      #args = postfields(opts)
+      #h = compute_hash(args.merge(:url => url))
+      #return h if h
+
+      @last_hash = compute_hash(opts.merge({:url => url, :just_hash => true })) # compute hash
+      
+      xml = check_exception(get_xml(url,opts))
+      save_xml(xml) if @save_path
+
+      return xml if just_xml
+      return [] if xml.nil? # No XML document returned. We should panic.
+      
+      # Create the array of klass objects to return, assume we start with an empty set from the XML search for rows
+      # and build from there.
+      xml.search("//rowset/row").inject([]) { |ret,elem| ret << klass.new(elem) }
+    end
+    
+    # Turns a hash into ?var=baz&bam=boo
+    def format_url_request(opts)
+      req = "?"
+
+      opts.stringify_keys!
+      opts.keys.sort.each do |key|
+        req += "#{CGI.escape(key.to_s)}=#{CGI.escape(opts[key].to_s)}&" if opts[key]
+      end
+      req.chop # We are lazy and append a & to each pair even if it's the last one. FIXME: Don't do this.
+    end
+    
+    
+    # Gets the XML from a source.
+    # Expects:
+    # * source ( String | URI ) - If the +source+ is a String Reve will attempt to load the XML file from the local filesystem by the path specified as +source+. If the +source+ is a URI or is a String starting with http (lowercase) Reve will fetch it from that URI on the web.
+    # * opts ( Hash ) - Hash of parameters for the request, such as userid, apikey and such.
+    # NOTE: To override the lowercase http -> URI rule make the HTTP part uppercase.
+    def get_xml(source,opts)
+      xml = ""
+      
+      # Let people still pass Strings starting with http.
+      if source =~ /^http/
+        source = URI.parse(source)
+      end
+      
+      if source.kind_of?(URI)
+        opts.merge({ :version => 2, :url => nil }) #the uri bit will now ignored in format_url_request
+        req_args =  format_url_request(opts)
+        req = Net::HTTP::Get.new(source.path + req_args)
+        req['User-Agent'] = @http_referer_agent || "Reve"
+        
+        res = nil
+        response = nil
+        1.upto(@max_tries) do |try|
+          begin
+            # ||= to prevent making a new Net::HTTP object, the res = nil above should reset this for the next request.
+            # the request needs to be here to rescue exceptions from it.
+            res ||= Net::HTTP.new(source.host, source.port).start {|http| http.request(req) }
+            case res
+            when Net::HTTPSuccess, Net::HTTPRedirection
+              response = res.body
+            end
+          rescue Exception
+            sleep 5
+            next
+          end
+          break if response
+        end
+        raise Reve::Exceptions::ReveNetworkStatusException.new( (res.body rescue "No Response Body!") ) unless response
+        
+        xml = response
+      
+      # here ends test for URI
+      elsif source.kind_of?(String)
+        xml = File.open(source).read
+      else
+        raise Reve::Exceptions::ReveNetworkStatusException.new("Don't know how to deal with a #{source.class} XML source. I expect a URI or String")
+      end
+      xml
+    end
+
+    # Raises the proper exception (if there is one), otherwise it returns the
+    # XML response.
+    def check_exception(xml)
+      x = Hpricot::XML(xml)
+      begin
+        out = x.search("//error") # If this fails then there are some big problems with Hpricot#search ?
+      rescue Exception => e 
+        $stderr.puts "Fatal error ((#{e.to_s})): Couldn't search the XML document ((#{xml})) for any potential error messages! Is your Hpricot broken?"
+        exit 1
+      end
+      @current_time = (x/:currentTime).inner_html.to_time rescue Time.now.utc # Shouldn't need to rescue this but one never knows
+      @cached_until = (x/:cachedUntil).inner_html.to_time rescue nil # Errors aren't always cached
+      return x if out.size < 1
+      code = out.first['code'].to_i
+      str  = out.first.inner_html
+      Reve::Exceptions.raise_it(code,str)
+    end
+    
+    def save_xml(xml)
+      path = build_save_filename
+      FileUtils.mkdir_p(File.dirname(path))
+      File.open(path,'w') { |f| f.print xml.to_original_html }
+    end
+    def build_save_filename
+      method = caller(3).first.match(/\`(.+)'/)[1] # Get the API method that's being called. This is called from save_xml -> process_query -> :real_method
+      File.join(@save_path,@userid.to_s,method,( @cached_until || Time.now.utc).to_i.to_s + '.xml')
+    end
+
+    # Returns an array of +klass+
+    def pull_out_top_10_data(xml,klass,kind,field)
+      xml.search("/eveapi/result/#{kind}/rowset[@name='#{field}']/row").inject([]) do |all,row|
+        all << klass.new(row)
+        all
+      end
+    end
+  end
+end

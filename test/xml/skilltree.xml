@@ -1,0 +1,41 @@
+<eveapi version="1">
+  <currentTime>2007-06-20 15:02:13</currentTime>
+  <result>
+    <rowset name="skillGroups" key="groupID">
+      <row groupName="Corporation Management" groupID="266">
+        <rowset name="skills" key="typeID">
+          <row typeName="Anchoring" groupID="266" typeID="11584">
+            <description>Skill at Anchoring Deployables. Can not be
+            trained on Trial Accounts.</description>
+            <rank>3</rank>
+            <rowset name="requiredSkills" key="typeID" />
+            <requiredAttributes>
+              <primaryAttribute>memory</primaryAttribute>
+              <secondaryAttribute>charisma</secondaryAttribute>
+            </requiredAttributes>
+            <rowset name="skillBonusCollection" key="bonusType">
+              <row bonusType="canNotBeTrainedOnTrial"
+              bonusValue="1" />
+            </rowset>
+          </row>
+          <row typeName="CFO Training" groupID="266" typeID="3369">
+            <description>Skill at managing corp finances. 5%
+            discount on all fees at non-hostile NPC station if
+            acting as CFO of a corp.</description>
+            <rank>3</rank>
+            <rowset name="requiredSkills" key="typeID">
+              <row typeID="3363" skillLevel="2" />
+              <row typeID="3444" skillLevel="3" />
+            </rowset>
+            <requiredAttributes>
+              <primaryAttribute>memory</primaryAttribute>
+              <secondaryAttribute>charisma</secondaryAttribute>
+            </requiredAttributes>
+            <rowset name="skillBonusCollection" key="bonusType" />
+          </row>
+        </rowset>
+      </row>
+    </rowset>
+  </result>
+  <cachedUntil>2007-06-21 10:57:20</cachedUntil>
+</eveapi>

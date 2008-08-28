@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2008-06-29 19:36:16</currentTime>
+  <result>
+    <rowset name="solarSystems" key="solarSystemID" columns="solarSystemID,solarSystemName,occupyingFactionID,occupyingFactionName,contested">
+      <row solarSystemID="30002056" solarSystemName="Resbroko" occupyingFactionID="0" occupyingFactionName="" contested="True" />
+      <row solarSystemID="30002057" solarSystemName="Hadozeko" occupyingFactionID="0" occupyingFactionName="" contested="False" />
+      <row solarSystemID="30003857" solarSystemName="Odamia" occupyingFactionID="500001" occupyingFactionName="Caldari State" contested="True" />
+      <row solarSystemID="30002960" solarSystemName="Arzad" occupyingFactionID="500002" occupyingFactionName="Minmatar Republic" contested="True" />
+    </rowset>
+    <cachedUntil>2008-06-29 20:36:16</cachedUntil>
+  </result>
+</eveapi>

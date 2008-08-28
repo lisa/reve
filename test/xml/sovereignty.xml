@@ -1,0 +1,29 @@
+<eveapi version="1">
+  <currentTime>2007-06-18 22:42:00</currentTime>
+  <result>
+    <rowset name="solarSystems">
+      <row solarSystemID="30000001" allianceID="0"
+      constellationSovereignty="0" sovereigntyLevel="0"
+      factionID="500007" solarSystemName="Tanoo" />
+      <row solarSystemID="30000002" allianceID="0"
+      constellationSovereignty="0" sovereigntyLevel="0"
+      factionID="500007" solarSystemName="Lashesih" />
+      <row solarSystemID="30000003" allianceID="0"
+      constellationSovereignty="0" sovereigntyLevel="0"
+      factionID="500007" solarSystemName="Akpivem" />
+      <row solarSystemID="30000004" allianceID="0"
+      constellationSovereignty="0" sovereigntyLevel="0"
+      factionID="500007" solarSystemName="Jark" />
+      <row solarSystemID="30000005" allianceID="0"
+      constellationSovereignty="0" sovereigntyLevel="0"
+      factionID="500007" solarSystemName="Sasta" />
+      <row solarSystemID="30000006" allianceID="0"
+      constellationSovereignty="0" sovereigntyLevel="0"
+      factionID="500007" solarSystemName="Zaid" />
+      <row solarSystemID="30000007" allianceID="0"
+      constellationSovereignty="0" sovereigntyLevel="0"
+      factionID="500007" solarSystemName="Yuzier" />
+    </rowset>
+  </result>
+  <cachedUntil>2007-06-18 23:42:00</cachedUntil>
+</eveapi>

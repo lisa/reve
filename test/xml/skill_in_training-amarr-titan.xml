@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eveapi version="2">
+  <currentTime>2008-02-18 00:01:13</currentTime>
+  <result>
+    <currentTQTime offset="0">2008-02-18 00:01:13</currentTQTime>
+    <trainingEndTime>2008-02-20 04:30:36</trainingEndTime>
+    <trainingStartTime>2008-02-17 23:37:59</trainingStartTime>
+    <trainingTypeID>3347</trainingTypeID>
+    <trainingStartsp>4000</trainingStartSP>
+    <trainingDestinationSP>22628</trainingDestinationSP>
+    <trainingToLevel>2</trainingToLevel>
+    <skillInTraining>1</skillInTraining>
+  </result>
+  <cachedUntil>2008-02-18 00:16:13</cachedUntil>
+</eveapi>

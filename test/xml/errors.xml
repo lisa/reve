@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eveapi version="2">
+  <currentTime>2008-02-03 13:58:00</currentTime>
+  <result>
+    <rowset columns="errorCode,errorText" name="errors" key="errorCode">
+      <row errorText="Expected before ref/trans ID = 0: wallet not previously loaded." errorCode="100">
+      </row><row errorText="Wallet exhausted: retry after {0}." errorCode="101">
+      </row><row errorText="Expected before ref/trans ID [{0}] but supplied [{1}]: wallet previously loaded." errorCode="102">
+      </row><row errorText="Already returned one week of data: retry after {0}." errorCode="103">
+      </row><row errorText="Invalid characterID." errorCode="105">
+      </row><row errorText="Must provide userID parameter for authentication." errorCode="106">
+      </row><row errorText="Invalid beforeRefID provided." errorCode="107">
+      </row><row errorText="Invalid accountKey provided." errorCode="108">
+      </row><row errorText="Invalid accountKey: must be in the range 1000 to 1006." errorCode="109">
+      </row><row errorText="Invalid beforeTransID provided." errorCode="110">
+      </row><row errorText="'{0}' is not a valid integer." errorCode="111">
+      </row><row errorText="Version mismatch." errorCode="112">
+      </row><row errorText="Version escalation is not allowed at this time." errorCode="113">
+      </row><row errorText="Invalid itemID provided." errorCode="114">
+      </row><row errorText="Assets already downloaded: retry after {0}." errorCode="115">
+      </row><row errorText="Industry jobs already downloaded: retry after {0}." errorCode="116">
+      </row><row errorText="Market orders already downloaded: retry after {0}." errorCode="117">
+      </row><row errorText="Expected beforeKillID = 0: wallet not previously loaded." errorCode="118">
+      </row><row errorText="Kills exhausted: retry after {0}." errorCode="119">
+      </row><row errorText="Expected beforeKillID [{0}] but supplied [{1}]: kills previously loaded." errorCode="120">
+      </row><row errorText="Invalid beforeKillID provided." errorCode="121">
+      </row><row errorText="Current security level not high enough." errorCode="200">
+      </row><row errorText="Character does not belong to account." errorCode="201">
+      </row><row errorText="Cached API key authentication failure." errorCode="202">
+      </row><row errorText="Authentication failure." errorCode="203">
+      </row><row errorText="Authentication failure." errorCode="204">
+      </row><row errorText="Authentication failure (final pass)." errorCode="205">
+      </row><row errorText="Character must have Accountant or Junior Accountant roles." errorCode="206">
+      </row><row errorText="Not available for NPC corporations." errorCode="207">
+      </row><row errorText="Character must have Accountant, Junior Accountant, or Trader roles." errorCode="208">
+      </row><row errorText="Character must be a Director or CEO." errorCode="209">
+      </row><row errorText="Authentication failure." errorCode="210">
+      </row><row errorText="Login denied by account status." errorCode="211">
+      </row><row errorText="Authentication failure (final pass)." errorCode="212">
+      </row><row errorText="Character must have Factory Manager role." errorCode="213">
+      </row><row errorText="Corporation is not part of alliance." errorCode="214">
+      </row><row errorText="GetID({0}) is invalid or not loaded." errorCode="501">
+      </row><row errorText="GetSkillpointsForLevel({0}, {1}): invalid input." errorCode="503">
+      </row><row errorText="GetRace({0}): invalid race." errorCode="504">
+      </row><row errorText="GetGender({0}): invalid gender." errorCode="505">
+      </row><row errorText="GetBloodline({0}): invalid bloodline." errorCode="506">
+      </row><row errorText="GetAttributeName({0}): invalid attribute." errorCode="507">
+      </row><row errorText="GetRefType({0}): invalid reftype." errorCode="508">
+      </row><row errorText="attributeID {0} has null data components." errorCode="509">
+      </row><row errorText="Character does not appear to have a corporation.  Not loaded?" errorCode="510">
+      </row><row errorText="AccountCanQuery({0}): invalid accountKey." errorCode="511">
+      </row><row errorText="Invalid charID passed to CharData.GetCharacter()." errorCode="512">
+      </row><row errorText="Failed to get character roles in corporation." errorCode="513">
+      </row><row errorText="Invalid corpID passed to CorpData.GetCorporation()." errorCode="514">
+      </row><row errorText="Failed getting user information." errorCode="516">
+      </row><row errorText="CSV header/row count mismatch." errorCode="517">
+      </row><row errorText="Unable to get current TQ time." errorCode="518">
+      </row><row errorText="Failed getting starbase detail information." errorCode="519">
+      </row><row errorText="Unexpected failure accessing database." errorCode="520">
+      </row><row errorText="Invalid username and/or password passed to UserData.LoginWebUser()." errorCode="521">
+      </row><row errorText="Failed getting character information." errorCode="522">
+      </row><row errorText="Failed getting corporation information." errorCode="523">
+      </row><row errorText="Web site database temporarily disabled." errorCode="901">
+      </row><row errorText="EVE backend database temporarily disabled." errorCode="902">
+      </row><row errorText="Rate limited [{0}]: please obey all cachedUntil timers." errorCode="903">
+      </row><row errorText="User forced test error condition." errorCode="999">
+    </row></rowset>
+  </result>
+  <cacheduntil>2008-02-03 14:58:00</cacheduntil>
+</eveapi>

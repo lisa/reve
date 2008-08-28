@@ -1,0 +1,37 @@
+<eveapi version="1">
+  <currentTime>2007-06-18 22:49:01</currentTime>
+  <result>
+    <characterID>150337897</characterID>
+    <name>corpslave</name>
+    <race>Minmatar</race>
+    <bloodLine>Brutor</bloodLine>
+    <gender>Female</gender>
+    <corporationName>corpexport Corp</corporationName>
+    <corporationID>150337746</corporationID>
+    <balance>190210393.87</balance>
+    <attributeEnhancers>
+      <intelligenceBonus>
+        <augmentatorName>Snake Delta</augmentatorName>
+        <augmentatorValue>3</augmentatorValue>
+      </intelligenceBonus>
+      <memoryBonus>
+        <augmentatorName>Halo Beta</augmentatorName>
+        <augmentatorValue>3</augmentatorValue>
+      </memoryBonus>
+    </attributeEnhancers>
+    <attributes>
+      <intelligence>6</intelligence>
+      <memory>4</memory>
+      <charisma>7</charisma>
+      <perception>12</perception>
+      <willpower>10</willpower>
+    </attributes>
+    <rowset name="skills" key="typeID">
+      <row typeID="3431" level="3" skillpoints="8000" />
+      <row typeID="3413" level="3" skillpoints="8000" />
+      <row typeID="21059" level="1" skillpoints="500" />
+      <row typeID="3416" level="3" skillpoints="8000" />
+    </rowset>
+  </result>
+  <cachedUntil>2007-06-18 23:49:01</cachedUntil>
+</eveapi>

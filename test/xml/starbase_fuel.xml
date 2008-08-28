@@ -1,0 +1,23 @@
+<eveapi version="1">
+  <currentTime>2007-08-16 19:52:38</currentTime>
+  <result>
+    <stateTimestamp>2007-08-14 13:47:02</stateTimestamp>
+    <rowset name="fuel" key="typeID" columns="typeID,quantity">
+      <row typeID="16272" quantity="60000"/>
+      <row typeID="16273" quantity="60000"/>
+      <row typeID="24597" quantity="400"/>
+      <row typeID="24596" quantity="400"/>
+      <row typeID="24595" quantity="400"/>
+      <row typeID="24594" quantity="400"/>
+      <row typeID="24593" quantity="400"/>
+      <row typeID="24592" quantity="400"/>
+      <row typeID="16274" quantity="148500"/>
+      <row typeID="9848" quantity="330"/>
+      <row typeID="9832" quantity="2640"/>
+      <row typeID="3689" quantity="1650"/>
+      <row typeID="3683" quantity="8250"/>
+      <row typeID="44" quantity="1320"/>
+    </rowset>
+  </result>
+  <cachedUntil>2007-08-16 19:52:48</cachedUntil>
+</eveapi>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eveapi version="1">
+  <currentTime>2007-12-12 20:47:52</currentTime>
+  <result>
+    <rowset columns="solarSystemID,jumps" name="solarSystems" key="solarSystemID">
+      <row solarsystemid="30034971" shipjumps="10">
+      </row><row solarsystemid="30003335" shipjumps="11">
+      </row><row solarsystemid="30000109" shipjumps="68">
+      </row><row solarsystemid="30002433" shipjumps="14">
+      </row><row solarsystemid="30002765" shipjumps="1440"></row>
+      </rowset>
+    <datatime>2007-12-12 20:36:42</datatime>
+  </result>
+  <cachedUntil>2007-12-12 21:47:52</cachedUntil>
+</eveapi>

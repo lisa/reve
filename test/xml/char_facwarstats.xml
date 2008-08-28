@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2008-06-29 20:22:03</currentTime>
+  <result>
+    <factionID>500001</factionID>
+    <factionName>Caldari State</factionName>
+    <enlisted>2008-06-13 20:38:00</enlisted>
+    <currentRank>1</currentRank>
+    <highestRank>2</highestRank>
+    <killsYesterday>3</killsYesterday>
+    <killsLastWeek>4</killsLastWeek>
+    <killsTotal>5</killsTotal>
+    <victoryPointsYesterday>124</victoryPointsYesterday>
+    <victoryPointsLastWeek>124</victoryPointsLastWeek>
+    <victoryPointsTotal>506</victoryPointsTotal>
+  </result>
+  <cachedUntil>2008-06-29 21:22:03</cachedUntil>
+</eveapi>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eveapi version="2">
+  <currentTime>2008-02-03 14:50:52</currentTime>
+  <result>
+    <rowset columns="transactionDateTime,transactionID,quantity,typeName,typeID,price,clientID,clientName,characterID,characterName,stationID,stationName,transactionType,transactionFor" name="transactions" key="transactionID">
+      <row characterName="Liquidator Brunt" price="2.70" transactionType="buy" typeID="215" transactionID="545372452" transactionDateTime="2008-02-03 14:47:00" transactionFor="corporation" stationID="60003838" characterID="892804655" clientName="Ceredrif" quantity="100" stationName="Sarekuwa III - Moon 8 - Caldari Navy Assembly Plant" typeName="Iron Charge S" clientID="1710698307">
+    </row></rowset>
+  </result>
+  <cacheduntil>2008-02-03 15:50:52</cacheduntil>
+</eveapi>

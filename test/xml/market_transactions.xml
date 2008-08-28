@@ -1,0 +1,79 @@
+<eveapi version="1">
+  <currentTime>2007-06-18 22:38:52</currentTime>
+  <result>
+    <rowset name="transactions">
+      <row transactionDateTime="2007-06-13 20:26:00"
+      transactionID="619" quantity="10"
+      typeName="Strontium Clathrates" typeID="16275" price="999.00"
+      clientID="150208955" clientName="Mark Roled" characterID="0"
+      characterName="Mark Roled" stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="buy" />
+      <row transactionDateTime="2007-06-13 20:24:00"
+      transactionID="618" quantity="10"
+      typeName="Strontium Clathrates" typeID="16275"
+      price="1000.00" clientID="150210601" clientName="Mark Player"
+      characterID="0" characterName="Mark Player"
+      stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="sell" />
+      <row transactionDateTime="2007-06-13 20:24:00"
+      transactionID="618" quantity="10"
+      typeName="Strontium Clathrates" typeID="16275"
+      price="1000.00" clientID="150210601" clientName="Mark Player"
+      characterID="0" characterName="Mark Player"
+      stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="sell" />
+      <row transactionDateTime="2007-06-13 20:23:00"
+      transactionID="617" quantity="120"
+      typeName="Strontium Clathrates" typeID="16275"
+      price="1000.00" clientID="150210601" clientName="Mark Player"
+      characterID="0" characterName="Mark Player"
+      stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="sell" />
+      <row transactionDateTime="2007-06-13 20:23:00"
+      transactionID="617" quantity="120"
+      typeName="Strontium Clathrates" typeID="16275"
+      price="1000.00" clientID="150210601" clientName="Mark Player"
+      characterID="0" characterName="Mark Player"
+      stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="sell" />
+      <row transactionDateTime="2007-06-13 20:22:00"
+      transactionID="616" quantity="120"
+      typeName="Strontium Clathrates" typeID="16275"
+      price="1000.00" clientID="150208955" clientName="Mark Roled"
+      characterID="0" characterName="Mark Roled"
+      stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="buy" />
+      <row transactionDateTime="2007-06-13 20:16:00"
+      transactionID="613" quantity="10"
+      typeName="Strontium Clathrates" typeID="16275"
+      price="1000.00" clientID="150208955" clientName="Mark Roled"
+      characterID="0" characterName="Mark Roled"
+      stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="buy" />
+      <row transactionDateTime="2007-06-13 20:15:00"
+      transactionID="612" quantity="10"
+      typeName="Strontium Clathrates" typeID="16275"
+      price="1000.00" clientID="150208955" clientName="Mark Roled"
+      characterID="0" characterName="Mark Roled"
+      stationID="60001870"
+      stationName="Eglennaert I - Moon 11 - Nugoeihuvi Corporation Development Studio"
+      transactionType="buy" />
+      <row transactionDateTime="2007-05-16 11:02:00"
+      transactionID="581" quantity="1"
+      typeName="Civilian Mining Drone" typeID="1202"
+      price="26974000.00" clientID="1000115"
+      clientName="University of Caille" characterID="0"
+      characterName="University of Caille" stationID="60011566"
+      stationName="Bourynes VII - Moon 2 - University of Caille School"
+      transactionType="buy" />
+    </rowset>
+  </result>
+  <cachedUntil>2007-06-18 22:36:09</cachedUntil>
+</eveapi>

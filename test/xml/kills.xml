@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2007-12-17 17:17:46</currentTime>
+  <result>
+    <rowset name="kills" key="killID" columns="killID,solarSystemID,killTime,moonID">
+      <row killID="166641" solarSystemID="30000783" killTime="2007-12-17 14:50:00" moonID="0">
+        <victim characterID="1951193442" characterName="Freygerd" corporationID="547976428" corporationName="Sihars Little Industries" allianceID="130770314" allianceName="Free Trade Zone." damageTaken="343" shipTypeID="670" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="343" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="0" finalBlow="0" weaponTypeID="22778" shipTypeID="22456" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
+      </row>
+      <row killID="166636" solarSystemID="30000783" killTime="2007-12-17 14:49:00" moonID="0">
+        <victim characterID="1951193442" characterName="Freygerd" corporationID="547976428" corporationName="Sihars Little Industries" allianceID="130770314" allianceName="Free Trade Zone." damageTaken="334" shipTypeID="588" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="334" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="0" finalBlow="0" weaponTypeID="2889" shipTypeID="22456" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="3651" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="11489" flag="5" qtyDropped="1" qtyDestroyed="0">
+            <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+              <row typeID="34" flag="5" qtyDropped="100" qtyDestroyed="0" />              
+            </rowset>
+          </row>
+          <row typeID="3636" flag="0" qtyDropped="0" qtyDestroyed="1" />
+        </rowset>
+      </row>
+      <row killID="166610" solarSystemID="30000783" killTime="2007-12-17 14:46:00" moonID="0">
+        <victim characterID="1165090547" characterName="VolandRUS" corporationID="1596775184" corporationName="PROFTECH" allianceID="1028876240" allianceName="Ultima Rati0" damageTaken="373" shipTypeID="670" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="373" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
+      </row>
+      <row killID="166529" solarSystemID="30000783" killTime="2007-12-17 14:35:00" moonID="0">
+        <victim characterID="837081527" characterName="Isis Plissken" corporationID="749147334" corporationName="GoonFleet" allianceID="824518128" allianceName="GoonSwarm" damageTaken="431" shipTypeID="670" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="431" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
+      </row>
+      <row killID="166516" solarSystemID="30000783" killTime="2007-12-17 14:34:00" moonID="0">
+        <victim characterID="837081527" characterName="Isis Plissken" corporationID="749147334" corporationName="GoonFleet" allianceID="824518128" allianceName="GoonSwarm" damageTaken="524" shipTypeID="11129" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="524" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="0" finalBlow="0" weaponTypeID="527" shipTypeID="11963" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="15511" flag="5" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="23534" flag="5" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="2445" flag="5" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="2477" flag="5" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="24396" flag="5" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="2455" flag="5" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="23528" flag="5" qtyDropped="1" qtyDestroyed="0" />
+        </rowset>
+      </row>
+      <row killID="166484" solarSystemID="30000783" killTime="2007-12-17 14:30:00" moonID="0">
+        <victim characterID="1407554808" characterName="out1aw" corporationID="1596775184" corporationName="PROFTECH" allianceID="1028876240" allianceName="Ultima Rati0" damageTaken="3505" shipTypeID="634" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="602" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="2903" finalBlow="0" weaponTypeID="2456" shipTypeID="11963" />
+          <row characterID="950325390" characterName="William Hart" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="0" finalBlow="0" weaponTypeID="19933" shipTypeID="11957" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="11740" flag="5" qtyDropped="0" qtyDestroyed="2" />
+          <row typeID="25591" flag="5" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="6005" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="25604" flag="5" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="11737" flag="5" qtyDropped="2" qtyDestroyed="4" />
+          <row typeID="25599" flag="5" qtyDropped="4" qtyDestroyed="0" />
+          <row typeID="4431" flag="0" qtyDropped="1" qtyDestroyed="1" />
+          <row typeID="1405" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="1" />
+          <row typeID="11739" flag="5" qtyDropped="4" qtyDestroyed="5" />
+          <row typeID="25590" flag="5" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="25861" flag="0" qtyDropped="1" qtyDestroyed="1" />
+          <row typeID="24348" flag="0" qtyDropped="1" qtyDestroyed="1" />
+          <row typeID="11732" flag="5" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="22177" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="11741" flag="5" qtyDropped="5" qtyDestroyed="4" />
+        </rowset>
+      </row>
+      <row killID="166445" solarSystemID="30000783" killTime="2007-12-17 14:25:00" moonID="0">
+        <victim characterID="493129144" characterName="Ocna" corporationID="153322556" corporationName="The Flying Dutchmen" allianceID="1294094452" allianceName="Antesignani Alliance" damageTaken="4929" shipTypeID="633" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="1748" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.8" damageDone="1796" finalBlow="0" weaponTypeID="11963" shipTypeID="11963" />
+          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="748" finalBlow="0" weaponTypeID="22456" shipTypeID="22456" />
+          <row characterID="680002135" characterName="Capt Rapace" corporationID="1000046" corporationName="Sebiestor tribe" allianceID="0" allianceName="" securityStatus="1.6" damageDone="637" finalBlow="0" weaponTypeID="22456" shipTypeID="22456" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="393" flag="0" qtyDropped="1" qtyDestroyed="1" />
+          <row typeID="2018" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="3528" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="10836" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="578" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="11370" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="10998" flag="0" qtyDropped="1" qtyDestroyed="1" />
+        </rowset>
+      </row>
+      <row killID="166408" solarSystemID="30000788" killTime="2007-12-17 14:21:00" moonID="0">
+        <victim characterID="1565245582" characterName="0smadeu" corporationID="198680032" corporationName="UA Industry" allianceID="1220922756" allianceName="Red Alliance" damageTaken="398" shipTypeID="670" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="131" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
+          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="190" finalBlow="0" weaponTypeID="2889" shipTypeID="22456" />
+          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="77" finalBlow="0" weaponTypeID="527" shipTypeID="11963" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
+      </row>
+      <row killID="166395" solarSystemID="30000788" killTime="2007-12-17 14:20:00" moonID="0">
+        <victim characterID="1565245582" characterName="0smadeu" corporationID="198680032" corporationName="UA Industry" allianceID="1220922756" allianceName="Red Alliance" damageTaken="31987" shipTypeID="638" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="4678" finalBlow="1" weaponTypeID="2889" shipTypeID="22456" />
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.8" damageDone="9472" finalBlow="0" weaponTypeID="2185" shipTypeID="11963" />
+          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="8139" finalBlow="0" weaponTypeID="2456" shipTypeID="11963" />
+          <row characterID="0" characterName="" corporationID="1000124" corporationName="Archangels" allianceID="0" allianceName="" securityStatus="0" damageDone="6707" finalBlow="0" weaponTypeID="0" shipTypeID="213" />
+          <row characterID="680002135" characterName="Capt Rapace" corporationID="1000046" corporationName="Sebiestor tribe" allianceID="0" allianceName="" securityStatus="1.6" damageDone="2991" finalBlow="0" weaponTypeID="2889" shipTypeID="22456" />
+          <row characterID="950325390" characterName="William Hart" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="0" finalBlow="0" weaponTypeID="2571" shipTypeID="11957" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="12274" flag="0" qtyDropped="3" qtyDestroyed="0" />
+          <row typeID="9632" flag="0" qtyDropped="0" qtyDestroyed="2" />
+          <row typeID="15510" flag="87" qtyDropped="1" qtyDestroyed="1" />
+          <row typeID="2046" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="2508" flag="0" qtyDropped="53" qtyDestroyed="13" />
+          <row typeID="8419" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="8113" flag="0" qtyDropped="2" qtyDestroyed="3" />
+          <row typeID="10888" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="2183" flag="87" qtyDropped="0" qtyDestroyed="2" />
+          <row typeID="2508" flag="5" qtyDropped="564" qtyDestroyed="0" />
+          <row typeID="19810" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="2173" flag="87" qtyDropped="2" qtyDestroyed="0" />
+          <row typeID="25861" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="24348" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="12054" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="1539" flag="0" qtyDropped="1" qtyDestroyed="0" />
+        </rowset>
+      </row>
+      <row killID="166315" solarSystemID="30000783" killTime="2007-12-17 14:10:00" moonID="0">
+        <victim characterID="695823750" characterName="0minous" corporationID="244898283" corporationName="OEG" allianceID="1220922756" allianceName="Red Alliance" damageTaken="3446" shipTypeID="22456" />
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="3446" finalBlow="1" weaponTypeID="2185" shipTypeID="11963" />
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="20753" flag="5" qtyDropped="591" qtyDestroyed="0" />
+          <row typeID="2889" flag="0" qtyDropped="3" qtyDestroyed="4" />
+          <row typeID="183" flag="5" qtyDropped="367" qtyDestroyed="0" />
+          <row typeID="22782" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="3244" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="22778" flag="0" qtyDropped="8" qtyDestroyed="0" />
+          <row typeID="1405" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="180" flag="5" qtyDropped="73" qtyDestroyed="0" />
+          <row typeID="4025" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="183" flag="0" qtyDropped="417" qtyDestroyed="69" />
+          <row typeID="8517" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="12625" flag="5" qtyDropped="794" qtyDestroyed="0" />
+          <row typeID="440" flag="0" qtyDropped="1" qtyDestroyed="0" />
+        </rowset>
+      </row>
+    </rowset>
+  </result>
+  <cachedUntil>2007-12-17 18:17:46</cachedUntil>
+</eveapi>

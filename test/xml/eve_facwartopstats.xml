@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2008-06-29 19:34:52</currentTime>
+  <result>
+    <characters>
+      <rowset name="KillsYesterday" key="characterID" columns="characterID,characterName,kills">
+        <row characterID="905511905" characterName="Talana Mershie" kills="18" />
+        <row characterID="843948518" characterName="streath" kills="4" />
+        <row characterID="826540579" characterName="The Aegis" kills="4" />
+        <row characterID="815310753" characterName="Teimur Leng" kills="4" />
+        <row characterID="781481257" characterName="Sanjaya" kills="4" />
+      </rowset>
+      <rowset name="KillsLastWeek" key="characterID" columns="characterID,characterName,kills">
+        <row characterID="977188436" characterName="LOPEZ" kills="93" />
+        <row characterID="241730331" characterName="END3R 101" kills="71" />
+        <row characterID="830875021" characterName="FlyinBryan" kills="63" />
+        <row characterID="736809132" characterName="ZaaK Danieel" kills="56" />
+        <row characterID="636632536" characterName="Shadowjet" kills="55" />
+        <row characterID="1126646664" characterName="eXtas" kills="52" />
+      </rowset>
+      <rowset name="KillsTotal" key="characterID" columns="characterID,characterName,kills">
+        <row characterID="1344831787" characterName="Ruff Ceyx" kills="213" />
+        <row characterID="811359389" characterName="Tiberius Horde" kills="132" />
+        <row characterID="876876514" characterName="Legionn" kills="123" />
+        <row characterID="1126646664" characterName="eXtas" kills="114" />
+        <row characterID="830875021" characterName="FlyinBryan" kills="101" />
+        <row characterID="1074595973" characterName="remo man" kills="98" />
+        <row characterID="589938566" characterName="HakanSherif" kills="98" />
+      </rowset>
+      <rowset name="VictoryPointsYesterday" key="characterID" columns="characterID,characterName,victoryPoints">
+        <row characterID="282168732" characterName="JirikAS" victoryPoints="3125" />
+        <row characterID="414444939" characterName="Mirthe" victoryPoints="2179" />
+        <row characterID="973034682" characterName="Granny McRough" victoryPoints="1700" />
+        <row characterID="882130191" characterName="FlameGlow" victoryPoints="1650" />
+        <row characterID="796503945" characterName="Truss Me" victoryPoints="1555" />
+        <row characterID="787100587" characterName="Shock Ryder" victoryPoints="1511" />
+        <row characterID="755903868" characterName="Amira Silvermist" victoryPoints="1505" />
+        <row characterID="1697360006" characterName="Hesperius" victoryPoints="1443" />
+      </rowset>
+      <rowset name="VictoryPointsLastWeek" key="characterID" columns="characterID,characterName,victoryPoints">
+        <row characterID="282168732" characterName="JirikAS" victoryPoints="16386" />
+        <row characterID="986464282" characterName="Lutrik" victoryPoints="10811" />
+        <row characterID="2030277341" characterName="Karismao" victoryPoints="9914" />
+        <row characterID="870861557" characterName="Col O'Nells" victoryPoints="9223" />
+        <row characterID="1972647726" characterName="Muiredhach" victoryPoints="9080" />
+        <row characterID="1446851384" characterName="EtaNn" victoryPoints="7154" />
+        <row characterID="1386146895" characterName="Julianus Soter" victoryPoints="6979" />
+        <row characterID="1131848106" characterName="Karesk" victoryPoints="6782" />
+        <row characterID="1800655218" characterName="Erika Bronz" victoryPoints="6759" />
+      </rowset>
+      <rowset name="VictoryPointsTotal" key="characterID" columns="characterID,characterName,victoryPoints">
+        <row characterID="373193721" characterName="Daniel Jackson" victoryPoints="25703" />
+        <row characterID="986464282" characterName="Lutrik" victoryPoints="23094" />
+        <row characterID="282168732" characterName="JirikAS" victoryPoints="22851" />
+        <row characterID="870861557" characterName="Col O'Nells" victoryPoints="17118" />
+        <row characterID="1386146895" characterName="Julianus Soter" victoryPoints="13611" />
+        <row characterID="214388243" characterName="Shivaja" victoryPoints="12841" />
+        <row characterID="882130191" characterName="FlameGlow" victoryPoints="12331" />
+        <row characterID="184494156" characterName="8eta" victoryPoints="11870" />
+        <row characterID="514290659" characterName="Laush Argo" victoryPoints="11805" />
+        <row characterID="231730327" characterName="general beanflicker" victoryPoints="11021" />
+      </rowset>
+    </characters>
+    <corporations>
+      <rowset name="KillsYesterday" key="corporationID" columns="corporationID,corporationName,kills">
+        <row corporationID="1000181" corporationName="Federal Defence Union" kills="105" />
+        <row corporationID="1000180" corporationName="State Protectorate" kills="88" />
+        <row corporationID="160174668" corporationName="0utbreak" kills="70" />
+        <row corporationID="1019906116" corporationName="Invicta." kills="55" />
+        <row corporationID="152858207" corporationName="Seraphin Technologies" kills="49" />
+        <row corporationID="1000182" corporationName="Tribal Liberation Force" kills="49" />
+        <row corporationID="794269471" corporationName="The Dead Parrot Shoppe Inc." kills="49" />
+        <row corporationID="850892634" corporationName="Kinda'Shujaa" kills="30" />
+        <row corporationID="1000179" corporationName="24th Imperial Crusade" kills="29" />
+        <row corporationID="329699206" corporationName="Mentally Unstable Enterprises" kills="26" />
+      </rowset>
+      <rowset name="KillsLastWeek" key="corporationID" columns="corporationID,corporationName,kills">
+        <row corporationID="1000180" corporationName="State Protectorate" kills="599" />
+        <row corporationID="160174668" corporationName="0utbreak" kills="442" />
+        <row corporationID="1000181" corporationName="Federal Defence Union" kills="419" />
+        <row corporationID="1000182" corporationName="Tribal Liberation Force" kills="325" />
+        <row corporationID="152858207" corporationName="Seraphin Technologies" kills="290" />
+        <row corporationID="1019906116" corporationName="Invicta." kills="280" />
+        <row corporationID="794269471" corporationName="The Dead Parrot Shoppe Inc." kills="266" />
+        <row corporationID="329699206" corporationName="Mentally Unstable Enterprises" kills="187" />
+        <row corporationID="822018487" corporationName="Biometronics Ltd" kills="164" />
+        <row corporationID="1000179" corporationName="24th Imperial Crusade" kills="150" />
+      </rowset>
+      <rowset name="KillsTotal" key="corporationID" columns="corporationID,corporationName,kills">
+        <row corporationID="1000180" corporationName="State Protectorate" kills="2051" />
+        <row corporationID="1019906116" corporationName="Invicta." kills="1665" />
+        <row corporationID="1000181" corporationName="Federal Defence Union" kills="1460" />
+        <row corporationID="1000182" corporationName="Tribal Liberation Force" kills="1387" />
+        <row corporationID="794269471" corporationName="The Dead Parrot Shoppe Inc." kills="813" />
+        <row corporationID="160174668" corporationName="0utbreak" kills="710" />
+        <row corporationID="152858207" corporationName="Seraphin Technologies" kills="650" />
+        <row corporationID="1000179" corporationName="24th Imperial Crusade" kills="605" />
+        <row corporationID="917074299" corporationName="Atomic Battle Penguins" kills="553" />
+        <row corporationID="850892634" corporationName="Kinda'Shujaa" kills="490" />
+      </rowset>
+      <rowset name="VictoryPointsYesterday" key="corporationID" columns="corporationID,corporationName,victoryPoints">
+        <row corporationID="1000182" corporationName="Tribal Liberation Force" victoryPoints="6174" />
+        <row corporationID="1000179" corporationName="24th Imperial Crusade" victoryPoints="5883" />
+        <row corporationID="1000181" corporationName="Federal Defence Union" victoryPoints="5457" />
+        <row corporationID="1000180" corporationName="State Protectorate" victoryPoints="4137" />
+        <row corporationID="252677747" corporationName="CHON" victoryPoints="3621" />
+        <row corporationID="1799940485" corporationName="24th Providence Templar Division" victoryPoints="2604" />
+        <row corporationID="536016894" corporationName="XERCORE" victoryPoints="2258" />
+        <row corporationID="182193435" corporationName="Artifex Dynamics" victoryPoints="2000" />
+        <row corporationID="794269471" corporationName="The Dead Parrot Shoppe Inc." victoryPoints="1996" />
+        <row corporationID="850892634" corporationName="Kinda'Shujaa" victoryPoints="1715" />
+      </rowset>
+      <rowset name="VictoryPointsLastWeek" key="corporationID" columns="corporationID,corporationName,victoryPoints">
+        <row corporationID="1000180" corporationName="State Protectorate" victoryPoints="53990" />
+        <row corporationID="1000182" corporationName="Tribal Liberation Force" victoryPoints="47771" />
+        <row corporationID="1000181" corporationName="Federal Defence Union" victoryPoints="35725" />
+        <row corporationID="1000179" corporationName="24th Imperial Crusade" victoryPoints="31691" />
+        <row corporationID="252677747" corporationName="CHON" victoryPoints="22134" />
+        <row corporationID="794269471" corporationName="The Dead Parrot Shoppe Inc." victoryPoints="19982" />
+        <row corporationID="850892634" corporationName="Kinda'Shujaa" victoryPoints="16816" />
+        <row corporationID="340962950" corporationName="Selectus Pravus Lupus" victoryPoints="15215" />
+        <row corporationID="913321174" corporationName="Third Return -  Talons" victoryPoints="12768" />
+        <row corporationID="1230042437" corporationName="Strix Armaments and Defence" victoryPoints="11191" />
+      </rowset>
+      <rowset name="VictoryPointsTotal" key="corporationID" columns="corporationID,corporationName,victoryPoints">
+        <row corporationID="1000180" corporationName="State Protectorate" victoryPoints="176721" />
+        <row corporationID="1000182" corporationName="Tribal Liberation Force" victoryPoints="156580" />
+        <row corporationID="1000179" corporationName="24th Imperial Crusade" victoryPoints="106187" />
+        <row corporationID="1000181" corporationName="Federal Defence Union" victoryPoints="103072" />
+        <row corporationID="850892634" corporationName="Kinda'Shujaa" victoryPoints="64073" />
+        <row corporationID="794269471" corporationName="The Dead Parrot Shoppe Inc." victoryPoints="55997" />
+        <row corporationID="144544759" corporationName="PIE Inc." victoryPoints="42285" />
+        <row corporationID="252677747" corporationName="CHON" victoryPoints="41338" />
+        <row corporationID="340962950" corporationName="Selectus Pravus Lupus" victoryPoints="38131" />
+        <row corporationID="913321174" corporationName="Third Return -  Talons" victoryPoints="26671" />
+      </rowset>
+    </corporations>
+    <factions>
+      <rowset name="KillsYesterday" key="factionID" columns="factionID,factionName,kills">
+        <row factionID="500004" factionName="Gallente Federation" kills="667" />
+        <row factionID="500002" factionName="Minmatar Republic" kills="460" />
+        <row factionID="500001" factionName="Caldari State" kills="355" />
+        <row factionID="500003" factionName="Amarr Empire" kills="225" />
+      </rowset>
+      <rowset name="KillsLastWeek" key="factionID" columns="factionID,factionName,kills">
+        <row factionID="500004" factionName="Gallente Federation" kills="2911" />
+        <row factionID="500002" factionName="Minmatar Republic" kills="2818" />
+        <row factionID="500001" factionName="Caldari State" kills="2478" />
+        <row factionID="500003" factionName="Amarr Empire" kills="1530" />
+      </rowset>
+      <rowset name="KillsTotal" key="factionID" columns="factionID,factionName,kills">
+        <row factionID="500004" factionName="Gallente Federation" kills="9583" />
+        <row factionID="500002" factionName="Minmatar Republic" kills="7824" />
+        <row factionID="500001" factionName="Caldari State" kills="6417" />
+        <row factionID="500003" factionName="Amarr Empire" kills="4042" />
+      </rowset>
+      <rowset name="VictoryPointsYesterday" key="factionID" columns="factionID,factionName,victoryPoints">
+        <row factionID="500004" factionName="Gallente Federation" victoryPoints="18505" />
+        <row factionID="500001" factionName="Caldari State" victoryPoints="18019" />
+        <row factionID="500003" factionName="Amarr Empire" victoryPoints="14609" />
+        <row factionID="500002" factionName="Minmatar Republic" victoryPoints="13368" />
+      </rowset>
+      <rowset name="VictoryPointsLastWeek" key="factionID" columns="factionID,factionName,victoryPoints">
+        <row factionID="500001" factionName="Caldari State" victoryPoints="123493" />
+        <row factionID="500004" factionName="Gallente Federation" victoryPoints="120472" />
+        <row factionID="500002" factionName="Minmatar Republic" victoryPoints="100523" />
+        <row factionID="500003" factionName="Amarr Empire" victoryPoints="89601" />
+      </rowset>
+      <rowset name="VictoryPointsTotal" key="factionID" columns="factionID,factionName,victoryPoints">
+        <row factionID="500001" factionName="Caldari State" victoryPoints="313523" />
+        <row factionID="500002" factionName="Minmatar Republic" victoryPoints="313010" />
+        <row factionID="500004" factionName="Gallente Federation" victoryPoints="301694" />
+        <row factionID="500003" factionName="Amarr Empire" victoryPoints="271238" />
+      </rowset>
+    </factions>
+  </result>
+  <cachedUntil>2008-06-29 20:34:53</cachedUntil>
+</eveapi>

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<eveapi version="1">
+  <currentTime>Sun Dec 30 14:23:35 UTC 2007</currentTime>
+  <error code="206">Character must have Accountant or Junior Accountant roles.</error>
+</eveapi>  

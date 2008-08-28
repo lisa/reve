@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2007-12-19 22:15:52</currentTime>
+  <result>
+    <corporationID>134300597</corporationID>
+    <corporationName>Ad Astra Per Aspera</corporationName>
+    <ticker>ASTRA</ticker>
+    <ceoID>127329952</ceoID>
+    <ceoName>Herr Drown</ceoName>
+    <stationID>60013402</stationID>
+    <stationName>98Q-8O VII - Moon 16 - Intaki Commerce Trading Post</stationName>
+    <description>A rough road leads to the stars.</description>
+    <url />
+    <allianceID>824518128</allianceID>
+    <allianceName>GoonSwarm</allianceName>
+    <taxRate>100</taxRate>
+    <memberCount>3</memberCount>
+    <shares>9000</shares>
+    <logo>
+      <graphicID>0</graphicID>
+      <shape1>531</shape1>
+      <shape2>512</shape2>
+      <shape3>0</shape3>
+      <color1>678</color1>
+      <color2>671</color2>
+      <color3>0</color3>
+    </logo>
+  </result>
+  <cachedUntil>2007-12-20 04:15:52</cachedUntil>
+</eveapi>

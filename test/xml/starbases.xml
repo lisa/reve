@@ -1,0 +1,12 @@
+<eveapi version="1">
+  <currentTime>2007-08-16 19:51:38</currentTime>
+  <result>
+    <rowset name="starbases" key="itemID" columns="typeID,typeName,itemID,locationID,locationName">
+      <row typeID="12235" typeName="Amarr Control Tower" itemID="150354725" locationID="30000380" locationName="Polaris"/>
+      <row typeID="20059" typeName="Amarr Control Tower Medium" itemID="150354773" locationID="30001984" locationName="EC-P8R"/>
+      <row typeID="12235" typeName="Amarr Control Tower" itemID="150357658" locationID="30001984" locationName="EC-P8R"/>
+      <row typeID="16286" typeName="Ultra Fast Control Tower" itemID="150318232" locationID="30003109" locationName="C9N-CC"/>
+    </rowset>
+  </result>
+  <cachedUntil>2007-08-16 19:51:50</cachedUntil>
+</eveapi>

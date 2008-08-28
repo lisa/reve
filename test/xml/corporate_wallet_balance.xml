@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eveapi version="2">
+  <currentTime>2008-02-03 14:50:39</currentTime>
+  <result>
+    <rowset columns="accountID,accountKey,balance" name="accounts" key="accountID">
+      <row accountID="9161533" accountKey="1000" balance="18004409.84">
+      </row><row accountID="13679725" accountKey="1001" balance="0.00">
+      </row><row accountID="13679726" accountKey="1002" balance="0.00">
+      </row><row accountID="13679727" accountKey="1003" balance="0.00">
+      </row><row accountID="13679728" accountKey="1004" balance="0.00">
+      </row><row accountID="13679729" accountKey="1005" balance="0.00">
+      </row><row accountID="13679730" accountKey="1006" balance="0.00">
+    </row></rowset>
+  </result>
+  <cacheduntil>2008-02-03 15:05:39</cacheduntil>
+</eveapi>

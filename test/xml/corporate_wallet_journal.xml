@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eveapi version="2">
+  <currentTime>2008-02-03 14:51:03</currentTime>
+  <result>
+    <rowset columns="date,refID,refTypeID,ownerName1,ownerID1,ownerName2,ownerID2,argName1,argID1,amount,balance,reason" name="entries" key="refID">
+      <row date="2008-02-03 14:47:00" argID1="1" argName1="EVE System" amount="-100.00" ownerID1="892804655" refID="922128913" ownerName1="Liquidator Brunt" refTypeID="46" ownerID2="1000035" reason="" ownerName2="Caldari Navy" balance="18004409.84">
+      </row><row date="2008-02-03 14:47:00" argID1="0" argName1="" amount="-270.00" ownerID1="892804655" refID="922126594" ownerName1="Liquidator Brunt" refTypeID="42" ownerID2="0" reason="" ownerName2="" balance="18004509.84">
+    </row></rowset>
+  </result>
+  <cacheduntil>2008-02-03 15:51:03</cacheduntil>
+</eveapi>
