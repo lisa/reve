@@ -290,12 +290,16 @@ module Reve #:nodoc:
     # * ship_type_id ( Fixnum ) - ID of the ship type (references CCP data dump) that the victim was flying.
     # See Also: KillAttacker, Kill, KillLoss, Reve::API#personal_kills, Reve::API#corporate_kills
     class KillVictim
-      attr_reader :id, :name, :corporation_id, :corporation_name, :alliance_id, :damage_taken, :ship_type_id
+      attr_reader :id, :name, :corporation_id, :corporation_name, :alliance_id, :damage_taken, :ship_type_id, :faction_id, :faction_name
       def initialize(elem) #:nodoc:
         @id = elem['characterID'].to_i
         @name = elem['characterName']
         @corporation_id = elem['corporationName']
         @alliance_id = elem['allianceID'] == "0" ? nil : elem['allianceID'].to_i
+        @faction_id = elem['factionID'] == "0" ? nil : elem['factionID'].to_i
+        @alliance_name = elem['allianceName'].empty? ? nil : elem['allianceName']
+        @faction_id = elem['factionID'] == "0" ? nil : elem['factionID'].to_i
+        @faction_name = elem['factionName'].empty? ? nil : elem['factionName']
         @damage_taken = elem['damageTaken'].to_i
         @ship_type_id = elem['shipTypeID'].to_i
       end
@@ -318,7 +322,7 @@ module Reve #:nodoc:
     # See Also: Kill, KillLoss, KillVictim, Reve::API#personal_kills, Reve::API#corporate_kills
     class KillAttacker
       attr_reader :id, :name, :corporation_id, :corporation_name, :alliance_id, :alliance_name,
-                  :security_status, :damage_done, :final_blow, :weapon_type_id, :ship_type_id
+                  :security_status, :damage_done, :final_blow, :weapon_type_id, :ship_type_id, :faction_id, :faction_name
       def initialize(elem) #:nodoc:
         @id = elem['characterID'] == "0" ? nil : elem['characterID'].to_i
         @name = elem['characterName'].empty? ? nil : elem['characterName']
@@ -326,6 +330,8 @@ module Reve #:nodoc:
         @corporation_name = elem['corporationName']
         @alliance_id = elem['allianceID'] == "0" ? nil : elem['allianceID'].to_i
         @alliance_name = elem['allianceName'].empty? ? nil : elem['allianceName']
+        @faction_id = elem['factionID'] == "0" ? nil : elem['factionID'].to_i
+        @faction_name = elem['factionName'].empty? ? nil : elem['factionName']
         @security_status = elem['securityStatus'].to_f
         @damage_done = elem['damageDone'].to_i
         @final_blow = elem['finalBlow'] == "1"

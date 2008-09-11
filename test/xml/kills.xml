@@ -1,167 +1,569 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <eveapi version="2">
-  <currentTime>2007-12-17 17:17:46</currentTime>
+  <currentTime>2008-09-11 15:53:56</currentTime>
   <result>
     <rowset name="kills" key="killID" columns="killID,solarSystemID,killTime,moonID">
-      <row killID="166641" solarSystemID="30000783" killTime="2007-12-17 14:50:00" moonID="0">
-        <victim characterID="1951193442" characterName="Freygerd" corporationID="547976428" corporationName="Sihars Little Industries" allianceID="130770314" allianceName="Free Trade Zone." damageTaken="343" shipTypeID="670" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="343" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="0" finalBlow="0" weaponTypeID="22778" shipTypeID="22456" />
-        </rowset>
-        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
-      </row>
-      <row killID="166636" solarSystemID="30000783" killTime="2007-12-17 14:49:00" moonID="0">
-        <victim characterID="1951193442" characterName="Freygerd" corporationID="547976428" corporationName="Sihars Little Industries" allianceID="130770314" allianceName="Free Trade Zone." damageTaken="334" shipTypeID="588" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="334" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="0" finalBlow="0" weaponTypeID="2889" shipTypeID="22456" />
+      <row killID="3698763" solarSystemID="30002537" killTime="2008-09-09 00:19:00" moonID="0">
+        <victim characterID="1470570059" characterName="Icarus Storm" corporationID="1000182" corporationName="Tribal Liberation Force" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="9906" shipTypeID="629"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="8725" finalBlow="1" weaponTypeID="3512" shipTypeID="24696"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="1074" finalBlow="0" weaponTypeID="2466" shipTypeID="24702"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.4" damageDone="107" finalBlow="0" weaponTypeID="2466" shipTypeID="24702"/>
+          <row characterID="1672881505" characterName="Siccor" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.9" damageDone="0" finalBlow="0" weaponTypeID="2559" shipTypeID="11957"/>
         </rowset>
         <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
-          <row typeID="3651" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="11489" flag="5" qtyDropped="1" qtyDestroyed="0">
-            <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
-              <row typeID="34" flag="5" qtyDropped="100" qtyDestroyed="0" />              
-            </rowset>
-          </row>
-          <row typeID="3636" flag="0" qtyDropped="0" qtyDestroyed="1" />
+          <row typeID="16507" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="5929" flag="0" qtyDropped="2" qtyDestroyed="0"/>
+          <row typeID="2048" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="12773" flag="5" qtyDropped="0" qtyDestroyed="680"/>
+          <row typeID="11317" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2897" flag="0" qtyDropped="3" qtyDestroyed="1"/>
+          <row typeID="5401" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="4477" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="12052" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="4025" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="12773" flag="0" qtyDropped="62" qtyDestroyed="186"/>
+          <row typeID="12777" flag="5" qtyDropped="1000" qtyDestroyed="0"/>
+          <row typeID="1183" flag="0" qtyDropped="1" qtyDestroyed="0"/>
         </rowset>
       </row>
-      <row killID="166610" solarSystemID="30000783" killTime="2007-12-17 14:46:00" moonID="0">
-        <victim characterID="1165090547" characterName="VolandRUS" corporationID="1596775184" corporationName="PROFTECH" allianceID="1028876240" allianceName="Ultima Rati0" damageTaken="373" shipTypeID="670" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="373" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-        </rowset>
-        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
-      </row>
-      <row killID="166529" solarSystemID="30000783" killTime="2007-12-17 14:35:00" moonID="0">
-        <victim characterID="837081527" characterName="Isis Plissken" corporationID="749147334" corporationName="GoonFleet" allianceID="824518128" allianceName="GoonSwarm" damageTaken="431" shipTypeID="670" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="431" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-        </rowset>
-        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
-      </row>
-      <row killID="166516" solarSystemID="30000783" killTime="2007-12-17 14:34:00" moonID="0">
-        <victim characterID="837081527" characterName="Isis Plissken" corporationID="749147334" corporationName="GoonFleet" allianceID="824518128" allianceName="GoonSwarm" damageTaken="524" shipTypeID="11129" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="524" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="0" finalBlow="0" weaponTypeID="527" shipTypeID="11963" />
+      <row killID="3698746" solarSystemID="30002537" killTime="2008-09-09 00:18:00" moonID="0">
+        <victim characterID="306802360" characterName="victor micro" corporationID="1000182" corporationName="Tribal Liberation Force" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="3880" shipTypeID="11999"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="3880" finalBlow="1" weaponTypeID="3520" shipTypeID="24696"/>
         </rowset>
         <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
-          <row typeID="15511" flag="5" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="23534" flag="5" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="2445" flag="5" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="2477" flag="5" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="24396" flag="5" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="2455" flag="5" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="23528" flag="5" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="4027" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="448" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="519" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="26060" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="9135" flag="0" qtyDropped="1" qtyDestroyed="4"/>
+          <row typeID="19814" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="1405" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="21922" flag="0" qtyDropped="243" qtyDestroyed="62"/>
+          <row typeID="5975" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2456" flag="87" qtyDropped="3" qtyDestroyed="2"/>
+          <row typeID="21922" flag="5" qtyDropped="0" qtyDestroyed="1150"/>
+          <row typeID="16511" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2605" flag="0" qtyDropped="1" qtyDestroyed="1"/>
         </rowset>
       </row>
-      <row killID="166484" solarSystemID="30000783" killTime="2007-12-17 14:30:00" moonID="0">
-        <victim characterID="1407554808" characterName="out1aw" corporationID="1596775184" corporationName="PROFTECH" allianceID="1028876240" allianceName="Ultima Rati0" damageTaken="3505" shipTypeID="634" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="602" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="2903" finalBlow="0" weaponTypeID="2456" shipTypeID="11963" />
-          <row characterID="950325390" characterName="William Hart" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="0" finalBlow="0" weaponTypeID="19933" shipTypeID="11957" />
+      <row killID="3698422" solarSystemID="30002537" killTime="2008-09-08 23:44:00" moonID="0">
+        <victim characterID="448813207" characterName="Uncle Joey" corporationID="913321174" corporationName="Third Return -  Talons" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="359" shipTypeID="670"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="359" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed"/>
+      </row>
+      <row killID="3698411" solarSystemID="30002537" killTime="2008-09-08 23:42:00" moonID="0">
+        <victim characterID="448813207" characterName="Uncle Joey" corporationID="913321174" corporationName="Third Return -  Talons" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="1084" shipTypeID="587"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="1084" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
         </rowset>
         <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
-          <row typeID="11740" flag="5" qtyDropped="0" qtyDestroyed="2" />
-          <row typeID="25591" flag="5" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="6005" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="25604" flag="5" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="11737" flag="5" qtyDropped="2" qtyDestroyed="4" />
-          <row typeID="25599" flag="5" qtyDropped="4" qtyDestroyed="0" />
-          <row typeID="4431" flag="0" qtyDropped="1" qtyDestroyed="1" />
-          <row typeID="1405" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="1" />
-          <row typeID="11739" flag="5" qtyDropped="4" qtyDestroyed="5" />
-          <row typeID="25590" flag="5" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="25861" flag="0" qtyDropped="1" qtyDestroyed="1" />
-          <row typeID="24348" flag="0" qtyDropped="1" qtyDestroyed="1" />
-          <row typeID="11732" flag="5" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="22177" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="11741" flag="5" qtyDropped="5" qtyDestroyed="4" />
+          <row typeID="5403" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="434" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2512" flag="5" qtyDropped="0" qtyDestroyed="1363"/>
+          <row typeID="8867" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="185" flag="5" qtyDropped="1297" qtyDestroyed="0"/>
+          <row typeID="5597" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="16523" flag="0" qtyDropped="2" qtyDestroyed="0"/>
+          <row typeID="5629" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="185" flag="0" qtyDropped="0" qtyDestroyed="120"/>
+          <row typeID="2512" flag="0" qtyDropped="60" qtyDestroyed="0"/>
+          <row typeID="526" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="519" flag="0" qtyDropped="0" qtyDestroyed="1"/>
         </rowset>
       </row>
-      <row killID="166445" solarSystemID="30000783" killTime="2007-12-17 14:25:00" moonID="0">
-        <victim characterID="493129144" characterName="Ocna" corporationID="153322556" corporationName="The Flying Dutchmen" allianceID="1294094452" allianceName="Antesignani Alliance" damageTaken="4929" shipTypeID="633" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="1748" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.8" damageDone="1796" finalBlow="0" weaponTypeID="11963" shipTypeID="11963" />
-          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="748" finalBlow="0" weaponTypeID="22456" shipTypeID="22456" />
-          <row characterID="680002135" characterName="Capt Rapace" corporationID="1000046" corporationName="Sebiestor tribe" allianceID="0" allianceName="" securityStatus="1.6" damageDone="637" finalBlow="0" weaponTypeID="22456" shipTypeID="22456" />
+      <row killID="3698321" solarSystemID="30002537" killTime="2008-09-08 23:32:00" moonID="0">
+        <victim characterID="1470570059" characterName="Icarus Storm" corporationID="1000182" corporationName="Tribal Liberation Force" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="8590" shipTypeID="629"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="1739" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="1307213761" characterName="Ko Tha" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.4" damageDone="2277" finalBlow="0" weaponTypeID="12003" shipTypeID="12003"/>
+          <row characterID="1761103282" characterName="Paraswen" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-8.6" damageDone="2002" finalBlow="0" weaponTypeID="622" shipTypeID="622"/>
+          <row characterID="753914548" characterName="loppi" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-2.6" damageDone="1043" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="651" finalBlow="0" weaponTypeID="622" shipTypeID="622"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.4" damageDone="440" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="438" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
         </rowset>
         <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
-          <row typeID="393" flag="0" qtyDropped="1" qtyDestroyed="1" />
-          <row typeID="2018" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="3528" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="10836" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="578" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="11370" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="10998" flag="0" qtyDropped="1" qtyDestroyed="1" />
+          <row typeID="16507" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="5929" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="2048" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="12773" flag="5" qtyDropped="0" qtyDestroyed="680"/>
+          <row typeID="11317" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2897" flag="0" qtyDropped="0" qtyDestroyed="4"/>
+          <row typeID="5401" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="4477" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="12052" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="4025" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="12773" flag="0" qtyDropped="240" qtyDestroyed="80"/>
+          <row typeID="12777" flag="5" qtyDropped="1000" qtyDestroyed="0"/>
+          <row typeID="1183" flag="0" qtyDropped="1" qtyDestroyed="0"/>
         </rowset>
       </row>
-      <row killID="166408" solarSystemID="30000788" killTime="2007-12-17 14:21:00" moonID="0">
-        <victim characterID="1565245582" characterName="0smadeu" corporationID="198680032" corporationName="UA Industry" allianceID="1220922756" allianceName="Red Alliance" damageTaken="398" shipTypeID="670" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="131" finalBlow="1" weaponTypeID="2921" shipTypeID="11963" />
-          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="4.1" damageDone="190" finalBlow="0" weaponTypeID="2889" shipTypeID="22456" />
-          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="77" finalBlow="0" weaponTypeID="527" shipTypeID="11963" />
+      <row killID="3698280" solarSystemID="30002537" killTime="2008-09-08 23:29:00" moonID="0">
+        <victim characterID="756535811" characterName="Jarak Ralir" corporationID="245571449" corporationName="The Atyss Project" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="414" shipTypeID="670"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="298" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="1761103282" characterName="Paraswen" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-8.6" damageDone="116" finalBlow="0" weaponTypeID="27447" shipTypeID="622"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="0" finalBlow="0" weaponTypeID="3244" shipTypeID="622"/>
         </rowset>
-        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed" />
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed"/>
       </row>
-      <row killID="166395" solarSystemID="30000788" killTime="2007-12-17 14:20:00" moonID="0">
-        <victim characterID="1565245582" characterName="0smadeu" corporationID="198680032" corporationName="UA Industry" allianceID="1220922756" allianceName="Red Alliance" damageTaken="31987" shipTypeID="638" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="861341501" characterName="Tate Aoko" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="4678" finalBlow="1" weaponTypeID="2889" shipTypeID="22456" />
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.8" damageDone="9472" finalBlow="0" weaponTypeID="2185" shipTypeID="11963" />
-          <row characterID="1095160353" characterName="Dark 0men" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="8139" finalBlow="0" weaponTypeID="2456" shipTypeID="11963" />
-          <row characterID="0" characterName="" corporationID="1000124" corporationName="Archangels" allianceID="0" allianceName="" securityStatus="0" damageDone="6707" finalBlow="0" weaponTypeID="0" shipTypeID="213" />
-          <row characterID="680002135" characterName="Capt Rapace" corporationID="1000046" corporationName="Sebiestor tribe" allianceID="0" allianceName="" securityStatus="1.6" damageDone="2991" finalBlow="0" weaponTypeID="2889" shipTypeID="22456" />
-          <row characterID="950325390" characterName="William Hart" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="-1.9" damageDone="0" finalBlow="0" weaponTypeID="2571" shipTypeID="11957" />
+      <row killID="3697814" solarSystemID="30002537" killTime="2008-09-08 22:43:00" moonID="0">
+        <victim characterID="2033432701" characterName="devestave" corporationID="1709995411" corporationName="Collector of Souls" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="35023" shipTypeID="644"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="6412" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="1307213761" characterName="Ko Tha" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.4" damageDone="6931" finalBlow="0" weaponTypeID="12003" shipTypeID="12003"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="4451" finalBlow="0" weaponTypeID="622" shipTypeID="622"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.4" damageDone="4121" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.5" damageDone="3906" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="753914548" characterName="loppi" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-2.6" damageDone="3800" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1761103282" characterName="Paraswen" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-8.6" damageDone="3255" finalBlow="0" weaponTypeID="622" shipTypeID="622"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="2147" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1287082306" characterName="Myra2007" corporationID="1000179" corporationName="24th Imperial Crusade" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-1.5" damageDone="0" finalBlow="0" weaponTypeID="2567" shipTypeID="11194"/>
+          <row characterID="1672881505" characterName="Siccor" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.9" damageDone="0" finalBlow="0" weaponTypeID="8101" shipTypeID="11957"/>
         </rowset>
         <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
-          <row typeID="12274" flag="0" qtyDropped="3" qtyDestroyed="0" />
-          <row typeID="9632" flag="0" qtyDropped="0" qtyDestroyed="2" />
-          <row typeID="15510" flag="87" qtyDropped="1" qtyDestroyed="1" />
-          <row typeID="2046" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="2508" flag="0" qtyDropped="53" qtyDestroyed="13" />
-          <row typeID="8419" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="8113" flag="0" qtyDropped="2" qtyDestroyed="3" />
-          <row typeID="10888" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="2183" flag="87" qtyDropped="0" qtyDestroyed="2" />
-          <row typeID="2508" flag="5" qtyDropped="564" qtyDestroyed="0" />
-          <row typeID="19810" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="2173" flag="87" qtyDropped="2" qtyDestroyed="0" />
-          <row typeID="25861" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="24348" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="12054" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="1539" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="27419" flag="0" qtyDropped="48" qtyDestroyed="144"/>
+          <row typeID="2032" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="11648" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="11646" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="9333" flag="0" qtyDropped="2" qtyDestroyed="2"/>
+          <row typeID="3244" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="11289" flag="5" qtyDropped="14" qtyDestroyed="0"/>
+          <row typeID="25713" flag="0" qtyDropped="1" qtyDestroyed="3"/>
+          <row typeID="27419" flag="5" qtyDropped="0" qtyDestroyed="856"/>
+          <row typeID="11325" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="3540" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="5049" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2048" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="21902" flag="0" qtyDropped="314" qtyDestroyed="0"/>
+          <row typeID="21902" flag="5" qtyDropped="0" qtyDestroyed="3266"/>
+          <row typeID="11644" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="11285" flag="0" qtyDropped="0" qtyDestroyed="6"/>
+          <row typeID="27401" flag="5" qtyDropped="1697" qtyDestroyed="0"/>
+          <row typeID="12054" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2183" flag="87" qtyDropped="12" qtyDestroyed="0"/>
         </rowset>
       </row>
-      <row killID="166315" solarSystemID="30000783" killTime="2007-12-17 14:10:00" moonID="0">
-        <victim characterID="695823750" characterName="0minous" corporationID="244898283" corporationName="OEG" allianceID="1220922756" allianceName="Red Alliance" damageTaken="3446" shipTypeID="22456" />
-        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
-          <row characterID="790738490" characterName="Awox" corporationID="638403821" corporationName="Advanced Logistics" allianceID="0" allianceName="" securityStatus="0" damageDone="3446" finalBlow="1" weaponTypeID="2185" shipTypeID="11963" />
+      <row killID="3697801" solarSystemID="30002537" killTime="2008-09-08 22:42:00" moonID="0">
+        <victim characterID="1850498366" characterName="Mr Maguw" corporationID="2008166143" corporationName="7th Tribal Legion" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="1698" shipTypeID="587"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.14923856387999" damageDone="316" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="1307213761" characterName="Ko Tha" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.4" damageDone="1238" finalBlow="0" weaponTypeID="12003" shipTypeID="12003"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.5" damageDone="144" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="168422606" characterName="Dr Bjerring" corporationID="966340644" corporationName="Kaper Korp" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="3.8" damageDone="0" finalBlow="0" weaponTypeID="19739" shipTypeID="12032"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.4" damageDone="0" finalBlow="0" weaponTypeID="5403" shipTypeID="11200"/>
         </rowset>
         <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
-          <row typeID="20753" flag="5" qtyDropped="591" qtyDestroyed="0" />
-          <row typeID="2889" flag="0" qtyDropped="3" qtyDestroyed="4" />
-          <row typeID="183" flag="5" qtyDropped="367" qtyDestroyed="0" />
-          <row typeID="22782" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="3244" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="22778" flag="0" qtyDropped="8" qtyDestroyed="0" />
-          <row typeID="1405" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="180" flag="5" qtyDropped="73" qtyDestroyed="0" />
-          <row typeID="4025" flag="0" qtyDropped="1" qtyDestroyed="0" />
-          <row typeID="183" flag="0" qtyDropped="417" qtyDestroyed="69" />
-          <row typeID="8517" flag="0" qtyDropped="0" qtyDestroyed="1" />
-          <row typeID="12625" flag="5" qtyDropped="794" qtyDestroyed="0" />
-          <row typeID="440" flag="0" qtyDropped="1" qtyDestroyed="0" />
+          <row typeID="3554" flag="0" qtyDropped="3" qtyDestroyed="0"/>
+          <row typeID="20345" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="4029" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="179" flag="5" qtyDropped="2453" qtyDestroyed="0"/>
+          <row typeID="212" flag="5" qtyDropped="0" qtyDestroyed="18"/>
+          <row typeID="8089" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="8759" flag="0" qtyDropped="2" qtyDestroyed="1"/>
+          <row typeID="213" flag="5" qtyDropped="325" qtyDestroyed="0"/>
+          <row typeID="16389" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="180" flag="5" qtyDropped="769" qtyDestroyed="0"/>
+          <row typeID="3554" flag="5" qtyDropped="0" qtyDestroyed="17"/>
+          <row typeID="180" flag="0" qtyDropped="0" qtyDestroyed="486"/>
+          <row typeID="1183" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="438" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="212" flag="0" qtyDropped="0" qtyDestroyed="41"/>
+          <row typeID="3566" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+        </rowset>
+      </row>
+      <row killID="3697308" solarSystemID="30002537" killTime="2008-09-08 21:57:00" moonID="0">
+        <victim characterID="787555895" characterName="tron abyss" corporationID="839418859" corporationName="The Dawn Of War Dark Crusade" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="1631" shipTypeID="587"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.94393003738145" damageDone="390" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="1307213761" characterName="Ko Tha" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.4" damageDone="529" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="297" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="753914548" characterName="loppi" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-2.3" damageDone="235" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="0" characterName="" corporationID="1000124" corporationName="Archangels" allianceID="0" allianceName="" factionID="0" factionName="" securityStatus="0" damageDone="180" finalBlow="0" weaponTypeID="0" shipTypeID="22813"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.5" damageDone="0" finalBlow="0" weaponTypeID="448" shipTypeID="11200"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="178" flag="0" qtyDropped="25" qtyDestroyed="75"/>
+          <row typeID="4025" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="25861" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="178" flag="5" qtyDropped="329" qtyDestroyed="0"/>
+          <row typeID="399" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="377" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2905" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="8869" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="21939" flag="0" qtyDropped="0" qtyDestroyed="43"/>
+          <row typeID="10998" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="8749" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+        </rowset>
+      </row>
+      <row killID="3697085" solarSystemID="30002537" killTime="2008-09-08 21:39:00" moonID="0">
+        <victim characterID="795886053" characterName="CHED" corporationID="220243444" corporationName="Genos Occidere" allianceID="0" allianceName="" factionID="0" factionName="" damageTaken="11876" shipTypeID="629"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.94393003738145" damageDone="1600" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="2601" finalBlow="0" weaponTypeID="2897" shipTypeID="622"/>
+          <row characterID="1761103282" characterName="Paraswen" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-8.5" damageDone="2587" finalBlow="0" weaponTypeID="8101" shipTypeID="622"/>
+          <row characterID="753914548" characterName="loppi" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-2.3" damageDone="2306" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.5" damageDone="2050" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="373" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.2" damageDone="359" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1672881505" characterName="Siccor" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7" damageDone="0" finalBlow="0" weaponTypeID="2559" shipTypeID="11957"/>
+          <row characterID="1307213761" characterName="Ko Tha" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.4" damageDone="0" finalBlow="0" weaponTypeID="4025" shipTypeID="11200"/>
+          <row characterID="1013988272" characterName="Fas Grant" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="0" finalBlow="0" weaponTypeID="19939" shipTypeID="11957"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="530" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="12773" flag="0" qtyDropped="0" qtyDestroyed="348"/>
+          <row typeID="2048" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="519" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="12773" flag="5" qtyDropped="839" qtyDestroyed="0"/>
+          <row typeID="3244" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2897" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="527" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="11325" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="12052" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2937" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="11269" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="12777" flag="5" qtyDropped="721" qtyDestroyed="0"/>
+          <row typeID="16467" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="21896" flag="5" qtyDropped="0" qtyDestroyed="100"/>
+          <row typeID="12198" flag="5" qtyDropped="0" qtyDestroyed="2"/>
+        </rowset>
+      </row>
+      <row killID="3696246" solarSystemID="30002542" killTime="2008-09-08 20:37:00" moonID="0">
+        <victim characterID="927110969" characterName="Jeddak Tarkas" corporationID="839418859" corporationName="The Dawn Of War Dark Crusade" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="422" shipTypeID="670"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="273" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.2" damageDone="149" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1761103282" characterName="Paraswen" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-7.4" damageDone="0" finalBlow="0" weaponTypeID="8101" shipTypeID="622"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.9" damageDone="0" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed"/>
+      </row>
+      <row killID="3696225" solarSystemID="30002542" killTime="2008-09-08 20:36:00" moonID="0">
+        <victim characterID="927110969" characterName="Jeddak Tarkas" corporationID="839418859" corporationName="The Dawn Of War Dark Crusade" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="15791" shipTypeID="24702"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="5539" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="3933" finalBlow="0" weaponTypeID="622" shipTypeID="622"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.2" damageDone="2949" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1761103282" characterName="Paraswen" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-7.4" damageDone="1957" finalBlow="0" weaponTypeID="622" shipTypeID="622"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.9" damageDone="1010" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="403" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1013988272" characterName="Fas Grant" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="0" finalBlow="0" weaponTypeID="19946" shipTypeID="11957"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="9211" flag="0" qtyDropped="3" qtyDestroyed="2"/>
+          <row typeID="12274" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="5833" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="5525" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2002" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="11289" flag="5" qtyDropped="0" qtyDestroyed="5"/>
+          <row typeID="210" flag="5" qtyDropped="2997" qtyDestroyed="0"/>
+          <row typeID="189" flag="0" qtyDropped="36" qtyDestroyed="72"/>
+          <row typeID="2185" flag="87" qtyDropped="0" qtyDestroyed="3"/>
+          <row typeID="189" flag="5" qtyDropped="0" qtyDestroyed="4627"/>
+          <row typeID="193" flag="5" qtyDropped="0" qtyDestroyed="4960"/>
+          <row typeID="11289" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="193" flag="0" qtyDropped="32" qtyDestroyed="0"/>
+          <row typeID="9562" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="499" flag="0" qtyDropped="1" qtyDestroyed="2"/>
+          <row typeID="1537" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="12056" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="1951" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="577" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="210" flag="0" qtyDropped="76" qtyDestroyed="37"/>
+          <row typeID="5919" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+        </rowset>
+      </row>
+      <row killID="3695596" solarSystemID="30002542" killTime="2008-09-08 20:01:00" moonID="0">
+        <victim characterID="1451059497" characterName="raspoutine" corporationID="1117330985" corporationName="The Wings of Maak" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="1268" shipTypeID="11196"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="1268" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="12625" flag="5" qtyDropped="880" qtyDestroyed="0"/>
+          <row typeID="2889" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="27371" flag="5" qtyDropped="0" qtyDestroyed="200"/>
+          <row typeID="21924" flag="5" qtyDropped="0" qtyDestroyed="1000"/>
+          <row typeID="24495" flag="0" qtyDropped="48" qtyDestroyed="48"/>
+          <row typeID="12625" flag="0" qtyDropped="46" qtyDestroyed="46"/>
+          <row typeID="19343" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="3242" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="24495" flag="5" qtyDropped="0" qtyDestroyed="94"/>
+          <row typeID="2605" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="2404" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+        </rowset>
+      </row>
+      <row killID="3695592" solarSystemID="30002542" killTime="2008-09-08 20:00:00" moonID="0">
+        <victim characterID="1253731452" characterName="Ekia" corporationID="1117330985" corporationName="The Wings of Maak" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="7640" shipTypeID="622"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="7640" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="12773" flag="0" qtyDropped="193" qtyDestroyed="186"/>
+          <row typeID="519" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="12773" flag="5" qtyDropped="0" qtyDestroyed="468"/>
+          <row typeID="8103" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="3244" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="27435" flag="5" qtyDropped="0" qtyDestroyed="362"/>
+          <row typeID="2456" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="15510" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="27435" flag="0" qtyDropped="62" qtyDestroyed="0"/>
+          <row typeID="2937" flag="0" qtyDropped="2" qtyDestroyed="2"/>
+          <row typeID="5975" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2456" flag="87" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="192" flag="5" qtyDropped="0" qtyDestroyed="919"/>
+          <row typeID="3841" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2605" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+        </rowset>
+      </row>
+      <row killID="3693827" solarSystemID="30002537" killTime="2008-09-08 17:46:00" moonID="0">
+        <victim characterID="2056393597" characterName="IvIo" corporationID="1000049" corporationName="Brutor tribe" allianceID="0" allianceName="" factionID="0" factionName="" damageTaken="1029" shipTypeID="11176"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="696" finalBlow="1" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="0" characterName="" corporationID="1000124" corporationName="Archangels" allianceID="0" allianceName="" factionID="0" factionName="" securityStatus="0" damageDone="333" finalBlow="0" weaponTypeID="0" shipTypeID="206"/>
+          <row characterID="1861338151" characterName="Hawk Redrum" corporationID="982947821" corporationName="War Tactical Groups" allianceID="1670711893" allianceName="Varangians." factionID="0" factionName="" securityStatus="2.3" damageDone="0" finalBlow="0" weaponTypeID="9141" shipTypeID="24702"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="8091" flag="0" qtyDropped="1" qtyDestroyed="2"/>
+          <row typeID="27381" flag="0" qtyDropped="125" qtyDestroyed="0"/>
+          <row typeID="3244" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="27361" flag="5" qtyDropped="0" qtyDestroyed="131"/>
+          <row typeID="2032" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="5971" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2605" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+        </rowset>
+      </row>
+      <row killID="3643777" solarSystemID="30002537" killTime="2008-09-04 21:45:00" moonID="0">
+        <victim characterID="844869714" characterName="Thorvik" corporationID="1000182" corporationName="Tribal Liberation Force" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="1999" shipTypeID="16242"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="1608" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="240" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1301119439" characterName="Nyxicia" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="77" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.9" damageDone="74" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="0" finalBlow="0" weaponTypeID="2410" shipTypeID="622"/>
+          <row characterID="1049425358" characterName="Torco" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.8" damageDone="0" finalBlow="0" weaponTypeID="11198" shipTypeID="11198"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="9660" flag="5" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="3242" flag="5" qtyDropped="0" qtyDestroyed="4"/>
+          <row typeID="2103" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1319" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="8785" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="10039" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="6527" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="6326" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="3596" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2529" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="11207" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="3829" flag="5" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="5011" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="6569" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="3586" flag="5" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="1551" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="9608" flag="5" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="4029" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1968" flag="5" qtyDropped="2" qtyDestroyed="0"/>
+          <row typeID="2289" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="5322" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="8535" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="5403" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="526" flag="5" qtyDropped="12" qtyDestroyed="0"/>
+          <row typeID="3428" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="8863" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="8821" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="5300" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="25861" flag="0" qtyDropped="2" qtyDestroyed="3"/>
+          <row typeID="1563" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="486" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="15331" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="444" flag="5" qtyDropped="0" qtyDestroyed="6"/>
+          <row typeID="447" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2331" flag="5" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="9646" flag="5" qtyDropped="5" qtyDestroyed="0"/>
+          <row typeID="1963" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="28164" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="5439" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="10998" flag="5" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="11084" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="8865" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1973" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="443" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="9413" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="399" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="8517" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1998" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="25589" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="377" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="5599" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="3554" flag="0" qtyDropped="2" qtyDestroyed="0"/>
+          <row typeID="6491" flag="5" qtyDropped="7" qtyDestroyed="0"/>
+          <row typeID="6003" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="393" flag="5" qtyDropped="18" qtyDestroyed="0"/>
+          <row typeID="2293" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+        </rowset>
+      </row>
+      <row killID="3643494" solarSystemID="30002537" killTime="2008-09-04 21:22:00" moonID="0">
+        <victim characterID="528233450" characterName="Colonel ALEX" corporationID="1803949513" corporationName="Jove's Witnesses" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="498" shipTypeID="606"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="498" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="3651" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="34" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="3640" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+        </rowset>
+      </row>
+      <row killID="3643441" solarSystemID="30002537" killTime="2008-09-04 21:18:00" moonID="0">
+        <victim characterID="1427030107" characterName="di ken" corporationID="1000182" corporationName="Tribal Liberation Force" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="381" shipTypeID="670"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="115" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="1301119439" characterName="Nyxicia" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="73" finalBlow="0" weaponTypeID="527" shipTypeID="11200"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.2" damageDone="53" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="1049425358" characterName="Torco" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.8" damageDone="50" finalBlow="0" weaponTypeID="11198" shipTypeID="11198"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="46" finalBlow="0" weaponTypeID="10680" shipTypeID="11200"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.9" damageDone="44" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="753914548" characterName="loppi" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-2.1" damageDone="0" finalBlow="0" weaponTypeID="5403" shipTypeID="11200"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed"/>
+      </row>
+      <row killID="3643332" solarSystemID="30002537" killTime="2008-09-04 21:10:00" moonID="0">
+        <victim characterID="1431571184" characterName="KrippleWarr SVK" corporationID="1000182" corporationName="Tribal Liberation Force" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="2359" shipTypeID="16242"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="1093" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="691" finalBlow="0" weaponTypeID="622" shipTypeID="622"/>
+          <row characterID="821202516" characterName="brotula" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="380" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="753914548" characterName="loppi" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-2.1" damageDone="129" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="969828274" characterName="il sakasanje" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-5.9" damageDone="43" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1301119439" characterName="Nyxicia" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="23" finalBlow="0" weaponTypeID="11200" shipTypeID="11200"/>
+          <row characterID="1049425358" characterName="Torco" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.8" damageDone="0" finalBlow="0" weaponTypeID="11198" shipTypeID="11198"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="2889" flag="0" qtyDropped="5" qtyDestroyed="2"/>
+          <row typeID="3887" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="21898" flag="5" qtyDropped="0" qtyDestroyed="1501"/>
+          <row typeID="2539" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2553" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="25861" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2547" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="21898" flag="0" qtyDropped="232" qtyDestroyed="174"/>
+          <row typeID="8223" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+        </rowset>
+      </row>
+      <row killID="3642443" solarSystemID="30003068" killTime="2008-09-04 20:12:00" moonID="0">
+        <victim characterID="1108168591" characterName="Direfires" corporationID="2073394283" corporationName="Fighting Intergalactic Boredom" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="2551" shipTypeID="16240"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="852" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+          <row characterID="1301119439" characterName="Nyxicia" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="1060" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="215298238" characterName="Der Fangzahn" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.2" damageDone="596" finalBlow="0" weaponTypeID="2456" shipTypeID="11200"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="43" finalBlow="0" weaponTypeID="2466" shipTypeID="622"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="434" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="2454" flag="87" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="2456" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="12614" flag="0" qtyDropped="567" qtyDestroyed="341"/>
+          <row typeID="2603" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="3170" flag="0" qtyDropped="2" qtyDestroyed="6"/>
+          <row typeID="1244" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="3242" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="9944" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="12614" flag="5" qtyDropped="2129" qtyDestroyed="0"/>
+        </rowset>
+      </row>
+      <row killID="3642440" solarSystemID="30003068" killTime="2008-09-04 20:12:00" moonID="0">
+        <victim characterID="445410121" characterName="The Moleboy" corporationID="216390969" corporationName="Corpus PCG" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="1781" shipTypeID="11184"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="1781" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="434" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1447" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="3244" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="523" flag="5" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="1999" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="1236" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="3001" flag="0" qtyDropped="0" qtyDestroyed="4"/>
+          <row typeID="12563" flag="0" qtyDropped="3" qtyDestroyed="1"/>
+          <row typeID="12563" flag="5" qtyDropped="0" qtyDestroyed="4"/>
+        </rowset>
+      </row>
+      <row killID="3641895" solarSystemID="30002537" killTime="2008-09-04 19:31:00" moonID="0">
+        <victim characterID="1462562923" characterName="Genetisch" corporationID="1510796353" corporationName="Rapier Fleet" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="369" shipTypeID="670"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="369" finalBlow="1" weaponTypeID="3170" shipTypeID="11200"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed"/>
+      </row>
+      <row killID="3641876" solarSystemID="30002537" killTime="2008-09-04 19:29:00" moonID="0">
+        <victim characterID="1462562923" characterName="Genetisch" corporationID="1510796353" corporationName="Rapier Fleet" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="1271" shipTypeID="11176"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.7276204368279" damageDone="1271" finalBlow="1" weaponTypeID="3170" shipTypeID="11200"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="3244" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1987" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="527" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="210" flag="5" qtyDropped="0" qtyDestroyed="434"/>
+          <row typeID="19343" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="27361" flag="5" qtyDropped="0" qtyDestroyed="2006"/>
+          <row typeID="7993" flag="0" qtyDropped="2" qtyDestroyed="1"/>
+          <row typeID="27361" flag="0" qtyDropped="0" qtyDestroyed="135"/>
+          <row typeID="26070" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+        </rowset>
+      </row>
+      <row killID="3555085" solarSystemID="30003068" killTime="2008-08-28 15:40:00" moonID="0">
+        <victim characterID="237068048" characterName="Dhaaka Vincatar" corporationID="1000182" corporationName="Tribal Liberation Force" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="855" shipTypeID="589"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.89182923932014" damageDone="855" finalBlow="1" weaponTypeID="3512" shipTypeID="2006"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="434" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="451" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="1445" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="3242" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="239" flag="5" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="246" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+        </rowset>
+      </row>
+      <row killID="3524544" solarSystemID="30002537" killTime="2008-08-25 22:41:00" moonID="0">
+        <victim characterID="1723984240" characterName="scousie" corporationID="466979839" corporationName="Heretic Militia" allianceID="0" allianceName="" factionID="500002" factionName="Minmatar Republic" damageTaken="11450" shipTypeID="11999"/>
+        <rowset name="attackers" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID">
+          <row characterID="289632489" characterName="Galideeth" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-3.89182923932014" damageDone="3059" finalBlow="1" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="721700299" characterName="Enfop" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-10" damageDone="3760" finalBlow="0" weaponTypeID="5403" shipTypeID="670"/>
+          <row characterID="1307213761" characterName="Ko Tha" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-4.1" damageDone="2139" finalBlow="0" weaponTypeID="12003" shipTypeID="12003"/>
+          <row characterID="753914548" characterName="loppi" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-2.1" damageDone="1572" finalBlow="0" weaponTypeID="3170" shipTypeID="11200"/>
+          <row characterID="1049425358" characterName="Torco" corporationID="1301548491" corporationName="Breed of Malakka" allianceID="0" allianceName="" factionID="500003" factionName="Amarr Empire" securityStatus="-9.7" damageDone="920" finalBlow="0" weaponTypeID="2488" shipTypeID="11963"/>
+        </rowset>
+        <rowset name="items" columns="typeID,flag,qtyDropped,qtyDestroyed">
+          <row typeID="9994" flag="5" qtyDropped="100" qtyDestroyed="0"/>
+          <row typeID="2679" flag="5" qtyDropped="850" qtyDestroyed="50"/>
+          <row typeID="12773" flag="5" qtyDropped="2524" qtyDestroyed="0"/>
+          <row typeID="12076" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="10008" flag="5" qtyDropped="0" qtyDestroyed="40"/>
+          <row typeID="2897" flag="0" qtyDropped="4" qtyDestroyed="1"/>
+          <row typeID="3244" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="18639" flag="0" qtyDropped="0" qtyDestroyed="1"/>
+          <row typeID="1405" flag="0" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="1236" flag="0" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="10006" flag="0" qtyDropped="0" qtyDestroyed="18"/>
+          <row typeID="1958" flag="5" qtyDropped="1" qtyDestroyed="0"/>
+          <row typeID="10006" flag="5" qtyDropped="79" qtyDestroyed="0"/>
+          <row typeID="12773" flag="0" qtyDropped="178" qtyDestroyed="118"/>
+          <row typeID="3841" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="25715" flag="5" qtyDropped="1" qtyDestroyed="1"/>
+          <row typeID="26038" flag="0" qtyDropped="0" qtyDestroyed="2"/>
+          <row typeID="2605" flag="0" qtyDropped="1" qtyDestroyed="1"/>
         </rowset>
       </row>
     </rowset>
   </result>
-  <cachedUntil>2007-12-17 18:17:46</cachedUntil>
+  <cachedUntil>2008-09-11 16:53:56</cachedUntil>
 </eveapi>
