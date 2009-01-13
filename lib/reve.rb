@@ -80,6 +80,10 @@ module Reve
     @@general_faction_war_stats_url= 'http://api.eve-online.com/eve/FacWarStats.xml.aspx'
     @@top_faction_war_stats_url    = 'http://api.eve-online.com/eve/FacWarTopStats.xml.aspx'
     @@faction_war_occupancy_url    = 'http://api.eve-online.com/map/FacWarSystems.xml.aspx'
+    @@certificate_tree_url         = 'http://api.eve-online.com/eve/CertificateTree.xml.aspx'
+    @@character_medals_url         = 'http://api.eve-online.com/char/Medals.xml.aspx'
+    @@corporate_medals_url         = 'http://api.eve-online.com/corp/Medals.xml.aspx'
+    @@corp_member_medals_url       = 'http://api.eve-online.com/corp/MemberMedals.xml.aspx'
 
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
@@ -90,8 +94,9 @@ module Reve
                    :personal_industry_jobs_url, :corporate_industry_jobs_url, :personal_assets_url,
                    :corporate_assets_url, :personal_kills_url, :corporate_kills_url,
                    :personal_faction_war_stats_url, :corporate_faction_war_stats_url,
-                   :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url
-  
+                   :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url,
+                   :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
+                   :corp_member_medals_url
 
 
     attr_accessor :key, :userid, :charid
@@ -128,20 +133,11 @@ module Reve
       @save_path = p
     end
     
-    # Convert Character names to Character ids.
+    # Convert a list of names to their ids.
     # Expects a Hash as a parameter with these keys:
-    # * names ( Array ) - An Array of Character names to fetch the IDs of.
+    # * names ( Array ) - An Array of Names to fetch the IDs of.
     # See Also: character_name, Reve::Classes::Character, character_sheet
-    #--
-    # This is an odd method because the XML from this looks like:
-    # <rowset ...>
-    #   <row:name name="CCP Garthagk" characterID="797400947" xmlns:row="characterID" />
-    # </rowset>
-    # I have to hack the Hpricot::Doc document coming from process_query to
-    # gsub out the row:name -> row to make the XPath work. Hope it doesn't
-    # perform too slowly! (We don't, of course, care about the xmlns:row bit)
-    #++ 
-    def character_id(opts = {} )
+    def names_to_ids(opts = {} )
       names = opts[:names] || []
       return [] if names.empty? # No names were passed.
       opts[:names] = names.join(',')
@@ -149,7 +145,6 @@ module Reve
       h = compute_hash(  opts.merge(:url => @@character_id_url) )
       return h if h
       xml = process_query(nil,opts[:url] || @@character_id_url, true,opts)
-      xml = Hpricot::XML(xml.to_s.gsub('row:name','row')) # Namespaces are evil!!
       ret = []
       xml.search("//rowset/row").each do |elem|
         ret << Reve::Classes::Character.new(elem)
@@ -157,7 +152,9 @@ module Reve
       ret
     end
     
-    # Convert Character names to Character names.
+    alias_method  :character_id, :names_to_ids
+    
+    # Convert  ids to Character names.
     # Expects a Hash as a parameter with these keys:
     # * ids ( Array ) - An Array of Character IDs to fetch the names of.
     # See Also: character_name, Reve::Classes::Character, character_sheet
@@ -230,10 +227,12 @@ module Reve
     # Returns a list of ConqurableStations and outposts from
     # http://api.eve-online.com/eve/ConquerableStationList.xml.aspx
     # See also: Reve::Classes::ConqurableStation
-    def conqurable_stations(opts = {})
+    def conquerable_stations(opts = {})
       compute_hash(  opts.merge(:url => @@conqurable_outposts_url) ) ||
-          process_query(Reve::Classes::ConqurableStation, opts[:url] || @@conqurable_outposts_url, false)
+          process_query(Reve::Classes::ConquerableStation, opts[:url] || @@conqurable_outposts_url, false)
     end
+    
+    alias_method :conqurable_stations, :conquerable_stations
     
     # Returns a list of Reve::Classes::MarketOrder objects for market orders that are up
     # Pass the characterid of the Character to check for
@@ -348,10 +347,10 @@ module Reve
     # http://api.eve-online.com/char/WalletTransactions.xml.aspx
     # Expects:
     # * characterid ( Integer | String ) - Look at this player's WalletTransaction list
-    # * before_trans_id ( Integer | String ) - Gets a list of WalletTransaction objects from before this Transaction ID.
+    # * beforetransid ( Integer | String ) - Gets a list of WalletTransaction objects from before this Transaction ID.
     # See also: Reve::Classes::WalletTransaction and
     # corporate_wallet_transactions
-    def personal_wallet_transactions(opts = { :characterid => nil, :before_trans_id => nil })
+    def personal_wallet_transactions(opts = { :characterid => nil, :beforetransid => nil })
       args = postfields(opts)
       h = compute_hash(args.merge(:url => @@personal_wallet_trans_url) )
       return h if h
@@ -363,7 +362,7 @@ module Reve
     # Expects:
     # * account_key ( Integer | String ) - Account key (1000-1006) to look at.
     # * characterid ( Integer | String ) - Look at WalletTransaction objects from this Character's Corporation
-    # * before_trans_id ( Integer | String ) - Gets a list of WalletTransaction objects from before this Transaction ID.
+    # * beforetransid ( Integer | String ) - Gets a list of WalletTransaction objects from before this Transaction ID.
     # See also: Reve::Classes::WalletTransaction and
     # personal_wallet_transactions
     def corporate_wallet_transactions(opts = {:accountkey => nil, :characterid => nil, :beforerefid => nil})
@@ -378,7 +377,7 @@ module Reve
     # Expects:
     # * account_key ( Integer | String ) - Account key (1000-1006) to look at.
     # * characterid ( Integer | String ) - Look at WalletJournal objects from this Character's Corporation
-    # * before_ref_id ( Integer | String ) - Gets a list of  WalletTransaction objects from before this RefID.
+    # * beforerefid ( Integer | String ) - Gets a list of  WalletTransaction objects from before this RefID.
     # See also: Reve::Classes::WalletJournal and personal_wallet_journal
     def corporate_wallet_journal(opts = {:accountkey => nil, :characterid => nil, :beforerefid => nil})
       args = postfields(opts)
@@ -391,7 +390,7 @@ module Reve
     # http://api.eve-online.com/char/WalletJournal.xml.aspx
     # Expects:
     # * characterid ( Integer | String ) - Look at this player's WalletJournal list
-    # * before_ref_id ( Integer | String ) - Gets a list of WalletJournal objects from before this RefID.
+    # * beforerefid ( Integer | String ) - Gets a list of WalletJournal objects from before this RefID.
     # See also: Reve::Classes::WalletJournal and corporate_wallet_journal
     def personal_wallet_journal(opts = { :characterid => nil, :beforerefid => nil} )
       args = postfields(opts)
@@ -400,7 +399,49 @@ module Reve
       process_query(Reve::Classes::WalletJournal,opts[:url] || @@personal_wallet_journal_url,false,args)
     end
     
-    # Gets the PersonalFactionWarStat for a character.
+    # Get the medals a Corporation can give out. Returns a list of 
+    # Reve::Classes::CorporateMedal objects.
+    # Expects:
+    # * characterid ( Integer | String ) - Get this Medals this Character's Corporation can give out
+    # See also: Reve::Classes::CorporateMedal, Reve::Classes::Medal
+    def corporate_medals(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_medals_url))
+      return h if h
+      process_query(Reve::Classes::CorporateMedal, opts[:url] || @@corporate_medals_url,false,args)
+    end
+    
+    
+    # Gets the medals the Corporation has given out. Returns a list of
+    # Reve::Classes::CorporateMemberMedal
+    # Expects:
+    # * characterid ( Integer | String ) - Get this Medals this Character's Corporation has given out
+    # See also: Reve::Classes::CorporateMedal, Reve::Classes::Medal
+    def corporate_member_medals(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corp_member_medals_url))
+      return h if h
+      process_query(Reve::Classes::CorporateMemberMedal, opts[:url] || @@corp_member_medals_url,false,args)
+    end
+    
+    
+    # Gets the list of Medals awarded to a Character. Returns a
+    # Reve::Classes::CharacterMedals object.
+    def character_medals(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@character_medals_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@character_medals_url,true,args)
+      current = xml.search("/eveapi/result/rowset[@name=currentCorporation]/row").inject([]) do |cur,elem|
+        cur << Reve::Classes::CharacterMedal.new(elem)
+      end
+      other = xml.search("/eveapi/result/rowset[@name=otherCorporations]/row").inject([]) do |cur,elem|
+        cur << Reve::Classes::CharacterMedal.new(elem)
+      end
+      Reve::Classes::CharacterMedals.new(current,other)
+    end
+    
+    # Gets the Reve::Classes::PersonalFactionWarStat for a character.
     # Expects:
     # * characterid ( Integer | String ) - Get this character's PersonalFactionWarStat.
     # See Also Reve::Classes::PersonalFactionWarStat and corporate_faction_war_stats
@@ -680,6 +721,39 @@ module Reve
 
       Reve::Classes::CorporationSheet.new res, divisions, wallet_divisions, corporate_logo  
     end
+    
+    
+    # Returns a Reve::Classes::CertificateTree object that contains the
+    # Certificate tree structure. See the rdoc for Reve::Classes::CertificateTree
+    # for details.
+    # See also: Reve::Classes::CertificateTree
+    def certificate_tree(opts = {})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@certificate_tree_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@certificate_tree_url,true,args)
+      
+      tree = Reve::Classes::CertificateTree.new
+      xml.search("/eveapi/result/rowset[@name=categories]/row").each do |category|
+        cat = Reve::Classes::CertificateCategory.new(category)
+        category.search("rowset[@name=classes]/row").each do |klass|
+          kl = Reve::Classes::CertificateClass.new(klass)
+          klass.search("rowset[@name=certificates]/row").each do |certificate|
+            cert = Reve::Classes::Certificate.new(certificate)
+            certificate.search("rowset[@name=requiredSkills]/row").each do |skill|
+              cert.required_skills << Reve::Classes::CertificateRequiredSkill.new(skill)
+            end
+            certificate.search("rowset[@name=requiredCertificates]/row").each do |requiredcert|
+              cert.required_certificates << Reve::Classes::CertificateRequiredCertificate.new(requiredcert)
+            end
+            kl.certificates << cert
+          end
+          cat.classes << kl
+        end
+        tree.categories << cat
+      end
+      tree
+    end
 
     # Gets the CharacterSheet from
     # http://api.eve-online.com/char/CharacterSheet.xml.aspx
@@ -694,42 +768,44 @@ module Reve
       xml = process_query(nil,opts[:url] || @@character_sheet_url,true,args)
       cs = Reve::Classes::CharacterSheet.new
 
-      xml.search("//result/attributeEnhancers").each do |enh|
-        for kind in ['intelligenceBonus', 'memoryBonus', 'charismaBonus', 'perceptionBonus','willpowerBonus']
-          thing = nil
-          case kind
-          when 'intelligenceBonus'
-            thing = Reve::Classes::IntelligenceEnhancer
-          when 'memoryBonus'
-            thing = Reve::Classes::MemoryEnhancer
-          when 'charismaBonus'
-            thing = Reve::Classes::CharismaEnhancer
-          when 'perceptionBonus'
-            thing = Reve::Classes::PerceptionEnhancer
-          when 'willpowerBonus'
-            thing = Reve::Classes::WillpowerEnhancer
-          end
-          (enh/kind).each do |b|
-            name = (b/:augmentatorname).inner_html
-            value = (b/:augmentatorvalue).inner_html
-            cs.enhancers << thing.new(name,value)
-          end
-        end
+      [ Reve::Classes::IntelligenceEnhancer, Reve::Classes::MemoryEnhancer, Reve::Classes::CharismaEnhancer,
+        Reve::Classes::PerceptionEnhancer, Reve::Classes::WillpowerEnhancer
+      ].each do |klass|
+        xml_attr = klass.to_s.split("::").last.sub("Enhancer",'').downcase + "Bonus"
+        i = klass.new(xml.search("/eveapi/result/attributeEnhancers/#{xml_attr}").search("augmentatorName/").first.to_s,
+                      xml.search("/eveapi/result/attributeEnhancers/#{xml_attr}").search("augmentatorValue/").first.to_s.to_i)
+        cs.enhancers << i
       end
 
-      (xml/:result).each do |elem|
-        for field in [ 'characterID', 'name', 'race', 'bloodLine', 'gender','corporationName','corporationID','balance' ]
-          cs.send("#{field.downcase}=",(elem/field.intern).first.inner_html)
-        end
+      [ 'characterID', 'name', 'race', 'bloodLine', 'gender','corporationName',
+        'corporationID','balance', 'cloneName', 'cloneSkillPoints' 
+      ].each do |field|
+        cs.send("#{field.downcase}=",xml.search("/eveapi/result/#{field}/").first.to_s)
       end
-      (xml/:result/:attributes).each do |elem|
-        for attrib in [ 'intelligence','memory','charisma','perception','willpower' ]
-          cs.send("#{attrib}=",(elem/attrib.intern).first.inner_html)
-        end
+      
+      [ 'intelligence','memory','charisma','perception','willpower' ].each do |attrib|
+        cs.send("#{attrib}=",xml.search("/eveapi/result/attributes/#{attrib}/").first.to_s.to_i) 
       end
-      (xml/:result/:rowset/:row).each do |elem|
+      xml.search("rowset[@name=skills]/row").each do |elem|
         cs.skills << Reve::Classes::Skill.new(elem)
       end
+      
+      xml.search("rowset[@name=certificates]/row").each do |elem|
+        cs.certificate_ids << elem['certificateID'].to_i
+      end
+      [ :corporationRolesAtHQ, :corporationRoles, :corporationRolesAtBase, :corporationRolesAtOther ].each do |role_kind|
+        xml.search("rowset[@name=#{role_kind.to_s}]/row").each do |elem|
+          arry = []
+          role = Reve::Classes::CorporateRole.new(elem)
+          arry << role
+          cs.send("#{role_kind}=".to_sym,arry)
+        end
+      end
+      
+      xml.search("rowset[@name=corporationTitles]/row").each do |elem|
+        cs.corporate_titles << Reve::Classes::CorporateTitle.new(elem)
+      end
+      
       cs
     end
 

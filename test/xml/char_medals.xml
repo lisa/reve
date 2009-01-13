@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2008-12-09 16:07:35</currentTime>
+  <result>
+    <rowset name="currentCorporation" key="medalID" columns="medalID,reason,status,issuerID,issued">
+      <row medalID="5990" reason="Making VAF Mart which defined VAF as a corp and made us known to Eve Universe" status="public" issuerID="1570039227" issued="2008-11-30 21:17:08" />
+    </rowset>
+    <rowset name="otherCorporations" key="medalID" columns="medalID,reason,status,issuerID,issued,corporationID,title,description" />
+  </result>
+
+  <cachedUntil>2008-12-10 15:07:35</cachedUntil>
+</eveapi>

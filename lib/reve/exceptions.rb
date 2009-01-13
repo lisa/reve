@@ -129,6 +129,10 @@ module Reve
         raise CharacterRetrevialFailure.new(msg)
       when 523
         raise CorporationRetrevialFailure.new(msg)
+      when 524
+        raise FactionMemberInformationFailure.new(msg)
+      when 525
+        raise MedalInformationFetchFailure.new(msg)
       when 900
         raise BetaAccessDenied.new(msg)
       when 901
@@ -315,6 +319,12 @@ module Reve
     end
     # 523
     class CorporationRetrevialFailure < ReveError #:nodoc:
+    end
+    # 524
+    class FactionMemberInformationFailure < ReveError #:nodoc:
+    end
+    # 525
+    class MedalInformationFetchFailure < ReveError #:nodoc:
     end
 
     # 900
