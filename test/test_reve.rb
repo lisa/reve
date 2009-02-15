@@ -189,10 +189,10 @@ class TestReve < Test::Unit::TestCase
     stations.each do |station|
       assert_not_nil station.id
       assert_not_nil station.name
-      assert_not_nil station.type_id
-      assert_not_nil station.type_name
+      assert_not_nil station.station_type_id
       assert_not_nil station.corporation_id
       assert_not_nil station.corporation_name
+      assert_not_nil station.system_id
     end
   end
   
