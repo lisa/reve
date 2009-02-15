@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: corp_membersecurity.xml</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>corp_membersecurity.xml</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>test/xml/corp_membersecurity.xml
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Jan 13 21:02:26 +0000 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+&lt;?xml version=&#8216;1.0&#8217; encoding=&#8216;UTF-8&#8217;?&gt;
+&lt;eveapi version=&quot;2&quot;&gt;
+</p>
+<pre>
+  &lt;currentTime&gt;2009-01-13 20:56:21&lt;/currentTime&gt;
+  &lt;result&gt;
+    &lt;member characterID=&quot;194329244&quot; name=&quot;Test Pilot&quot;&gt;
+      &lt;rowset name=&quot;roles&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+        &lt;row roleID=&quot;1&quot; roleName=&quot;roleDirector&quot; /&gt;
+      &lt;/rowset&gt;
+
+      &lt;rowset name=&quot;grantableRoles&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;rolesAtHQ&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+        &lt;row roleID=&quot;1&quot; roleName=&quot;roleDirector&quot; /&gt;
+      &lt;/rowset&gt;
+      &lt;rowset name=&quot;grantableRolesAtHQ&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;rolesAtBase&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+        &lt;row roleID=&quot;1&quot; roleName=&quot;roleDirector&quot; /&gt;
+      &lt;/rowset&gt;
+      &lt;rowset name=&quot;grantableRolesAtBase&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+
+      &lt;rowset name=&quot;rolesAtOther&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+        &lt;row roleID=&quot;1&quot; roleName=&quot;roleDirector&quot; /&gt;
+      &lt;/rowset&gt;
+      &lt;rowset name=&quot;grantableRolesAtOther&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;titles&quot; key=&quot;titleID&quot; columns=&quot;titleID,titleName&quot;&gt;
+        &lt;row titleID=&quot;1&quot; titleName=&quot;01 Pilot&quot; /&gt;
+      &lt;/rowset&gt;
+    &lt;/member&gt;
+    &lt;member characterID=&quot;201320849&quot; name=&quot;Test Pilot 2&quot;&gt;
+
+      &lt;rowset name=&quot;roles&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;grantableRoles&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;rolesAtHQ&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;grantableRolesAtHQ&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;rolesAtBase&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;grantableRolesAtBase&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;rolesAtOther&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;grantableRolesAtOther&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot; /&gt;
+      &lt;rowset name=&quot;titles&quot; key=&quot;titleID&quot; columns=&quot;titleID,titleName&quot;&gt;
+
+        &lt;row titleID=&quot;1&quot; titleName=&quot;01&quot; /&gt;
+        &lt;row titleID=&quot;2&quot; titleName=&quot;02&quot; /&gt;
+        &lt;row titleID=&quot;64&quot; titleName=&quot;07&quot; /&gt;
+        &lt;row titleID=&quot;256&quot; titleName=&quot;09&quot; /&gt;
+        &lt;row titleID=&quot;512&quot; titleName=&quot;10&quot; /&gt;
+      &lt;/rowset&gt;
+    &lt;/member&gt;
+  &lt;/result&gt;
+  &lt;cachedUntil&gt;2009-01-13 21:56:22&lt;/cachedUntil&gt;
+</pre>
+<p>
+&lt;/eveapi&gt;
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: kills.xml</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>kills.xml</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>test/xml/kills.xml
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Jan 13 19:15:20 +0000 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+&lt;?xml version=&#8216;1.0&#8217; encoding=&#8216;UTF-8&#8217;?&gt;
+&lt;eveapi version=&quot;2&quot;&gt;
+</p>
+<pre>
+  &lt;currentTime&gt;2007-12-17 17:17:46&lt;/currentTime&gt;
+  &lt;result&gt;
+    &lt;rowset name=&quot;kills&quot; key=&quot;killID&quot; columns=&quot;killID,solarSystemID,killTime,moonID&quot;&gt;
+      &lt;row killID=&quot;166641&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:50:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;1951193442&quot; characterName=&quot;Freygerd&quot; corporationID=&quot;547976428&quot; corporationName=&quot;Sihars Little Industries&quot; allianceID=&quot;130770314&quot; allianceName=&quot;Free Trade Zone.&quot; damageTaken=&quot;343&quot; shipTypeID=&quot;670&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;1095160353&quot; characterName=&quot;Dark 0men&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;343&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;861341501&quot; characterName=&quot;Tate Aoko&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;4.1&quot; damageDone=&quot;0&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;22778&quot; shipTypeID=&quot;22456&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot; /&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166636&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:49:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;1951193442&quot; characterName=&quot;Freygerd&quot; corporationID=&quot;547976428&quot; corporationName=&quot;Sihars Little Industries&quot; allianceID=&quot;130770314&quot; allianceName=&quot;Free Trade Zone.&quot; damageTaken=&quot;334&quot; shipTypeID=&quot;588&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;1095160353&quot; characterName=&quot;Dark 0men&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;334&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;861341501&quot; characterName=&quot;Tate Aoko&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;4.1&quot; damageDone=&quot;0&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;2889&quot; shipTypeID=&quot;22456&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot;&gt;
+          &lt;row typeID=&quot;3651&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;11489&quot; flag=&quot;5&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot;&gt;
+            &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot;&gt;
+              &lt;row typeID=&quot;34&quot; flag=&quot;5&quot; qtyDropped=&quot;100&quot; qtyDestroyed=&quot;0&quot; /&gt;
+            &lt;/rowset&gt;
+          &lt;/row&gt;
+          &lt;row typeID=&quot;3636&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+        &lt;/rowset&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166610&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:46:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;1165090547&quot; characterName=&quot;VolandRUS&quot; corporationID=&quot;1596775184&quot; corporationName=&quot;PROFTECH&quot; allianceID=&quot;1028876240&quot; allianceName=&quot;Ultima Rati0&quot; damageTaken=&quot;373&quot; shipTypeID=&quot;670&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;373&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot; /&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166529&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:35:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;837081527&quot; characterName=&quot;Isis Plissken&quot; corporationID=&quot;749147334&quot; corporationName=&quot;GoonFleet&quot; allianceID=&quot;824518128&quot; allianceName=&quot;GoonSwarm&quot; damageTaken=&quot;431&quot; shipTypeID=&quot;670&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;431&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot; /&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166516&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:34:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;837081527&quot; characterName=&quot;Isis Plissken&quot; corporationID=&quot;749147334&quot; corporationName=&quot;GoonFleet&quot; allianceID=&quot;824518128&quot; allianceName=&quot;GoonSwarm&quot; damageTaken=&quot;524&quot; shipTypeID=&quot;11129&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;524&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;1095160353&quot; characterName=&quot;Dark 0men&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.9&quot; damageDone=&quot;0&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;527&quot; shipTypeID=&quot;11963&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot;&gt;
+          &lt;row typeID=&quot;15511&quot; flag=&quot;5&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;23534&quot; flag=&quot;5&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;2445&quot; flag=&quot;5&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;2477&quot; flag=&quot;5&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;24396&quot; flag=&quot;5&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;2455&quot; flag=&quot;5&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;23528&quot; flag=&quot;5&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+        &lt;/rowset&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166484&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:30:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;1407554808&quot; characterName=&quot;out1aw&quot; corporationID=&quot;1596775184&quot; corporationName=&quot;PROFTECH&quot; allianceID=&quot;1028876240&quot; allianceName=&quot;Ultima Rati0&quot; damageTaken=&quot;3505&quot; shipTypeID=&quot;634&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;602&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;1095160353&quot; characterName=&quot;Dark 0men&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.9&quot; damageDone=&quot;2903&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;2456&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;950325390&quot; characterName=&quot;William Hart&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.9&quot; damageDone=&quot;0&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;19933&quot; shipTypeID=&quot;11957&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot;&gt;
+          &lt;row typeID=&quot;11740&quot; flag=&quot;5&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;2&quot; /&gt;
+          &lt;row typeID=&quot;25591&quot; flag=&quot;5&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;6005&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;25604&quot; flag=&quot;5&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;11737&quot; flag=&quot;5&quot; qtyDropped=&quot;2&quot; qtyDestroyed=&quot;4&quot; /&gt;
+          &lt;row typeID=&quot;25599&quot; flag=&quot;5&quot; qtyDropped=&quot;4&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;4431&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;1405&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;1236&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;11739&quot; flag=&quot;5&quot; qtyDropped=&quot;4&quot; qtyDestroyed=&quot;5&quot; /&gt;
+          &lt;row typeID=&quot;25590&quot; flag=&quot;5&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;25861&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;24348&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;11732&quot; flag=&quot;5&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;22177&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;11741&quot; flag=&quot;5&quot; qtyDropped=&quot;5&quot; qtyDestroyed=&quot;4&quot; /&gt;
+        &lt;/rowset&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166445&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:25:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;493129144&quot; characterName=&quot;Ocna&quot; corporationID=&quot;153322556&quot; corporationName=&quot;The Flying Dutchmen&quot; allianceID=&quot;1294094452&quot; allianceName=&quot;Antesignani Alliance&quot; damageTaken=&quot;4929&quot; shipTypeID=&quot;633&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;1095160353&quot; characterName=&quot;Dark 0men&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;1748&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.8&quot; damageDone=&quot;1796&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;11963&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;861341501&quot; characterName=&quot;Tate Aoko&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;4.1&quot; damageDone=&quot;748&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;22456&quot; shipTypeID=&quot;22456&quot; /&gt;
+          &lt;row characterID=&quot;680002135&quot; characterName=&quot;Capt Rapace&quot; corporationID=&quot;1000046&quot; corporationName=&quot;Sebiestor tribe&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;1.6&quot; damageDone=&quot;637&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;22456&quot; shipTypeID=&quot;22456&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot;&gt;
+          &lt;row typeID=&quot;393&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;2018&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;3528&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;10836&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;578&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;11370&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;10998&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;1&quot; /&gt;
+        &lt;/rowset&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166408&quot; solarSystemID=&quot;30000788&quot; killTime=&quot;2007-12-17 14:21:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;1565245582&quot; characterName=&quot;0smadeu&quot; corporationID=&quot;198680032&quot; corporationName=&quot;UA Industry&quot; allianceID=&quot;1220922756&quot; allianceName=&quot;Red Alliance&quot; damageTaken=&quot;398&quot; shipTypeID=&quot;670&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;131&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2921&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;861341501&quot; characterName=&quot;Tate Aoko&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;4.1&quot; damageDone=&quot;190&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;2889&quot; shipTypeID=&quot;22456&quot; /&gt;
+          &lt;row characterID=&quot;1095160353&quot; characterName=&quot;Dark 0men&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.9&quot; damageDone=&quot;77&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;527&quot; shipTypeID=&quot;11963&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot; /&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166395&quot; solarSystemID=&quot;30000788&quot; killTime=&quot;2007-12-17 14:20:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;1565245582&quot; characterName=&quot;0smadeu&quot; corporationID=&quot;198680032&quot; corporationName=&quot;UA Industry&quot; allianceID=&quot;1220922756&quot; allianceName=&quot;Red Alliance&quot; damageTaken=&quot;31987&quot; shipTypeID=&quot;638&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;861341501&quot; characterName=&quot;Tate Aoko&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;4678&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2889&quot; shipTypeID=&quot;22456&quot; /&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.8&quot; damageDone=&quot;9472&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;2185&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;1095160353&quot; characterName=&quot;Dark 0men&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.9&quot; damageDone=&quot;8139&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;2456&quot; shipTypeID=&quot;11963&quot; /&gt;
+          &lt;row characterID=&quot;0&quot; characterName=&quot;&quot; corporationID=&quot;1000124&quot; corporationName=&quot;Archangels&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;6707&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;0&quot; shipTypeID=&quot;213&quot; /&gt;
+          &lt;row characterID=&quot;680002135&quot; characterName=&quot;Capt Rapace&quot; corporationID=&quot;1000046&quot; corporationName=&quot;Sebiestor tribe&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;1.6&quot; damageDone=&quot;2991&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;2889&quot; shipTypeID=&quot;22456&quot; /&gt;
+          &lt;row characterID=&quot;950325390&quot; characterName=&quot;William Hart&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;-1.9&quot; damageDone=&quot;0&quot; finalBlow=&quot;0&quot; weaponTypeID=&quot;2571&quot; shipTypeID=&quot;11957&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot;&gt;
+          &lt;row typeID=&quot;12274&quot; flag=&quot;0&quot; qtyDropped=&quot;3&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;9632&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;2&quot; /&gt;
+          &lt;row typeID=&quot;15510&quot; flag=&quot;87&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;2046&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;2508&quot; flag=&quot;0&quot; qtyDropped=&quot;53&quot; qtyDestroyed=&quot;13&quot; /&gt;
+          &lt;row typeID=&quot;8419&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;8113&quot; flag=&quot;0&quot; qtyDropped=&quot;2&quot; qtyDestroyed=&quot;3&quot; /&gt;
+          &lt;row typeID=&quot;10888&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;2183&quot; flag=&quot;87&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;2&quot; /&gt;
+          &lt;row typeID=&quot;2508&quot; flag=&quot;5&quot; qtyDropped=&quot;564&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;19810&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;2173&quot; flag=&quot;87&quot; qtyDropped=&quot;2&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;25861&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;24348&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;12054&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;1539&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+        &lt;/rowset&gt;
+      &lt;/row&gt;
+      &lt;row killID=&quot;166315&quot; solarSystemID=&quot;30000783&quot; killTime=&quot;2007-12-17 14:10:00&quot; moonID=&quot;0&quot;&gt;
+        &lt;victim characterID=&quot;695823750&quot; characterName=&quot;0minous&quot; corporationID=&quot;244898283&quot; corporationName=&quot;OEG&quot; allianceID=&quot;1220922756&quot; allianceName=&quot;Red Alliance&quot; damageTaken=&quot;3446&quot; shipTypeID=&quot;22456&quot; /&gt;
+        &lt;rowset name=&quot;attackers&quot; columns=&quot;characterID,characterName,corporationID,corporationName,allianceID,allianceName,securityStatus,damageDone,finalBlow,weaponTypeID,shipTypeID&quot;&gt;
+          &lt;row characterID=&quot;790738490&quot; characterName=&quot;Awox&quot; corporationID=&quot;638403821&quot; corporationName=&quot;Advanced Logistics&quot; allianceID=&quot;0&quot; allianceName=&quot;&quot; securityStatus=&quot;0&quot; damageDone=&quot;3446&quot; finalBlow=&quot;1&quot; weaponTypeID=&quot;2185&quot; shipTypeID=&quot;11963&quot; /&gt;
+        &lt;/rowset&gt;
+        &lt;rowset name=&quot;items&quot; columns=&quot;typeID,flag,qtyDropped,qtyDestroyed&quot;&gt;
+          &lt;row typeID=&quot;20753&quot; flag=&quot;5&quot; qtyDropped=&quot;591&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;2889&quot; flag=&quot;0&quot; qtyDropped=&quot;3&quot; qtyDestroyed=&quot;4&quot; /&gt;
+          &lt;row typeID=&quot;183&quot; flag=&quot;5&quot; qtyDropped=&quot;367&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;22782&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;3244&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;22778&quot; flag=&quot;0&quot; qtyDropped=&quot;8&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;1405&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;1236&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;180&quot; flag=&quot;5&quot; qtyDropped=&quot;73&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;4025&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;183&quot; flag=&quot;0&quot; qtyDropped=&quot;417&quot; qtyDestroyed=&quot;69&quot; /&gt;
+          &lt;row typeID=&quot;8517&quot; flag=&quot;0&quot; qtyDropped=&quot;0&quot; qtyDestroyed=&quot;1&quot; /&gt;
+          &lt;row typeID=&quot;12625&quot; flag=&quot;5&quot; qtyDropped=&quot;794&quot; qtyDestroyed=&quot;0&quot; /&gt;
+          &lt;row typeID=&quot;440&quot; flag=&quot;0&quot; qtyDropped=&quot;1&quot; qtyDestroyed=&quot;0&quot; /&gt;
+        &lt;/rowset&gt;
+      &lt;/row&gt;
+    &lt;/rowset&gt;
+  &lt;/result&gt;
+  &lt;cachedUntil&gt;2007-12-17 18:17:46&lt;/cachedUntil&gt;
+</pre>
+<p>
+&lt;/eveapi&gt;
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

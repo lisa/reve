@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: assets.xml</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>assets.xml</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>test/xml/assets.xml
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Jan 13 19:15:19 +0000 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;eveapi
+version=&quot;2&quot;&gt;
+</p>
+<pre>
+  &lt;currentTime&gt;2007-12-18 18:27:27&lt;/currentTime&gt;
+  &lt;result&gt;
+    &lt;rowset columns=&quot;itemID,locationID,typeID,quantity,flag,singleton&quot; name=&quot;assets&quot; key=&quot;itemID&quot;&gt;
+      &lt;row typeid=&quot;222&quot; itemid=&quot;427545405&quot; singleton=&quot;0&quot; quantity=&quot;100&quot; flag=&quot;4&quot; locationid=&quot;60004390&quot;&gt;
+      &lt;row typeid=&quot;649&quot; itemid=&quot;543447240&quot; singleton=&quot;1&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003913&quot;&gt;
+        &lt;rowset columns=&quot;itemID,typeID,quantity,flag,singleton&quot; name=&quot;contents&quot; key=&quot;itemID&quot;&gt;
+          &lt;row typeid=&quot;11489&quot; itemid=&quot;782544272&quot; singleton=&quot;1&quot; quantity=&quot;1&quot; flag=&quot;5&quot;&gt;
+        &lt;/row&gt;&lt;/rowset&gt;
+      &lt;/row&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;222&quot; itemid=&quot;550639494&quot; singleton=&quot;0&quot; quantity=&quot;100&quot; flag=&quot;4&quot; locationid=&quot;60004384&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;7447&quot; itemid=&quot;591233762&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;9668&quot; itemid=&quot;591233776&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;7409&quot; itemid=&quot;591233791&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;5441&quot; itemid=&quot;591233797&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;14280&quot; itemid=&quot;591233811&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;14358&quot; itemid=&quot;591233816&quot; singleton=&quot;0&quot; quantity=&quot;50&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;215&quot; itemid=&quot;627545204&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60002296&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;530&quot; itemid=&quot;673815728&quot; singleton=&quot;0&quot; quantity=&quot;3&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;444&quot; itemid=&quot;673815903&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;533&quot; itemid=&quot;681785163&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;11740&quot; itemid=&quot;781256936&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;11489&quot; itemid=&quot;782544130&quot; singleton=&quot;1&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;51&quot; itemid=&quot;1125520018&quot; singleton=&quot;1&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60014545&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;602&quot; itemid=&quot;1943266444&quot; singleton=&quot;0&quot; quantity=&quot;1&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;12865&quot; itemid=&quot;1812312532&quot; singleton=&quot;0&quot; quantity=&quot;18&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;row typeid=&quot;25373&quot; itemid=&quot;1711554909&quot; singleton=&quot;0&quot; quantity=&quot;30&quot; flag=&quot;4&quot; locationid=&quot;60003865&quot;&gt;
+      &lt;/row&gt;&lt;/rowset&gt;
+  &lt;/result&gt;
+  &lt;cacheduntil&gt;2007-12-19 17:27:27&lt;/cacheduntil&gt;
+</pre>
+<p>
+&lt;/eveapi&gt;
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

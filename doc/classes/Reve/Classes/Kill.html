@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Reve::Classes::Kill</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Reve::Classes::Kill</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/reve/classes_rb.html">
+                lib/reve/classes.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Simple class to contain the information relevant to a single <a
+href="Kill.html">Kill</a>. Comprised of an array of <a
+href="KillLoss.html">KillLoss</a>, an array of <a
+href="KillAttacker.html">KillAttacker</a> and one <a
+href="KillVictim.html">KillVictim</a> Attributes
+</p>
+<ul>
+<li>victim ( <a href="KillVictim.html">KillVictim</a> ) - Instance of the <a
+href="KillVictim.html">KillVictim</a> class to represent the victim of the
+<a href="Kill.html">Kill</a>.
+
+</li>
+<li>attackers ( [<a href="KillAttacker.html">KillAttacker</a>] ) - Array of <a
+href="KillAttacker.html">KillAttacker</a> objects that represent the people
+who killed the <tt>victim</tt>.
+
+</li>
+<li>losses ( [<a href="KillLoss.html">KillLoss</a>] ) - Array of <a
+href="KillLoss.html">KillLoss</a> objects that represents the
+<tt>victim</tt>&#8216;s items destroyed in the <a
+href="Kill.html">Kill</a>.
+
+</li>
+<li>system_id ( Fixnum ) - The ID of the System that the <a
+href="Kill.html">Kill</a> took place in.
+
+</li>
+<li>id ( Fixnum ) - The ID of this specific <a href="Kill.html">Kill</a>
+
+</li>
+<li>moon_id ( Fixnum | NilClass ) - The ID of the Moon that this kill happened
+at (due to a POS?), if any; nil otherwise.
+
+</li>
+</ul>
+<p>
+See Also: <a href="KillAttacker.html">KillAttacker</a>, <a
+href="KillVictim.html">KillVictim</a>, <a
+href="KillLoss.html">KillLoss</a>, <a
+href="../API.html#M000141">Reve::API#personal_kills</a>, <a
+href="../API.html#M000142">Reve::API#corporate_kills</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">attackers</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">created_at</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">id</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">losses</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">moon_id</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">system_id</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">victim</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

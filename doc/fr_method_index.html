@@ -1,0 +1,183 @@
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+
+    Methods
+
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Methods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="rdoc-style.css" type="text/css" />
+  <base target="docwin" />
+</head>
+<body>
+<div id="index">
+  <h1 class="section-bar">Methods</h1>
+  <div id="index-entries">
+    <a href="classes/Reve/API.html#M000106">alliances (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000156">build_save_filename (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000144">certificate_tree (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000104">character_id (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000128">character_medals (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000105">character_name (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000145">character_sheet (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000137">characters (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000154">check_exception (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000150">compute_hash (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000112">conquerable_stations (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000113">conqurable_stations (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000136">corporate_assets_list (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000130">corporate_faction_war_stats (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000117">corporate_industry_jobs (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000142">corporate_kills (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000115">corporate_market_orders (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000126">corporate_medals (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000127">corporate_member_medals (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000146">corporate_member_security (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000148">corporate_shareholders (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000147">corporate_titles (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000121">corporate_wallet_balance (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000124">corporate_wallet_journal (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000123">corporate_wallet_transactions (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000143">corporation_sheet (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000109">errors (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000133">faction_war_occupancy (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000131">faction_war_stats (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000132">faction_war_system_stats (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000134">faction_war_top_stats (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000152">format_url_request (Reve::API)</a><br />
+    <a href="classes/TestReve.html#M000070">get_api (TestReve)</a><br />
+    <a href="classes/Reve/API.html#M000153">get_xml (Reve::API)</a><br />
+    <a href="classes/Reve/Classes/CorporateMemberMedal.html#M000094">is_private? (Reve::Classes::CorporateMemberMedal)</a><br />
+    <a href="classes/Reve/Classes/CharacterMedal.html#M000089">is_private? (Reve::Classes::CharacterMedal)</a><br />
+    <a href="classes/Reve/Classes/CharacterMedal.html#M000088">is_public? (Reve::Classes::CharacterMedal)</a><br />
+    <a href="classes/Reve/Classes/CorporateMemberMedal.html#M000093">is_public? (Reve::Classes::CorporateMemberMedal)</a><br />
+    <a href="classes/TestReve.html#M000071">kills_cleanly (TestReve)</a><br />
+    <a href="classes/Reve/API.html#M000107">map_jumps (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000108">map_kills (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000119">member_tracking (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000103">names_to_ids (Reve::API)</a><br />
+    <a href="classes/Reve/Classes/Certificate.html#M000095">new (Reve::Classes::Certificate)</a><br />
+    <a href="classes/Reve/Classes/SkillRequirement.html#M000087">new (Reve::Classes::SkillRequirement)</a><br />
+    <a href="classes/Reve/Classes/CertificateRequiredSkill.html#M000085">new (Reve::Classes::CertificateRequiredSkill)</a><br />
+    <a href="classes/Reve/Classes/WalletBalance.html#M000086">new (Reve::Classes::WalletBalance)</a><br />
+    <a href="classes/Reve/Classes/CharacterMedals.html#M000090">new (Reve::Classes::CharacterMedals)</a><br />
+    <a href="classes/Reve/API.html#M000101">new (Reve::API)</a><br />
+    <a href="classes/Reve/Classes/CertificateRequiredCertificate.html#M000091">new (Reve::Classes::CertificateRequiredCertificate)</a><br />
+    <a href="classes/Reve/Classes/AssetContainer.html#M000084">new (Reve::Classes::AssetContainer)</a><br />
+    <a href="classes/Reve/Classes/KillLoss.html#M000092">new (Reve::Classes::KillLoss)</a><br />
+    <a href="classes/Reve/API.html#M000135">personal_assets_list (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000129">personal_faction_war_stats (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000116">personal_industry_jobs (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000141">personal_kills (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000114">personal_market_orders (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000120">personal_wallet_balance (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000125">personal_wallet_journal (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000122">personal_wallet_transactions (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000149">postfields (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000151">process_query (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000157">pull_out_top_10_data (Reve::API)</a><br />
+    <a href="classes/Reve/Exceptions.html#M000083">raise_it (Reve::Exceptions)</a><br />
+    <a href="classes/Reve/API.html#M000111">ref_types (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000102">save_path= (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000155">save_xml (Reve::API)</a><br />
+    <a href="classes/TestReve.html#M000001">setup (TestReve)</a><br />
+    <a href="classes/Reve/API.html#M000138">skill_in_training (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000118">skill_tree (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000110">sovereignty (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000140">starbase_fuel (Reve::API)</a><br />
+    <a href="classes/Reve/API.html#M000139">starbases (Reve::API)</a><br />
+    <a href="classes/Reve/Extensions/Hash.html#M000096">stringify_keys (Reve::Extensions::Hash)</a><br />
+    <a href="classes/Reve/Extensions/Hash.html#M000097">stringify_keys! (Reve::Extensions::Hash)</a><br />
+    <a href="classes/TestReve.html#M000002">teardown (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000063">test_all_raise_errors (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000036">test_alliances_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000055">test_amarr_titan_skill_in_training_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000030">test_assets_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000062">test_assignment (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000010">test_bad_xml (TestReve)</a><br />
+    <a href="classes/TestExtensions.html#M000078">test_cattr_accessor (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000076">test_cattr_reader (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000077">test_cattr_writer (TestExtensions)</a><br />
+    <a href="classes/TestReve.html#M000059">test_certificate_sheet (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000058">test_character_medals (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000060">test_character_sheet_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000033">test_characters_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000008">test_charid_default_works_when_characterid_is_nil (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000016">test_check_exception_with_bad_xml_document (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000019">test_conqurable_stations_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000020">test_convert_characterids_to_names (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000021">test_convert_characternames_to_ids (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000044">test_corporate_assets_list_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000028">test_corporate_factional_war_stats_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000023">test_corporate_industry_jobs_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000032">test_corporate_kills_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000040">test_corporate_market_orders_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000056">test_corporate_medals (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000057">test_corporate_member_medals (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000061">test_corporate_member_security (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000042">test_corporate_wallet_balance_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000043">test_corporate_wallet_journal_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000041">test_corporate_wallet_transactions (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000018">test_corporation_sheet_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000017">test_errors_api_call (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000026">test_faction_war_stats_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000025">test_faction_war_system_stats_alias_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000024">test_faction_war_system_stats_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000029">test_faction_war_top_stats_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000015">test_for_bad_uri_passed_to_method (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000068">test_format_url_request_nil_value (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000066">test_format_url_request_one_arg (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000067">test_format_url_request_two_args (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000064">test_get_xml_from_filesystem (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000065">test_get_xml_from_filesystem_missing_file (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000031">test_kills_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000009">test_makes_a_complex_hash (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000007">test_makes_a_simple_hash (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000004">test_makes_right_api_1_param (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000005">test_makes_right_api_2_param (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000006">test_makes_right_api_3_param (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000003">test_makes_right_api_empty (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000045">test_map_jumps_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000046">test_map_kills_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000039">test_market_orders_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000052">test_member_corporation_sheet_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000051">test_member_tracking_clean (TestReve)</a><br />
+    <a href="classes/TestExtensions.html#M000072">test_nil_to_date (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000073">test_nil_to_time (TestExtensions)</a><br />
+    <a href="classes/TestReve.html#M000054">test_no_skill_in_training_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000053">test_nonmember_corporation_sheet_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000027">test_personal_factional_war_stats_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000022">test_personal_industry_jobs_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000038">test_reftypes_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000014">test_saving_xml_when_404 (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000012">test_saving_xml_when_save_path_is_nil (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000013">test_saving_xml_with_bad_short_tag (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000011">test_saving_xml_works (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000047">test_skill_tree_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000037">test_sovereignty_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000035">test_starbase_fuel_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000034">test_starbases_clean (TestReve)</a><br />
+    <a href="classes/TestExtensions.html#M000081">test_string_to_i_clean (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000082">test_string_to_i_unclean (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000079">test_string_to_time_clean (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000080">test_string_to_time_unclean (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000074">test_stringify_keys (TestExtensions)</a><br />
+    <a href="classes/TestExtensions.html#M000075">test_stringify_keys! (TestExtensions)</a><br />
+    <a href="classes/TestReve.html#M000069">test_to_time_method (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000048">test_wallet_balance_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000050">test_wallet_journal_clean (TestReve)</a><br />
+    <a href="classes/TestReve.html#M000049">test_wallet_transactions_clean (TestReve)</a><br />
+    <a href="classes/Reve/Extensions/NilClass.html#M000098">to_date (Reve::Extensions::NilClass)</a><br />
+    <a href="classes/Reve/Extensions/NilClass.html#M000099">to_time (Reve::Extensions::NilClass)</a><br />
+    <a href="classes/Reve/Extensions/String.html#M000100">to_time (Reve::Extensions::String)</a><br />
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Reve::Classes::MarketOrder</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Reve::Classes::MarketOrder</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/reve/classes_rb.html">
+                lib/reve/classes.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Used for the <a
+href="../API.html#M000114">Reve::API#personal_market_orders</a> and <a
+href="../API.html#M000115">Reve::API#corporate_market_orders</a> Each of
+those derrive from this parent class. Attributes
+</p>
+<ul>
+<li>id ( Fixnum ) - ID of the <a href="MarketOrder.html">MarketOrder</a>. This
+is a CCP internal ID and is not guaranteed to always be unique! You may
+want to generate your own globally unique ID for this.
+
+</li>
+<li>character_id ( Fixnum ) - ID of the <a href="Character.html">Character</a>
+who set this <a href="MarketOrder.html">MarketOrder</a> up
+
+</li>
+<li>station_id ( Fixnum ) - ID of the Station where the <a
+href="MarketOrder.html">MarketOrder</a> is
+
+</li>
+<li>volume_entered ( Fixnum ) - How many of <tt>type_id</tt> was initially
+entered in the <a href="MarketOrder.html">MarketOrder</a>
+
+</li>
+<li>volume_remaining ( Fixnum ) - How many of <tt>type_id</tt> is left in the
+<a href="MarketOrder.html">MarketOrder</a>
+
+</li>
+<li>minimum_volume ( Fixnum ) - How much of <tt>type_id</tt> can be transacted
+(as a minimum) at once
+
+</li>
+<li>order_state ( String ) - String representation of the <a
+href="MarketOrder.html">MarketOrder</a>&#8216;s current state. Options are:
+Active, Closed, Expired, Cancelled, Pending, <a
+href="Character.html">Character</a> Deleted
+
+</li>
+<li>type_id ( Fixnum ) - Type ID of item for which the <a
+href="MarketOrder.html">MarketOrder</a> was created. (Refer to CCP database
+dump invtypes)
+
+</li>
+<li>range ( Fixnum ) - Range of the <a href="MarketOrder.html">MarketOrder</a>.
+For sell orders it is always 32767 (Entire Region), for sell orders the
+values are -1 (Station only), 0 (Solar system), 1..40 (Number of jumps away
+from the Station), 32767 (Region wide)
+
+</li>
+<li>account_key ( Fixnum ) - For a <a
+href="CorporateMarketOrder.html">CorporateMarketOrder</a> the account key
+(see <a href="WalletDivision.html">WalletDivision</a> and <a
+href="CorporationSheet.html">CorporationSheet</a>) that was used as the
+source/destination.
+
+</li>
+<li>duration ( Fixnum ) - Duration of the <a
+href="MarketOrder.html">MarketOrder</a> in days from when it was
+<tt>created_at</tt>
+
+</li>
+<li>escrow ( Float ) - How much ISK is held in escrow for the <a
+href="MarketOrder.html">MarketOrder</a>
+
+</li>
+<li>price ( Float ) - Unit price of the item in the <a
+href="MarketOrder.html">MarketOrder</a>
+
+</li>
+<li>bid ( Boolean ) - True if this <a href="MarketOrder.html">MarketOrder</a>
+is a sell order, false otherwise
+
+</li>
+<li>created_at ( Time ) - When the <a href="MarketOrder.html">MarketOrder</a>
+was created
+
+</li>
+</ul>
+<p>
+See Also: <a href="CorporationSheet.html">CorporationSheet</a>, <a
+href="WalletDivision.html">WalletDivision</a>, <a
+href="CorporateDivision.html">CorporateDivision</a>, <a
+href="../API.html#M000114">Reve::API#personal_market_orders</a>, <a
+href="../API.html#M000115">Reve::API#corporate_market_orders</a>
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">account_key</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">bid</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">character_id</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">created_at</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">duration</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">escrow</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">id</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">minimum_volume</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">order_state</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">price</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">range</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">station_id</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">type_id</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">volume_entered</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">volume_remaining</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

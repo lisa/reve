@@ -609,14 +609,14 @@ module Reve #:nodoc:
     # * corporation_name ( String ) - Name of the Corporation that owns the ConqurableStation.
     # See Also: Sovereignty, Reve::API#conqurable_stations, Reve::API#sovereignty, Reve::API#corporation_sheet, CorporationSheet
     class ConqurableStation
-      attr_reader :id, :name, :type_id, :type_name, :system_id, :system_name, :corporation_id, :corporation_name
+      attr_reader :id, :name, :station_type_id, :system_id, :corporation_id, :corporation_name
       def initialize(elem) #:nodoc:
         @id = elem['stationID'].to_i
         @name = elem['stationName']
-        @type_id = elem['stationTypeID'].to_i
-        @type_name = elem['stationTypeName']
+        @station_type_id = elem['stationTypeID'].to_i
         @corporation_id = elem['corporationID'].to_i
         @corporation_name = elem['corporationName']
+        @system_id = elem['systemID'].to_i
       end
     end
     class ConquerableStation < ConqurableStation; end

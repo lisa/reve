@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: character_sheet.xml</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>character_sheet.xml</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>test/xml/character_sheet.xml
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Jan 13 19:15:19 +0000 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+&lt;?xml version=&#8216;1.0&#8217; encoding=&#8216;UTF-8&#8217;?&gt;
+&lt;eveapi version=&quot;2&quot;&gt;
+</p>
+<pre>
+  &lt;currentTime&gt;2008-12-07 17:20:58&lt;/currentTime&gt;
+  &lt;result&gt;
+    &lt;characterID&gt;892008733&lt;/characterID&gt;
+    &lt;name&gt;Raquel Smith&lt;/name&gt;
+    &lt;race&gt;Caldari&lt;/race&gt;
+    &lt;bloodLine&gt;Civire&lt;/bloodLine&gt;
+    &lt;gender&gt;Female&lt;/gender&gt;
+    &lt;corporationName&gt;Freedom-Technologies&lt;/corporationName&gt;
+    &lt;corporationID&gt;1668136112&lt;/corporationID&gt;
+    &lt;cloneName&gt;Clone Grade Pi&lt;/cloneName&gt;
+    &lt;cloneSkillPoints&gt;54600000&lt;/cloneSkillPoints&gt;
+    &lt;balance&gt;270331126.64&lt;/balance&gt;
+    &lt;attributeEnhancers&gt;
+      &lt;memoryBonus&gt;
+        &lt;augmentatorName&gt;Memory Augmentation - Standard&lt;/augmentatorName&gt;
+        &lt;augmentatorValue&gt;4&lt;/augmentatorValue&gt;
+      &lt;/memoryBonus&gt;
+      &lt;willpowerBonus&gt;
+        &lt;augmentatorName&gt;Neural Boost - Standard&lt;/augmentatorName&gt;
+        &lt;augmentatorValue&gt;4&lt;/augmentatorValue&gt;
+      &lt;/willpowerBonus&gt;
+      &lt;perceptionBonus&gt;
+        &lt;augmentatorName&gt;Ocular Filter - Standard&lt;/augmentatorName&gt;
+        &lt;augmentatorValue&gt;4&lt;/augmentatorValue&gt;
+      &lt;/perceptionBonus&gt;
+      &lt;intelligenceBonus&gt;
+        &lt;augmentatorName&gt;Cybernetic Subprocessor - Standard&lt;/augmentatorName&gt;
+        &lt;augmentatorValue&gt;4&lt;/augmentatorValue&gt;
+      &lt;/intelligenceBonus&gt;
+      &lt;charismaBonus&gt;
+        &lt;augmentatorName&gt;Social Adaptation Chip - Standard&lt;/augmentatorName&gt;
+        &lt;augmentatorValue&gt;4&lt;/augmentatorValue&gt;
+      &lt;/charismaBonus&gt;
+    &lt;/attributeEnhancers&gt;
+    &lt;attributes&gt;
+      &lt;intelligence&gt;6&lt;/intelligence&gt;
+      &lt;memory&gt;4&lt;/memory&gt;
+      &lt;charisma&gt;6&lt;/charisma&gt;
+      &lt;perception&gt;12&lt;/perception&gt;
+      &lt;willpower&gt;11&lt;/willpower&gt;
+    &lt;/attributes&gt;
+    &lt;rowset name=&quot;skills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillpoints,level,unpublished&quot;&gt;
+      &lt;row typeID=&quot;11584&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3363&quot; skillpoints=&quot;250&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;12487&quot; skillpoints=&quot;7072&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;24241&quot; skillpoints=&quot;41555&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;23618&quot; skillpoints=&quot;1250&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3442&quot; skillpoints=&quot;1280000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12305&quot; skillpoints=&quot;1415&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;23606&quot; skillpoints=&quot;8000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3436&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12486&quot; skillpoints=&quot;7072&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;3438&quot; skillpoints=&quot;500&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3437&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;11579&quot; skillpoints=&quot;1536000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;21603&quot; skillpoints=&quot;1250&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3427&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3426&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3432&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;19760&quot; skillpoints=&quot;135765&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;19759&quot; skillpoints=&quot;32000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3428&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3430&quot; skillpoints=&quot;24000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3435&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3433&quot; skillpoints=&quot;135765&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;19766&quot; skillpoints=&quot;226275&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3431&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3551&quot; skillpoints=&quot;8000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;19921&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3429&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12365&quot; skillpoints=&quot;90510&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3423&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3424&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3418&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3417&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3413&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12367&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;12366&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;21059&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3422&quot; skillpoints=&quot;2&quot; level=&quot;0&quot; /&gt;
+      &lt;row typeID=&quot;3419&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3416&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3425&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3420&quot; skillpoints=&quot;1024000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;11566&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;11207&quot; skillpoints=&quot;1536000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3300&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3304&quot; skillpoints=&quot;4243&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;3311&quot; skillpoints=&quot;2&quot; level=&quot;0&quot; /&gt;
+      &lt;row typeID=&quot;3301&quot; skillpoints=&quot;17842&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3318&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12183&quot; skillpoints=&quot;4243&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;12186&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;16281&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3380&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12187&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;12188&quot; skillpoints=&quot;90510&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3387&quot; skillpoints=&quot;90510&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3386&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;22578&quot; skillpoints=&quot;63559&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;12190&quot; skillpoints=&quot;90510&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;12191&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3388&quot; skillpoints=&quot;24000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;12192&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3389&quot; skillpoints=&quot;331118&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3385&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12193&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;24268&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;12195&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3348&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;22536&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3354&quot; skillpoints=&quot;271530&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3377&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12387&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12385&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3376&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12386&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3378&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3375&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3374&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12376&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12383&quot; skillpoints=&quot;30&quot; level=&quot;0&quot; /&gt;
+      &lt;row typeID=&quot;3379&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;26254&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3394&quot; skillpoints=&quot;90510&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;26252&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;26260&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3392&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3393&quot; skillpoints=&quot;250&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;25863&quot; skillpoints=&quot;4247&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;20212&quot; skillpoints=&quot;2048000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3326&quot; skillpoints=&quot;1280000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3322&quot; skillpoints=&quot;2&quot; level=&quot;0&quot; /&gt;
+      &lt;row typeID=&quot;20312&quot; skillpoints=&quot;1280000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;25718&quot; skillpoints=&quot;226275&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;25719&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;20211&quot; skillpoints=&quot;226275&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3324&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12441&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3319&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;12442&quot; skillpoints=&quot;1024000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;21071&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3320&quot; skillpoints=&quot;1415&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;20210&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3321&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;20314&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3325&quot; skillpoints=&quot;32000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;20315&quot; skillpoints=&quot;1280000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3452&quot; skillpoints=&quot;32000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3450&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3453&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3451&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3454&quot; skillpoints=&quot;226275&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3449&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3455&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3410&quot; skillpoints=&quot;768000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3412&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3411&quot; skillpoints=&quot;135765&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;11448&quot; skillpoints=&quot;4&quot; level=&quot;0&quot; /&gt;
+      &lt;row typeID=&quot;11453&quot; skillpoints=&quot;7072&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;24242&quot; skillpoints=&quot;1415&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;3406&quot; skillpoints=&quot;45255&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;3409&quot; skillpoints=&quot;135765&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;11442&quot; skillpoints=&quot;1250&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3403&quot; skillpoints=&quot;8000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3402&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;24270&quot; skillpoints=&quot;4243&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;3359&quot; skillpoints=&quot;750&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;3357&quot; skillpoints=&quot;8000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;16549&quot; skillpoints=&quot;8000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3356&quot; skillpoints=&quot;500&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;16548&quot; skillpoints=&quot;8000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3355&quot; skillpoints=&quot;8000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;12095&quot; skillpoints=&quot;181020&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;12099&quot; skillpoints=&quot;1536000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3338&quot; skillpoints=&quot;2048000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3334&quot; skillpoints=&quot;1280000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3330&quot; skillpoints=&quot;512000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3342&quot; skillpoints=&quot;1024000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;23950&quot; skillpoints=&quot;2000&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;12093&quot; skillpoints=&quot;181020&quot; level=&quot;4&quot; /&gt;
+      &lt;row typeID=&quot;12097&quot; skillpoints=&quot;2829&quot; level=&quot;2&quot; /&gt;
+      &lt;row typeID=&quot;22551&quot; skillpoints=&quot;1280000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;16591&quot; skillpoints=&quot;1536000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;28667&quot; skillpoints=&quot;1003&quot; level=&quot;0&quot; /&gt;
+      &lt;row typeID=&quot;17940&quot; skillpoints=&quot;1024000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;3327&quot; skillpoints=&quot;256000&quot; level=&quot;5&quot; /&gt;
+      &lt;row typeID=&quot;19719&quot; skillpoints=&quot;48000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3446&quot; skillpoints=&quot;500&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;25235&quot; skillpoints=&quot;250&quot; level=&quot;1&quot; /&gt;
+      &lt;row typeID=&quot;16598&quot; skillpoints=&quot;3&quot; level=&quot;0&quot; /&gt;
+      &lt;row typeID=&quot;3444&quot; skillpoints=&quot;16000&quot; level=&quot;3&quot; /&gt;
+      &lt;row typeID=&quot;3443&quot; skillpoints=&quot;1415&quot; level=&quot;2&quot; /&gt;
+    &lt;/rowset&gt;
+    &lt;rowset name=&quot;certificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID&quot;&gt;
+      &lt;row certificateID=&quot;1&quot; /&gt;
+      &lt;row certificateID=&quot;2&quot; /&gt;
+      &lt;row certificateID=&quot;3&quot; /&gt;
+      &lt;row certificateID=&quot;4&quot; /&gt;
+      &lt;row certificateID=&quot;5&quot; /&gt;
+      &lt;row certificateID=&quot;6&quot; /&gt;
+      &lt;row certificateID=&quot;7&quot; /&gt;
+      &lt;row certificateID=&quot;8&quot; /&gt;
+      &lt;row certificateID=&quot;9&quot; /&gt;
+      &lt;row certificateID=&quot;10&quot; /&gt;
+      &lt;row certificateID=&quot;11&quot; /&gt;
+      &lt;row certificateID=&quot;12&quot; /&gt;
+      &lt;row certificateID=&quot;13&quot; /&gt;
+      &lt;row certificateID=&quot;15&quot; /&gt;
+      &lt;row certificateID=&quot;16&quot; /&gt;
+      &lt;row certificateID=&quot;19&quot; /&gt;
+      &lt;row certificateID=&quot;20&quot; /&gt;
+      &lt;row certificateID=&quot;53&quot; /&gt;
+      &lt;row certificateID=&quot;54&quot; /&gt;
+      &lt;row certificateID=&quot;55&quot; /&gt;
+      &lt;row certificateID=&quot;57&quot; /&gt;
+      &lt;row certificateID=&quot;58&quot; /&gt;
+      &lt;row certificateID=&quot;59&quot; /&gt;
+      &lt;row certificateID=&quot;61&quot; /&gt;
+      &lt;row certificateID=&quot;62&quot; /&gt;
+      &lt;row certificateID=&quot;135&quot; /&gt;
+      &lt;row certificateID=&quot;136&quot; /&gt;
+      &lt;row certificateID=&quot;137&quot; /&gt;
+      &lt;row certificateID=&quot;138&quot; /&gt;
+      &lt;row certificateID=&quot;139&quot; /&gt;
+      &lt;row certificateID=&quot;146&quot; /&gt;
+      &lt;row certificateID=&quot;147&quot; /&gt;
+      &lt;row certificateID=&quot;149&quot; /&gt;
+      &lt;row certificateID=&quot;151&quot; /&gt;
+      &lt;row certificateID=&quot;153&quot; /&gt;
+      &lt;row certificateID=&quot;161&quot; /&gt;
+      &lt;row certificateID=&quot;165&quot; /&gt;
+      &lt;row certificateID=&quot;177&quot; /&gt;
+      &lt;row certificateID=&quot;180&quot; /&gt;
+      &lt;row certificateID=&quot;181&quot; /&gt;
+      &lt;row certificateID=&quot;182&quot; /&gt;
+      &lt;row certificateID=&quot;186&quot; /&gt;
+      &lt;row certificateID=&quot;189&quot; /&gt;
+      &lt;row certificateID=&quot;190&quot; /&gt;
+      &lt;row certificateID=&quot;200&quot; /&gt;
+      &lt;row certificateID=&quot;212&quot; /&gt;
+      &lt;row certificateID=&quot;216&quot; /&gt;
+      &lt;row certificateID=&quot;270&quot; /&gt;
+      &lt;row certificateID=&quot;239&quot; /&gt;
+      &lt;row certificateID=&quot;278&quot; /&gt;
+      &lt;row certificateID=&quot;282&quot; /&gt;
+      &lt;row certificateID=&quot;31&quot; /&gt;
+      &lt;row certificateID=&quot;32&quot; /&gt;
+      &lt;row certificateID=&quot;33&quot; /&gt;
+      &lt;row certificateID=&quot;311&quot; /&gt;
+      &lt;row certificateID=&quot;314&quot; /&gt;
+      &lt;row certificateID=&quot;258&quot; /&gt;
+    &lt;/rowset&gt;
+    &lt;rowset name=&quot;corporationRoles&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+      &lt;row roleID=&quot;2199023255552&quot; roleName=&quot;roleEquipmentConfig&quot; /&gt;
+    &lt;/rowset&gt;
+    &lt;rowset name=&quot;corporationRolesAtHQ&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+      &lt;row roleID=&quot;65536&quot; roleName=&quot;roleHangarCanTake4&quot; /&gt;
+      &lt;row roleID=&quot;131072&quot; roleName=&quot;roleHangarCanTake5&quot; /&gt;
+      &lt;row roleID=&quot;8388608&quot; roleName=&quot;roleHangarCanQuery4&quot; /&gt;
+      &lt;row roleID=&quot;16777216&quot; roleName=&quot;roleHangarCanQuery5&quot; /&gt;
+      &lt;row roleID=&quot;35184372088832&quot; roleName=&quot;roleContainerCanTake4&quot; /&gt;
+      &lt;row roleID=&quot;70368744177664&quot; roleName=&quot;roleContainerCanTake5&quot; /&gt;
+    &lt;/rowset&gt;
+    &lt;rowset name=&quot;corporationRolesAtBase&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+      &lt;row roleID=&quot;65536&quot; roleName=&quot;roleHangarCanTake4&quot; /&gt;
+      &lt;row roleID=&quot;131072&quot; roleName=&quot;roleHangarCanTake5&quot; /&gt;
+      &lt;row roleID=&quot;8388608&quot; roleName=&quot;roleHangarCanQuery4&quot; /&gt;
+      &lt;row roleID=&quot;16777216&quot; roleName=&quot;roleHangarCanQuery5&quot; /&gt;
+      &lt;row roleID=&quot;35184372088832&quot; roleName=&quot;roleContainerCanTake4&quot; /&gt;
+      &lt;row roleID=&quot;70368744177664&quot; roleName=&quot;roleContainerCanTake5&quot; /&gt;
+    &lt;/rowset&gt;
+    &lt;rowset name=&quot;corporationRolesAtOther&quot; key=&quot;roleID&quot; columns=&quot;roleID,roleName&quot;&gt;
+      &lt;row roleID=&quot;65536&quot; roleName=&quot;roleHangarCanTake4&quot; /&gt;
+      &lt;row roleID=&quot;131072&quot; roleName=&quot;roleHangarCanTake5&quot; /&gt;
+      &lt;row roleID=&quot;8388608&quot; roleName=&quot;roleHangarCanQuery4&quot; /&gt;
+      &lt;row roleID=&quot;16777216&quot; roleName=&quot;roleHangarCanQuery5&quot; /&gt;
+      &lt;row roleID=&quot;35184372088832&quot; roleName=&quot;roleContainerCanTake4&quot; /&gt;
+      &lt;row roleID=&quot;70368744177664&quot; roleName=&quot;roleContainerCanTake5&quot; /&gt;
+    &lt;/rowset&gt;
+    &lt;rowset name=&quot;corporationTitles&quot; key=&quot;titleID&quot; columns=&quot;titleID,titleName&quot;&gt;
+      &lt;row titleID=&quot;1&quot; titleName=&quot;Member&quot; /&gt;
+    &lt;/rowset&gt;
+  &lt;/result&gt;
+  &lt;cachedUntil&gt;2008-12-07 18:21:01&lt;/cachedUntil&gt;
+</pre>
+<p>
+&lt;/eveapi&gt;
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

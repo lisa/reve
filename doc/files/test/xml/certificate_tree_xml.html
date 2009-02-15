@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: certificate_tree.xml</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>certificate_tree.xml</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>test/xml/certificate_tree.xml
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Jan 13 19:15:19 +0000 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+&lt;?xml version=&#8216;1.0&#8217; encoding=&#8216;UTF-8&#8217;?&gt;
+&lt;eveapi version=&quot;2&quot;&gt;
+</p>
+<pre>
+  &lt;currentTime&gt;2008-12-07 17:24:08&lt;/currentTime&gt;
+  &lt;result&gt;
+    &lt;rowset name=&quot;categories&quot; key=&quot;categoryID&quot; columns=&quot;categoryID,categoryName&quot;&gt;
+      &lt;row categoryID=&quot;3&quot; categoryName=&quot;Core&quot;&gt;
+        &lt;rowset name=&quot;classes&quot; key=&quot;classID&quot; columns=&quot;classID,className&quot;&gt;
+          &lt;row classID=&quot;2&quot; className=&quot;Core Fitting&quot;&gt;
+            &lt;rowset name=&quot;certificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade,corporationID,description&quot;&gt;
+              &lt;row certificateID=&quot;5&quot; grade=&quot;1&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a basic level of competence in fitting ships. It certifies that the holder is able to use baseline modules which improve power and CPU capabilities such as Co-Processors, Power Diagnostic Systems and Reactor Control Units. This is the first step towards broadening your fitting options.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3413&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3424&quot; level=&quot;2&quot; /&gt;
+                  &lt;row typeID=&quot;3426&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3432&quot; level=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot; /&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;8&quot; grade=&quot;5&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an elite level of competence in fitting ships. It certifies that the holder has maximized their fitting capabilities. You have now reached the point where you should be able to use any valid module configuration without fitting issues.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;11207&quot; level=&quot;5&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;7&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;7&quot; grade=&quot;3&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an improved level of competence in fitting ships. It certifies that the holder is able to use all available fitting modules. At this stage you have an extremely wide range of fitting options available.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3424&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3432&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;11207&quot; level=&quot;4&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;6&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;6&quot; grade=&quot;2&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a standard level of competence in fitting ships. It certifies that the holder is able to use Micro Auxiliary Power Cores and many Tech 2 fitting modules. The holder knows that MAPCs are the best way to increase power output on Frigate-class ships. This provides you with a broad range of fitting options&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3318&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3413&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3418&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3426&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3432&quot; level=&quot;4&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;5&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+            &lt;/rowset&gt;
+          &lt;/row&gt;
+          &lt;row classID=&quot;3&quot; className=&quot;Core Capacitor&quot;&gt;
+            &lt;rowset name=&quot;certificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade,corporationID,description&quot;&gt;
+              &lt;row certificateID=&quot;1&quot; grade=&quot;1&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a basic level of competence in capacitor functionality. It certifies that the holder can fit all Tech 1 capacitor-related modules and has baseline skills in capacitor recharge and base capacity. This enables you to somewhat optimize your capacitor and run a variety of modules without running out of capacitor power.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3417&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3418&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3424&quot; level=&quot;2&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot; /&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;4&quot; grade=&quot;5&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an elite level of competence in capacitor functionality. It certifies that the holder has maximized their capacitor-related skills. At this point you can run a huge range of configurations without worrying about capacitor usage.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3418&quot; level=&quot;5&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;2&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;2&quot; grade=&quot;2&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a standard level of competence in capacitor functionality. It certifies that the holder can fit all available capacitor-related modules and has good capacitor skills. The holder is aware that increasing base recharge and capacity both increase their capacitor's overall recharge rate. At this stage you can optimize capacitor flow and run a large number of modules without capacitor concerns.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3417&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3418&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3424&quot; level=&quot;4&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;1&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+            &lt;/rowset&gt;
+          &lt;/row&gt;
+          &lt;row classID=&quot;4&quot; className=&quot;Core Targeting&quot;&gt;
+            &lt;rowset name=&quot;certificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade,corporationID,description&quot;&gt;
+              &lt;row certificateID=&quot;10&quot; grade=&quot;2&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a standard level of competence with targeting systems. It certifies that the holder has considerable skill in target acquisition and management and is able to use all targeting-related modules. This allows you to lock a large number of targets very quickly and at long range.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3428&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3431&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3432&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3430&quot; level=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;9&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;11&quot; grade=&quot;5&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an elite level of competence with targeting systems. It certifies that the holder has unsurpassed skill in target acquisition and management. This allows you to lock a huge number of targets almost instantaneously and at extreme range.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3428&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3431&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3430&quot; level=&quot;3&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;10&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;9&quot; grade=&quot;1&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a basic level of competence with targeting systems. It certifies that the holder has some skill in target acquisition and management and can make use of a range of targeting-related modules. This allows you to lock a number of targets quickly and at medium range.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3428&quot; level=&quot;2&quot; /&gt;
+                  &lt;row typeID=&quot;3429&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3431&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3432&quot; level=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot; /&gt;
+              &lt;/row&gt;
+            &lt;/rowset&gt;
+          &lt;/row&gt;
+          &lt;row classID=&quot;5&quot; className=&quot;Core Navigation&quot;&gt;
+            &lt;rowset name=&quot;certificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade,corporationID,description&quot;&gt;
+              &lt;row certificateID=&quot;12&quot; grade=&quot;1&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a basic level of competence in ship handling. It certifies that the holder has a solid base of skills relating to speed and agility. Once you qualify for this certificate your ships will move and turn that little bit faster.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3327&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3449&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3453&quot; level=&quot;2&quot; /&gt;
+                  &lt;row typeID=&quot;3455&quot; level=&quot;2&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot; /&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;3&quot; grade=&quot;3&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an improved level of competence in ship handling. It certifies that the holder can push their ship's speed to its design maximums, as well as turning rapidly and warping efficiently. The holder is aware that the amount of capacitor used when warping depends on skill, distance and shiptype. Once you qualify for this certificate your ships will easily outrun lesser pilots.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3327&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3449&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3453&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3455&quot; level=&quot;4&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;13&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;13&quot; grade=&quot;2&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a standard level of competence in ship handling. It certifies that the holder has a good spread of skills relating to speed and agility. Once you qualify for this certificate your ships will &amp;quot;turn and burn&amp;quot; in a much more responsive manner.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3449&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3455&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3453&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3327&quot; level=&quot;4&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;12&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;14&quot; grade=&quot;5&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an elite level of competence in ship handling. It certifies that the holder has unsurpassed skills in ship speed, agility and warp efficiency. Once you qualify for this certificate you'll find that your ship responds almost before you've issued the order, and you'll cross vast distances in warp with minimal capacitor use.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3453&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3455&quot; level=&quot;5&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;3&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+            &lt;/rowset&gt;
+          &lt;/row&gt;
+          &lt;row classID=&quot;6&quot; className=&quot;Core Competency&quot;&gt;
+            &lt;rowset name=&quot;certificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade,corporationID,description&quot;&gt;
+              &lt;row certificateID=&quot;16&quot; grade=&quot;2&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a standard skillset in core skills. It certifies that the holder has a standard level of competence in core areas of fitting, capacitor, targeting, integrity and navigation. This gives you a well-rounded core of skills to build a profession on.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot; /&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;2&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;6&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;10&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;13&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;15&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;20&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;18&quot; grade=&quot;5&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an elite skillset in core skills. It certifies that the holder has an elite level of competence in core areas of fitting, capacitor, targeting, integrity and navigation. This forms an exceptionally strong core skillset which will benefit you in any profession you choose to pursue.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot; /&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;4&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;8&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;11&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;14&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;16&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;21&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;15&quot; grade=&quot;1&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a basic skillset in core skills. It certifies that the holder has a basic level of competence in core areas of fitting, capacitor, targeting, integrity and navigation. This gives you a solid foundation to build from.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot; /&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;1&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;5&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;9&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;12&quot; grade=&quot;1&quot; /&gt;
+                  &lt;row certificateID=&quot;19&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+            &lt;/rowset&gt;
+          &lt;/row&gt;
+          &lt;row classID=&quot;7&quot; className=&quot;Core Integrity&quot;&gt;
+            &lt;rowset name=&quot;certificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade,corporationID,description&quot;&gt;
+              &lt;row certificateID=&quot;19&quot; grade=&quot;1&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a basic level of competence in structural integrity management. It certifies that the holder has solid damage-absorbtion skills. This will allow you to hold together for longer in combat before exploding.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3392&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3394&quot; level=&quot;3&quot; /&gt;
+                  &lt;row typeID=&quot;3419&quot; level=&quot;3&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot; /&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;20&quot; grade=&quot;2&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents a standard level of competence in structural integrity management. It certifies that the holder has Good damage-absorbtion skills. This will allow you to last considerably longer in combat, perhaps giving you the edge you need to secure victory.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3392&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3394&quot; level=&quot;4&quot; /&gt;
+                  &lt;row typeID=&quot;3419&quot; level=&quot;4&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;19&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+              &lt;row certificateID=&quot;21&quot; grade=&quot;5&quot; corporationID=&quot;1000125&quot; description=&quot;This certificate represents an elite level of competence in structural integrity management. It certifies that the holder has outstanding damage-absorbtion skills. This will allow you to last for long periods in combat, giving you plenty of time to defeat lesser opponents.&quot;&gt;
+                &lt;rowset name=&quot;requiredSkills&quot; key=&quot;typeID&quot; columns=&quot;typeID,skillLevel&quot;&gt;
+                  &lt;row typeID=&quot;3392&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3394&quot; level=&quot;5&quot; /&gt;
+                  &lt;row typeID=&quot;3419&quot; level=&quot;5&quot; /&gt;
+                &lt;/rowset&gt;
+                &lt;rowset name=&quot;requiredCertificates&quot; key=&quot;certificateID&quot; columns=&quot;certificateID,grade&quot;&gt;
+                  &lt;row certificateID=&quot;20&quot; grade=&quot;1&quot; /&gt;
+                &lt;/rowset&gt;
+              &lt;/row&gt;
+            &lt;/rowset&gt;
+          &lt;/row&gt;
+        &lt;/rowset&gt;
+      &lt;/row&gt;
+    &lt;/rowset&gt;
+  &lt;/result&gt;
+</pre>
+<p>
+&lt;/eveapi&gt;
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
