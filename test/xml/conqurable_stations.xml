@@ -1,11 +1,12 @@
-<eveapi version="1">
-  <currentTime>2007-08-29 13:37:24</currentTime>
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2009-02-17 16:33:24</currentTime>
   <result>
-    <rowset name="outposts" key="stationID" columns="stationID,stationName,stationTypeID,stationTypeName,solarSystemID,solarSystemName,corporationID,corporationName">
-      <row stationID="61000001" stationName="DB1R-4 II - duperTum Corp Minmatar Service Outpost" stationTypeID="21646" stationTypeName="Minmatar Service Outpost" solarSystemID="30004470" solarSystemName="DB1R-4" corporationID="150020944" corporationName="duperTum Corp"/>
-      <row stationID="61000002" stationName="ZS-2LT XI - duperTum Corp Minmatar Service Outpost" stationTypeID="21646" stationTypeName="Minmatar Service Outpost" solarSystemID="30004469" solarSystemName="ZS-2LT" corporationID="150020944" corporationName="duperTum Corp"/>
-      <row stationID="61000003" stationName="JZL-VB VIII - duperTum Corp Minmatar Service Outpost" stationTypeID="21646" stationTypeName="Minmatar Service Outpost" solarSystemID="30004952" solarSystemName="JZL-VB" corporationID="150020944" corporationName="duperTum Corp"/>
+    <rowset name="outposts" key="stationID" columns="stationID,stationName,stationTypeID,solarSystemID,corporationID,corporationName">
+      <row stationID="61000095" stationName="Mindframe Savings and Loan" stationTypeID="21646" solarSystemID="30003230" corporationID="709221692" corporationName="Blueprint Haus" />
+      <row stationID="61000096" stationName="Q3 Manlove Division" stationTypeID="21644" solarSystemID="30000324" corporationID="1639878825" corporationName="Initiative Holding" />
+      <row stationID="61000097" stationName="3L Elrac's Bag of Nuts" stationTypeID="21646" solarSystemID="30000448" corporationID="1519479143" corporationName="Scorched Earth Holdings" />
     </rowset>
   </result>
-  <cachedUntil>2007-08-29 14:37:24</cachedUntil>
+  <cachedUntil>2009-02-17 17:33:24</cachedUntil>
 </eveapi>
