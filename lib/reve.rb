@@ -84,6 +84,7 @@ module Reve
     @@character_medals_url         = 'http://api.eve-online.com/char/Medals.xml.aspx'
     @@corporate_medals_url         = 'http://api.eve-online.com/corp/Medals.xml.aspx'
     @@corp_member_medals_url       = 'http://api.eve-online.com/corp/MemberMedals.xml.aspx'
+    @@server_status_url            = 'http://api.eve-online.com/Server/ServerStatus.xml.aspx'
 
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
@@ -96,7 +97,7 @@ module Reve
                    :personal_faction_war_stats_url, :corporate_faction_war_stats_url,
                    :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url,
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
-                   :corp_member_medals_url
+                   :corp_member_medals_url, :server_status_url
 
 
     attr_accessor :key, :userid, :charid
@@ -131,6 +132,20 @@ module Reve
     # If @save_path is nil then XML is not saved.
     def save_path=(p)
       @save_path = p
+    end
+    
+    # Get the server status of Tranquility as a Reve::Classes::ServerStatus 
+    # object.
+    # See Also: Reve::Classes::ServerStatus
+    def server_status(opts = {})
+      args = postfields(opts)
+      h = compute_hash(  opts.merge(:url => @@server_status_url) )
+      return h if h
+      xml = process_query(nil,opts[:url] || @@server_status_url,true,opts)
+      Reve::Classes::ServerStatus.new(
+        xml.search("/eveapi/result/serverOpen/").first.to_s,
+        xml.search("/eveapi/result/onlinePlayers/").first.to_s
+      )
     end
     
     # Convert a list of names to their ids.

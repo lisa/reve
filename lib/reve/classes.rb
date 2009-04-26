@@ -295,6 +295,7 @@ module Reve #:nodoc:
     # * corporation_id ( Fixnum ) - The ID of the Corporation that the victim belongs to.
     # * corporation_name ( String ) - Name of the Corporation that the victim belongs to.
     # * alliance_id ( Fixnum | NilClass ) - The ID of the Alliance that the victim belongs to, if applicable. Will be nil unless the victim was in an Alliance
+    # * alliance_name ( String  | NilClass ) - Name of the Alliance the Character is in, if any.
     # * damage_taken ( Fixnum ) - The amount of damage the victim took before being killed.
     # * ship_type_id ( Fixnum ) - ID of the ship type (references CCP data dump) that the victim was flying.
     # See Also: KillAttacker, Kill, KillLoss, Reve::API#personal_kills, Reve::API#corporate_kills
@@ -306,6 +307,7 @@ module Reve #:nodoc:
         @corporation_id = elem['corporationID']
         @corporation_name = elem['corporationName']
         @alliance_id = elem['allianceID'] == "0" ? nil : elem['allianceID'].to_i
+        @alliance_name = elem['allianceName']
         @damage_taken = elem['damageTaken'].to_i
         @ship_type_id = elem['shipTypeID'].to_i
       end
@@ -604,17 +606,17 @@ module Reve #:nodoc:
     # * id ( Fixnum ) - ID of the ConqurableStation
     # * name ( String ) - Name of the ConqurableStation
     # * type_id ( Fixnum ) - What kind of ConqurableStation Station it is (Refer to CCP database dump invtypes).
-    # * type_name ( String ) - Name of the kind of Station this ConqurableStation is. (May not be present??)
+    # * system_id ( Fixnum ) - ID of the system where the ConqurableStation is located.
     # * corporation_id ( Fixnum ) - ID of the Corporation that owns the ConqurableStation
     # * corporation_name ( String ) - Name of the Corporation that owns the ConqurableStation.
     # See Also: Sovereignty, Reve::API#conqurable_stations, Reve::API#sovereignty, Reve::API#corporation_sheet, CorporationSheet
     class ConqurableStation
-      attr_reader :id, :name, :type_id, :type_name, :system_id, :system_name, :corporation_id, :corporation_name
+      attr_reader :id, :name, :type_id, :system_id, :corporation_id, :corporation_name
       def initialize(elem) #:nodoc:
         @id = elem['stationID'].to_i
         @name = elem['stationName']
         @type_id = elem['stationTypeID'].to_i
-        @type_name = elem['stationTypeName']
+        @system_id = elem['solarSystemID'].to_i
         @corporation_id = elem['corporationID'].to_i
         @corporation_name = elem['corporationName']
       end
@@ -1040,6 +1042,22 @@ module Reve #:nodoc:
         @name = elem['refTypeName']
       end
     end
+    
+    # ServerStatus object. Simple
+    # Attributes:
+    # * open ( Boolean ) - true if the server is up, false if it's down
+    # * players ( Numeric ) - Number of players online
+    # See Also: Reve::API#server_status
+    class ServerStatus
+      attr_reader :open, :players
+      def initialize(open,online) #:nodoc:
+        @open = open.downcase == "true"
+        @players = online.to_i
+      end
+      def open?
+        @open
+      end
+    end
 
     # A Skill is used in the CharacterSheet for Reve::API#character_sheet call.
     # Attributes
@@ -1141,7 +1159,7 @@ module Reve #:nodoc:
     # Attributes
     # * system_id ( Fixnum ) - ID of the System
     # * alliance_id ( Fixnum ) - ID of the Alliance that controls the System
-    # * constellation_sovereignty ( String ) - Not sure? Maybe this is if the System falls under a Constellation Sovereignty setup?
+    # * constellation_sovereignty ( Fixnum ) - ID of the Alliance that has Constellation Sovereignty for a given System's Constellation
     # * level ( Fixnum ) - Not sure? Level of Constellation Sovereignty
     # * faction_id ( Fixnum ) - ID of the Faction that controls the System
     # * system_name ( String ) - Name of the System
@@ -1152,7 +1170,7 @@ module Reve #:nodoc:
       def initialize(elem) #:nodoc:
         @system_id                 = elem['solarSystemID'].to_i
         @alliance_id               = elem['allianceID'] == '0' ? nil : elem['allianceID'].to_i
-        @constellation_sovereignty = elem['constellationSovereignty']
+        @constellation_sovereignty = elem['constellationSovereignty'].to_i
         @level                     = elem['sovereigntyLevel'].to_i if elem['sovereigntyLevel']
         @faction_id                = elem['factionID'] == '0' ? nil : elem['factionID'].to_i
         @system_name               = elem['solarSystemName']
