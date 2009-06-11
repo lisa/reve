@@ -11,6 +11,14 @@
 module Reve #:nodoc:
   module Classes #:nodoc:
     
+    class Name
+      attr_reader :id, :name
+      def initialize(elem) #:nodoc:
+        @id = elem['id'].to_i
+        @id = elem['name']        
+      end
+    end
+    
     # Represents an Alliance as it appears in the Reve::API#alliances call.
     # Attributes
     # * name ( String ) - Full Name of the Alliance
@@ -285,7 +293,9 @@ module Reve #:nodoc:
     # * id ( Fixnum ) - ID of the Character that was killed.
     # * name ( String ) - The name of the Character that was killed.
     # * corporation_id ( Fixnum ) - The ID of the Corporation that the victim belongs to.
+    # * corporation_name ( String ) - Name of the Corporation that the victim belongs to.
     # * alliance_id ( Fixnum | NilClass ) - The ID of the Alliance that the victim belongs to, if applicable. Will be nil unless the victim was in an Alliance
+    # * alliance_name ( String  | NilClass ) - Name of the Alliance the Character is in, if any.
     # * damage_taken ( Fixnum ) - The amount of damage the victim took before being killed.
     # * ship_type_id ( Fixnum ) - ID of the ship type (references CCP data dump) that the victim was flying.
     # See Also: KillAttacker, Kill, KillLoss, Reve::API#personal_kills, Reve::API#corporate_kills
@@ -294,12 +304,13 @@ module Reve #:nodoc:
       def initialize(elem) #:nodoc:
         @id = elem['characterID'].to_i
         @name = elem['characterName']
-        @corporation_id = elem['corporationName']
+        @corporation_id = elem['corporationID']
+        @corporation_name = elem['corporationName']
         @alliance_id = elem['allianceID'] == "0" ? nil : elem['allianceID'].to_i
         @faction_id = elem['factionID'] == "0" ? nil : elem['factionID'].to_i
-        @alliance_name = elem['allianceName'].empty? ? nil : elem['allianceName']
         @faction_id = elem['factionID'] == "0" ? nil : elem['factionID'].to_i
         @faction_name = elem['factionName'].empty? ? nil : elem['factionName']
+        @alliance_name = elem['allianceName'].empty? ? nil : elem['allianceName']
         @damage_taken = elem['damageTaken'].to_i
         @ship_type_id = elem['shipTypeID'].to_i
       end
@@ -447,6 +458,77 @@ module Reve #:nodoc:
     class PerceptionEnhancer < AttributeEnhancer; end
     class CharismaEnhancer < AttributeEnhancer; end
     class WillpowerEnhancer < AttributeEnhancer; end
+    
+    
+    # Certificate tree container. This looks like:
+    # [CertificateCategory]
+    #   [CertificateClass]
+    #     [Certificate]
+    #       [CertificateRequiredSkill]
+    #       [CertificateRequiredCertificate]
+    class CertificateTree
+      attr_accessor :categories
+      def initialize(categories = []) #:nodoc:
+        @categories = categories
+      end
+    end
+    
+    # Category of Certificates.
+    # Attributes:
+    # * id ( Fixnum ) - ID of the CertificateCategory
+    # * name ( String ) - Name of the CertificateCategory
+    # * classes ( [ CertificateClass ] ) - Array of CertificateClass objects under this Category
+    class CertificateCategory
+      attr_reader :name, :id
+      attr_accessor :classes
+      def initialize(elem) #:nodoc:
+        @name = elem['categoryName']
+        @id = elem['categoryID'].to_i
+        @classes = []
+      end
+    end
+    
+    # A class of Certificates.
+    # Attributes:
+    # * id ( Fixnum ) - ID of the CertificateClass
+    # * name ( String ) - Name of the CertificateClass
+    # * classes ( [ Certificate ] ) - Array of Certificate objects under this class
+    class CertificateClass
+      attr_reader :name, :id
+      attr_accessor :certificates
+      def initialize(elem) #:nodoc:
+        @name = elem['className']
+        @id = elem['classID'].to_i
+        @certificates = []
+      end
+    end
+    class Certificate
+      attr_reader :id, :grade, :corporation_id, :description
+      attr_accessor :required_skills, :required_certificates
+      def initialize(elem)
+        @id = elem['certificateID'].to_i
+        @grade = elem['grade'].to_i
+        @corporation_id = elem['corporationID'].to_i
+        @description = elem['description']
+        @required_certificates = []
+        @required_skills = []
+      end
+    end
+    class CertificateRequiredSkill
+      attr_reader :id, :level
+      def initialize(elem)
+        @id = elem["typeID"].to_i
+        @level = elem["level"].to_i
+      end
+    end
+    
+    class CertificateRequiredCertificate
+      attr_reader :id, :grade
+      def initialize(elem)
+        @id = elem["certificateID"].to_i
+        @grade = elem["grade"].to_i
+      end
+    end
 
     # Represents a Character for the Reve::API#characters, Reve::API#character_name and Reve::API#character_id calls.
     # Attributes
@@ -464,6 +546,7 @@ module Reve #:nodoc:
         @corporation_id   = elem['corporationID'].to_i
       end
     end
+  
 
     # Holds the result of the Reve::API#character_sheet call.
     # This has all of the stuff that appears in the in-game 'character sheet'
@@ -488,11 +571,29 @@ module Reve #:nodoc:
     # See Also: Reve::API#character_sheet, AttributeEnhancer (and subclasses), Skill
     class CharacterSheet
       attr_accessor :name, :race, :bloodline, :gender, :id, :corporation_name, :corporation_id, :balance
-      attr_accessor :intelligence, :memory, :charisma, :perception, :willpower
-      attr_accessor :skills, :enhancers
+      attr_accessor :intelligence, :memory, :charisma, :perception, :willpower, :clone_name, :clone_skill_points
+      attr_accessor :skills, :enhancers, :roles, :certificate_ids, :corporate_titles
+      attr_accessor :corporationRolesAtHQ, :corporationRoles, :corporationRolesAtBase, :corporationRolesAtOther
+      alias_method :corporate_roles_at_hq,    :corporationRolesAtHQ
+      alias_method :corporate_roles,          :corporationRoles
+      alias_method :corporate_roles_at_base,  :corporationRolesAtBase
+      alias_method :corporate_roles_at_other, :corporationRolesAtOther
       def initialize #:nodoc:
         @skills = []
         @enhancers = []
+        @roles = []
+        @certificate_ids = []
+        @corporate_titles = []
+        @corporationRolesAtHQ = []
+        @corporationRoles = []
+        @corporationRolesAtBase = []
+        @corporationRolesAtOther = []
+      end
+      def clonename=(n) #:nodoc:
+        @clone_name = n
+      end
+      def cloneskillpoints=(i) #:nodoc:
+        @clone_skill_points = i
       end
       def characterid=(i) #:nodoc:
         @id = i.to_i
@@ -510,21 +611,22 @@ module Reve #:nodoc:
     # * id ( Fixnum ) - ID of the ConqurableStation
     # * name ( String ) - Name of the ConqurableStation
     # * type_id ( Fixnum ) - What kind of ConqurableStation Station it is (Refer to CCP database dump invtypes).
-    # * type_name ( String ) - Name of the kind of Station this ConqurableStation is. (May not be present??)
+    # * system_id ( Fixnum ) - ID of the system where the ConqurableStation is located.
     # * corporation_id ( Fixnum ) - ID of the Corporation that owns the ConqurableStation
     # * corporation_name ( String ) - Name of the Corporation that owns the ConqurableStation.
     # See Also: Sovereignty, Reve::API#conqurable_stations, Reve::API#sovereignty, Reve::API#corporation_sheet, CorporationSheet
     class ConqurableStation
-      attr_reader :id, :name, :type_id, :type_name, :system_id, :system_name, :corporation_id, :corporation_name
+      attr_reader :id, :name, :type_id, :system_id, :corporation_id, :corporation_name
       def initialize(elem) #:nodoc:
         @id = elem['stationID'].to_i
         @name = elem['stationName']
         @type_id = elem['stationTypeID'].to_i
-        @type_name = elem['stationTypeName']
+        @system_id = elem['solarSystemID'].to_i
         @corporation_id = elem['corporationID'].to_i
         @corporation_name = elem['corporationName']
       end
     end
+    class ConquerableStation < ConqurableStation; end
     
     # Part of the CorporationSheet; represnets a Corporation's in-game logo
     # All of these values are internal to CCP; +shape_1+ matches with +color_1+ and so on.
@@ -547,6 +649,33 @@ module Reve #:nodoc:
         @color_2    = elem['color2'].to_i
         @color_3    = elem['color3'].to_i                
       end      
+    end
+    
+    
+    # Part of the CharacterSheet; represents a grantable Corporation role to a
+    # Character.
+    # Attributes:
+    # * id ( Fixnum ) - Bitmask/ID of the role
+    # * name ( String ) - Name of the role
+    class CorporateRole
+      attr_reader :id, :name
+      def initialize(elem) #:nodoc:
+        @id = elem['roleID'].to_i
+        @name = elem['roleName']
+      end
+    end
+    
+    # Part of the CharacterSheet; represents a grantable Corporation title to a
+    # Character.
+    # Attributes:
+    # * id ( Fixnum ) - Bitmask/ID of the title
+    # * name ( String ) - Name of the title
+    class CorporateTitle
+      attr_reader :id, :name
+      def initialize(elem) #:nodoc:
+        @id = elem['titleID'].to_i
+        @name = elem['titleName']
+      end
     end
     
     # Part of the CorporationSheet. Describes a division in the wallet
@@ -630,6 +759,117 @@ module Reve #:nodoc:
       def initialize(elem)
         @code = elem['errorCode'].to_i
         @text = elem['errorText']
+      end
+    end
+    
+    
+    # Container for the CharacterMedal since there's two kinds returned in XML
+    # Attributes:
+    # * current_corporation ( [ CharacterMedal ] ) - Array of CharacterMedal for the Corporation this Character is currently in
+    # * other_corporation ( [ CharacterOtherCorporateMedal ] ) - Array of CharacterOtherCorporateMedal from other Corporations
+    # See also: Medal, CharacterMedal, Reve::API#character_medals
+    class CharacterMedals
+      attr_reader :current_corporation, :other_corporation
+      def initialize(current, other)
+        @current_corporation = current
+        @other_corporation = other
+      end      
+    end
+    
+    # Parent class for Medals
+    # Attributes:
+    # * id ( Fixnum ) - ID for the Medal
+    # * issued_at ( Time ) - When the Medal was issued (Note: Not valid/present on the CorporateMedal)
+    # See Also: CharacterMedal, CharacterOtherCorporateMedal, CorporateMemberMedal, CorporateMedal
+    class Medal
+      attr_reader :id, :issued_at
+      def initialize(elem) #:nodoc:
+        @id = elem["medalID"].to_i
+        @issued_at = elem["issued"].to_time
+      end
+    end
+    
+    # Composed in CharacterMedals. Issued by the Corporation the Character is a member
+    # Attributes:
+    # * reason ( String ) - Why the CharacterMedal was issued
+    # * issuer_id ( Fixnum ) - Who issued the CharacterMedal
+    # * status ( String ) - public or private (presumably), if this CharacterMedal is public or private.
+    # See Also: Medal, CharacterOtherCorporateMedal, CorporateMemberMedal, CorporateMedal
+    class CharacterMedal < Medal
+      attr_reader :reason, :issuer_id, :status
+      def initialize(elem) #:nodoc:
+        super(elem)
+        @reason = elem["reason"]
+        @issuer_id = elem["issuerID"].to_i
+        @status = elem["status"]
+      end
+      # If the CharacterMedal is public
+      def is_public?
+        @status == "public"
+      end
+      # If the CharacterMedal is private (not public)
+      def is_private?
+        ! is_public?
+      end
+    end
+    
+    # Composed in CharacterMedals. Issued by the Corporation the Character is a member
+    # Attributes:
+    # * corporation_id ( Fixnum ) - ID of the Corporation that issued the CharacterOtherCorporateMedal
+    # * title ( String ) - The title this CharacterOtherCorporateMedal bestows on the Character
+    # * description ( String ) - Description of the CharacterOtherCorporateMedal.
+    # See Also: Medal, CharacterMedal, CorporateMemberMedal, CorporateMedal
+    class CharacterOtherCorporateMedal < CharacterMedal
+      attr_reader :corporation_id, :title, :description
+      def initialize(elem) #:nodoc:
+        super(elem)
+        @corporation_id = elem["corporationID"].to_i
+        @title = elem["title"]
+        @description = elem["description"]
+      end      
+    end
+    
+    # All of the Medals that the members of a Corporation have.
+    # Attributes:
+    # * character_id ( Fixnum ) - ID of the Character that has this CorporateMemberMedal
+    # * reason ( String ) - Why the CorporateMemberMedal is bestowed
+    # * issuer_id ( Fixnum ) - Who issued the CorporateMemberMedal
+    # * status ( String ) - public or private (presumably), if this CorporateMemberMedal is public or private.
+    # See Also: Medal, CharacterMedal, CharacterOtherCorporateMedal, CorporateMedal
+    class CorporateMemberMedal < Medal
+      attr_reader :character_id, :reason, :issuer_id, :status
+      def initialize(elem) #:nodoc:
+        super(elem)
+        @character_id = elem["characterID"].to_i
+        @reason = elem["reason"]
+        @issuer_id = elem["issuerID"].to_i
+        @status = elem["status"]
+      end
+      # If the CharacterMedal is public
+      def is_public?
+        @status == "public"
+      end
+      # If the CorporateMemberMedal is private (not public)
+      def is_private?
+        ! is_public?
+      end
+    end
+    
+    # The medals a Corporation can give out.
+    # Attributes
+    # * title ( String ) - Title that this CorporateMedal gives
+    # * creator_id ( Fixnum ) - Who created the CorporateMedal
+    # * description ( String ) Description of the CorporateMedal
+    # * created_at ( Time ) - When the CorporateMedal was created.
+    # See Also: Medal, CharacterMedal, CharacterOtherCorporateMedal, CorporateMemberMedal, 
+    class CorporateMedal < Medal
+      attr_reader :title, :creator_id, :description, :created_at
+      def initialize(elem) #:nodoc:
+        super(elem)
+        @title = elem["title"]
+        @creator_id = elem["creatorID"].to_i
+        @description = elem["description"]
+        @created_at = elem["created"].to_time
       end
     end
     
@@ -807,6 +1047,22 @@ module Reve #:nodoc:
         @name = elem['refTypeName']
       end
     end
+    
+    # ServerStatus object. Simple
+    # Attributes:
+    # * open ( Boolean ) - true if the server is up, false if it's down
+    # * players ( Numeric ) - Number of players online
+    # See Also: Reve::API#server_status
+    class ServerStatus
+      attr_reader :open, :players
+      def initialize(open,online) #:nodoc:
+        @open = open.downcase == "true"
+        @players = online.to_i
+      end
+      def open?
+        @open
+      end
+    end
 
     # A Skill is used in the CharacterSheet for Reve::API#character_sheet call.
     # Attributes
@@ -908,7 +1164,7 @@ module Reve #:nodoc:
     # Attributes
     # * system_id ( Fixnum ) - ID of the System
     # * alliance_id ( Fixnum ) - ID of the Alliance that controls the System
-    # * constellation_sovereignty ( String ) - Not sure? Maybe this is if the System falls under a Constellation Sovereignty setup?
+    # * constellation_sovereignty ( Fixnum ) - ID of the Alliance that has Constellation Sovereignty for a given System's Constellation
     # * level ( Fixnum ) - Not sure? Level of Constellation Sovereignty
     # * faction_id ( Fixnum ) - ID of the Faction that controls the System
     # * system_name ( String ) - Name of the System
@@ -919,7 +1175,7 @@ module Reve #:nodoc:
       def initialize(elem) #:nodoc:
         @system_id                 = elem['solarSystemID'].to_i
         @alliance_id               = elem['allianceID'] == '0' ? nil : elem['allianceID'].to_i
-        @constellation_sovereignty = elem['constellationSovereignty']
+        @constellation_sovereignty = elem['constellationSovereignty'].to_i
         @level                     = elem['sovereigntyLevel'].to_i if elem['sovereigntyLevel']
         @faction_id                = elem['factionID'] == '0' ? nil : elem['factionID'].to_i
         @system_name               = elem['solarSystemName']

@@ -190,7 +190,7 @@ class TestReve < Test::Unit::TestCase
       assert_not_nil station.id
       assert_not_nil station.name
       assert_not_nil station.type_id
-      assert_not_nil station.type_name
+      assert_not_nil station.system_id
       assert_not_nil station.corporation_id
       assert_not_nil station.corporation_name
     end
@@ -216,7 +216,7 @@ class TestReve < Test::Unit::TestCase
     names = [ 'CCP Garthagk', 'Raquel Smith' ] # 797400947,892008733
     ids = []
     assert_nothing_raised do
-      ids = @api.character_id :url => XML_BASE + 'characterid.xml', :names => names
+      ids = @api.names_to_ids :url => XML_BASE + 'characterid.xml', :names => names
     end
     assert_equal 2, ids.size
     ids.each do |id|
@@ -851,16 +851,18 @@ class TestReve < Test::Unit::TestCase
     assert_equal false, skill.skill_in_training
   end
 
-  # Tests Reve::API#get_xml's segment that fetches from http
-  def test_no_skill_in_training_clean_from_svn
-    skill = nil
-    assert_nothing_raised do
-      skill = @api.skill_in_training(:characterid => 123, :url => URI.parse('http://svn.crudvision.com/reve/trunk/test/xml/skill_in_training-none.xml'))
+=begin
+    # Tests Reve::API#get_xml's segment that fetches from http
+    def test_no_skill_in_training_clean_from_svn
+      skill = nil
+      assert_nothing_raised do
+        skill = @api.skill_in_training(:characterid => 123, :url => URI.parse('http://svn.crudvision.com/reve/trunk/test/xml/skill_in_training-none.xml'))
+      end
+      assert_not_nil @api.last_hash
+      assert_kind_of Time, @api.cached_until
+      assert_equal false, skill.skill_in_training
     end
-    assert_not_nil @api.last_hash
-    assert_kind_of Time, @api.cached_until
-    assert_equal false, skill.skill_in_training
-  end
+=end
 
   def test_amarr_titan_skill_in_training_clean
     Reve::API.training_skill_url = XML_BASE + 'skill_in_training-amarr-titan.xml'
@@ -877,6 +879,100 @@ class TestReve < Test::Unit::TestCase
     assert_not_nil skill.to_level
     assert_not_nil skill.start_sp
     assert_not_nil skill.end_sp
+  end
+
+  def test_corporate_medals
+    Reve::API.corporate_medals_url = XML_BASE + 'corp_medals.xml'
+    medals = nil
+    assert_nothing_raised do
+      medals = @api.corporate_medals
+    end
+    assert_equal(12, medals.size)
+    medals.each do |medal|
+      assert_kind_of(Reve::Classes::CorporateMedal, medal)
+      assert_kind_of(Numeric, medal.id)
+      assert_kind_of(NilClass, medal.issued_at) # Doesn't exist for this class, look at created_at
+      assert_kind_of(Time, medal.created_at)
+      assert_kind_of(String, medal.description)
+      assert_kind_of(Numeric, medal.creator_id)
+      assert_kind_of(String, medal.title)
+    end
+  end
+  
+  def test_corporate_member_medals
+    Reve::API.corp_member_medals_url = XML_BASE + 'corp_member_medals.xml'
+    medals = nil
+    assert_nothing_raised do
+      medals = @api.corporate_member_medals
+    end
+    assert_equal(9, medals.size)
+    medals.each do |medal|
+      assert_kind_of(Reve::Classes::CorporateMemberMedal, medal)
+      assert_kind_of(Numeric, medal.id)
+      assert_kind_of(Time, medal.issued_at)
+      assert_kind_of(Numeric, medal.character_id)
+      assert_kind_of(String, medal.reason)
+      assert_kind_of(Numeric, medal.issuer_id)
+      assert_kind_of(String, medal.status)
+      assert medal.is_public?
+      assert ! medal.is_private?
+    end
+  end
+  
+  def test_server_status
+    Reve::API.server_status_url = XML_BASE + 'server_status.xml'
+    status = nil
+    assert_nothing_raised do
+      status = @api.server_status
+    end
+    assert_kind_of(Reve::Classes::ServerStatus, status)
+    assert_equal(34444, status.players)
+    assert status.open?
+    assert status.open
+  end
+  
+  def test_character_medals
+    Reve::API.character_medals_url = XML_BASE + 'char_medals.xml'
+    obj = nil
+    assert_nothing_raised do
+      obj = @api.character_medals
+    end
+    assert_kind_of(Reve::Classes::CharacterMedals, obj)
+    assert_equal(1, obj.current_corporation.size)
+    assert obj.other_corporation.empty?
+    obj.current_corporation.each do |medal|
+      assert_kind_of(Reve::Classes::CharacterMedal, medal)
+      assert_kind_of(Numeric, medal.id)
+      assert_kind_of(Time, medal.issued_at)
+      assert_kind_of(String, medal.reason)
+      assert_kind_of(Numeric, medal.issuer_id)
+      assert_kind_of(String, medal.status)
+      assert medal.is_public?
+      assert ! medal.is_private?      
+    end   
+    
+  end
+
+  def test_certificate_sheet
+    Reve::API.certificate_tree_url = XML_BASE + 'certificate_tree.xml'
+    tree = nil
+    assert_nothing_raised do
+      tree = @api.certificate_tree
+    end
+    # going to hell
+    assert_kind_of(Reve::Classes::CertificateTree, tree)
+    assert_equal(1, tree.categories.size)
+    assert tree.categories.all? { |cat| cat.kind_of?(Reve::Classes::CertificateCategory) }
+    assert tree.categories.all? { |cat| cat.id.kind_of?(Numeric) && cat.name.kind_of?(String) }
+    assert_equal(6, tree.categories.first.classes.size) # just 1 category
+    assert tree.categories.first.classes.all? { |klass| klass.kind_of?(Reve::Classes::CertificateClass) }
+    assert tree.categories.first.classes.all? { |klass| klass.id.kind_of?(Numeric) && klass.name.kind_of?(String) }
+    assert tree.categories.first.classes.collect { |klass| klass.certificates }.flatten.all? { |cert| cert.id.kind_of?(Numeric) && cert.grade.kind_of?(Numeric) && cert.corporation_id.kind_of?(Numeric) && cert.description.kind_of?(String) }
+    assert_equal(20, tree.categories.first.classes.collect { |klass| klass.certificates }.flatten.size) 
+    assert_equal(54, tree.categories.first.classes.collect { |klass| klass.certificates }.flatten.collect { |cert| cert.required_skills }.flatten.size)
+    assert tree.categories.first.classes.collect { |klass| klass.certificates }.flatten.collect { |cert| cert.required_skills }.flatten.all? { |req| req.id.kind_of?(Numeric) && req.level.kind_of?(Numeric) }
+    assert_equal(29, tree.categories.first.classes.collect { |klass| klass.certificates }.flatten.collect { |cert| cert.required_certificates }.flatten.size)
+    assert tree.categories.first.classes.collect { |klass| klass.certificates }.flatten.collect { |cert| cert.required_certificates }.flatten.all? { |req| req.id.kind_of?(Numeric) && req.grade.kind_of?(Numeric) }
   end
 
   def test_character_sheet_clean
@@ -903,15 +999,43 @@ class TestReve < Test::Unit::TestCase
     assert_not_nil sheet.perception
     assert_not_nil sheet.willpower
 
-    assert_equal 2, sheet.enhancers.size
+    assert_equal 5, sheet.enhancers.size, "Implant size mismatch"
     sheet.enhancers.each do |enhancer|
       assert_kind_of Reve::Classes::AttributeEnhancer, enhancer
     end
-    assert_equal 24500, sheet.skills.inject(0) { |sum,s| sum += s.skillpoints }
+    assert_equal 44842126, sheet.skills.inject(0) { |sum,s| sum += s.skillpoints }, "Skillpoint total mismatch"
 
     sheet.skills.each do |skill|
       assert_kind_of Reve::Classes::Skill, skill
     end
+    assert_equal(57, sheet.certificate_ids.size,"Certificate ID size mismatch")
+    assert sheet.certificate_ids.all? { |cid| cid.kind_of?(Fixnum) }
+    
+    # role aliases
+    assert ! sheet.corporate_roles_at_hq.empty?
+    assert ! sheet.corporate_roles.empty?
+    assert ! sheet.corporate_roles_at_base.empty?
+    assert ! sheet.corporate_roles_at_other.empty?
+    # role proper methods
+    assert ! sheet.corporationRolesAtHQ.empty?
+    assert ! sheet.corporationRoles.empty?
+    assert ! sheet.corporationRolesAtBase.empty?
+    assert ! sheet.corporationRolesAtOther.empty?
+    
+    [ :corporate_roles_at_hq, :corporate_roles, :corporate_roles_at_base, :corporate_roles_at_other ].each do |role_kind|
+      r_ary = sheet.send(role_kind) 
+      assert r_ary.all? { |r| r.kind_of?(Reve::Classes::CorporateRole) }
+      assert r_ary.all? { |r| r.name.kind_of?(String) }
+      assert r_ary.all? { |r| r.id.kind_of?(Numeric) }
+    end
+    
+    assert ! sheet.corporate_titles.empty?
+    assert sheet.corporate_titles.all? { |t| t.kind_of?(Reve::Classes::CorporateTitle) }
+    assert sheet.corporate_titles.all? { |t| t.name.kind_of?(String) }
+    assert sheet.corporate_titles.all? { |t| t.id.kind_of?(Numeric) }
+    
+    
+    
   end
 
   # Can we reassign a URL?
@@ -939,17 +1063,19 @@ class TestReve < Test::Unit::TestCase
     assert_equal File.open(File.join(XML_BASE, 'skill_in_training-none.xml')).read, xmldoc
   end
   
-  def test_get_xml_from_web
-    xmldoc = @api.send(:get_xml, 'http://svn.crudvision.com/reve/trunk/test/xml/skill_in_training-none.xml', {} )
-    assert_equal File.open(File.join(XML_BASE, 'skill_in_training-none.xml')).read, xmldoc
-  end
+=begin
+    def test_get_xml_from_web
+      xmldoc = @api.send(:get_xml, 'http://svn.crudvision.com/reve/trunk/test/xml/skill_in_training-none.xml', {} )
+      assert_equal File.open(File.join(XML_BASE, 'skill_in_training-none.xml')).read, xmldoc
+    end
+=end
   
   def test_get_xml_from_filesystem_missing_file
     assert_raise Errno::ENOENT do
       xmldoc = @api.send(:get_xml, File.join(XML_BASE,rand.to_s), {} )
     end    
   end
-  
+=begin  
   # if this starts to fail make sure the 404 ErrorDocument includes '404 Not Found'
   def test_get_xml_from_web_missing_file
     begin
@@ -959,6 +1085,7 @@ class TestReve < Test::Unit::TestCase
       assert e.message.include?('404 Not Found')
     end    
   end
+=end
 
   def test_format_url_request_one_arg
     req = @api.send(:format_url_request, { :a => "Hello" })

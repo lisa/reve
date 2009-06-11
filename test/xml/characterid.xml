@@ -3,8 +3,8 @@
   <currentTime>2008-02-18 00:25:03</currentTime>
   <result>
     <rowset name="characters" key="characterID" columns="name,characterID">
-      <row:name name="CCP Garthagk" characterID="797400947" xmlns:row="characterID" />
-      <row:name name="Raquel Smith" characterID="892008733" xmlns:row="characterID" />
+      <row name="CCP Garthagk" characterID="797400947" xmlns:row="characterID" />
+      <row name="Raquel Smith" characterID="892008733" xmlns:row="characterID" />
     </rowset>
   </result>
   <cachedUntil>2008-03-18 00:25:03</cachedUntil>

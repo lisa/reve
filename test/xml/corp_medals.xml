@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2008-12-09 16:14:53</currentTime>
+  <result>
+    <rowset name="medals" key="medalID" columns="medalID,title,description,creatorID,created">
+      <row medalID="5955" title="Dagger of Courage" description="Rewarded for showing remarkable courage on the battle field." creatorID="777051796" created="2008-11-16 22:38:00" />
+      <row medalID="5958" title="Sword of Devastation" description="This is a commendation for single-handedly causing extraordinary damage to an enemy fleet during an engagement." creatorID="777051796" created="2008-11-16 22:44:00" />
+      <row medalID="5965" title="Shield of Fire" description="This medal is given for spectacular performance during a defensive operation of Vanguard Frontiers assets." creatorID="777051796" created="2008-11-16 22:51:00" />
+      <row medalID="5966" title="Albatross Eye" description="Thorough reconnaissance can decide battles and win wars. This medal is bestowed to recognize superb reconnaissance work that is influential to victory in a significant engagement or changing the course of a war or conflict as a whole&lt;br&gt;" creatorID="777051796" created="2008-11-16 22:54:00" />
+
+      <row medalID="5977" title="Medal of Sacrifice" description="In battle, we are always asked to put our vessels on the line. This award salutes a substantial loss such as a super capital in combat." creatorID="777051796" created="2008-11-16 23:13:00" />
+      <row medalID="5980" title="Coin of Opulence" description="This accolade is received for designing or improving upon a service or method of operation that nets the corp considerable profits." creatorID="777051796" created="2008-11-16 23:19:00" />
+      <row medalID="5985" title="Star of Scientific Genius" description="No industrial operation can continue to grow without research and development in new technologies. This award shows that the recipient has shown dedication and substantial worth in our R&amp;amp;D department." creatorID="777051796" created="2008-11-16 23:26:00" />
+      <row medalID="5990" title="Excellency of Service" description="This medal is designed as a very rare acknowledgment of unwavering dedication to Vanguard Frontiers, and indicates a career of service that has helped the corporation grow and improve as a whole over time." creatorID="777051796" created="2008-11-16 23:35:00" />
+      <row medalID="5993" title="Herald's Cloak" description="Leadership requires charisma, focus, and intelligence. This award commends those that step up to help lead Vanguard Frontiers and make outstanding improvements to the corporation as a whole or a specific division." creatorID="777051796" created="2008-11-16 23:41:00" />
+      <row medalID="6054" title="Engineer's Hammer" description="This medal symbolizes colossal achievements in furthering our industrial power." creatorID="777051796" created="2008-11-17 03:17:00" />
+      <row medalID="6057" title="Tribute of Tactical Mastery" description="This award is received for performance as a Fleet Commander that is regularly above the average and indicates brilliance as a combat leader." creatorID="777051796" created="2008-11-17 03:25:00" />
+      <row medalID="6059" title="Badge of Logistical Prowess" description="Given to indicate regular and influential transport of materials and supplies to further a war effort or accommodate industry needs." creatorID="777051796" created="2008-11-17 03:27:00" />
+    </rowset>
+
+  </result>
+  <cachedUntil>2008-12-10 15:14:54</cachedUntil>
+</eveapi>

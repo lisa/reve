@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2008-12-09 16:11:53</currentTime>
+  <result>
+    <rowset name="issuedMedals" key="medalID" columns="medalID,characterID,reason,status,issuerID,issued">
+      <row medalID="5977" characterID="880633555" reason="Repeatedly putting his capitals on the line to serve the alliance" status="public" issuerID="1570039227" issued="2008-11-30 21:06:30" />
+      <row medalID="5977" characterID="1661585835" reason="Pitting his Aeon on the line for service to alliance" status="public" issuerID="1570039227" issued="2008-11-30 21:04:52" />
+      <row medalID="5980" characterID="937179397" reason="Generating isk for the corp" status="public" issuerID="1570039227" issued="2008-11-30 21:09:26" />
+      <row medalID="5985" characterID="789116771" reason="For coordinating corp R@D efforts and ensuring t2 blueprints are available to the builders" status="public" issuerID="1570039227" issued="2008-11-30 21:12:40" />
+
+      <row medalID="5990" characterID="854533890" reason="Getting a large amount of corp assets out of station being sieged by BOB and showing us all an example" status="public" issuerID="1570039227" issued="2008-11-30 21:19:17" />
+      <row medalID="5990" characterID="1070652613" reason="Making VAF Mart which defined VAF as a corp and made us known to Eve Universe" status="public" issuerID="1570039227" issued="2008-11-30 21:17:08" />
+      <row medalID="5990" characterID="1570039227" reason="Our queen and guiding star" status="public" issuerID="777051796" issued="2008-11-30 21:30:29" />
+      <row medalID="6054" characterID="634293843" reason="For managing corp production and training the rest of the corp to understand our system" status="public" issuerID="1570039227" issued="2008-11-30 21:10:55" />
+      <row medalID="6059" characterID="1248290474" reason="For showing us all how the logistics should be done" status="public" issuerID="1570039227" issued="2008-11-30 21:15:41" />
+    </rowset>
+  </result>
+  <cachedUntil>2008-12-10 15:11:53</cachedUntil>
+
+</eveapi>
