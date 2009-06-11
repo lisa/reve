@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'reve'
+require '../lib/reve'
 require 'fileutils' # for saving downloaded XML
 
 XML_BASE = File.join(File.dirname(__FILE__),'xml/')
@@ -879,6 +879,23 @@ class TestReve < Test::Unit::TestCase
     assert_not_nil skill.to_level
     assert_not_nil skill.start_sp
     assert_not_nil skill.end_sp
+  end
+
+  def test_skill_queue_clean
+    Reve::API.skill_queue_url = XML_BASE + 'skill_queue.xml'
+    queue = nil
+    assert_nothing_raised do
+      queue = @api.skill_queue(:characerid => 1)
+    end
+    assert_kind_of(Reve::Classes::QueuedSkill, queue.first)
+    assert_not_nil queue.first.queue_position
+    assert_not_nil queue.first.start_time
+    assert_not_nil queue.first.type_id
+    assert_not_nil queue.first.end_time
+    assert_not_nil queue.first.to_level
+    assert_not_nil queue.first.start_sp
+    assert_not_nil queue.first.end_sp
+    assert_equal 9, queue.length    
   end
 
   def test_corporate_medals
