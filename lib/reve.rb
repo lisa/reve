@@ -57,6 +57,7 @@ module Reve
     @@personal_wallet_journal_url  = 'http://api.eve-online.com/char/WalletJournal.xml.aspx'
     @@characters_url               = 'http://api.eve-online.com/account/Characters.xml.aspx'
     @@training_skill_url           = 'http://api.eve-online.com/char/SkillInTraining.xml.aspx'
+    @@skill_queue_url              = 'http://api.eve-online.com/char/SkillQueue.xml.aspx'
     @@character_sheet_url          = 'http://api.eve-online.com/char/CharacterSheet.xml.aspx'
     @@starbases_url                = 'http://api.eve-online.com/corp/StarbaseList.xml.aspx'
     @@starbasedetail_url           = 'http://api.eve-online.com/corp/StarbaseDetail.xml.aspx'
@@ -97,7 +98,7 @@ module Reve
                    :personal_faction_war_stats_url, :corporate_faction_war_stats_url,
                    :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url,
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
-                   :corp_member_medals_url, :server_status_url
+                   :corp_member_medals_url, :server_status_url, :skill_queue_url
 
 
     attr_accessor :key, :userid, :charid
@@ -615,6 +616,18 @@ module Reve
         end
       end
       Reve::Classes::SkillInTraining.new(h)
+    end
+    
+    # Returns a list of Reve::Classes::QueuedSkill for characterid
+    # http://api.eve-online.com/char/SkillQueue.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Get the QueuedSkill list for this character
+    # See also Reve::Classes::QueuedSkill
+    def skill_queue(opts = {:characterid => nil})
+      args = postfields(opts)
+      ch = compute_hash(args.merge(:url => @@skill_queue_url))
+      return ch if ch
+      process_query(Reve::Classes::QueuedSkill,opts[:url] || @@skill_queue_url,false,args)
     end
     
     # Returns a list of Reve::Classes::Starbase for characterid's Corporation.

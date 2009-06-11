@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2009-04-14 16:33:22</currentTime>
+  <result>
+    <rowset name="skillqueue" key="queuePosition" columns="queuePosition,typeID,level,startSP,endSP,startTime,endTime">
+      <row queuePosition="2" typeID="3374" level="4" startSP="8000" endSP="45253" startTime="2009-04-14 06:32:12" endTime="2009-04-14 17:48:05" />
+      <row queuePosition="3" typeID="3379" level="1" startSP="0" endSP="250" startTime="2009-04-14 17:48:05" endTime="2009-04-14 17:52:37" />
+      <row queuePosition="4" typeID="3375" level="1" startSP="0" endSP="250" startTime="2009-04-14 17:52:37" endTime="2009-04-14 17:57:10" />
+      <row queuePosition="5" typeID="3376" level="1" startSP="0" endSP="250" startTime="2009-04-14 17:57:10" endTime="2009-04-14 18:01:42" />
+      <row queuePosition="6" typeID="3379" level="2" startSP="250" endSP="1412" startTime="2009-04-14 18:01:42" endTime="2009-04-14 18:22:50" />
+      <row queuePosition="7" typeID="3375" level="2" startSP="250" endSP="1412" startTime="2009-04-14 18:22:50" endTime="2009-04-14 18:43:58" />
+      <row queuePosition="8" typeID="3379" level="3" startSP="1412" endSP="8000" startTime="2009-04-14 18:43:58" endTime="2009-04-14 20:43:26" />
+      <row queuePosition="9" typeID="3375" level="3" startSP="1412" endSP="8000" startTime="2009-04-14 20:43:26" endTime="2009-04-14 22:42:54" />
+      <row queuePosition="10" typeID="3379" level="4" startSP="8000" endSP="45253" startTime="2009-04-14 22:42:54" endTime="2009-04-15 09:58:47" />
+    </rowset>
+  </result>
+  <cachedUntil>2009-04-14 16:48:22</cachedUntil>
+</eveapi>
