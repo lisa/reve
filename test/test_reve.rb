@@ -193,6 +193,7 @@ class TestReve < Test::Unit::TestCase
       assert_not_nil station.system_id
       assert_not_nil station.corporation_id
       assert_not_nil station.corporation_name
+      assert_not_nil station.system_id
     end
   end
   

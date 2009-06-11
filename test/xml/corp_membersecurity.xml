@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2009-01-13 20:56:21</currentTime>
+  <result>
+    <member characterID="194329244" name="Test Pilot">
+      <rowset name="roles" key="roleID" columns="roleID,roleName">
+        <row roleID="1" roleName="roleDirector" />
+      </rowset>
+
+      <rowset name="grantableRoles" key="roleID" columns="roleID,roleName" />
+      <rowset name="rolesAtHQ" key="roleID" columns="roleID,roleName">
+        <row roleID="1" roleName="roleDirector" />
+      </rowset>
+      <rowset name="grantableRolesAtHQ" key="roleID" columns="roleID,roleName" />
+      <rowset name="rolesAtBase" key="roleID" columns="roleID,roleName">
+        <row roleID="1" roleName="roleDirector" />
+      </rowset>
+      <rowset name="grantableRolesAtBase" key="roleID" columns="roleID,roleName" />
+
+      <rowset name="rolesAtOther" key="roleID" columns="roleID,roleName">
+        <row roleID="1" roleName="roleDirector" />
+      </rowset>
+      <rowset name="grantableRolesAtOther" key="roleID" columns="roleID,roleName" />
+      <rowset name="titles" key="titleID" columns="titleID,titleName">
+        <row titleID="1" titleName="01 Pilot" />
+      </rowset>
+    </member>
+    <member characterID="201320849" name="Test Pilot 2">
+
+      <rowset name="roles" key="roleID" columns="roleID,roleName" />
+      <rowset name="grantableRoles" key="roleID" columns="roleID,roleName" />
+      <rowset name="rolesAtHQ" key="roleID" columns="roleID,roleName" />
+      <rowset name="grantableRolesAtHQ" key="roleID" columns="roleID,roleName" />
+      <rowset name="rolesAtBase" key="roleID" columns="roleID,roleName" />
+      <rowset name="grantableRolesAtBase" key="roleID" columns="roleID,roleName" />
+      <rowset name="rolesAtOther" key="roleID" columns="roleID,roleName" />
+      <rowset name="grantableRolesAtOther" key="roleID" columns="roleID,roleName" />
+      <rowset name="titles" key="titleID" columns="titleID,titleName">
+
+        <row titleID="1" titleName="01" />
+        <row titleID="2" titleName="02" />
+        <row titleID="64" titleName="07" />
+        <row titleID="256" titleName="09" />
+        <row titleID="512" titleName="10" />
+      </rowset>
+    </member>
+  </result>
+  <cachedUntil>2009-01-13 21:56:22</cachedUntil>
+</eveapi>

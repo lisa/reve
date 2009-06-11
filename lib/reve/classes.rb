@@ -624,6 +624,7 @@ module Reve #:nodoc:
         @system_id = elem['solarSystemID'].to_i
         @corporation_id = elem['corporationID'].to_i
         @corporation_name = elem['corporationName']
+        @system_id = elem['solarSystemID'].to_i
       end
     end
     class ConquerableStation < ConqurableStation; end
