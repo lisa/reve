@@ -937,6 +937,22 @@ class TestReve < Test::Unit::TestCase
     end
   end
   
+  def test_corporate_member_security
+    Reve::API.corporation_member_security_url = XML_BASE + 'corp_membersecurity.xml'
+    members = nil
+    assert_nothing_raised do
+      members = @api.corporate_member_security
+    end
+    assert_equal 2, members.members.size
+    first = members.members.first
+    assert_equal "Test Pilot", first.name
+    assert_equal 194329244, first.id
+    assert_equal 0, first.grantableRoles.size
+    assert_equal 1, first.titles.size
+    last = members.members.last
+    assert_equal 5, last.titles.size
+  end
+  
   def test_server_status
     Reve::API.server_status_url = XML_BASE + 'server_status.xml'
     status = nil

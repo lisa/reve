@@ -63,6 +63,7 @@ module Reve
     @@starbasedetail_url           = 'http://api.eve-online.com/corp/StarbaseDetail.xml.aspx'
     @@conqurable_outposts_url      = 'http://api.eve-online.com/eve/ConquerableStationList.xml.aspx'
     @@corporation_sheet_url        = 'http://api.eve-online.com/corp/CorporationSheet.xml.aspx'
+    @@corporation_member_security_url = 'http://api.eve-online.com/corp/MemberSecurity.xml.aspx'
     @@errors_url                   = 'http://api.eve-online.com/eve/ErrorList.xml.aspx'
     @@map_jumps_url                = 'http://api.eve-online.com/map/Jumps.xml.aspx'
     @@map_kills_url                = 'http://api.eve-online.com/map/Kills.xml.aspx'
@@ -98,7 +99,7 @@ module Reve
                    :personal_faction_war_stats_url, :corporate_faction_war_stats_url,
                    :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url,
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
-                   :corp_member_medals_url, :server_status_url, :skill_queue_url
+                   :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url
 
 
     attr_accessor :key, :userid, :charid
@@ -750,6 +751,27 @@ module Reve
       Reve::Classes::CorporationSheet.new res, divisions, wallet_divisions, corporate_logo  
     end
     
+    def corporate_member_security(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporation_member_security_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@corporation_member_security_url,true,args)
+
+      cmc = Reve::Classes::CorporationMemberSecurity.new
+      xml.search("/eveapi/result/member").each do |member|
+        mem = Reve::Classes::CorporationMember.new(member)
+        cmc.members << mem
+        [:roles, :grantableRoles, :rolesAtHQ, :grantableRolesAtHQ, :rolesAtBase, :grantableRolesAtBase, :rolesAtOther, :grantableRolesAtOther].each do |rowset|
+          member.search("/rowset[@name=#{rowset.to_s}]/row").each do |row|
+            mem.rsend(["#{rowset}"], [:push,Reve::Classes::CorporateRole.new(row)])
+          end
+        end
+        member.search("/rowset[@name=titles]/row").each do |row|
+          mem.rsend([:titles], [:push,Reve::Classes::CorporateTitle.new(row)])
+        end
+      end
+      cmc
+    end
     
     # Returns a Reve::Classes::CertificateTree object that contains the
     # Certificate tree structure. See the rdoc for Reve::Classes::CertificateTree
