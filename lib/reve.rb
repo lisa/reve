@@ -845,10 +845,7 @@ module Reve
       end
       [ :corporationRolesAtHQ, :corporationRoles, :corporationRolesAtBase, :corporationRolesAtOther ].each do |role_kind|
         xml.search("rowset[@name=#{role_kind.to_s}]/row").each do |elem|
-          arry = []
-          role = Reve::Classes::CorporateRole.new(elem)
-          arry << role
-          cs.send("#{role_kind}=".to_sym,arry)
+          cs.rsend(["#{role_kind}"], [:push,Reve::Classes::CorporateRole.new(elem)])
         end
       end
       
