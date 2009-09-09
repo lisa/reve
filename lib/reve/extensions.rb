@@ -81,7 +81,7 @@ module Reve #:nodoc:
     module String
       def to_time(form = :utc)
         begin
-          return Time.parse(self)
+          return Time.parse(self + ' +00:00')
         rescue Exception => e
           self
         end
