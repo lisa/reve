@@ -1163,7 +1163,7 @@ class TestReve < Test::Unit::TestCase
       kills = @api.send(meth,{:url =>url})
     end
     assert_equal 25, kills.size
-    assert_equal 25, kills.collect { |k| k.victim.name }.nitems # i should have 10 good victim names to match with 10 kills
+    assert_equal 25, kills.collect { |k| k.victim.name }.compact.length # i should have 10 good victim names to match with 10 kills
     
     # Process the Kills here to get the number of "Contained Losses" - KillLoss that are contained within another
     # KillLoss (like a Giant Secure Container); there should only be one contained loss and should be 
@@ -1176,7 +1176,7 @@ class TestReve < Test::Unit::TestCase
     attacker_names = kills.collect { |k| k.attackers.collect { |a| a.name } }.flatten
     assert_equal 98, attacker_names.size # total of 25 attackers (24 players + 1 NPC)
     assert_equal 2, attacker_names.grep(nil).size # npc exists once
-    assert_equal 96, attacker_names.nitems # 24 player attackers
+    assert_equal 96, attacker_names.compact.length # 24 player attackers
 
     assert_kind_of Integer, kills.first.victim.faction_id
     assert_kind_of String, kills.first.victim.faction_name

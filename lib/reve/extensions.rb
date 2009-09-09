@@ -1,4 +1,4 @@
-require 'parsedate'
+require 'time'
 
 module Reve #:nodoc:
   # All of these are shamelessly nicked from Ruby on Rails. 
@@ -78,12 +78,11 @@ module Reve #:nodoc:
         cattr_writer(*syms)
       end
     end
-
     module String
       def to_time(form = :utc)
         begin
-          ::Time.send(form, *ParseDate.parsedate(self))
-        rescue Exception
+          return Time.parse(self)
+        rescue Exception => e
           self
         end
       end
