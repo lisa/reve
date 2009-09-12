@@ -1,5 +1,6 @@
+# Tests designed to run with autotest.
 require 'test/unit'
-require '../lib/reve'
+require 'reve'
 require 'fileutils' # for saving downloaded XML
 
 XML_BASE = File.join(File.dirname(__FILE__),'xml/')

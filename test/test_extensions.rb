@@ -1,5 +1,5 @@
 require 'test/unit'
-require '../lib/reve/extensions'
+require 'reve/extensions'
 
 class CattrReaderTest;cattr_reader :test_reader;end
 class CattrWriterTest;cattr_writer :test_writer;end
