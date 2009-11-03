@@ -663,21 +663,45 @@ module Reve
       process_query(Reve::Classes::Starbase,opts[:url] || @@starbases_url,false,args)
     end
     
-    # Returns the fuel status for the Starbase whose item id is starbase_id
+    # Returns the starbase details for the Starbase whose item id is starbase_id
     # http://api.eve-online.com/corp/StarbaseDetail.xml.aspx
     # Expects:
     # * characterid ( Integer | String ) - Get the Starbase associated wih this character's Corporation
-    # * starbase_id ( Integer ) - Get the fuel for this Starbase. This is the Starbase's itemid.
-    # See also Reve::Classes::StarbaseFuel
-    def starbase_fuel(opts = { :characterid => nil, :starbaseid => nil })
+    # * starbaseid ( Integer ) - Get the fuel for this Starbase. This is the Starbase's itemid.
+    # See also Reve::Classes::StarbaseDetails
+    def starbase_details(opts = { :characterid => nil, :starbaseid => nil })
       opts[:itemid] = opts.delete(:starbaseid)
       args = postfields(opts)
       h = compute_hash(args.merge(:url => @@starbasedetail_url))
       return h if h
-      ret = process_query(Reve::Classes::StarbaseFuel,opts[:url] || @@starbasedetail_url, false, args)
-      ret.each { |r| r.starbase_id = opts[:itemid] }
-      ret
+      xml = process_query(Reve::Classes::StarbaseDetails,opts[:url] || @@starbasedetail_url, true, args)
+      
+      state = xml.search("/eveapi/result/state").inner_text
+      state_timestamp = xml.search("/eveapi/result/stateTimestamp").inner_text
+      online_timestamp = xml.search("/eveapi/result/onlineTimestamp").inner_text
+      
+      h = {'usageFlags' => 0, 'deployFlags' => 0, 'allowCorporationMembers' => 0, 'allowAllianceMembers' => 0, 'claimSovereignty' => 0}
+      h.keys.each {|k| h[k] = xml.search("/eveapi/result/generalSettings/#{k}").inner_text }
+      general_settings = Reve::Classes::StarbaseGeneralSettings.new(h)
+      
+      h = {'onStandingDrop' => 0, 'onStatusDrop' => 0, 'onAggression' => 0, 'onCorporationWar' => 0}
+      h.keys.each {|k| h[k] = xml.search("/eveapi/result/combatSettings/#{k}") }
+      combat_settings = Reve::Classes::StarbaseCombatSettings.new(h)
+      
+      fuel = []
+      xml.search("/eveapi/result/rowset[@name='fuel']/row").each do |entry|
+        fuel << Reve::Classes::StarbaseFuel.new(entry)
+      end
+      
+      res = Hash.new
+      { :state => :state, :stateTimestamp => :state_timestamp, :onlineTimestamp => :online_timestamp }.each do |k,v|
+        res[v] = xml.search("/eveapi/result/#{k.to_s}/").first.to_s.strip
+      end
+      
+      Reve::Classes::StarbaseDetails.new res, general_settings, combat_settings, fuel
     end
+    
+    alias_method  :starbase_fuel, :starbase_details
     
     
     # Get the last kills for the characterid passed.

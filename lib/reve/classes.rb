@@ -1300,16 +1300,53 @@ module Reve #:nodoc:
       end
     end
     
-    # Used for the fuel status of a Starbase. See Reve::API#starbase_fuel
-    # starbase_id is set in the Reve::API#starbase_fuel method and not here
+    # Returns the starbase details for the Starbase whose item id is starbase_id
     # Attributes
-    # * type_id ( Fixnum ) - Type of fuel in the Starbase (Refer to CCP database dump invtypes)
-    # * quantity ( Fixnum ) - How much of the fuel is in the Starbase
-    # * starbase_id ( Fixnum ) - ID of the Starbase
-    # See Also: Starbase, Reve::API#starbase_fuel, Reve::API#starbases
+    # * state ( Fixnum ) - State of the starbase (Refer to CCP database dump invtypes)
+    # * state_timestamp ( Time ) - Depents on state
+    # * online_timestamp ( Time ) - Since when this starbase is online
+    # * general_settings ( StarbaseGeneralSettings ) - See StarbaseGeneralSettings
+    # * combat_settings ( StarbaseCombatSettings ) - See StarbaseCombatSettings
+    # * fuel ( [StarbaseFuel ] ) - See StarbaseFuel
+    # See Also: Starbase, StarbaseGeneralSettings, StarbaseCombatSettings, StarbaseFuel, Reve::API#starbase_details, Reve::API#starbases
+    class StarbaseDetails
+      attr_reader :state, :state_timestamp, :online_timestamp
+      attr_accessor :general_settings, :combat_settings, :fuel
+      
+      def initialize(elem, general_settings, combat_settings, fuel) #:nodoc:
+        @state = elem[:state].to_i
+        @state_timestamp = elem[:state_timestamp].to_time
+        @online_timestamp = elem[:online_timestamp].to_time
+        @general_settings = general_settings
+        @combat_settings = combat_settings
+        @fuel = fuel
+      end
+    end
+    
+    class StarbaseGeneralSettings
+      attr_reader :usage_flags, :deploy_flags, :allow_corporation_members,
+                  :allow_alliance_members, :claim_sovereignty
+      def initialize(elem) #:nodoc:
+        @usage_flags                = elem['usageFlags'].to_i
+        @deploy_flags               = elem['deployFlags'].to_i
+        @allow_corporation_members  = elem['allowCorporationMembers'] == '1'
+        @allow_alliance_members     = elem['allowAllianceMembers'] == '1'
+        @claim_sovereignty          = elem['claimSovereignty'] == '1'
+      end
+    end
+    
+    class StarbaseCombatSettings
+      attr_reader :on_standings_drop, :on_status_drop, :on_aggression, :on_corporation_war
+      def initialize(elem) #:nodoc:
+        @on_standings_drop  = elem['onStandingDrop'].attr('standing').to_i
+        @on_status_drop     = (elem['onStatusDrop'].attr('enabled') == '1' ? elem['onStatusDrop'].attr('standing').to_i : false)
+        @on_aggression      = elem['onAggression'].attr('enabled') == '1'
+        @on_corporation_war = elem['onCorporationWar'].attr('enabled') == '1'
+      end
+    end
+    
     class StarbaseFuel
       attr_reader :type_id, :quantity
-      attr_accessor :starbase_id
       def initialize(elem) #:nodoc:
         @type_id = elem['typeID'].to_i
         @quantity = elem['quantity'].to_i
