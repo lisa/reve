@@ -650,11 +650,12 @@ module Reve
     # * starbase_id ( Integer ) - Get the fuel for this Starbase. This is the Starbase's itemid.
     # See also Reve::Classes::StarbaseFuel
     def starbase_fuel(opts = { :characterid => nil, :starbaseid => nil })
+      opts[:itemid] = opts.delete(:starbaseid)
       args = postfields(opts)
       h = compute_hash(args.merge(:url => @@starbasedetail_url))
       return h if h
       ret = process_query(Reve::Classes::StarbaseFuel,opts[:url] || @@starbasedetail_url, false, args)
-      ret.each { |r| r.starbase_id = opts[:starbaseid] }
+      ret.each { |r| r.starbase_id = opts[:itemid] }
       ret
     end
     
