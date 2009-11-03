@@ -488,10 +488,12 @@ class TestReve < Test::Unit::TestCase
     bases.each do |starbase|
       assert_instance_of Reve::Classes::Starbase, starbase
       assert_not_nil starbase.type_id
-      assert_not_nil starbase.type_name
       assert_not_nil starbase.id
       assert_not_nil starbase.system_id
-      assert_not_nil starbase.system_name
+      assert_not_nil starbase.moon_id
+      assert_not_nil starbase.state
+      assert_not_nil starbase.state_timestamp
+      assert_not_nil starbase.online_timestamp
     end
   end
   

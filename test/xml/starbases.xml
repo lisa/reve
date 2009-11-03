@@ -1,12 +1,12 @@
 <eveapi version="1">
-  <currentTime>2007-08-16 19:51:38</currentTime>
+  <currentTime>2009-11-02 19:51:38</currentTime>
   <result>
-    <rowset name="starbases" key="itemID" columns="typeID,typeName,itemID,locationID,locationName">
-      <row typeID="12235" typeName="Amarr Control Tower" itemID="150354725" locationID="30000380" locationName="Polaris"/>
-      <row typeID="20059" typeName="Amarr Control Tower Medium" itemID="150354773" locationID="30001984" locationName="EC-P8R"/>
-      <row typeID="12235" typeName="Amarr Control Tower" itemID="150357658" locationID="30001984" locationName="EC-P8R"/>
-      <row typeID="16286" typeName="Ultra Fast Control Tower" itemID="150318232" locationID="30003109" locationName="C9N-CC"/>
+    <rowset name="starbases" key="itemID" columns="itemID,typeID,locationID,moonID,state,stateTimestamp,onlineTimestamp">
+      <row typeID="12235" itemID="150354725" locationID="30000380" moonID="12513141" state="4" stateTimestamp="2009-11-03 17:57:32" onlineTimestamp="2009-11-01 10:57:24" />
+      <row typeID="20059" itemID="150354773" locationID="30001984" moonID="12513142" state="4" stateTimestamp="2009-11-03 15:25:12" onlineTimestamp="2009-10-01 11:24:35" />
+      <row typeID="12235" itemID="150357658" locationID="30001984" moonID="12513143" state="4" stateTimestamp="2009-11-03 17:57:32" onlineTimestamp="2008-07-01 16:10:44"/>
+      <row typeID="16286" itemID="150318232" locationID="30003109" moonID="12513144" state="1" stateTimestamp="2009-11-16 17:57:32" onlineTimestamp="2009-09-01 01:35:02"/>
     </rowset>
   </result>
-  <cachedUntil>2007-08-16 19:51:50</cachedUntil>
+  <cachedUntil>2009-08-16 19:51:50</cachedUntil>
 </eveapi>
