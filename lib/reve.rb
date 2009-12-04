@@ -87,7 +87,10 @@ module Reve
     @@corporate_medals_url         = 'http://api.eve-online.com/corp/Medals.xml.aspx'
     @@corp_member_medals_url       = 'http://api.eve-online.com/corp/MemberMedals.xml.aspx'
     @@server_status_url            = 'http://api.eve-online.com/Server/ServerStatus.xml.aspx'
-
+    @@personal_notification_url = 'http://api.eve-online.com/char/Notifications.xml.aspx'
+    @@personal_mailing_lists_url = 'http://api.eve-online.com/char/mailinglists.xml.aspx'
+    @@personal_mail_messages_url = 'http://api.eve-online.com/char/MailMessages.xml.aspx'
+    
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
                    :personal_wallet_balance_url, :corporate_wallet_balance_url, :member_tracking_url,
@@ -99,7 +102,8 @@ module Reve
                    :personal_faction_war_stats_url, :corporate_faction_war_stats_url,
                    :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url,
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
-                   :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url
+                   :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url,
+                   :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url
 
 
     attr_accessor :key, :userid, :charid
@@ -856,7 +860,42 @@ module Reve
       
       cs
     end
-
+    
+    # Gets the characters notifications. Returns a list of
+    # Reve::Classes::Notification
+    # Expects:
+    # * characterid ( Integer | String ) - Get the Notifications for this Character
+    # See also: Reve::Classes::Notification
+    def personal_notifications(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_notification_url))
+      return h if h
+      process_query(Reve::Classes::Notification, opts[:url] || @@personal_notification_url,false,args)
+    end
+    
+    # Gets the characters notifications. Returns a list of
+    # Reve::Classes::MailingList
+    # Expects:
+    # * characterid ( Integer | String ) - Get the MailingLists for this Character
+    # See also: Reve::Classes::MailingList
+    def personal_mailing_lists(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_mailing_lists_url))
+      return h if h
+      process_query(Reve::Classes::MailingList, opts[:url] || @@personal_mailing_lists_url,false,args)
+    end
+    
+    # Gets the characters notifications. Returns a list of
+    # Reve::Classes::MailMessage
+    # Expects:
+    # * characterid ( Integer | String ) - Get the MailMessages for this Character
+    # See also: Reve::Classes::MailMessage
+    def personal_mail_messages(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_mail_messages_url))
+      return h if h
+      process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
+    end
 
     protected
     # Sets up the post fields for Net::HTTP::Get hash for process_query method.

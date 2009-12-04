@@ -35,14 +35,14 @@ class TestExtensions < Test::Unit::TestCase
   
   
   def test_cattr_reader
-    assert CattrReaderTest.public_instance_methods.include?('test_reader')
+    assert CattrReaderTest.public_instance_methods.include?('test_reader'.to_sym) || CattrReaderTest.public_instance_methods.include?('test_reader')
   end
   def test_cattr_writer
-    assert CattrWriterTest.public_instance_methods.include?('test_writer=')
+    assert CattrWriterTest.public_instance_methods.include?('test_writer='.to_sym) || CattrWriterTest.public_instance_methods.include?('test_writer=')
   end
   def test_cattr_accessor
-    assert CattrReadWriterTest.public_instance_methods.include?('test_both')
-    assert CattrReadWriterTest.public_instance_methods.include?('test_both=')
+    assert CattrReadWriterTest.public_instance_methods.include?('test_both'.to_sym) || CattrReadWriterTest.public_instance_methods.include?('test_both')
+    assert CattrReadWriterTest.public_instance_methods.include?('test_both='.to_sym) || CattrReadWriterTest.public_instance_methods.include?('test_both=')
   end
   
   def test_string_to_time_clean
