@@ -1090,6 +1090,63 @@ class TestReve < Test::Unit::TestCase
     
     
   end
+  
+  def test_personal_notifications
+    Reve::API.personal_notification_url = XML_BASE + 'notifications.xml'
+    notifications = nil
+    assert_nothing_raised do
+      notifications = @api.personal_notifications(:characterid => 1)
+    end
+    assert_equal 2, notifications.length
+    assert_equal Reve::Classes::Notification, notifications.first.class
+    assert_equal 200076684, notifications.first.sender_id
+    assert_equal 16, notifications.first.notification_type_id
+    assert_equal Time.parse('2009-12-02 10:54:00 UTC'), notifications.first.send_date
+  end
+
+  def test_personal_mailing_lists
+    Reve::API.personal_mailing_lists_url = XML_BASE + 'mailing_lists.xml'
+    lists = nil
+    assert_nothing_raised do
+      lists = @api.personal_mailing_lists(:characterid => 1)
+    end
+    assert_equal 3, lists.length
+    assert_equal Reve::Classes::MailingList, lists.first.class
+    assert_equal 128250439, lists.first.id
+    assert_equal 'EVETycoonMail', lists.first.name
+    assert_equal 141157801, lists.last.id
+  end
+
+  def test_personal_mail_messages
+    Reve::API.personal_mail_messages_url = XML_BASE + 'mail_messages.xml'
+    mails = nil
+    assert_nothing_raised do
+      mails = @api.personal_mail_messages(:characterid => 1)
+    end
+    assert_equal 5, mails.length
+    assert_equal Reve::Classes::MailMessage, mails.first.class
+    # Corp Mail
+    assert_equal 1, mails.first.sender_id
+    assert_equal Time.parse('2009-12-01 01:04:00 UTC'), mails.first.send_date
+    assert_equal "Corp mail", mails.first.title
+    assert_equal 4, mails.first.to_corp_or_alliance_id
+    assert_equal nil, mails.first.to_character_ids
+    assert_equal nil, mails.first.to_list_ids
+    assert_equal true, mails.first.read
+    # Personal Mail
+    assert_equal nil, mails[1].to_corp_or_alliance_id
+    assert_equal [5], mails[1].to_character_ids
+    assert_equal nil, mails[1].to_list_ids
+    # list Mail
+    assert_equal nil, mails[2].to_corp_or_alliance_id
+    assert_equal nil, mails[2].to_character_ids
+    assert_equal [128250439], mails[2].to_list_ids
+    assert_equal false, mails[2].read
+    # multi personal
+    assert_equal [5,6,7], mails[3].to_character_ids
+    # multi list
+    assert_equal [128250439,141157801], mails[4].to_list_ids
+  end
 
   # Can we reassign a URL?
   def test_assignment

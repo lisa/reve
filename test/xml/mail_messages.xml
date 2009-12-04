@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2009-12-02 00:46:10</currentTime>
+  <result>
+    <rowset name="mailMessages" key="messageID" columns="messageID,senderID,sentDate,title,toCorpOrAllianceID,toCharacterIDs,toListIDs,read">
+      <row messageID="290285276" senderID="1" sentDate="2009-12-01 01:04:00" title="Corp mail" toCorpOrAllianceID="4" toCharacterIDs="" toListIDs="" read="1" />
+      <row messageID="290285275" senderID="2" sentDate="2009-12-01 01:04:00" title="Personal mail" toCorpOrAllianceID="" toCharacterIDs="5" toListIDs="" read="1" />
+      <row messageID="290285274" senderID="2" sentDate="2009-12-01 01:04:00" title="Message to mailing list" toCorpOrAllianceID="" toCharacterIDs="" toListIDs="128250439" read="0" />
+      <row messageID="290285278" senderID="2" sentDate="2009-12-01 01:04:00" title="Multi Personal mail" toCorpOrAllianceID="" toCharacterIDs="5,6,7" toListIDs="" read="1" />
+      <row messageID="290285279" senderID="2" sentDate="2009-12-01 01:04:00" title="Multi Message to mailing list" toCorpOrAllianceID="" toCharacterIDs="" toListIDs="128250439,141157801" read="0" />
+    </rowset>
+  </result>
+  <cachedUntil>2009-12-02 01:16:10</cachedUntil>
+</eveapi>
+ 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eveapi version="2">
+  <currentTime>2009-12-03 20:34:09</currentTime>
+  <result>
+    <rowset name="notifications" key="notificationID" columns="notificationID,typeID,senderID,sentDate,read">
+      <row notificationID="290369614" typeID="16" senderID="200076684" sentDate="2009-12-02 10:54:00" read="1"/>
+      <row notificationID="289645395" typeID="1" senderID="1000064" sentDate="2009-11-26 01:34:00" read="0"/>
+    </rowset>
+  </result>
+  <cachedUntil>2009-12-03 21:04:09</cachedUntil>
+</eveapi>
