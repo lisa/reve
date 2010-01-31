@@ -82,6 +82,7 @@ class TestReve < Test::Unit::TestCase
       File.open(File.join(SAVE_PATH,'alliances',@api.cached_until.to_i.to_s + '.xml')).read)
   end
   
+
   def test_saving_xml_when_save_path_is_nil
     assert_nil @api.save_path
     alliances = @api.alliances :url => File.join(XML_BASE,'alliances.xml')
@@ -133,6 +134,25 @@ class TestReve < Test::Unit::TestCase
       assert_not_nil(error.text)
     end
   end
+  
+  def test_research_api_call
+    Reve::API.research_url = XML_BASE + 'research.xml'
+    research = nil
+    assert_nothing_raised do
+      research = @api.research :characterid => 123
+    end
+    assert_not_nil(research)
+    assert_not_nil(@api.last_hash)
+    assert_equal(4, research.size)
+    research.each do |ri|
+      assert_kind_of(Fixnum, ri.agent_id)
+      assert_kind_of(Fixnum, ri.skill_type_id)
+      assert_kind_of(Time, ri.research_started_at)
+      assert_kind_of(Float, ri.points_per_day)
+      assert_kind_of(Float, ri.remainder_points)
+    end
+  end
+  
   
   def test_corporation_sheet_clean
     Reve::API.corporation_sheet_url = XML_BASE + 'corporation_sheet.xml'
