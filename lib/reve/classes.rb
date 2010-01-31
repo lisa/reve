@@ -1274,22 +1274,25 @@ module Reve #:nodoc:
     # Used for a list of Starbases, Reve::API#starbases
     # Attributes
     # * type_id ( Fixnum ) - Type of Starbase (Refer to CCP database dump invtypes)
-    # * type_name ( String ) - Name of the type of Starbase
     # * id ( Fixnum ) - ID of the Starbase
     # * system_id ( Fixnum ) - ID of the System where the Starbase is
-    # * system_name ( Starbase ) - Name of the System where the Starbase is
+    # * moon_id ( Fixnum ) - ID of the Moon where the Starbase is
+    # * state ( Fixnum ) - Mode of the POS. See Known POS States, below, see: http://wiki.eve-id.net/APIv2_Corp_StarbaseList_XML
+    # * state_timestamp ( Time ) - Depends on the state, for example cycle time or Reinforced until
+    # * online_timestamp ( Time ) - Since when the starbase is online
     # See Also: StarbaseFuel, Reve::API#starbases, Reve::API#starbase_fuel
     class Starbase
-      attr_reader :type_id, :type_name, :id, :system_id, :system_name
+      attr_reader :type_id, :type_name, :id, :system_id, :moon_id, :state, :state_timestamp, :online_timestamp
       alias_method :item_id, :id
       alias_method :location_id,:system_id
-      alias_method :location_name, :system_name
       def initialize(elem) #:nodoc:
         @type_id = elem['typeID'].to_i
-        @type_name = elem['typeName']
         @id = elem['itemID'].to_i
         @system_id = elem['locationID'].to_i
-        @system_name = elem['locationName']
+        @moon_id = elem['moonID'].to_i
+        @state = elem['state'].to_i
+        @state_timestamp = elem['stateTimestamp'].to_time
+        @online_timestamp = elem['onlineTimestamp'].to_time
       end
     end
     
@@ -1401,6 +1404,63 @@ module Reve #:nodoc:
     # For Personal WalletTransaction (WalletTransaction#transaction_for == 'personal')
     # See WalletTransaction
     class PersonalWalletTransaction < WalletTransaction
+    end
+    
+    # Represents a MailingList for
+    # Reve::API#personal_mailing_lists
+    # Attributes
+    # * id ( Fixnum ) - ID of the MailingList (use this in the Reve::API#mail_messages call)
+    # * name ( String ) - Name of the MailingList
+    class MailingList
+      attr_reader :id, :name
+      def initialize(elem) #:nodoc:
+        @id = elem['listID'].to_i
+        @name = elem['displayName']
+      end      
+    end
+    
+    # Represents a MailMessage for
+    # Reve::API#personal_mail_messages
+    # Attributes
+    # * id ( Fixnum ) - The unique message ID number. 
+    # * sender_id ( Fixnum ) - The character ID of the message originator. (use Reve::API#character_name to get their names)
+    # * send_date ( Time ) - The date the message was sent. 
+    # * title ( String ) - The title of the message 
+    # * to_corp_or_alliance_id ( Fixnum ) - The ID of a corporation/alliance that the message was sent to. 
+    # * to_character_ids ( [Fixnum] ) - Array of character IDs of the characters that received the message. 
+    # * to_list_ids ( [Fixnum] ) - Array of mailing lists that the mail was sent to. (use Reve::API#personal_mailing_lists to get their names)
+    # * read ( Boolean ) - Whether the mail/notification has been read in the EVE client. This does not change when you get it through the API. 
+    class MailMessage
+      attr_reader :id, :name, :sender_id, :send_date, :title, :to_corp_or_alliance_id, :to_character_ids, :to_list_ids, :read
+      def initialize(elem) #:nodoc:
+        @id = elem['messageID'].to_i
+        @sender_id = elem['senderID'].to_i
+        @send_date = elem['sentDate'].to_time
+        @title = elem['title']
+        @to_corp_or_alliance_id = elem['toCorpOrAllianceID'] == '' ? nil : elem['toCorpOrAllianceID'].to_i
+        @to_character_ids = elem['toCharacterIDs'] == '' ? nil : elem['toCharacterIDs'].split(',').collect {|id| id.to_i }
+        @to_list_ids = elem['toListIDs'] == '' ? nil : elem['toListIDs'].split(',').collect {|id| id.to_i }
+        @read = elem['read'] == '1'
+      end      
+    end
+    
+    # Represents a Notification for
+    # Reve::API#personal_notifications
+    # Attributes
+    # * id ( Fixnum ) - The unique notification ID number.
+    # * notification_type_id ( Fixnum ) - The notification type indicates what has happened but not who performed the action in question nor upon whom the action was performed. See http://wiki.eve-id.net/APIv2_Char_Notifications_XML for a list of ids
+    # * sender_id ( Fixnum ) - TThe ID of the entity that sent the notification. 
+    # * send_date ( Time ) - The ID of the entity that sent the notification. 
+    # * read ( Boolean ) - Whether the notification has been read in the EVE client. This does not change when you get it through the API. 
+    class Notification
+      attr_reader :id, :name, :notification_type_id, :sender_id, :send_date, :read
+      def initialize(elem) #:nodoc:
+        @id = elem['notificationID'].to_i
+        @notification_type_id = elem['typeID'].to_i
+        @sender_id = elem['senderID'].to_i
+        @send_date = elem['sentDate'].to_time
+        @read = elem['read'] == '1'
+      end      
     end
   end
 end
