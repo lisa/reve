@@ -87,6 +87,7 @@ module Reve
     @@corporate_medals_url         = 'http://api.eve-online.com/corp/Medals.xml.aspx'
     @@corp_member_medals_url       = 'http://api.eve-online.com/corp/MemberMedals.xml.aspx'
     @@server_status_url            = 'http://api.eve-online.com/Server/ServerStatus.xml.aspx'
+    @@research_url                 = 'http://api.eve-online.com/char/Research.xml.aspx'
 
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
@@ -99,7 +100,8 @@ module Reve
                    :personal_faction_war_stats_url, :corporate_faction_war_stats_url,
                    :general_faction_war_stats_url, :top_faction_war_stats_url, :faction_war_occupancy_url,
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
-                   :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url
+                   :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url,
+                   :research_url
 
 
     attr_accessor :key, :userid, :charid
@@ -334,6 +336,19 @@ module Reve
       h = compute_hash(args.merge(:url => @@member_tracking_url))
       return h if h
       process_query(Reve::Classes::MemberTracking,opts[:url] || @@member_tracking_url,false,args)
+    end
+    
+    
+    # Gets one's research stats from agents
+    # http://api.eve-online/char/Research.xml.aspx
+    # Expects:
+    # * characterid ( Integer | String ) - Get stats for this Character
+    # See also: Reve::Classes::Research
+    def research(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@research_url))
+      return h if h
+      process_query(Reve::Classes::Research,opts[:url] || @@research_url,false,args)      
     end
 
     # Gets one's own personal WalletBalance from
