@@ -435,6 +435,8 @@ module Reve #:nodoc:
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'] == "1"
         @assets = []
+        #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
+        #@xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
     
@@ -453,6 +455,8 @@ module Reve #:nodoc:
         @quantity = elem['quantity'].to_i
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'].to_i
+        #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
+        #@xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
 
@@ -1476,7 +1480,7 @@ module Reve #:nodoc:
         @title = elem['title']
         @to_corp_or_alliance_id = elem['toCorpOrAllianceID'] == '' ? nil : elem['toCorpOrAllianceID'].to_i
         @to_character_ids = elem['toCharacterIDs'] == '' ? nil : elem['toCharacterIDs'].split(',').collect {|id| id.to_i }
-        @to_list_ids = elem['toListIDs'] == '' ? nil : elem['toListIDs'].split(',').collect {|id| id.to_i }
+        @to_list_ids = elem['toListID'] == '' ? nil : elem['toListID'].split(',').collect {|id| id.to_i }
         @read = elem['read'] == '1'
       end      
     end
