@@ -425,7 +425,7 @@ module Reve #:nodoc:
     # * assets ( [Asset] ) - A list of Asset objects that are contained in this AssetContainer.
     # See Also: Asset, Reve::API#corporate_assets_list, Reve::API#personal_assets_list
     class AssetContainer
-      attr_reader :item_id, :location_id, :type_id, :quantity, :flag, :singleton
+      attr_reader :item_id, :location_id, :type_id, :quantity, :flag, :singleton, :xml_hash
       attr_accessor :assets
       def initialize(elem)
         @item_id = elem['itemID'].to_i
@@ -436,7 +436,7 @@ module Reve #:nodoc:
         @singleton = elem['singleton'] == "1"
         @assets = []
         #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
-        #@xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
+        @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
     
@@ -448,7 +448,7 @@ module Reve #:nodoc:
     # * flag ( Fixnum ) - Inventory flag, refer to http://wiki.eve-dev.net/API_Inventory_Flags (See also KillLoss's flag)
     # See Also: AssetContainer, Reve::API#corporate_assets_list, Reve::API#personal_assets_list
     class Asset
-      attr_reader :item_id, :type_id, :quantity, :flag, :singleton
+      attr_reader :item_id, :type_id, :quantity, :flag, :singleton, :xml_hash
       def initialize(elem) #:nodoc:
         @item_id = elem['itemID'].to_i
         @type_id = elem['typeID'].to_i
@@ -456,7 +456,7 @@ module Reve #:nodoc:
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'].to_i
         #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
-        #@xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
+        @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
 
@@ -1244,8 +1244,8 @@ module Reve #:nodoc:
       attr_reader :queue_position, :end_time, :start_time, :type_id, :start_sp, :end_sp, :to_level
       def initialize(elem) #:nodoc:
         @queue_position = elem['queuePosition'].to_i
-        @end_time         = elem['endTime'].to_time
-        @start_time       = elem['startTime'].to_time
+        @end_time         = elem['endTime'] == "" ? nil : elem['endTime'].to_time
+        @start_time       = elem['startTime'] == "" ? nil : elem['startTime'].to_time
         @type_id          = elem['typeID'].to_i
         @start_sp         = elem['startSP'].to_i
         @end_sp           = elem['endSP'].to_i

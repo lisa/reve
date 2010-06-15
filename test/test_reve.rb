@@ -935,7 +935,15 @@ class TestReve < Test::Unit::TestCase
     assert_not_nil queue.first.to_level
     assert_not_nil queue.first.start_sp
     assert_not_nil queue.first.end_sp
-    assert_equal 9, queue.length    
+    assert_equal 9, queue.length
+    Reve::API.skill_queue_url = XML_BASE + 'skill_queue-paused.xml'
+    queue = nil
+    assert_nothing_raised do
+      queue = @api.skill_queue(:characerid => 1)
+    end
+    assert_kind_of(Reve::Classes::QueuedSkill, queue.first)
+    assert_nil queue.first.start_time
+    assert_nil queue.first.end_time
   end
 
   def test_corporate_medals

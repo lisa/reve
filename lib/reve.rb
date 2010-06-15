@@ -14,6 +14,7 @@ end
 require 'net/http'
 require 'uri'
 require 'cgi'
+require 'digest'
 require 'fileutils'
 
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
