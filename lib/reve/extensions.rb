@@ -87,28 +87,6 @@ module Reve #:nodoc:
         end
       end
     end
-    module Array
-      def to_hash(space = 0)
-        hash = ""
-        each do |c|
-          vars = []
-          c.instance_variables.each do |m|
-            data = c.instance_variable_get(m)
-            if data.kind_of? Array
-              if data.length == 0
-                vars << "#{m} => {}"
-              else
-                vars << "#{m} => {\n#{data.to_hash(space + 1)}}"
-              end
-            else
-              vars << " #{m} => #{data}"
-            end
-          end
-          hash << "#{' ' * space}{#{vars.join(',')}}\n"
-        end
-        hash
-      end
-    end
 
   end
 end
@@ -127,10 +105,6 @@ end
 
 class NilClass #:nodoc:
   include Reve::Extensions::NilClass
-end
-
-class Array #:nodoc:
-  include Reve::Extensions::Array
 end
 
 class Object
