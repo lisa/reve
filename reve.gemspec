@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{reve}
-  s.version = "0.0.120"
+  s.version = "0.0.130"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lisa Seelye"]
-  s.date = %q{2010-04-03}
+  s.date = %q{2010-08-21}
   s.email = %q{lisa@thedoh.com}
   s.extra_rdoc_files = [
     "ChangeLog"
@@ -146,6 +146,7 @@ Gem::Specification.new do |s|
      "test/xml/server_status.xml",
      "test/xml/skill_in_training-amarr-titan.xml",
      "test/xml/skill_in_training-none.xml",
+     "test/xml/skill_queue-paused.xml",
      "test/xml/skill_queue.xml",
      "test/xml/skilltree.xml",
      "test/xml/sovereignty.xml",
