@@ -425,7 +425,7 @@ module Reve #:nodoc:
     # * assets ( [Asset] ) - A list of Asset objects that are contained in this AssetContainer.
     # See Also: Asset, Reve::API#corporate_assets_list, Reve::API#personal_assets_list
     class AssetContainer
-      attr_reader :item_id, :location_id, :type_id, :quantity, :flag, :singleton
+      attr_reader :item_id, :location_id, :type_id, :quantity, :flag, :singleton, :xml_hash
       attr_accessor :assets
       def initialize(elem)
         @item_id = elem['itemID'].to_i
@@ -435,6 +435,8 @@ module Reve #:nodoc:
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'] == "1"
         @assets = []
+        #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
+        @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
     
@@ -446,13 +448,15 @@ module Reve #:nodoc:
     # * flag ( Fixnum ) - Inventory flag, refer to http://wiki.eve-dev.net/API_Inventory_Flags (See also KillLoss's flag)
     # See Also: AssetContainer, Reve::API#corporate_assets_list, Reve::API#personal_assets_list
     class Asset
-      attr_reader :item_id, :type_id, :quantity, :flag, :singleton
+      attr_reader :item_id, :type_id, :quantity, :flag, :singleton, :xml_hash
       def initialize(elem) #:nodoc:
         @item_id = elem['itemID'].to_i
         @type_id = elem['typeID'].to_i
         @quantity = elem['quantity'].to_i
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'].to_i
+        #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
+        @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
 
@@ -1240,8 +1244,8 @@ module Reve #:nodoc:
       attr_reader :queue_position, :end_time, :start_time, :type_id, :start_sp, :end_sp, :to_level
       def initialize(elem) #:nodoc:
         @queue_position = elem['queuePosition'].to_i
-        @end_time         = elem['endTime'].to_time
-        @start_time       = elem['startTime'].to_time
+        @end_time         = elem['endTime'] == "" ? nil : elem['endTime'].to_time
+        @start_time       = elem['startTime'] == "" ? nil : elem['startTime'].to_time
         @type_id          = elem['typeID'].to_i
         @start_sp         = elem['startSP'].to_i
         @end_sp           = elem['endSP'].to_i
@@ -1296,16 +1300,53 @@ module Reve #:nodoc:
       end
     end
     
-    # Used for the fuel status of a Starbase. See Reve::API#starbase_fuel
-    # starbase_id is set in the Reve::API#starbase_fuel method and not here
+    # Returns the starbase details for the Starbase whose item id is starbase_id
     # Attributes
-    # * type_id ( Fixnum ) - Type of fuel in the Starbase (Refer to CCP database dump invtypes)
-    # * quantity ( Fixnum ) - How much of the fuel is in the Starbase
-    # * starbase_id ( Fixnum ) - ID of the Starbase
-    # See Also: Starbase, Reve::API#starbase_fuel, Reve::API#starbases
+    # * state ( Fixnum ) - State of the starbase (Refer to CCP database dump invtypes)
+    # * state_timestamp ( Time ) - Depents on state
+    # * online_timestamp ( Time ) - Since when this starbase is online
+    # * general_settings ( StarbaseGeneralSettings ) - See StarbaseGeneralSettings
+    # * combat_settings ( StarbaseCombatSettings ) - See StarbaseCombatSettings
+    # * fuel ( [StarbaseFuel ] ) - See StarbaseFuel
+    # See Also: Starbase, StarbaseGeneralSettings, StarbaseCombatSettings, StarbaseFuel, Reve::API#starbase_details, Reve::API#starbases
+    class StarbaseDetails
+      attr_reader :state, :state_timestamp, :online_timestamp
+      attr_accessor :general_settings, :combat_settings, :fuel
+      
+      def initialize(elem, general_settings, combat_settings, fuel) #:nodoc:
+        @state = elem[:state].to_i
+        @state_timestamp = elem[:state_timestamp].to_time
+        @online_timestamp = elem[:online_timestamp].to_time
+        @general_settings = general_settings
+        @combat_settings = combat_settings
+        @fuel = fuel
+      end
+    end
+    
+    class StarbaseGeneralSettings
+      attr_reader :usage_flags, :deploy_flags, :allow_corporation_members,
+                  :allow_alliance_members, :claim_sovereignty
+      def initialize(elem) #:nodoc:
+        @usage_flags                = elem['usageFlags'].to_i
+        @deploy_flags               = elem['deployFlags'].to_i
+        @allow_corporation_members  = elem['allowCorporationMembers'] == '1'
+        @allow_alliance_members     = elem['allowAllianceMembers'] == '1'
+        @claim_sovereignty          = elem['claimSovereignty'] == '1'
+      end
+    end
+    
+    class StarbaseCombatSettings
+      attr_reader :on_standings_drop, :on_status_drop, :on_aggression, :on_corporation_war
+      def initialize(elem) #:nodoc:
+        @on_standings_drop  = elem['onStandingDrop'].attr('standing').to_i
+        @on_status_drop     = (elem['onStatusDrop'].attr('enabled') == '1' ? elem['onStatusDrop'].attr('standing').to_i : false)
+        @on_aggression      = elem['onAggression'].attr('enabled') == '1'
+        @on_corporation_war = elem['onCorporationWar'].attr('enabled') == '1'
+      end
+    end
+    
     class StarbaseFuel
       attr_reader :type_id, :quantity
-      attr_accessor :starbase_id
       def initialize(elem) #:nodoc:
         @type_id = elem['typeID'].to_i
         @quantity = elem['quantity'].to_i
@@ -1439,7 +1480,7 @@ module Reve #:nodoc:
         @title = elem['title']
         @to_corp_or_alliance_id = elem['toCorpOrAllianceID'] == '' ? nil : elem['toCorpOrAllianceID'].to_i
         @to_character_ids = elem['toCharacterIDs'] == '' ? nil : elem['toCharacterIDs'].split(',').collect {|id| id.to_i }
-        @to_list_ids = elem['toListIDs'] == '' ? nil : elem['toListIDs'].split(',').collect {|id| id.to_i }
+        @to_list_ids = elem['toListID'] == '' ? nil : elem['toListID'].split(',').collect {|id| id.to_i }
         @read = elem['read'] == '1'
       end      
     end
