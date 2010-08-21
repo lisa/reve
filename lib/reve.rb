@@ -1,5 +1,6 @@
 #--
 # Code copyright Lisa Seelye, 2007-2010. www.crudvision.com
+# Contributors at: http://github.com/lisa/reve/contributors
 # This library is licensed under the terms of the MIT license. For full text
 # see the LICENSE file distributed with this package.
 # (Also, send Raquel Smith some ISK if you would like to show appreciation ;-)
