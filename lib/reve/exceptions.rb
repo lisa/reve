@@ -57,6 +57,8 @@ module Reve
         raise UnexpectedBeforeKillID.new(msg)
       when 121
         raise BadBeforeKillID.new(msg)
+      when 122
+        raise InvalidOrMissingListOfNames.new(msg)
       when 200
         raise SecurityLevelNotHighEnough.new(msg + ' (Should you be using the full API Key?)')
       when 201
@@ -213,6 +215,9 @@ module Reve
     end
     # 121
     class BadBeforeKillID < ReveError #:nodoc:
+    end
+    # 122
+    class InvalidOrMissingListOfNames < ReveError #:nodoc:
     end
     # 200
     class SecurityLevelNotHighEnough < ReveError #:nodoc:
