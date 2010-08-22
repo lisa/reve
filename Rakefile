@@ -23,7 +23,7 @@ if File.exists?('.git')
       s.rubyforge_project = "reve"
       s.author = "Lisa Seelye"
       s.email = "lisa@thedoh.com"
-      s.homepage = "http://revetrac.crudvision.com"
+      s.homepage = "http://github.com/lisa/reve"
       s.platform = Gem::Platform::RUBY
       s.summary = "Reve is a Ruby library to interface with the Eve Online API"
       s.files = FileList["Rakefile","LICENSE", "lib/**/*.rb","reve.rb","tester.rb","init.rb"].to_a
