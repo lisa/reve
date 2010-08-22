@@ -1252,13 +1252,6 @@ class TestReve < Test::Unit::TestCase
     assert_equal real,time
   end
   
-  protected
-  def get_api(userid = nil, apikey = nil, charid = nil)
-    api = Reve::API.new(userid, apikey, charid)
-    api.save_path = nil
-    api
-  end
-  
   # no need to test corporate cos they're the same.
   # TODO: Test with nested losses
   def kills_cleanly(meth = :personal_kills,url = File.join(XML_BASE,'kills.xml'))
@@ -1308,4 +1301,11 @@ class TestReve < Test::Unit::TestCase
     end
   end
 
+  #### All tests above this method.
+  protected
+  def get_api(userid = nil, apikey = nil, charid = nil)
+    api = Reve::API.new(userid, apikey, charid)
+    api.save_path = nil
+    api
+  end
 end
