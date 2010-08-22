@@ -1252,6 +1252,16 @@ class TestReve < Test::Unit::TestCase
     assert_equal real,time
   end
   
+  # It's useful to know the version and we'll stick it in the user agent
+  # now as well.
+  def test_reve_version
+    # Path to Reve version is ../VERSION. We rely on File.read here and in the
+    # class so it's kind of crummy.
+    version = File.read(File.join(File.dirname(__FILE__),'../','VERSION'))
+    assert_equal(@api.reve_version, version)
+    assert_equal("Reve v#{version}; http://github.com/lisa/reve", @api.http_user_agent)
+  end
+  
   # no need to test corporate cos they're the same.
   # TODO: Test with nested losses
   def kills_cleanly(meth = :personal_kills,url = File.join(XML_BASE,'kills.xml'))
