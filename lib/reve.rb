@@ -111,7 +111,7 @@ module Reve
 
 
     attr_accessor :key, :userid, :charid
-    attr_accessor :http_user_agent, :save_path
+    attr_accessor :http_user_agent, :save_path, :timeout
     attr_reader :current_time, :cached_until, :last_hash, :reve_version
     
     # Create a new API instance.
@@ -129,6 +129,7 @@ module Reve
       @save_path = nil
       
       @max_tries = 3
+      @timeout = 20
 
       @current_time = nil
       @cached_until = nil
@@ -1039,7 +1040,10 @@ module Reve
           begin
             # ||= to prevent making a new Net::HTTP object, the res = nil above should reset this for the next request.
             # the request needs to be here to rescue exceptions from it.
-            res ||= Net::HTTP.new(source.host, source.port).start {|http| http.request(req) }
+            http ||= Net::HTTP.new(source.host, source.port)
+            http.open_timeout = 3
+            http.read_timeout = @timeout
+            res = http.start {|http| http.request(req) }
             case res
             when Net::HTTPSuccess, Net::HTTPRedirection
               response = res.body
