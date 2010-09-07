@@ -1034,7 +1034,7 @@ module Reve #:nodoc:
         @installed_item_material_level = elem['installedItemMaterialLevel'].to_i
         @installed_item_licensed_production_runs_remaining = elem['installedItemLicensedProductionRunsRemaining'].to_i
         @output_location_id = elem['outputLocationID'].to_i ; @installer_id = elem['installerID'].to_i; @runs = elem['runs'].to_i
-        @licensed_production_runs = elem['licensedProductionRuns'].to_i ; @installed_system_id = elem['installedSolarSystemID'].to_i
+        @licensed_production_runs = elem['licensedProductionRuns'].to_i ; @installed_system_id = elem['installedInSolarSystemID'].to_i
         @container_location_id = elem['containerLocationID'].to_i ; @material_multiplier = elem['materialMultiplier'].to_f
         @char_material_multiplier = elem['charMaterialMultiplier'].to_f; @time_multiplier = elem['timeMultiplier'].to_f
         @char_time_multiplier = elem['charTimeMultiplier'].to_f ; @installed_item_type_id = elem['installedItemTypeID'].to_i
