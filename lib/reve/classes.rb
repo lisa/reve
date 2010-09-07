@@ -1266,12 +1266,11 @@ module Reve #:nodoc:
     # See Also: Alliance, Reve::API#alliances
     # TODO: Find out what constellationSovereignty is
     class Sovereignty
-      attr_reader :system_id, :alliance_id, :constellation_sovereignty, :level, :faction_id, :system_name
+      attr_reader :system_id, :alliance_id, :corporation_id, :factionID, :faction_id, :system_name
       def initialize(elem) #:nodoc:
         @system_id                 = elem['solarSystemID'].to_i
         @alliance_id               = elem['allianceID'] == '0' ? nil : elem['allianceID'].to_i
-        @constellation_sovereignty = elem['constellationSovereignty'].to_i
-        @level                     = elem['sovereigntyLevel'].to_i if elem['sovereigntyLevel']
+        @corporation_id             = elem['corporationID'] == '0' ? nil : elem['corporationID'].to_i
         @faction_id                = elem['factionID'] == '0' ? nil : elem['factionID'].to_i
         @system_name               = elem['solarSystemName']
       end

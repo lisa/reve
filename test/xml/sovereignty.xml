@@ -1,29 +1,23 @@
-<eveapi version="1">
-  <currentTime>2007-06-18 22:42:00</currentTime>
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2010-09-07 10:47:30</currentTime>
   <result>
-    <rowset name="solarSystems">
-      <row solarSystemID="30000001" allianceID="0"
-      constellationSovereignty="0" sovereigntyLevel="0"
-      factionID="500007" solarSystemName="Tanoo" />
-      <row solarSystemID="30000002" allianceID="0"
-      constellationSovereignty="0" sovereigntyLevel="0"
-      factionID="500007" solarSystemName="Lashesih" />
-      <row solarSystemID="30000003" allianceID="0"
-      constellationSovereignty="0" sovereigntyLevel="0"
-      factionID="500007" solarSystemName="Akpivem" />
-      <row solarSystemID="30000004" allianceID="0"
-      constellationSovereignty="0" sovereigntyLevel="0"
-      factionID="500007" solarSystemName="Jark" />
-      <row solarSystemID="30000005" allianceID="0"
-      constellationSovereignty="0" sovereigntyLevel="0"
-      factionID="500007" solarSystemName="Sasta" />
-      <row solarSystemID="30000006" allianceID="0"
-      constellationSovereignty="0" sovereigntyLevel="0"
-      factionID="500007" solarSystemName="Zaid" />
-      <row solarSystemID="30000007" allianceID="0"
-      constellationSovereignty="0" sovereigntyLevel="0"
-      factionID="500007" solarSystemName="Yuzier" />
+    <rowset name="solarSystems" key="solarSystemID" columns="solarSystemID,allianceID,factionID,solarSystemName,corporationID">
+      <row solarSystemID="30000203" allianceID="0" factionID="500001" solarSystemName="Eruka" corporationID="0" />
+      <row solarSystemID="30000204" allianceID="0" factionID="500001" solarSystemName="Ohkunen" corporationID="0" />
+      <row solarSystemID="30000205" allianceID="0" factionID="500001" solarSystemName="Obe" corporationID="0" />
+      <row solarSystemID="30000206" allianceID="0" factionID="500001" solarSystemName="Wirashoda" corporationID="0" />
+      <row solarSystemID="30000207" allianceID="0" factionID="500001" solarSystemName="Osaa" corporationID="0" />
+
+      <row solarSystemID="30000208" allianceID="212716751" factionID="0" solarSystemName="LZ-6SU" corporationID="1628348921" />
+      <row solarSystemID="30000209" allianceID="212716751" factionID="0" solarSystemName="MC6O-F" corporationID="1628348921" />
+      <row solarSystemID="30000210" allianceID="212716751" factionID="0" solarSystemName="U54-1L" corporationID="847483660" />
+      <row solarSystemID="30000211" allianceID="212716751" factionID="0" solarSystemName="B-588R" corporationID="224161983" />
+
+      <row solarSystemID="30000230" allianceID="0" factionID="0" solarSystemName="NFM-0V" corporationID="0" />
+      
     </rowset>
+    <dataTime>2010-09-07 10:00:41</dataTime>
   </result>
-  <cachedUntil>2007-06-18 23:42:00</cachedUntil>
+  <cachedUntil>2010-09-07 11:47:30</cachedUntil>
 </eveapi>
