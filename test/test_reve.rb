@@ -270,6 +270,7 @@ class TestReve < Test::Unit::TestCase
           assert_not_nil job.send(att)
       end
     end
+	assert jobs.last.installed_system_id != 0
   end
   
   def test_corporate_industry_jobs_clean
