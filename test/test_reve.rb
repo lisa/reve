@@ -581,13 +581,25 @@ class TestReve < Test::Unit::TestCase
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
-    assert_equal 7, sovereignties.size
-    sovereignties.each do |sovereignty|
+    assert_equal 10, sovereignties.size
+    sovereignties[0..4].each do |sovereignty|
       assert_instance_of Reve::Classes::Sovereignty, sovereignty
       assert_not_nil sovereignty.system_id
-      assert_not_nil sovereignty.constellation_sovereignty
       assert_not_nil sovereignty.system_name
+	    assert_not_nil sovereignty.faction_id
+	    assert_nil     sovereignty.alliance_id
     end
+    sovereignties[5..8].each do |sovereignty|
+      assert_instance_of Reve::Classes::Sovereignty, sovereignty
+      assert_not_nil sovereignty.system_id
+      assert_not_nil sovereignty.system_name
+	    assert_not_nil sovereignty.alliance_id
+	    assert_not_nil sovereignty.corporation_id
+	    assert_nil     sovereignty.faction_id
+    end
+    assert_nil sovereignties[-1].alliance_id
+    assert_nil sovereignties[-1].corporation_id
+    assert_nil sovereignties[-1].faction_id
   end
 
   def test_reftypes_clean
