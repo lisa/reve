@@ -692,7 +692,6 @@ module Reve #:nodoc:
         @id = elem['stationID'].to_i
         @name = elem['stationName']
         @type_id = elem['stationTypeID'].to_i
-        @system_id = elem['solarSystemID'].to_i
         @corporation_id = elem['corporationID'].to_i
         @corporation_name = elem['corporationName']
         @system_id = elem['solarSystemID'].to_i
