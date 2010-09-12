@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{reve}
-  s.version = "0.0.130"
+  s.version = "0.0.131"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lisa Seelye"]
-  s.date = %q{2010-08-21}
+  s.date = %q{2010-08-22}
   s.email = %q{lisa@thedoh.com}
   s.extra_rdoc_files = [
     "ChangeLog"
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
      "reve.rb",
      "tester.rb"
   ]
-  s.homepage = %q{http://revetrac.crudvision.com}
+  s.homepage = %q{http://github.com/lisa/reve}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{reve}
