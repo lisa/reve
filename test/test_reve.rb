@@ -295,6 +295,26 @@ class TestReve < Test::Unit::TestCase
     end
   end
   
+  def test_personal_contacts_clean
+    Reve::API.personal_contacts_url = XML_BASE + 'char_contacts.xml'
+    contacts = @api.personal_contacts
+    assert_equal(2, contacts.length)
+    assert_equal("Hirento Raikkanen", contacts.first.contact_name )
+    assert_equal(3010913, contacts.first.contact_id )
+    assert_equal(false, contacts.first.in_watchlist )
+    assert_equal(0, contacts.first.standing )
+  end
+  
+  def test_corporate_contacts_clean
+    Reve::API.corporate_contacts_url = XML_BASE + 'char_contacts.xml'
+    contacts = @api.corporate_contacts
+    assert_equal(2, contacts.length)
+    assert_equal("Hirento Raikkanen", contacts.first.contact_name )
+    assert_equal(3010913, contacts.first.contact_id )
+    assert_equal(false, contacts.first.in_watchlist )
+    assert_equal(0, contacts.first.standing )
+  end
+  
   def test_faction_war_system_stats_clean(skip_preamble = false,stats = nil)
     Reve::API.faction_war_occupancy_url = XML_BASE + 'map_facwarsystems.xml'
     unless skip_preamble # not best practice but will get the job done!

@@ -90,9 +90,11 @@ module Reve
     @@corp_member_medals_url       = 'http://api.eve-online.com/corp/MemberMedals.xml.aspx'
     @@server_status_url            = 'http://api.eve-online.com/Server/ServerStatus.xml.aspx'
     @@research_url                 = 'http://api.eve-online.com/char/Research.xml.aspx'
-    @@personal_notification_url = 'http://api.eve-online.com/char/Notifications.xml.aspx'
-    @@personal_mailing_lists_url = 'http://api.eve-online.com/char/mailinglists.xml.aspx'
-    @@personal_mail_messages_url = 'http://api.eve-online.com/char/MailMessages.xml.aspx'
+    @@personal_notification_url    = 'http://api.eve-online.com/char/Notifications.xml.aspx'
+    @@personal_mailing_lists_url   = 'http://api.eve-online.com/char/mailinglists.xml.aspx'
+    @@personal_mail_messages_url   = 'http://api.eve-online.com/char/MailMessages.xml.aspx'
+    @@personal_contacts_url        = 'http://api.eve-online.com/char/ContactList.xml.aspx'
+    @@corporate_contacts_url        = 'http://api.eve-online.com/corp/ContactList.xml.aspx'
     
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
@@ -107,7 +109,7 @@ module Reve
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
                    :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url,
                    :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url,
-                   :research_url
+                   :research_url, :personal_contacts_url, :corporate_contacts_url
 
 
     attr_accessor :key, :userid, :charid
@@ -294,7 +296,23 @@ module Reve
       return h if h
       process_query(Reve::Classes::CorporateIndustryJob, opts[:url] || @@corporate_industry_jobs_url,false,args)
     end
-
+    
+    # Returns a list of Reve::Classes::PersonalContact objects.
+    def personal_contacts(opts = {:characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_contacts_url))
+      return h if h
+      process_query(Reve::Classes::PersonalContact, opts[:url] || @@personal_contacts_url,false,args)
+    end
+    
+    # Returns a list of Reve::Classes::CorporateContact objects.
+    def corporate_contacts(opts = {:characterid => nil})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@corporate_contacts_url))
+      return h if h
+      process_query(Reve::Classes::PersonalContact, opts[:url] || @@corporate_contacts_url,false,args)
+    end
+        
     # Returns the SkillTree from
     # http://api.eve-online.com/eve/SkillTree.xml.aspx
     # See also: Reve::Classes::SkillTree
