@@ -26,7 +26,7 @@ if File.exists?('.git')
       s.homepage = "http://github.com/lisa/reve"
       s.platform = Gem::Platform::RUBY
       s.summary = "Reve is a Ruby library to interface with the Eve Online API"
-      s.files = FileList["Rakefile","LICENSE", "lib/**/*.rb","reve.rb","tester.rb","init.rb"].to_a
+      s.files = FileList["Rakefile","VERSION","LICENSE", "lib/**/*.rb","reve.rb","tester.rb","init.rb"].to_a
       s.require_path = "lib"
       s.test_files = FileList["test/test_reve.rb","test/xml/**/*.xml"].to_a
       s.has_rdoc = true
