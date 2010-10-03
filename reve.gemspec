@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{reve}
-  s.version = "0.0.131"
+  s.version = "0.0.132"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lisa Seelye"]
-  s.date = %q{2010-08-22}
+  s.date = %q{2010-10-03}
   s.email = %q{lisa@thedoh.com}
   s.extra_rdoc_files = [
     "ChangeLog"
@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.files = [
     "LICENSE",
      "Rakefile",
+     "VERSION",
      "init.rb",
      "lib/reve.rb",
      "lib/reve/classes.rb",
