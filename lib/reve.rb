@@ -134,7 +134,7 @@ module Reve
       @current_time = nil
       @cached_until = nil
       @last_hash = nil
-      @reve_version = File.read(File.join(File.dirname(__FILE__),'../','VERSION'))
+      @reve_version = File.read(File.join(File.dirname(__FILE__),'../','VERSION')).chomp
       @http_user_agent = "Reve v#{@reve_version}; http://github.com/lisa/reve"
     end
     # Save XML to this directory with the format:
