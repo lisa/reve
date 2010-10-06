@@ -1521,5 +1521,84 @@ module Reve #:nodoc:
         @read = elem['read'] == '1'
       end      
     end
+    
+    # Represents a AccountStatus for
+    # Reve::API#account_status
+    # Attributes
+    # * user_id ( Fixnum ) - The account's userID
+    # * paid_until ( Time ) - DateTime until when the account is still active.
+    # * created_at ( Time ) - DateTime when the account was created.
+    # * logon_count ( Fixnum ) - The amount of times the User logged in.
+    # * logon_minutes ( Fixnum ) - The amount of minutes the user was logged in.
+    # GTC buy offers not yet inplemented 
+    class AccountStatus
+      attr_reader :user_id, :paid_until, :created_at, :logon_count, :logon_minutes
+      def initialize(elem) #:nodoc:
+        @user_id = (elem/'userID').inner_html.to_i
+        @paid_until = Time.parse((elem/'paidUntil').inner_html)
+        @created_at = Time.parse((elem/'createDate').inner_html)
+        @logon_count = (elem/'logonCount').inner_html.to_i
+        @logon_minutes = (elem/'logonMinutes').inner_html.to_i
+      end
+    end
+    
+    # Represents a CharacterInfo for
+    # Reve::API#character_info
+    # Basic Attributes
+    # * id ( Fixnum ) - ID of the Character
+    # * name ( String ) - Name of the Character
+    # * race ( String ) - Race of the Character
+    # * bloodline ( String ) - Bloodline of the Character
+    # * corporation_id ( Fixnum ) - ID of the Corporation the Character is in
+    # * corporation_name ( String ) - Name of the Corporation the Character is in
+    # * corporation_date ( Time ) - Date the Character joined his Corporation
+    # * alliance_id ( Fixnum | NilClass ) - The ID of the Alliance the Character is in, if any. Will be nil unless the victim was in an Alliance
+    # * alliance_name ( String  | NilClass ) - Name of the Alliance the Character is in, if any.
+    # * alliance_date ( Time | NilClass ) - Date the Character's Corporations joined the Alliance.
+    # * security_status ( Float ) - Security status of the Character
+    # Limited Attributes
+    # * skillpoints ( Fixnum ) - The amount of Skillpoints
+    # * skill_training_ends ( Time )- 
+    # * ship_name ( String ) - 
+    # * ship_type_id ( Fixnum ) -
+    # * ship_type_name ( String ) - 
+    # Full Attributes
+    # * last_known_location ( String ) -
+    # * acount_balance ( Float )
+    class CharacterInfo
+      attr_reader :id, :name, :race, :bloodline, :corporation_id, :corporation_name, :corporation_date, :alliance_id, :alliance_name, :alliance_date
+      attr_reader :security_status, :skillpoints, :skill_training_ends, :ship_name, :ship_type_id, :ship_type_name, :last_known_location, :acount_balance
+
+      def initialize(elem) #:nodoc:
+        @id = (elem/'characterID').inner_html.to_i
+        @name = (elem/'characterName').inner_html
+        @race = (elem/'race').inner_html
+        @bloodline = (elem/'bloodline').inner_html
+        @corporation_id = (elem/'corporationID').inner_html.to_i
+        @corporation_name = (elem/'corporation').inner_html
+        @corporation_date = Time.parse((elem/'corporationDate').inner_html)
+        @alliance_id = (elem/'allianceID').inner_html.to_i
+        @alliance_name = (elem/'alliance').inner_html
+        @alliance_date = Time.parse((elem/'alliancenDate').inner_html)
+        @security_status  = (elem/'securityStatus').inner_html.to_f
+        @skillpoints = (elem/'skillPoints').inner_html == "" ? nil : (elem/'skillPoints').inner_html.to_i
+        @skill_training_ends = (elem/'nextTrainingEnds').inner_html == "" ? nil : Time.parse((elem/'nextTrainingEnds').inner_html)
+        @ship_name = (elem/'shipName').inner_html == "" ? nil : (elem/'shipName').inner_html
+        @ship_type_id = (elem/'shipTypeID').inner_html == "" ? nil : (elem/'shipTypeID').inner_html.to_i
+        @ship_type_name = (elem/'shipTypeName').inner_html == "" ? nil : (elem/'shipTypeName').inner_html
+        @last_known_location = (elem/'lastKnownLocation').inner_html == "" ? nil : (elem/'lastKnownLocation').inner_html
+        @acount_balance = (elem/'accountBalance').inner_html == "" ? nil : (elem/'accountBalance').inner_html.to_f
+      end
+      
+      def type
+        if self.acount_balance
+          return :full
+        elsif self.skillpoints
+          return :limited
+        else
+          return :basic
+        end
+      end
+    end
   end
 end

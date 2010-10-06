@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2010-10-05 19:45:21</currentTime>
+  <result>
+    <characterID>1643072492</characterID>
+    <characterName>Catari Taga</characterName>
+    <race>Caldari</race>
+    <bloodline>Achura</bloodline>
+    <corporationID>553239300</corporationID>
+    <corporation>Centre Of Attention</corporation>
+    <corporationDate>2009-02-03 13:06:00</corporationDate>
+    <allianceID>1923227030</allianceID>
+    <alliance>Middle of Nowhere</alliance>
+    <alliancenDate>2009-02-03 13:06:00</alliancenDate>
+    <securityStatus>0.0</securityStatus>
+  </result>
+  <cachedUntil>2010-10-05 20:41:58</cachedUntil>
+</eveapi>

@@ -1209,6 +1209,74 @@ class TestReve < Test::Unit::TestCase
     assert_equal [128250439,141157801], mails[4].to_list_ids
   end
 
+  def test_account_status_cleanly
+    Reve::API.account_status_url = XML_BASE + 'account_status.xml'
+    status = nil
+    assert_nothing_raised do
+      status = @api.account_status
+    end
+    assert_equal 3000000, status.user_id
+    assert_equal Time.parse("2004-01-01 00:00:00"), status.created_at
+    assert_equal Time.parse("2011-01-01 00:00:00"), status.paid_until
+    assert_equal 9998, status.logon_count
+    assert_equal 9999, status.logon_minutes
+    
+  end
+  
+  def test_character_info_cleanly
+    Reve::API.character_info_url = XML_BASE + 'char_info.xml'
+    info = nil
+    assert_nothing_raised do
+      info = @api.character_info
+    end
+    assert_equal :basic, info.type
+    assert_equal 1643072492, info.id
+    assert_equal 'Catari Taga', info.name
+    assert_equal 'Caldari', info.race
+    assert_equal 'Achura', info.bloodline
+    assert_equal 553239300, info.corporation_id
+    assert_equal 'Centre Of Attention', info.corporation_name
+    assert_equal Time.parse('2009-02-03 13:06:00'), info.corporation_date
+    assert_equal 1923227030, info.alliance_id
+    assert_equal 'Middle of Nowhere', info.alliance_name
+    assert_equal Time.parse('2009-02-03 13:06:00'), info.alliance_date
+    assert_equal 0.0, info.security_status
+    # limited
+    assert_equal nil, info.skillpoints
+    assert_equal nil, info.skill_training_ends
+    assert_equal nil, info.ship_name
+    assert_equal nil, info.ship_type_id
+    assert_equal nil, info.ship_type_name
+
+  end
+  
+  def test_character_info_limited_cleanly
+    Reve::API.character_info_url = XML_BASE + 'char_info_limited.xml'
+    info = nil
+    assert_nothing_raised do
+      info = @api.character_info
+    end
+    assert_equal :limited, info.type
+    assert_equal 9999, info.skillpoints
+    assert_equal Time.parse('2010-10-10 08:10:48'), info.skill_training_ends
+    assert_equal '.', info.ship_name
+    assert_equal 24694, info.ship_type_id
+    assert_equal 'Maelstrom', info.ship_type_name
+    # full
+    assert_equal nil, info.last_known_location
+    assert_equal nil, info.acount_balance
+  end
+  
+  def test_character_info_full_cleanly
+    Reve::API.character_info_url = XML_BASE + 'char_info_full.xml'
+    info = nil
+    assert_nothing_raised do
+      info = @api.character_info
+    end
+    assert_equal :full, info.type
+    assert_equal 'FD-MLJ VII - Moon 2 - Intaki Bank Investment Bank', info.last_known_location
+    assert_equal 9999.29, info.acount_balance
+  end
   # Can we reassign a URL?
   def test_assignment
     assert_nothing_raised do
@@ -1290,7 +1358,7 @@ class TestReve < Test::Unit::TestCase
   def test_reve_version
     # Path to Reve version is ../VERSION. We rely on File.read here and in the
     # class so it's kind of crummy.
-    version = File.read(File.join(File.dirname(__FILE__),'../','VERSION'))
+    version = File.read(File.join(File.dirname(__FILE__),'../','VERSION')).chomp
     assert_equal(@api.reve_version, version)
     assert_equal("Reve v#{version}; http://github.com/lisa/reve", @api.http_user_agent)
   end
