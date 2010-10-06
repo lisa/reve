@@ -453,7 +453,8 @@ module Reve #:nodoc:
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'] == "1"
         @assets = []
-        #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
+        # This ::Digest::SHA1 is a bit of custom code for Eve Metrics that will
+        # probably find its way to all classes since it could prove handy.
         @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
@@ -473,7 +474,8 @@ module Reve #:nodoc:
         @quantity = elem['quantity'].to_i
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'].to_i
-        #@xml_hash = elem.to_s.gsub(/\n|\r|\s/,'')
+        # This ::Digest::SHA1 is a bit of custom code for Eve Metrics that will
+        # probably find its way to all classes since it could prove handy.
         @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
@@ -708,7 +710,6 @@ module Reve #:nodoc:
         @id = elem['stationID'].to_i
         @name = elem['stationName']
         @type_id = elem['stationTypeID'].to_i
-        @system_id = elem['solarSystemID'].to_i
         @corporation_id = elem['corporationID'].to_i
         @corporation_name = elem['corporationName']
         @system_id = elem['solarSystemID'].to_i

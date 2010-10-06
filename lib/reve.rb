@@ -1,5 +1,6 @@
 #--
-# Code copyright Lisa Seelye, 2007-2008. www.crudvision.com
+# Code copyright Lisa Seelye, 2007-2010. www.crudvision.com
+# Contributors at: http://github.com/lisa/reve/contributors
 # This library is licensed under the terms of the MIT license. For full text
 # see the LICENSE file distributed with this package.
 # (Also, send Raquel Smith some ISK if you would like to show appreciation ;-)
@@ -112,8 +113,8 @@ module Reve
 
 
     attr_accessor :key, :userid, :charid
-    attr_accessor :http_user_agent, :save_path
-    attr_reader :current_time, :cached_until, :last_hash
+    attr_accessor :http_user_agent, :save_path, :timeout
+    attr_reader :current_time, :cached_until, :last_hash, :reve_version
     
     # Create a new API instance.
     # current_time and cached_until are meaningful only for the LAST call made.
@@ -128,13 +129,15 @@ module Reve
       @charid = (charid || "").to_s
       
       @save_path = nil
-
-      @http_user_agent = "Reve"
+      
       @max_tries = 3
+      @timeout = 20
 
       @current_time = nil
       @cached_until = nil
       @last_hash = nil
+      @reve_version = File.read(File.join(File.dirname(__FILE__),'../','VERSION')).chomp
+      @http_user_agent = "Reve v#{@reve_version}; http://github.com/lisa/reve"
     end
     # Save XML to this directory with the format:
     # :save_path/:userid/:method/:expires_at_in_unixtime.xml
@@ -1047,7 +1050,7 @@ module Reve
         opts.merge({ :version => 2, :url => nil }) #the uri bit will now ignored in format_url_request
         req_args =  format_url_request(opts)
         req = Net::HTTP::Get.new(source.path + req_args)
-        req['User-Agent'] = @http_referer_agent || "Reve"
+        req['User-Agent'] = @http_referer_agent || "Reve v#{@reve_version}; http://github.com/lisa/reve"
         
         res = nil
         response = nil
@@ -1055,7 +1058,10 @@ module Reve
           begin
             # ||= to prevent making a new Net::HTTP object, the res = nil above should reset this for the next request.
             # the request needs to be here to rescue exceptions from it.
-            res ||= Net::HTTP.new(source.host, source.port).start {|http| http.request(req) }
+            http ||= Net::HTTP.new(source.host, source.port)
+            http.open_timeout = 3
+            http.read_timeout = @timeout
+            res = http.start {|http| http.request(req) }
             case res
             when Net::HTTPSuccess, Net::HTTPRedirection
               response = res.body

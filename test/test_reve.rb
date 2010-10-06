@@ -1285,11 +1285,14 @@ class TestReve < Test::Unit::TestCase
     assert_equal real,time
   end
   
-  protected
-  def get_api(userid = nil, apikey = nil, charid = nil)
-    api = Reve::API.new(userid, apikey, charid)
-    api.save_path = nil
-    api
+  # It's useful to know the version and we'll stick it in the user agent
+  # now as well.
+  def test_reve_version
+    # Path to Reve version is ../VERSION. We rely on File.read here and in the
+    # class so it's kind of crummy.
+    version = File.read(File.join(File.dirname(__FILE__),'../','VERSION'))
+    assert_equal(@api.reve_version, version)
+    assert_equal("Reve v#{version}; http://github.com/lisa/reve", @api.http_user_agent)
   end
   
   # no need to test corporate cos they're the same.
@@ -1341,4 +1344,11 @@ class TestReve < Test::Unit::TestCase
     end
   end
 
+  #### All tests above this method.
+  protected
+  def get_api(userid = nil, apikey = nil, charid = nil)
+    api = Reve::API.new(userid, apikey, charid)
+    api.save_path = nil
+    api
+  end
 end
