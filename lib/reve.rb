@@ -17,6 +17,7 @@ require 'uri'
 require 'cgi'
 require 'digest'
 require 'fileutils'
+require 'time'
 
 $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
@@ -94,7 +95,11 @@ module Reve
     @@personal_mailing_lists_url   = 'http://api.eve-online.com/char/mailinglists.xml.aspx'
     @@personal_mail_messages_url   = 'http://api.eve-online.com/char/MailMessages.xml.aspx'
     @@personal_contacts_url        = 'http://api.eve-online.com/char/ContactList.xml.aspx'
-    @@corporate_contacts_url        = 'http://api.eve-online.com/corp/ContactList.xml.aspx'
+    @@corporate_contacts_url       = 'http://api.eve-online.com/corp/ContactList.xml.aspx'
+    # DO NOT USE THE FOLLOWING IN PRODUCTION
+    # These methods will be available with Tyrannis 1.2 (current data is from the test server)
+    @@account_status_url           = 'http://apitest.eve-online.com/account/AccountStatus.xml.aspx'
+    @@character_info_url           = 'http://apitest.eve-online.com/eve/CharacterInfo.xml.aspx'
     
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
@@ -109,7 +114,8 @@ module Reve
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
                    :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url,
                    :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url,
-                   :research_url, :personal_contacts_url, :corporate_contacts_url
+                   :research_url, :personal_contacts_url, :corporate_contacts_url,
+                   :account_status_url, :character_info_url
 
 
     attr_accessor :key, :userid, :charid
@@ -956,6 +962,29 @@ module Reve
       h = compute_hash(args.merge(:url => @@personal_mail_messages_url))
       return h if h
       process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
+    end
+
+    # DO NOT USE THE FOLLOWING IN PRODUCTION
+    # These methods will be available with Tyrannis 1.2 (current data is from the test server)
+
+    # Gets the status of the selected account. Returns
+    # Reve::Classes::AccountStatus
+    def account_status(opts = {})
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@account_status_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@account_status_url,true,args)
+      Reve::Classes::AccountStatus.new(xml.search('//result').first)
+    end
+    
+    # Gets the character info sheet for the selected Character
+    # Reve::Classes::CharacterInfo
+    def character_info(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@character_info_url))
+      return h if h
+      xml = process_query(nil,opts[:url] || @@character_info_url,true,args)
+      Reve::Classes::CharacterInfo.new(xml.search('//result').first)
     end
 
     protected

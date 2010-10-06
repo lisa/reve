@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2010-10-05 19:41:58</currentTime>
+  <result>
+    <characterID>1643072492</characterID>
+    <characterName>Catari Taga</characterName>
+    <race>Caldari</race>
+    <bloodline>Achura</bloodline>
+    <accountBalance>9999.29</accountBalance>
+    <skillPoints>9999</skillPoints>
+    <nextTrainingEnds>2010-10-10 08:10:48</nextTrainingEnds>
+    <shipName>.</shipName>
+    <shipTypeID>24694</shipTypeID>
+    <shipTypeName>Maelstrom</shipTypeName>
+    <corporationID>553239300</corporationID>
+    <corporation>Centre Of Attention</corporation>
+    <corporationDate>2009-02-03 13:06:00</corporationDate>
+    <allianceID>1923227030</allianceID>
+    <alliance>Middle of Nowhere</alliance>
+    <alliancenDate>2009-02-03 13:06:00</alliancenDate>
+    <lastKnownLocation>FD-MLJ VII - Moon 2 - Intaki Bank Investment Bank</lastKnownLocation>
+    <securityStatus>0.0</securityStatus>
+  </result>
+  <cachedUntil>2010-10-05 20:41:58</cachedUntil>
+</eveapi>
