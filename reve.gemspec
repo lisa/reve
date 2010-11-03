@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{reve}
-  s.version = "0.0.132"
+  s.version = "0.0.133"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lisa Seelye"]
-  s.date = %q{2010-10-03}
+  s.date = %q{2010-11-03}
   s.email = %q{lisa@thedoh.com}
   s.extra_rdoc_files = [
     "ChangeLog"
@@ -34,11 +34,16 @@ Gem::Specification.new do |s|
   s.summary = %q{Reve is a Ruby library to interface with the Eve Online API}
   s.test_files = [
     "test/test_reve.rb",
+     "test/xml/account_status.xml",
      "test/xml/alliances.xml",
      "test/xml/assets.xml",
      "test/xml/badxml.xml",
      "test/xml/certificate_tree.xml",
+     "test/xml/char_contacts.xml",
      "test/xml/char_facwarstats.xml",
+     "test/xml/char_info.xml",
+     "test/xml/char_info_full.xml",
+     "test/xml/char_info_limited.xml",
      "test/xml/char_medals.xml",
      "test/xml/character_sheet.xml",
      "test/xml/characterid.xml",
