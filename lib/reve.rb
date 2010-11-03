@@ -96,10 +96,8 @@ module Reve
     @@personal_mail_messages_url   = 'http://api.eve-online.com/char/MailMessages.xml.aspx'
     @@personal_contacts_url        = 'http://api.eve-online.com/char/ContactList.xml.aspx'
     @@corporate_contacts_url       = 'http://api.eve-online.com/corp/ContactList.xml.aspx'
-    # DO NOT USE THE FOLLOWING IN PRODUCTION
-    # These methods will be available with Tyrannis 1.2 (current data is from the test server)
-    @@account_status_url           = 'http://apitest.eve-online.com/account/AccountStatus.xml.aspx'
-    @@character_info_url           = 'http://apitest.eve-online.com/eve/CharacterInfo.xml.aspx'
+    @@account_status_url           = 'http://api.eve-online.com/account/AccountStatus.xml.aspx'
+    @@character_info_url           = 'http://api.eve-online.com/eve/CharacterInfo.xml.aspx'
     
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
@@ -963,9 +961,6 @@ module Reve
       return h if h
       process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
     end
-
-    # DO NOT USE THE FOLLOWING IN PRODUCTION
-    # These methods will be available with Tyrannis 1.2 (current data is from the test server)
 
     # Gets the status of the selected account. Returns
     # Reve::Classes::AccountStatus
