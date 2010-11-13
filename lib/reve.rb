@@ -3,7 +3,6 @@
 # Contributors at: http://github.com/lisa/reve/contributors
 # This library is licensed under the terms of the MIT license. For full text
 # see the LICENSE file distributed with this package.
-# (Also, send Raquel Smith some ISK if you would like to show appreciation ;-)
 #++
 
 begin
@@ -78,8 +77,8 @@ module Reve
     @@corporate_assets_url         = 'http://api.eve-online.com/corp/AssetList.xml.aspx'
     @@personal_kills_url           = 'http://api.eve-online.com/char/KillLog.xml.aspx'
     @@corporate_kills_url          = 'http://api.eve-online.com/corp/KillLog.xml.aspx'
-    @@character_id_url             = 'http://api.eve-online.com/eve/CharacterID.xml.aspx'   # ?names=CCP%20Garthagk,Raquel%20Smith
-    @@character_name_url           = 'http://api.eve-online.com/eve/CharacterName.xml.aspx' # ?ids=797400947,892008733
+    @@character_id_url             = 'http://api.eve-online.com/eve/CharacterID.xml.aspx'   # ?names=CCP%20Garthagk
+    @@character_name_url           = 'http://api.eve-online.com/eve/CharacterName.xml.aspx' # ?ids=797400947
     @@personal_faction_war_stats_url= 'http://api.eve-online.com/char/FacWarStats.xml.aspx'
     @@corporate_faction_war_stats_url= 'http://api.eve-online.com/corp/FacWarStats.xml.aspx'
     @@general_faction_war_stats_url= 'http://api.eve-online.com/eve/FacWarStats.xml.aspx'

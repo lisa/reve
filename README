@@ -13,7 +13,7 @@ require 'pp'
 
 api = Reve::API.new
 
-ids = api.character_name( { :ids => [ "CCP Garthagk", "Raquel Smith" ] } )
+ids = api.character_name( { :ids => [ "CCP Garthagk" ] } )
 puts 'Names to IDs output:'
 pp names
 
@@ -23,10 +23,5 @@ names to IDs output
   @corporation_id=0,
   @corporation_name=nil,
   @id=797400947,
-  @name="CCP Garthagk">,
- #<Reve::Classes::Character:0x4d98e548
-  @corporation_id=0,
-  @corporation_name=nil,
-  @id=892008733,
-  @name="Raquel Smith">]
+  @name="CCP Garthagk">]
 

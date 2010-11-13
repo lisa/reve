@@ -6,7 +6,7 @@
 # The author is not adverse to tokens of appreciation in the form of Eve ISK,
 # ships, and feedback. Please use
 # http://www.crudvision.com/reve-ruby-eve-online-api-library/ to provide
-# feedback or send ISK to Raquel Smith in Eve. :-)
+# feedback
 #++
 module Reve #:nodoc:
   module Classes #:nodoc:
