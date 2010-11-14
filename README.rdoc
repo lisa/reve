@@ -1,0 +1,27 @@
+= Homepage
+Reve's home on the web is: https://github.com/lisa/reve
+
+= About
+Reve is a Ruby library that can be used to access the Eve Online API.
+
+== Example
+
+1. Convert names to Character IDs:
+
+  require 'reve'
+  require 'pp'
+  
+  api = Reve::API.new
+  
+  ids = api.character_name( { :ids => [ "CCP Garthagk" ] } )
+  puts 'Names to IDs output:'
+  pp names
+  
+  # Prints:
+  names to IDs output
+  [#<Reve::Classes::Character:0x4d98e55c
+    @corporation_id=0,
+    @corporation_name=nil,
+    @id=797400947,
+    @name="CCP Garthagk">]
+
