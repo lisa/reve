@@ -1,7 +1,7 @@
 module Reve
   module Methods
     module Map
-      include Reve::Methods::Urls
+      include Reve::Urls
 
       
       # Returns the occupancy data for each System.

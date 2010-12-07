@@ -1,7 +1,7 @@
 module Reve
   module Methods
     module Server
-      include Reve::Methods::Urls
+      include Reve::Urls
       
       # Get the server status of Tranquility as a Reve::Classes::ServerStatus 
       # object.
