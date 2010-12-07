@@ -1,6 +1,9 @@
 module Reve
   module Methods
     module Corp
+
+      include Reve::Methods::Urls
+
       # Returns a list of Reve::Classes::MarketOrder objects for market orders that are up on behalf of a Corporation
       # Pass the characterid of the Character of whose corporation to check for
       def corporate_market_orders(opts = {:characterid => nil})

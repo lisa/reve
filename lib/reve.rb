@@ -18,20 +18,19 @@ require 'digest'
 require 'fileutils'
 require 'time'
 
-$:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
 require 'reve/exceptions'
 require 'reve/extensions'
 require 'reve/classes'
 
-require 'reve/urls'
+require 'reve/urls/urls'
 
-require 'reve/account'
-require 'reve/eve'
-require 'reve/char'
-require 'reve/corp'
-require 'reve/map'
-require 'reve/server'
+require 'reve/account/account'
+require 'reve/eve/eve'
+require 'reve/char/char'
+require 'reve/corp/corp'
+require 'reve/map/map'
+require 'reve/server/server'
 
 
 module Reve
@@ -54,7 +53,8 @@ module Reve
   # All API methods have the functionality to read XML from an arbitrary location. This could be another webserver, or a XML file on disk.
   # To use this pass the hash option :url => +location+ where +location+ is a String or URI class. See format_url_request documentation for more details.
   class API
-    include Reve::Urls
+    include Reve::Methods::Urls
+
     
     include Reve::Methods::Account
     include Reve::Methods::Eve

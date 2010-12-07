@@ -1,6 +1,8 @@
 module Reve
   module Methods
     module Account
+
+      include Reve::Methods::Urls
       
       # Gets the status of the selected account. Returns
       # Reve::Classes::AccountStatus

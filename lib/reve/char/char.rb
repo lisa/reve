@@ -2,6 +2,8 @@ module Reve
   module Methods
     module Char
 
+      include Reve::Methods::Urls
+
       
       ############ Character-related methods follow
       

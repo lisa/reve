@@ -1,6 +1,10 @@
+require File.join(File.dirname(__FILE__),'../','extensions.rb')
+
+
 module Reve
   module Methods
     module Urls
+      #puts Class.public_methods.sort.inspect
       @@characters_url                  = 'http://api.eve-online.com/account/Characters.xml.aspx'    #
       @@account_status_url              = 'http://api.eve-online.com/account/AccountStatus.xml.aspx' #
 
@@ -62,7 +66,7 @@ module Reve
 
       
 
-      cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
+      Class.cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                      :corporate_wallet_journal_url, :corporate_wallet_trans_url, :personal_wallet_trans_url, 
                      :personal_wallet_balance_url, :corporate_wallet_balance_url, :member_tracking_url,
                      :skill_tree_url, :reftypes_url, :sovereignty_url, :alliances_url, :starbases_url,
@@ -77,8 +81,6 @@ module Reve
                      :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url,
                      :research_url, :personal_contacts_url, :corporate_contacts_url,
                      :account_status_url, :character_info_url
-
-      
     end
   end
 end

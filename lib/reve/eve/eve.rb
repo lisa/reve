@@ -2,6 +2,7 @@ module Reve
   module Methods
     module Eve
       
+      include Reve::Methods::Urls
       
       # Gets the character info sheet for the selected Character
       # Reve::Classes::CharacterInfo
