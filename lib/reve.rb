@@ -18,6 +18,8 @@ require 'digest'
 require 'fileutils'
 require 'time'
 
+$:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+
 
 require 'reve/exceptions'
 require 'reve/extensions'
