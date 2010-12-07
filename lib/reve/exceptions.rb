@@ -1,12 +1,7 @@
 #--
-# Code copyright Lisa Seelye, 2007-2008. www.crudvision.com
-# Reve is not licensed for commercial use. For other uses there are no
-# restrictions.
-#
-# The author is not adverse to tokens of appreciation in the form of Eve ISK,
-# ships, and feedback. Please use
-# http://www.crudvision.com/reve-ruby-eve-online-api-library/ to provide
-# feedback
+# Code copyright Lisa Seelye, 2007-2010. www.crudvision.com
+# For license conditions refer to the LICENSE file, distributed with this
+# software package.
 #++
 module Reve
   # Exceptions live here.
@@ -219,6 +214,18 @@ module Reve
     # 122
     class InvalidOrMissingListOfNames < ReveError #:nodoc:
     end
+    # 123
+    class InvalidOrMissingListofIDs < ReveError #:nodoc:
+    end
+    # 124
+    class CharacterNotFactionFighter < ReveError #:nodoc:
+    end
+    # 125
+    class CorporationNotFactionFighter < ReveError #:nodoc:
+    end
+    
+    
+    
     # 200
     class SecurityLevelNotHighEnough < ReveError #:nodoc:
     end
@@ -251,6 +258,21 @@ module Reve
     end
     # 214
     class CorporationNotInAlliance < ReveError #:nodoc:
+    end
+    # 215
+    class NonPersonalEventAccessDenied < ReveError #:nodoc:
+    end
+    #216
+    class CalendarEventListEmpty < ReveError #:nodoc:
+    end
+    # 217
+    class CalendarEventNotFound < ReveError #:nodoc:
+    end
+    # 218
+    class CalendarEventAttendeeListNotAccessible < ReveError #:nodoc:
+    end
+    # 219
+    class InvalidAgentIdError < ReveError #:nodoc:
     end
 
     # 500
@@ -331,10 +353,24 @@ module Reve
     # 525
     class MedalInformationFetchFailure < ReveError #:nodoc:
     end
+    # 526
+    class NotificationsNotEnabled < ReveError #:nodoc:
+    end
+    # 527
+    class MailNotAccessible < ReveError #:nodoc:
+    end
+    # 528
+    class ContactNotificationsNotAccessible < ReveError #:nodoc:
+    end
+    # 529 - Does not exist (2010-12-06 - lisa)
+    # 530
+    class CalendarListNotAccessible < ReveError #:nodoc:
+    end 
 
     # 900
     class BetaAccessDenied < ReveError #:nodoc:
     end
+    # 901
     class WebsiteOffline  < ReveError #:nodoc:
     end
     # 902
