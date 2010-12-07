@@ -78,6 +78,16 @@ module Reve
         raise CharacterNeedsFactoryManagerRole.new(msg)
       when 214
         raise CorporationNotInAlliance.new(msg)
+      when 215
+        raise NonPersonalEventAccessDenied.new(msg)
+      when 216
+        raise CalendarEventListEmpty.new(msg)
+      when 217
+        raise CalendarEventNotFound.new(msg)
+      when 218
+        raise CalendarEventAttendeeListNotAccessible.new(msg)
+      when 219
+        raise InvalidAgentIdError.new(msg)
       when 500
         raise GetNameInvalid.new(msg)
       when 501
@@ -130,6 +140,14 @@ module Reve
         raise FactionMemberInformationFailure.new(msg)
       when 525
         raise MedalInformationFetchFailure.new(msg)
+      when 526
+        raise NotificationsNotEnabled.new(msg)
+      when 527
+        raise MailNotAccessible.new(msg)
+      when 528
+        raise ContactNotificationsNotAccessible.new(msg)
+      when 530
+        raise CalendarListNotAccessible.new(msg)
       when 900
         raise BetaAccessDenied.new(msg)
       when 901
