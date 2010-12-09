@@ -47,10 +47,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_makes_a_simple_hash
-    Reve::API.alliances_url = XML_BASE + 'alliances.xml'
-    h = @api.alliances :just_hash => true
+    h = @api.alliances :url => File.join(XML_BASE,'alliances.xml'), :just_hash => true
     assert_instance_of String, h
-    assert_equal "xml/alliances.xml", h    
+    assert_equal "eve/AllianceList.xml.aspx", h    
   end
   
   def test_charid_default_works_when_characterid_is_nil
@@ -59,17 +58,15 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_makes_a_complex_hash
-    Reve::API.corporate_wallet_trans_url = XML_BASE + 'market_transactions.xml'
     @api.userid = 999
     @api.key = 'aaa'
-    h = @api.corporate_wallet_transactions :accountkey => '1001', :characterid => 123, :beforerefid => 456, :just_hash => true
+    h = @api.corporate_wallet_transactions :url => File.join(XML_BASE,'market_transactions.xml'), :accountkey => '1001', :characterid => 123, :beforerefid => 456, :just_hash => true
     assert_instance_of String, h
-    assert_equal 'xml/market_transactions.xml:accountkey:1001:apikey:aaa:beforerefid:456:characterid:123:userid:999',h
+    assert_equal 'corp/WalletTransactions.xml.aspx:accountkey:1001:apikey:aaa:beforerefid:456:characterid:123:userid:999',h
   end
 
   def test_bad_xml
-    Reve::API.training_skill_url = XML_BASE + 'badxml.xml'
-    skill = @api.skill_in_training
+    skill = @api.skill_in_training :url => File.join(XML_BASE,'badxml.xml')
     assert_not_nil @api.last_hash
   end
   
@@ -136,10 +133,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_research_api_call
-    Reve::API.research_url = XML_BASE + 'research.xml'
     research = nil
     assert_nothing_raised do
-      research = @api.research :characterid => 123
+      research = @api.research :url => File.join(XML_BASE,'research.xml'), :characterid => 123
     end
     assert_not_nil(research)
     assert_not_nil(@api.last_hash)
@@ -155,10 +151,9 @@ class TestReve < Test::Unit::TestCase
   
   
   def test_corporation_sheet_clean
-    Reve::API.corporation_sheet_url = XML_BASE + 'corporation_sheet.xml'
     corporation = nil
     assert_nothing_raised do
-      corporation = @api.corporation_sheet :characterid => 123
+      corporation = @api.corporation_sheet :url => File.join(XML_BASE,'corporation_sheet.xml'), :characterid => 123
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -197,10 +192,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_conqurable_stations_clean
-    Reve::API.conqurable_outposts_url = XML_BASE + 'conqurable_stations.xml'
     stations = nil
     assert_nothing_raised do
-      stations = @api.conqurable_stations
+      stations = @api.conqurable_stations :url => File.join(XML_BASE,'conqurable_stations.xml')
     end
   
     assert_equal 3, stations.size
@@ -251,10 +245,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_personal_industry_jobs_clean
-    Reve::API.personal_industry_jobs_url = XML_BASE + 'industryjobs.xml'
     jobs = nil
     assert_nothing_raised do
-      jobs = @api.personal_industry_jobs
+      jobs = @api.personal_industry_jobs :url => File.join(XML_BASE,'industryjobs.xml')
     end
     assert_equal 2, jobs.size
     # All things got assigned something.
@@ -270,14 +263,13 @@ class TestReve < Test::Unit::TestCase
           assert_not_nil job.send(att)
       end
     end
-	assert jobs.last.installed_system_id != 0
+        assert jobs.last.installed_system_id != 0
   end
   
   def test_corporate_industry_jobs_clean
-    Reve::API.corporate_industry_jobs_url = XML_BASE + 'industryjobs.xml'
     jobs = nil
     assert_nothing_raised do
-      jobs = @api.corporate_industry_jobs
+      jobs = @api.corporate_industry_jobs :url => File.join(XML_BASE,'industryjobs.xml')
     end
     assert_equal 2, jobs.size
     # All things got assigned something.
@@ -296,8 +288,7 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_personal_contacts_clean
-    Reve::API.personal_contacts_url = XML_BASE + 'char_contacts.xml'
-    contacts = @api.personal_contacts
+    contacts = @api.personal_contacts :url => File.join(XML_BASE,'char_contacts.xml')
     assert_equal(2, contacts.length)
     assert_equal("Hirento Raikkanen", contacts.first.contact_name )
     assert_equal(3010913, contacts.first.contact_id )
@@ -306,8 +297,7 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_corporate_contacts_clean
-    Reve::API.corporate_contacts_url = XML_BASE + 'char_contacts.xml'
-    contacts = @api.corporate_contacts
+    contacts = @api.corporate_contacts :url => File.join(XML_BASE,'char_contacts.xml')
     assert_equal(2, contacts.length)
     assert_equal("Hirento Raikkanen", contacts.first.contact_name )
     assert_equal(3010913, contacts.first.contact_id )
@@ -316,11 +306,10 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_faction_war_system_stats_clean(skip_preamble = false,stats = nil)
-    Reve::API.faction_war_occupancy_url = XML_BASE + 'map_facwarsystems.xml'
     unless skip_preamble # not best practice but will get the job done!
       stats = nil
       assert_nothing_raised do
-        stats = @api.faction_war_system_stats
+        stats = @api.faction_war_system_stats :url => File.join(XML_BASE,'map_facwarsystems.xml')
       end
     end
     assert stats.all? { |s| s.kind_of?(Reve::Classes::FactionWarSystemStatus) }
@@ -339,19 +328,17 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_faction_war_system_stats_alias_clean
-    Reve::API.faction_war_occupancy_url = XML_BASE + 'map_facwarsystems.xml'
     stats = nil
     assert_nothing_raised do
-      stats = @api.faction_war_occupancy
+      stats = @api.faction_war_occupancy :url => File.join(XML_BASE,'map_facwarsystems.xml')
     end
     test_faction_war_system_stats_clean(true,stats)
   end
 
   def test_faction_war_stats_clean
-    Reve::API.general_faction_war_stats_url = XML_BASE + 'eve_facwarstats.xml'
     stats = nil
     assert_nothing_raised do
-      stats = @api.faction_war_stats
+      stats = @api.faction_war_stats :url => File.join(XML_BASE,'eve_facwarstats.xml')
     end
     assert_instance_of(Reve::Classes::EveFactionWarStat, stats)
     assert_equal(1707, stats.kills_yesterday)
@@ -385,10 +372,9 @@ class TestReve < Test::Unit::TestCase
     assert_not_nil(@api.cached_until)
   end
   def test_personal_factional_war_stats_clean
-    Reve::API.personal_faction_war_stats_url = XML_BASE + 'char_facwarstats.xml'
     stats = nil
     assert_nothing_raised do
-      stats = @api.personal_faction_war_stats
+      stats = @api.personal_faction_war_stats :url => File.join(XML_BASE,'char_facwarstats.xml')
     end
     assert_instance_of Reve::Classes::PersonalFactionWarParticpant, stats
     assert_equal(500001, stats.faction_id)  
@@ -405,10 +391,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_corporate_factional_war_stats_clean
-    Reve::API.corporate_faction_war_stats_url = XML_BASE + 'corp_facwarstats.xml'
     stats = nil
     assert_nothing_raised do
-      stats = @api.corporate_faction_war_stats
+      stats = @api.corporate_faction_war_stats :url => File.join(XML_BASE,'corp_facwarstats.xml')
     end
     assert_instance_of Reve::Classes::CorporateFactionWarParticpant, stats
     assert_equal(500001, stats.faction_id)  
@@ -424,10 +409,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_faction_war_top_stats_clean
-    Reve::API.top_faction_war_stats_url = XML_BASE + 'eve_facwartopstats.xml'
     stats = nil
     assert_nothing_raised do
-      stats = @api.faction_war_top_stats
+      stats = @api.faction_war_top_stats :url => File.join(XML_BASE,'eve_facwartopstats.xml')
     end
     assert_kind_of(Reve::Classes::FactionWarTopStats, stats)
     [ :characters, :corporations, :factions ].each do |kind|
@@ -462,10 +446,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_assets_clean
-    Reve::API.personal_assets_url = XML_BASE + 'assets.xml'
     assets = nil
     assert_nothing_raised do
-      assets = @api.personal_assets_list
+      assets = @api.personal_assets_list :url => File.join(XML_BASE,'assets.xml')
     end
     assert_equal 18, assets.size # 18 single and 1 container
     contained_assets = assets.inject([]) { |ass,container| ass << container.assets }.flatten
@@ -500,10 +483,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_characters_clean
-    Reve::API.characters_url = XML_BASE + 'characters.xml'
     chars = nil
     assert_nothing_raised do
-      chars = @api.characters
+      chars = @api.characters :url => File.join(XML_BASE,'characters.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -518,10 +500,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_starbases_clean
-    Reve::API.starbases_url = XML_BASE + 'starbases.xml'
     bases = nil
     assert_nothing_raised do
-      bases = @api.starbases(:characterid => 1)
+      bases = @api.starbases :url => File.join(XML_BASE,'starbases.xml'), :characterid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -539,10 +520,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_starbase_details_clean
-    Reve::API.starbasedetail_url = XML_BASE + 'starbase_fuel.xml'
     detail = nil
     assert_nothing_raised do
-      detail = @api.starbase_details(:starbaseid => 1,:characterid => 2)
+      detail = @api.starbase_details :url => File.join(XML_BASE,'starbase_fuel.xml'), :starbaseid => 1,:characterid => 2
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -571,10 +551,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_alliances_clean
-    Reve::API.alliances_url = XML_BASE + 'alliances.xml'
     alliances = nil
     assert_nothing_raised do
-      alliances = @api.alliances
+      alliances = @api.alliances :url => File.join(XML_BASE,'alliances.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -594,10 +573,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_sovereignty_clean
-    Reve::API.sovereignty_url = XML_BASE + 'sovereignty.xml'
     sovereignties = nil
     assert_nothing_raised do
-      sovereignties = @api.sovereignty
+      sovereignties = @api.sovereignty :url => File.join(XML_BASE,'sovereignty.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -606,16 +584,16 @@ class TestReve < Test::Unit::TestCase
       assert_instance_of Reve::Classes::Sovereignty, sovereignty
       assert_not_nil sovereignty.system_id
       assert_not_nil sovereignty.system_name
-	    assert_not_nil sovereignty.faction_id
-	    assert_nil     sovereignty.alliance_id
+            assert_not_nil sovereignty.faction_id
+            assert_nil     sovereignty.alliance_id
     end
     sovereignties[5..8].each do |sovereignty|
       assert_instance_of Reve::Classes::Sovereignty, sovereignty
       assert_not_nil sovereignty.system_id
       assert_not_nil sovereignty.system_name
-	    assert_not_nil sovereignty.alliance_id
-	    assert_not_nil sovereignty.corporation_id
-	    assert_nil     sovereignty.faction_id
+            assert_not_nil sovereignty.alliance_id
+            assert_not_nil sovereignty.corporation_id
+            assert_nil     sovereignty.faction_id
     end
     assert_nil sovereignties[-1].alliance_id
     assert_nil sovereignties[-1].corporation_id
@@ -623,10 +601,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_reftypes_clean
-    Reve::API.reftypes_url = XML_BASE + 'reftypes.xml'
     reftypes = nil
     assert_nothing_raised do
-      reftypes = @api.ref_types
+      reftypes = @api.ref_types :url => File.join(XML_BASE,'reftypes.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -638,10 +615,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_market_orders_clean
-    Reve::API.personal_market_orders_url = XML_BASE + 'marketorders.xml'
     orders = nil
     assert_nothing_raised do
-      orders = @api.personal_market_orders
+      orders = @api.personal_market_orders :url => File.join(XML_BASE,'marketorders.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -743,10 +719,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_map_jumps_clean
-    Reve::API.map_jumps_url = XML_BASE + 'mapjumps.xml'
     mapjumps = nil
     assert_nothing_raised do
-      mapjumps = @api.map_jumps
+      mapjumps = @api.map_jumps :url => File.join(XML_BASE,'mapjumps.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -758,10 +733,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_map_kills_clean
-    Reve::API.map_kills_url = XML_BASE + 'mapkills.xml'
     mapkills = nil
     assert_nothing_raised do
-      mapkills = @api.map_kills
+      mapkills = @api.map_kills :url => File.join(XML_BASE,'mapkills.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -775,10 +749,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_skill_tree_clean
-    Reve::API.skill_tree_url = XML_BASE + 'skilltree.xml'
     skilltrees = nil
     assert_nothing_raised do
-      skilltrees = @api.skill_tree
+      skilltrees = @api.skill_tree :url => File.join(XML_BASE,'skilltree.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -801,10 +774,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_wallet_balance_clean
-    Reve::API.personal_wallet_balance_url = XML_BASE + 'wallet_balance.xml'
     balance = nil
     assert_nothing_raised do
-      balance = @api.personal_wallet_balance(:characterid => 1)
+      balance = @api.personal_wallet_balance :url => File.join(XML_BASE,'wallet_balance.xml'), :characterid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -817,10 +789,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_wallet_transactions_clean
-    Reve::API.personal_wallet_trans_url = XML_BASE + 'market_transactions.xml'
     trans = nil
     assert_nothing_raised do
-      trans = @api.personal_wallet_transactions(:characterid => 1)
+      trans = @api.personal_wallet_transactions :url => File.join(XML_BASE,'market_transactions.xml'), :characterid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -841,10 +812,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_wallet_journal_clean
-    Reve::API.personal_wallet_journal_url = XML_BASE + 'wallet_journal.xml'
     journal = nil
     assert_nothing_raised do
-      journal = @api.personal_wallet_journal(:characterid => 1)
+      journal = @api.personal_wallet_journal :url => File.join(XML_BASE,'wallet_journal.xml'), :characterid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -863,10 +833,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_member_tracking_clean
-    Reve::API.member_tracking_url = XML_BASE + 'member_tracking.xml'
     members = nil
     assert_nothing_raised do
-      members = @api.member_tracking(:characterid => 1)
+      members = @api.member_tracking :url => File.join(XML_BASE,'member_tracking.xml'), :characterid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -890,10 +859,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_member_corporation_sheet_clean
-    Reve::API.corporation_sheet_url = XML_BASE + 'corporation_sheet.xml'
     sheet = nil
     assert_nothing_raised do
-      sheet = @api.corporation_sheet
+      sheet = @api.corporation_sheet :url => File.join(XML_BASE,'corporation_sheet.xml')
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -902,10 +870,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_nonmember_corporation_sheet_clean
-    Reve::API.corporation_sheet_url = XML_BASE + 'nonmember_corpsheet.xml'
     sheet = nil
     assert_nothing_raised do
-      sheet = @api.corporation_sheet :corporationid => 134300597
+      sheet = @api.corporation_sheet :url => File.join(XML_BASE,'nonmember_corpsheet.xml'), :corporationid => 134300597
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -914,10 +881,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_no_skill_in_training_clean
-#    Reve::API.training_skill_url = XML_BASE + 'skill_in_training-none.xml'
     skill = nil
     assert_nothing_raised do
-      skill = @api.skill_in_training(:characterid => 1, :url => XML_BASE + 'skill_in_training-none.xml')
+      skill = @api.skill_in_training :url => File.join(XML_BASE,'skill_in_training-none.xml'), :characterid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -938,10 +904,9 @@ class TestReve < Test::Unit::TestCase
 =end
 
   def test_amarr_titan_skill_in_training_clean
-    Reve::API.training_skill_url = XML_BASE + 'skill_in_training-amarr-titan.xml'
     skill = nil
     assert_nothing_raised do
-      skill = @api.skill_in_training(:characerid => 1)
+      skill = @api.skill_in_training :url => File.join(XML_BASE,'skill_in_training-amarr-titan.xml'), :characerid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -955,10 +920,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_skill_queue_clean
-    Reve::API.skill_queue_url = XML_BASE + 'skill_queue.xml'
     queue = nil
     assert_nothing_raised do
-      queue = @api.skill_queue(:characerid => 1)
+      queue = @api.skill_queue :url => File.join(XML_BASE,'skill_queue.xml'), :characerid => 1
     end
     assert_kind_of(Reve::Classes::QueuedSkill, queue.first)
     assert_not_nil queue.first.queue_position
@@ -969,10 +933,9 @@ class TestReve < Test::Unit::TestCase
     assert_not_nil queue.first.start_sp
     assert_not_nil queue.first.end_sp
     assert_equal 9, queue.length
-    Reve::API.skill_queue_url = XML_BASE + 'skill_queue-paused.xml'
     queue = nil
     assert_nothing_raised do
-      queue = @api.skill_queue(:characerid => 1)
+      queue = @api.skill_queue :url => File.join(XML_BASE,'skill_queue-paused.xml'), :characerid => 1
     end
     assert_kind_of(Reve::Classes::QueuedSkill, queue.first)
     assert_nil queue.first.start_time
@@ -980,10 +943,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_corporate_medals
-    Reve::API.corporate_medals_url = XML_BASE + 'corp_medals.xml'
     medals = nil
     assert_nothing_raised do
-      medals = @api.corporate_medals
+      medals = @api.corporate_medals :url => File.join(XML_BASE,'corp_medals.xml')
     end
     assert_equal(12, medals.size)
     medals.each do |medal|
@@ -998,10 +960,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_corporate_member_medals
-    Reve::API.corp_member_medals_url = XML_BASE + 'corp_member_medals.xml'
     medals = nil
     assert_nothing_raised do
-      medals = @api.corporate_member_medals
+      medals = @api.corporate_member_medals :url => File.join(XML_BASE,'corp_member_medals.xml')
     end
     assert_equal(9, medals.size)
     medals.each do |medal|
@@ -1018,10 +979,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_corporate_member_security
-    Reve::API.corporation_member_security_url = XML_BASE + 'corp_membersecurity.xml'
     members = nil
     assert_nothing_raised do
-      members = @api.corporate_member_security
+      members = @api.corporate_member_security :url => File.join(XML_BASE,'corp_membersecurity.xml')
     end
     assert_equal 2, members.members.size
     first = members.members.first
@@ -1034,10 +994,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_server_status
-    Reve::API.server_status_url = XML_BASE + 'server_status.xml'
     status = nil
     assert_nothing_raised do
-      status = @api.server_status
+      status = @api.server_status :url => File.join(XML_BASE,'server_status.xml')
     end
     assert_kind_of(Reve::Classes::ServerStatus, status)
     assert_equal(34444, status.players)
@@ -1046,10 +1005,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_character_medals
-    Reve::API.character_medals_url = XML_BASE + 'char_medals.xml'
     obj = nil
     assert_nothing_raised do
-      obj = @api.character_medals
+      obj = @api.character_medals :url => File.join(XML_BASE,'char_medals.xml')
     end
     assert_kind_of(Reve::Classes::CharacterMedals, obj)
     assert_equal(1, obj.current_corporation.size)
@@ -1068,10 +1026,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_certificate_sheet
-    Reve::API.certificate_tree_url = XML_BASE + 'certificate_tree.xml'
     tree = nil
     assert_nothing_raised do
-      tree = @api.certificate_tree
+      tree = @api.certificate_tree :url => File.join(XML_BASE,'certificate_tree.xml')
     end
     # going to hell
     assert_kind_of(Reve::Classes::CertificateTree, tree)
@@ -1090,10 +1047,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_character_sheet_clean
-    Reve::API.character_sheet_url = XML_BASE + 'character_sheet.xml'
     sheet = nil
     assert_nothing_raised do
-      sheet = @api.character_sheet(:characterid => 1)
+      sheet = @api.character_sheet :url => File.join(XML_BASE,'character_sheet.xml'), :characterid => 1
     end
     assert_not_nil @api.last_hash
     assert_kind_of Time, @api.cached_until
@@ -1153,10 +1109,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_personal_notifications
-    Reve::API.personal_notification_url = XML_BASE + 'notifications.xml'
     notifications = nil
     assert_nothing_raised do
-      notifications = @api.personal_notifications(:characterid => 1)
+      notifications = @api.personal_notifications :url => File.join(XML_BASE,'notifications.xml'), :characterid => 1
     end
     assert_equal 2, notifications.length
     assert_equal Reve::Classes::Notification, notifications.first.class
@@ -1166,10 +1121,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_personal_mailing_lists
-    Reve::API.personal_mailing_lists_url = XML_BASE + 'mailing_lists.xml'
     lists = nil
     assert_nothing_raised do
-      lists = @api.personal_mailing_lists(:characterid => 1)
+      lists = @api.personal_mailing_lists :url => File.join(XML_BASE,'mailing_lists.xml'), :characterid => 1
     end
     assert_equal 3, lists.length
     assert_equal Reve::Classes::MailingList, lists.first.class
@@ -1179,10 +1133,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_personal_mail_messages
-    Reve::API.personal_mail_messages_url = XML_BASE + 'mail_messages.xml'
     mails = nil
     assert_nothing_raised do
-      mails = @api.personal_mail_messages(:characterid => 1)
+      mails = @api.personal_mail_messages :url => File.join(XML_BASE,'mail_messages.xml'), :characterid => 1
     end
     assert_equal 5, mails.length
     assert_equal Reve::Classes::MailMessage, mails.first.class
@@ -1210,10 +1163,9 @@ class TestReve < Test::Unit::TestCase
   end
 
   def test_account_status_cleanly
-    Reve::API.account_status_url = XML_BASE + 'account_status.xml'
     status = nil
     assert_nothing_raised do
-      status = @api.account_status
+      status = @api.account_status :url => File.join(XML_BASE,'account_status.xml')
     end
     assert_equal 3000000, status.user_id
     assert_equal Time.parse("2004-01-01 00:00:00"), status.created_at
@@ -1224,10 +1176,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_character_info_cleanly
-    Reve::API.character_info_url = XML_BASE + 'char_info.xml'
     info = nil
     assert_nothing_raised do
-      info = @api.character_info
+      info = @api.character_info :url => File.join(XML_BASE,'char_info.xml')
     end
     assert_equal :basic, info.type
     assert_equal 1643072492, info.id
@@ -1251,10 +1202,9 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_character_info_limited_cleanly
-    Reve::API.character_info_url = XML_BASE + 'char_info_limited.xml'
     info = nil
     assert_nothing_raised do
-      info = @api.character_info
+      info = @api.character_info :url => File.join(XML_BASE,'char_info_limited.xml')
     end
     assert_equal :limited, info.type
     assert_equal 9999, info.skillpoints
@@ -1268,16 +1218,17 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_character_info_full_cleanly
-    Reve::API.character_info_url = XML_BASE + 'char_info_full.xml'
     info = nil
     assert_nothing_raised do
-      info = @api.character_info
+      info = @api.character_info :url => File.join(XML_BASE,'char_info_full.xml')
     end
     assert_equal :full, info.type
     assert_equal 'FD-MLJ VII - Moon 2 - Intaki Bank Investment Bank', info.last_known_location
     assert_equal 9999.29, info.acount_balance
   end
+
   # Can we reassign a URL?
+  # We can't right now.
   def test_assignment
     assert_nothing_raised do
       Reve::API.character_sheet_url = "hello"
@@ -1414,9 +1365,12 @@ class TestReve < Test::Unit::TestCase
 
   #### All tests above this method.
   protected
+
+  
   def get_api(userid = nil, apikey = nil, charid = nil)
     api = Reve::API.new(userid, apikey, charid)
     api.save_path = nil
     api
   end
 end
+

@@ -55,7 +55,6 @@ module Reve
   # All API methods have the functionality to read XML from an arbitrary location. This could be another webserver, or a XML file on disk.
   # To use this pass the hash option :url => +location+ where +location+ is a String or URI class. See format_url_request documentation for more details.
   class API
-    include Reve::Urls
 
     
     include Reve::Methods::Account
