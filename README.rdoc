@@ -25,3 +25,20 @@ Reve is a Ruby library that can be used to access the Eve Online API.
     @id=797400947,
     @name="CCP Garthagk">]
 
+= Contributing
+
+Since the tidyup branch was started Reve has been broken out into a number of smaller modules which are, in turn, included in the main Reve::API class. Here is an overview of the module/class hierarchy:
+
+* Reve - General Reve namespace
+** Reve::API - API Class, this is where all of the business happens. Every available method is made available through this class
+** Reve::Urls - where all of the Eve API URLs are presently defined.
+** Reve::Methods - Methods namespace, this namespace breaks out each API method based on the URL: /account/Characters.xml.aspx is in the Reve::Methods::Account module
+*** Reve::Methods::Account - Account-related methods
+*** Reve::Methods::Char - Character-related methods
+*** Reve::Methods::Corp - Corporation-related methods
+*** Reve::Methods::Eve - General Eve universe-related methods
+*** Reve::Methods::Map - Map related methods
+*** Reve::Methods::Server - Cluster-related (server status) method(s)
+*** Reve::Extensions - Some extensions made for convenience
+*** Reve::Exceptions - An enumeration of all of the API error methods
+*** Reve::Classes - Where all of the API wrapper classes live. (Soon to be broken out)
