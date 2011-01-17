@@ -176,6 +176,7 @@ module Reve #:nodoc:
     end
     
     class CorporateContact < PersonalContact; end
+    class AllianceContact < PersonalContact; end
     
     # The status of a System with regards to a FactionWar. Who controls what 
     # and what System is contested
