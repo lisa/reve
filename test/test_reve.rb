@@ -306,13 +306,20 @@ class TestReve < Test::Unit::TestCase
   end
   
   def test_corporate_contacts_clean
-    Reve::API.corporate_contacts_url = XML_BASE + 'char_contacts.xml'
+    Reve::API.corporate_contacts_url = XML_BASE + 'corp_contact.xml'
     contacts = @api.corporate_contacts
     assert_equal(2, contacts.length)
-    assert_equal("Hirento Raikkanen", contacts.first.contact_name )
-    assert_equal(3010913, contacts.first.contact_id )
+    assert_equal("CCP Garthagk", contacts.first.contact_name )
+    assert_equal(797400947, contacts.first.contact_id )
     assert_equal(false, contacts.first.in_watchlist )
-    assert_equal(0, contacts.first.standing )
+    assert_equal(-10, contacts.first.standing )
+    assert_equal(Reve::Classes::CorporateContact, contacts.first.class )
+    
+    assert_equal("CCP Garthagk", contacts.last.contact_name )
+    assert_equal(797400947, contacts.last.contact_id )
+    assert_equal(false, contacts.last.in_watchlist )
+    assert_equal(5, contacts.last.standing )
+    assert_equal(Reve::Classes::AllianceContact, contacts.last.class )
   end
   
   def test_faction_war_system_stats_clean(skip_preamble = false,stats = nil)
