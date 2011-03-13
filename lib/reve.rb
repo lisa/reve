@@ -827,7 +827,7 @@ module Reve
       xml = process_query(nil,opts[:url] || @@corporation_member_security_url,true,args)
 
       cmc = Reve::Classes::CorporationMemberSecurity.new
-      xml.search("/eveapi/result/member").each do |member|
+      xml.search("/eveapi/result/rowset[@name=members]/row").each do |member|
         mem = Reve::Classes::CorporationMember.new(member)
         cmc.members << mem
         [:roles, :grantableRoles, :rolesAtHQ, :grantableRolesAtHQ, :rolesAtBase, :grantableRolesAtBase, :rolesAtOther, :grantableRolesAtOther].each do |rowset|
