@@ -313,7 +313,15 @@ module Reve
       args = postfields(opts)
       h = compute_hash(args.merge(:url => @@corporate_contacts_url))
       return h if h
-      process_query(Reve::Classes::PersonalContact, opts[:url] || @@corporate_contacts_url,false,args)
+      xml = process_query(nil, opts[:url] || @@corporate_contacts_url,true,args)
+      contacts = []
+      xml.search("/eveapi/result/rowset[@name='corporateContactList']/row").each do |corporate|
+        contacts << Reve::Classes::CorporateContact.new(corporate)
+      end
+      xml.search("/eveapi/result/rowset[@name='allianceContactList']/row").each do |alliance|
+        contacts << Reve::Classes::AllianceContact.new(alliance)
+      end
+      contacts
     end
         
     # Returns the SkillTree from
