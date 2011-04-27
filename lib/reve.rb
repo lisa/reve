@@ -614,15 +614,7 @@ module Reve
       h = compute_hash(args.merge(:url => @@personal_assets_url))
       return h if h
       xml = process_query(nil,opts[:url] || @@personal_assets_url,true,args)
-      assets = []
-      xml.search("/eveapi/result/rowset[@name='assets']/row").each do |container|
-        asset_container = Reve::Classes::AssetContainer.new(container)
-        container.search("rowset[@name='contents']/row").each do |asset|
-          asset_container.assets << Reve::Classes::Asset.new(asset)
-        end
-        assets << asset_container
-      end
-      assets
+      self.recur_through_assets(xml.search("/eveapi/result/rowset[@name='assets']/row"))
     end
     
     # Get a list of the Corporate Assets. Pass the characterid of the Corporate member See also assets_list method
@@ -631,15 +623,7 @@ module Reve
       h = compute_hash(args.merge(:url => @@corporate_assets_url))
       return h if h
       xml = process_query(nil,opts[:url] || @@corporate_assets_url,true,args)
-      assets = []
-      xml.search("/eveapi/result/rowset/row").each do |container|
-        asset_container = Reve::Classes::AssetContainer.new(container)
-        container.search("rowset[@name='contents']/row").each do |asset|
-          asset_container.assets << Reve::Classes::Asset.new(asset)
-        end
-        assets << asset_container
-      end
-      assets
+      self.recur_through_assets(xml.search("/eveapi/result/rowset[@name='assets']/row"))
     end
 
     # Returns a Character list for the associated key and userid from
@@ -990,6 +974,21 @@ module Reve
     end
 
     protected
+    # Helper method to handle nested assets
+    def recur_through_assets(rows)
+      assets = []
+      rows.each do |container|
+        unless container.empty?  
+          asset_container = Reve::Classes::AssetContainer.new(container)
+          asset_container.assets = self.recur_through_assets(container.search("/rowset/row"))
+          assets << asset_container 
+        else
+          assets << Reve::Classes::Asset.new(container)
+        end
+      end 
+      assets
+    end
+    
     # Sets up the post fields for Net::HTTP::Get hash for process_query method.
     # See also format_url_request
     # TODO: Consider moving this whole thing into process_query to avoid 
