@@ -127,6 +127,10 @@ module Reve
     # * keyid ( Integer | String ) - Your Key ID (or legacy key UserID)
     # * key ( String ) - Your API key verification code (or legacy API Key)
     # * charid ( Integer | String ) - Default characterID for calls requiring it.
+    #
+    # If you are using legacy key ids, you must explicitly set the
+    # cak attribute on the returned API instance to false.
+    #
     # NOTE: All values passed to the constructor are typecasted to a String for safety.
     def initialize(keyid = "", key = "", charid = "")
       @keyid  = (keyid || "").to_s

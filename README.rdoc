@@ -13,7 +13,7 @@ Reve is a Ruby library that can be used to access the Eve Online API.
   
   api = Reve::API.new
   
-  ids = api.character_name( { :ids => [ "CCP Garthagk" ] } )
+  ids = api.character_id( { :names => [ "CCP Garthagk" ] } )
   puts 'Names to IDs output:'
   pp names
   
