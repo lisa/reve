@@ -28,7 +28,7 @@ require 'reve/classes'
 module Reve
   # API Class.
   # Basic Usage:
-  # api = Reve::API.new('my_UserID', 'my_apiKey')
+  # api = Reve::API.new('my_keyID', 'my_vCode')
   # alliances = api.alliances # Returns an array of Reve::Classes::Alliance
   #
   # api.personal_wallet_blanace(:characterid => 892008733) # Returns an array of
@@ -115,22 +115,28 @@ module Reve
                    :account_status_url, :character_info_url
 
 
-    attr_accessor :key, :userid, :charid
+    attr_accessor :key, :keyid, :cak, :charid
+    alias :userid :keyid
+    alias :userid= :keyid=
     attr_accessor :http_user_agent, :save_path, :timeout
     attr_reader :current_time, :cached_until, :last_hash, :reve_version
     
     # Create a new API instance.
     # current_time and cached_until are meaningful only for the LAST call made.
     # Expects:
-    # * userid ( Integer | String ) - Your API userID
-    # * key ( String ) - Your API key (Full key or restricted key)
+    # * keyid ( Integer | String ) - Your Key ID (or legacy key UserID)
+    # * key ( String ) - Your API key verification code (or legacy API Key)
     # * charid ( Integer | String ) - Default characterID for calls requiring it.
+    #
+    # If you are using legacy key ids, you must explicitly set the
+    # cak attribute on the returned API instance to false.
+    #
     # NOTE: All values passed to the constructor are typecasted to a String for safety.
-    def initialize(userid = "", key = "", charid = "")
-      @userid = (userid || "").to_s
+    def initialize(keyid = "", key = "", charid = "")
+      @keyid  = (keyid || "").to_s
       @key    = (key    || "").to_s
       @charid = (charid || "").to_s
-      
+      @cak    = true
       @save_path = nil
       
       @max_tries = 3
@@ -143,7 +149,7 @@ module Reve
       @http_user_agent = "Reve v#{@reve_version}; http://github.com/lisa/reve"
     end
     # Save XML to this directory with the format:
-    # :save_path/:userid/:method/:expires_at_in_unixtime.xml
+    # :save_path/:keyid/:method/:expires_at_in_unixtime.xml
     # eg: ./xml/12345/characters/1200228878.xml
     # or: ./xml/alliances/1200228878.xml
     # If @save_path is nil then XML is not saved.
@@ -626,7 +632,7 @@ module Reve
       self.recur_through_assets(xml.search("/eveapi/result/rowset[@name='assets']/row"))
     end
 
-    # Returns a Character list for the associated key and userid from
+    # Returns a Character list for the associated key from
     # http://api.eve-online.com/account/Characters.xml.aspx
     # See also: Reve::Classes::Character
     def characters(opts = {})
@@ -994,7 +1000,20 @@ module Reve
     # TODO: Consider moving this whole thing into process_query to avoid 
     # calling this in every method!
     def postfields(opts = {})
-      ret = { "userid" => @userid, "apikey" => @key, "characterid" => @charid }.merge(opts.stringify_keys)
+      baseargs = { :characterid => @charid }
+      if @cak
+        baseargs[:keyid] = @keyid
+        baseargs[:vcode] = @key
+      else
+        baseargs[:userid] = @keyid
+        baseargs[:apikey] = @key
+      end
+      ret = opts.clone
+      baseargs.each do |k,v|
+        if ret[k].nil?
+          ret[k] = v
+        end
+      end
       ret.inject({}) do |n, (k,v)|
         n[k.downcase] = v.to_s if v
         n
@@ -1039,7 +1058,8 @@ module Reve
       #return h if h
 
       @last_hash = compute_hash(opts.merge({:url => url, :just_hash => true })) # compute hash
-      
+
+
       xml = check_exception(get_xml(url,opts))
       save_xml(xml) if @save_path
 
@@ -1066,7 +1086,7 @@ module Reve
     # Gets the XML from a source.
     # Expects:
     # * source ( String | URI ) - If the +source+ is a String Reve will attempt to load the XML file from the local filesystem by the path specified as +source+. If the +source+ is a URI or is a String starting with http (lowercase) Reve will fetch it from that URI on the web.
-    # * opts ( Hash ) - Hash of parameters for the request, such as userid, apikey and such.
+    # * opts ( Hash ) - Hash of parameters for the request, such as keyid, vcode and such.
     # NOTE: To override the lowercase http -> URI rule make the HTTP part uppercase.
     def get_xml(source,opts)
       xml = ""
@@ -1140,7 +1160,7 @@ module Reve
     end
     def build_save_filename
       method = caller(3).first.match(/\`(.+)'/)[1] # Get the API method that's being called. This is called from save_xml -> process_query -> :real_method
-      File.join(@save_path,@userid.to_s,method,( @cached_until || Time.now.utc).to_i.to_s + '.xml')
+      File.join(@save_path,@keyid.to_s,method,( @cached_until || Time.now.utc).to_i.to_s + '.xml')
     end
 
     # Returns an array of +klass+
