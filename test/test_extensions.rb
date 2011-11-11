@@ -58,7 +58,7 @@ class TestExtensions < Test::Unit::TestCase
     assert_equal 42,"42".to_i
   end
   def test_string_to_i_unclean
-    assert "abcd123","abcd123".to_i
+    assert_equal 0,"abcd123".to_i
   end
   
 end
