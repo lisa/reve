@@ -616,7 +616,7 @@ module Reve #:nodoc:
     class CharacterSheet
       attr_accessor :name, :race, :bloodline, :gender, :id, :corporation_name, :corporation_id, :balance
       attr_accessor :intelligence, :memory, :charisma, :perception, :willpower, :clone_name, :clone_skill_points
-      attr_accessor :skills, :enhancers, :roles, :certificate_ids, :corporate_titles
+      attr_accessor :skills, :enhancers, :roles, :certificate_ids, :corporate_titles, :dob, :ancestry
       attr_accessor :corporationRolesAtHQ, :corporationRoles, :corporationRolesAtBase, :corporationRolesAtOther
       alias_method :corporate_roles_at_hq,    :corporationRolesAtHQ
       alias_method :corporate_roles,          :corporationRoles
@@ -1404,7 +1404,7 @@ module Reve #:nodoc:
     # * balance ( Float ) - New wallet balance after this action
     # * reason ( String ) - Any reason for the action. May be blank (useful in giving ISK)
     class WalletJournal
-      attr_reader :date, :ref_id, :reftype_id, :owner_name1, :owner_id1, :owner_name2, :owner_id2, :arg_name1, :arg_id1, :amount, :balance, :reason
+      attr_reader :date, :ref_id, :reftype_id, :owner_name1, :owner_id1, :owner_name2, :owner_id2, :arg_name1, :arg_id1, :amount, :balance, :reason, :tax_amount, :tax_receiver_id
       alias_method :id, :ref_id
       def initialize(elem) #:nodoc:
         @date        = elem['date'].to_time
@@ -1417,6 +1417,8 @@ module Reve #:nodoc:
         @arg_name1   = elem['argName1']
         @arg_id1     = elem['argID1'].to_i if elem['argID1']
         @amount      = elem['amount'].to_f
+        @tax_amount      = elem['taxAmount'].to_f
+        @tax_receiver_id = elem['taxReceiverID'].to_i if elem['taxReceiverID']
         @balance     = elem['balance'].to_f
         @reason      = elem['reason']
       end
@@ -1440,7 +1442,7 @@ module Reve #:nodoc:
     class WalletTransaction
       attr_reader :created_at, :id, :quantity, :type_name, :type_id, :price, 
                   :client_id, :client_name, :character_id, :station_id, :station_name, :type,
-                  :transaction_for
+                  :transaction_for, :character_name
       def initialize(elem) #:nodoc:
         @created_at       = elem['transactionDateTime'].to_time
         @id               = elem['transactionID'].to_i
@@ -1450,6 +1452,7 @@ module Reve #:nodoc:
         @price            = elem['price'].to_f
         @client_id        = elem['clientID'].to_i if elem['clientID']
         @client_name      = elem['clientName']
+        @character_name   = elem['characterName']
         @station_id       = elem['stationID'].to_i
         @station_name     = elem['stationName']
         @character_id     = elem['characterID'].to_i if elem['characterID'] && elem['characterID'] != '0'
@@ -1567,14 +1570,16 @@ module Reve #:nodoc:
     # * last_known_location ( String ) -
     # * acount_balance ( Float )
     class CharacterInfo
-      attr_reader :id, :name, :race, :bloodline, :corporation_id, :corporation_name, :corporation_date, :alliance_id, :alliance_name, :alliance_date
+      attr_reader :id, :name, :race, :bloodline, :corporation_id, :corporation_name, :corporation_date, :alliance_id, :alliance_name, :alliance_date, :dob, :ancestry
       attr_reader :security_status, :skillpoints, :skill_training_ends, :ship_name, :ship_type_id, :ship_type_name, :last_known_location, :acount_balance
 
       def initialize(elem) #:nodoc:
         @id = (elem/'characterID').inner_html.to_i
         @name = (elem/'characterName').inner_html
+        @dob = (elem/'DoB').inner_html
         @race = (elem/'race').inner_html
         @bloodline = (elem/'bloodline').inner_html
+        @ancestry = (elem/'ancestry').inner_html
         @corporation_id = (elem/'corporationID').inner_html.to_i
         @corporation_name = (elem/'corporation').inner_html
         @corporation_date = Time.parse((elem/'corporationDate').inner_html)

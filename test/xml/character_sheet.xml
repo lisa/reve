@@ -4,8 +4,10 @@
   <result>
     <characterID>892008733</characterID>
     <name>Raquel Smith</name>
+    <DoB>2009-04-20 00:30:00</DoB>
     <race>Caldari</race>
-    <bloodLine>Civire</bloodLine>
+    <bloodLine>Civire</bloodLine> 
+    <ancestry>Scientists</ancestry>
     <gender>Female</gender>
     <corporationName>Freedom-Technologies</corporationName>
     <corporationID>1668136112</corporationID>
