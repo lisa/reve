@@ -894,7 +894,7 @@ module Reve
         cs.enhancers << i
       end
 
-      [ 'characterID', 'name', 'race', 'bloodLine', 'gender','corporationName',
+      [ 'characterID', 'name', 'race', 'bloodLine', 'ancestry', 'dob', 'gender','corporationName',
         'corporationID','balance', 'cloneName', 'cloneSkillPoints' 
       ].each do |field|
         cs.send("#{field.downcase}=",xml.search("/eveapi/result/#{field}/").first.to_s)
