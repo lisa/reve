@@ -703,7 +703,7 @@ class TestReve < Test::Unit::TestCase
     trans.each do |tran|
       [ :created_at, :id, :quantity, :type_name, :type_id, :price, 
         :client_id, :client_name, :character_id, :station_id, :station_name, :type,
-        :transaction_for ].each do |attr|
+        :transaction_for, :character_name ].each do |attr|
       assert_not_nil(tran.send(attr))
     end
     assert_instance_of(Time, tran.created_at)
@@ -732,10 +732,10 @@ class TestReve < Test::Unit::TestCase
     assert_nothing_raised do
       journal = @api.corporate_wallet_journal :url => File.join(XML_BASE,'corporate_wallet_journal.xml')
     end
-    assert_equal 2, journal.size
+    assert_equal 3, journal.size
     assert journal.all? { |j| j.kind_of?(Reve::Classes::WalletJournal) }    
     journal.each do |j|
-      [ :date, :ref_id, :reftype_id, :owner_name1, :owner_name2, :arg_name1, :amount, :balance, :reason ].each do |attr|
+      [ :date, :ref_id, :reftype_id, :owner_name1, :owner_name2, :arg_name1, :amount, :balance, :reason , :tax_amount, :tax_receiver_id].each do |attr|
         assert_not_nil(j.send(attr))
       end
     end
@@ -1131,6 +1131,8 @@ class TestReve < Test::Unit::TestCase
     
     assert_not_nil sheet.name
     assert_not_nil sheet.race
+    assert_not_nil sheet.ancestry
+    assert_not_nil sheet.dob
     assert_not_nil sheet.bloodline
     assert_not_nil sheet.gender
     assert_not_nil sheet.id
