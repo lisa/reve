@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lisa Seelye"]
-  s.date = %q{2010-11-03}
+  s.date = %q{2012-02-05}
   s.email = %q{lisa@thedoh.com}
   s.extra_rdoc_files = [
     "ChangeLog"
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
      "reve.rb",
      "tester.rb"
   ]
-  s.homepage = %q{http://github.com/lisa/reve}
+  s.homepage = %q{https://github.com/lisa/reve}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{reve}
@@ -50,11 +50,13 @@ Gem::Specification.new do |s|
      "test/xml/charactername.xml",
      "test/xml/characters.xml",
      "test/xml/conqurable_stations.xml",
+     "test/xml/corp_contact.xml",
      "test/xml/corp_facwarstats.xml",
      "test/xml/corp_medals.xml",
      "test/xml/corp_member_medals.xml",
      "test/xml/corp_membersecurity.xml",
      "test/xml/corporate_assets_list.xml",
+     "test/xml/corporate_assets_list_nesting.xml",
      "test/xml/corporate_market_orders.xml",
      "test/xml/corporate_wallet_balance.xml",
      "test/xml/corporate_wallet_journal.xml",
