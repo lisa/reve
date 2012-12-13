@@ -14,6 +14,9 @@ tmtags
 ## VIM
 *.swp
 
+## APTANA
+.project
+
 ## PROJECT::GENERAL
 coverage
 rdoc
