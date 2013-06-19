@@ -119,7 +119,7 @@ module Reve
     alias :userid :keyid
     alias :userid= :keyid=
     attr_accessor :http_user_agent, :save_path, :timeout
-    attr_reader :current_time, :cached_until, :last_hash, :reve_version
+    attr_reader :current_time, :cached_until, :last_hash, :last_xml, :reve_version
     
     # Create a new API instance.
     # current_time and cached_until are meaningful only for the LAST call made.
@@ -145,6 +145,7 @@ module Reve
       @current_time = nil
       @cached_until = nil
       @last_hash = nil
+      @last_xml  = nil
       @reve_version = File.read(File.join(File.dirname(__FILE__),'../','VERSION')).chomp
       @http_user_agent = "Reve v#{@reve_version}; http://github.com/lisa/reve"
     end
@@ -1134,6 +1135,8 @@ module Reve
       else
         raise Reve::Exceptions::ReveNetworkStatusException.new("Don't know how to deal with a #{source.class} XML source. I expect a URI or String")
       end
+      @last_xml = xml
+
       xml
     end
 
