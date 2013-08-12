@@ -1494,9 +1494,8 @@ module Reve #:nodoc:
     # * to_corp_or_alliance_id ( Fixnum ) - The ID of a corporation/alliance that the message was sent to.
     # * to_character_ids ( [Fixnum] ) - Array of character IDs of the characters that received the message.
     # * to_list_ids ( [Fixnum] ) - Array of mailing lists that the mail was sent to. (use Reve::API#personal_mailing_lists to get their names)
-    # * read ( Boolean ) - Whether the mail/notification has been read in the EVE client. This does not change when you get it through the API.
     class MailMessage
-      attr_reader :id, :name, :sender_id, :send_date, :title, :to_corp_or_alliance_id, :to_character_ids, :to_list_ids, :read
+      attr_reader :id, :name, :sender_id, :send_date, :title, :to_corp_or_alliance_id, :to_character_ids, :to_list_ids
       def initialize(elem) #:nodoc:
         @id = elem['messageID'].to_i
         @sender_id = elem['senderID'].to_i
@@ -1505,7 +1504,6 @@ module Reve #:nodoc:
         @to_corp_or_alliance_id = elem['toCorpOrAllianceID'] == '' ? nil : elem['toCorpOrAllianceID'].to_i
         @to_character_ids = elem['toCharacterIDs'] == '' ? nil : elem['toCharacterIDs'].split(',').collect {|id| id.to_i }
         @to_list_ids = elem['toListID'] == '' ? nil : elem['toListID'].split(',').collect {|id| id.to_i }
-        @read = elem['read'] == '1'
       end
     end
 

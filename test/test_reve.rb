@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Tests designed to run with autotest.
 require 'test/unit'
 require 'reve'
@@ -1226,7 +1227,6 @@ class TestReve < Test::Unit::TestCase
     assert_equal 4, mails.first.to_corp_or_alliance_id
     assert_equal nil, mails.first.to_character_ids
     assert_equal nil, mails.first.to_list_ids
-    assert_equal true, mails.first.read
     # Personal Mail
     assert_equal nil, mails[1].to_corp_or_alliance_id
     assert_equal [5], mails[1].to_character_ids
@@ -1235,7 +1235,6 @@ class TestReve < Test::Unit::TestCase
     assert_equal nil, mails[2].to_corp_or_alliance_id
     assert_equal nil, mails[2].to_character_ids
     assert_equal [128250439], mails[2].to_list_ids
-    assert_equal false, mails[2].read
     # multi personal
     assert_equal [5,6,7], mails[3].to_character_ids
     # multi list
