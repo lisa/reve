@@ -1225,7 +1225,8 @@ class TestReve < Test::Unit::TestCase
     assert_equal Reve::Classes::MailMessage, mails.first.class
     # Corp Mail
     assert_equal 1, mails.first.sender_id
-    assert_equal Time.parse('2013-07-31 18:04:00 -0700 UTC'), mails.first.send_date
+    #assert_equal Time.parse('2013-07-31 18:04:00 -0700 UTC'), mails.first.send_date
+    assert_equal Time.parse('2013-07-31 18:04:00 -0700'), mails.first.send_date
     assert_equal "Corp mail", mails.first.title
     assert_equal 4, mails.first.to_corp_or_alliance_id
     assert_equal nil, mails.first.to_character_ids
