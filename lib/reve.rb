@@ -197,13 +197,21 @@ module Reve
     # Expects a Hash as a parameter with these keys:
     # * ids ( Array ) - An Array of Character IDs to fetch the names of.
     # See Also: character_name, Reve::Classes::Character, character_sheet
+
     def ids_to_names(opts = {})
       ids = opts[:ids] || []
-      return [] if ids.empty?
+      return [] if ids.empty? #No ids where passed
       opts[:ids] = ids.join(',')
-      compute_hash(  opts.merge(:url => @@character_name_url) ) ||
-        process_query(Reve::Classes::Character,opts[:url] || @@character_name_url,false,opts)
-    end
+      args = postfields(opts)
+      h = compute_hash(  opts.merge(:url => @@character_name_url) )
+      return h if h
+      xml = process_query(nil,opts[:url] || @@character_name_url, true,opts)
+      ret = []
+        xml.search("//rowset/row").each do |elem|
+          ret << Reve::Classes::Character.new(elem)
+        end
+        ret
+      end      
     
     alias_method :character_name, :ids_to_names
     
