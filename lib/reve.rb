@@ -46,7 +46,6 @@ module Reve
   # To use this pass the hash option :url => +location+ where +location+ is a String or URI class. See format_url_request documentation for more details.
   class API
     BASE_URL = 'https://api.eveonline.com'
-
     @@alliances_url                = BASE_URL + '/eve/AllianceList.xml.aspx'
     @@sovereignty_url              = BASE_URL + '/map/Sovereignty.xml.aspx'
     @@reftypes_url                 = BASE_URL + '/eve/RefTypes.xml.aspx'
@@ -205,7 +204,9 @@ module Reve
       compute_hash(  opts.merge(:url => @@character_name_url) ) ||
         process_query(Reve::Classes::Character,opts[:url] || @@character_name_url,false,opts)
     end
-
+    
+    alias_method :ids_to_names, :character_name
+    
     # Return a list of Alliances and member Corporations from
     # http://api.eve-online.com/eve/AllianceList.xml.aspx
     # Use the corporation_sheet method to get information for each member
