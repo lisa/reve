@@ -197,7 +197,7 @@ module Reve
     # Expects a Hash as a parameter with these keys:
     # * ids ( Array ) - An Array of Character IDs to fetch the names of.
     # See Also: character_name, Reve::Classes::Character, character_sheet
-    def character_name(opts = {})
+    def ids_to_names(opts = {})
       ids = opts[:ids] || []
       return [] if ids.empty?
       opts[:ids] = ids.join(',')
@@ -205,7 +205,7 @@ module Reve
         process_query(Reve::Classes::Character,opts[:url] || @@character_name_url,false,opts)
     end
     
-    alias_method :ids_to_names, :character_name
+    alias_method :character_name, :ids_to_names
     
     # Return a list of Alliances and member Corporations from
     # http://api.eve-online.com/eve/AllianceList.xml.aspx
