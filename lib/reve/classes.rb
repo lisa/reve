@@ -1570,8 +1570,9 @@ module Reve #:nodoc:
     # * last_known_location ( String ) -
     # * acount_balance ( Float )
     class CharacterInfo
-      attr_reader :id, :name, :race, :bloodline, :corporation_id, :corporation_name, :corporation_date, :alliance_id, :alliance_name, :alliance_date, :dob, :ancestry
-      attr_reader :security_status, :skillpoints, :skill_training_ends, :ship_name, :ship_type_id, :ship_type_name, :last_known_location, :acount_balance
+      attr_reader :id, :name, :race, :bloodline, :corporation_id, :corporation_name, :corporation_date, :alliance_id, :alliance_name, :alliance_date, :security_status
+      attr_reader :skillpoints, :skill_training_ends, :ship_name, :ship_type_id, :ship_type_name
+      attr_reader :last_known_location, :acount_balance
 
       def initialize(elem) #:nodoc:
         @id = (elem/'characterID').inner_html.to_i
