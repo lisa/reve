@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 # Tests designed to run with autotest.
 require 'test/unit'
-require 'reve'
 require 'fileutils' # for saving downloaded XML
+$LOAD_PATH << './lib'
+require 'reve'
+
 
 XML_BASE = File.join(File.dirname(__FILE__),'xml/')
 SAVE_PATH = File.join(File.dirname(__FILE__),'downloads')
@@ -1448,6 +1450,15 @@ class TestReve < Test::Unit::TestCase
         end
       end
     end
+  end
+
+#This test verifies that we can connect to the CPP API Server. 
+#Dont care what data comes back, just as long as data comes back.
+#This is expensive and ugly, but important
+  def test_End_to_End_Connectivity_Test
+    api = Reve::API.new
+    errors = api.errors 
+    assert_not_nil(errors.inspect)
   end
 
   #### All tests above this method.

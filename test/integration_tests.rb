@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 # Tests designed to run with autotest.
 require 'test/unit'
-require 'reve'
 require 'fileutils' # for saving downloaded XML
+$LOAD_PATH << './lib'
+require 'reve'
+
 
 
 class TestReve < Test::Unit::TestCase

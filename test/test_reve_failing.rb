@@ -1,6 +1,7 @@
 require 'test/unit'
-require 'reve'
 require 'fileutils' # for saving downloaded XML
+$LOAD_PATH << './lib'
+require 'reve'
 
 XML_BASE = File.join(File.dirname(__FILE__),'xml/')
 SAVE_PATH = File.join(File.dirname(__FILE__),'downloads')
@@ -44,3 +45,4 @@ class TestReve < Test::Unit::TestCase
     last = members.members.last
     assert_equal 5, last.titles.size
   end
+end
