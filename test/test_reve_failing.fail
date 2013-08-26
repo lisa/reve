@@ -8,7 +8,10 @@ SAVE_PATH = File.join(File.dirname(__FILE__),'downloads')
 
 class TestReve < Test::Unit::TestCase
 
-
+#
+#RENAME THIS FILE TO RUN THESE TESTS. 
+#DISABLED SO AUTOMATIC TESTING IGNORES THEM
+#
 
 #line 56 - 60 of test_reve.rb
   

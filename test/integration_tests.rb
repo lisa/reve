@@ -6,7 +6,6 @@ $LOAD_PATH << './lib'
 require 'reve'
 
 
-
 class TestReve < Test::Unit::TestCase
 
 
