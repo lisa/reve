@@ -24,3 +24,7 @@ pkg
 reve.gemspec
 ## PROJECT::SPECIFIC
 
+Gemfile
+Gemfile.lock
+Guardfile
+foo_test.rb
