@@ -26,3 +26,5 @@ reve.gemspec
 
 Guardfile
 foo_test.rb
+Gemfile
+Gemfile.lock
