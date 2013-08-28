@@ -978,6 +978,23 @@ module Reve
       process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
     end
 
+
+
+
+    #Gets upcoming calendar events
+    #Reve::Classes::UpcomingCalendarEvents
+    def upcoming_calendar_events(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@upcoming_calendar_events_url))
+      return h if h
+      process_query(Reve::Classes::UpcomingCalendarEvents, opts[:url] || @@upcoming_calendar_events_url,false,args)
+    end
+
+
+
+
+
+
     # Gets the status of the selected account. Returns
     # Reve::Classes::AccountStatus
     def account_status(opts = {})

@@ -1186,9 +1186,6 @@ class TestReve < Test::Unit::TestCase
     assert sheet.corporate_titles.all? { |t| t.kind_of?(Reve::Classes::CorporateTitle) }
     assert sheet.corporate_titles.all? { |t| t.name.kind_of?(String) }
     assert sheet.corporate_titles.all? { |t| t.id.kind_of?(Numeric) }
-    
-    
-    
   end
   
   def test_personal_notifications
@@ -1287,7 +1284,6 @@ class TestReve < Test::Unit::TestCase
     assert_equal nil, info.ship_name
     assert_equal nil, info.ship_type_id
     assert_equal nil, info.ship_type_name
-
   end
   
   def test_character_info_limited_cleanly
@@ -1451,6 +1447,24 @@ class TestReve < Test::Unit::TestCase
       end
     end
   end
+
+  def test_upcoming_calendar_events
+    Reve::API.upcoming_calendar_events_url = XML_BASE + 'upcomeing_calendar_events.xml'
+    events = nil
+    assert_nothing_raised do
+      events = @api.upcoming_calendar_events(:characterid => 1)
+    end
+    assert_equal 2, events.length
+    assert_equal 2, events.first.owner_Type_ID
+    assert_equal 60, events.first.duration
+    assert_equal "foo_ownerName", events.first.owner_Name
+    assert_equal "foo_eventTitle", events.first.event_Title
+    assert_equal "0", events.first.importance
+    assert_equal "foo_eventText", events.first.event_Text
+    assert_equal "Undecided", events.first.response
+    assert_equal "2013-09-03 11:13:34", events.first.event_Date.to_s
+    
+  end  
 
 #This test verifies that we can connect to the CPP API Server. 
 #Dont care what data comes back, just as long as data comes back.
