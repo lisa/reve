@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+    <currentTime>2013-08-28 01:12:21</currentTime>
+    <result>
+        <rowset name="upcomingEvents" key="eventID" columns="eventID,ownerID,ownerName,eventDate,eventTitle,duration,importance,response,eventText,ownerTypeID">
+            <row eventID="1" ownerID="2" ownerName="foo_ownerName" eventDate="2013-09-03 11:13:34" eventTitle="foo_eventTitle" duration="60" importance="0" response="Undecided" eventText="foo_eventText" ownerTypeID="2" />
+            <row eventID="2" ownerID="3" ownerName="foo_ownerName" eventDate="2013-09-16 10:44:12" eventTitle="foo_eventText" duration="60" importance="0" response="Undecided" eventText="foo_eventTitle" ownerTypeID="2" />
+        </rowset>
+    </result>
+    <cachedUntil>2013-08-28 01:40:46</cachedUntil>
+</eveapi>
