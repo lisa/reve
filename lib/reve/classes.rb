@@ -216,6 +216,7 @@ module Reve #:nodoc:
         @id = elem['characterID'].to_i
       end
     end
+   
     class CorporationFactionKills < FactionWarKills
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -224,6 +225,7 @@ module Reve #:nodoc:
         @id = elem['corporationID'].to_i
       end
     end
+   
     class FactionKills < FactionWarKills
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -239,6 +241,7 @@ module Reve #:nodoc:
         @victory_points = elem['victoryPoints'].to_i
       end
     end
+   
     class CharacterFactionVictoryPoints < FactionWarVictoryPoints
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -247,6 +250,7 @@ module Reve #:nodoc:
         @id = elem['characterID'].to_i
       end
     end
+   
     class CorporationFactionVictoryPoints < FactionWarVictoryPoints
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -255,6 +259,7 @@ module Reve #:nodoc:
         @id = elem['corporationID'].to_i
       end
     end
+   
     class FactionVictoryPoints < FactionWarVictoryPoints
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -548,6 +553,7 @@ module Reve #:nodoc:
         @certificates = []
       end
     end
+    
     class Certificate
       attr_reader :id, :grade, :corporation_id, :description
       attr_accessor :required_skills, :required_certificates
@@ -560,6 +566,7 @@ module Reve #:nodoc:
         @required_skills = []
       end
     end
+    
     class CertificateRequiredSkill
       attr_reader :id, :level
       def initialize(elem)
@@ -1031,6 +1038,7 @@ module Reve #:nodoc:
         @created_at = elem['issued'].to_time
       end
     end
+    
     class PersonalMarketOrder < MarketOrder; end
     class CorporateMarketOrder < MarketOrder; end
 
@@ -1070,6 +1078,7 @@ module Reve #:nodoc:
         @pause_production_time = elem['pauseProductionTime'].to_time
       end
     end
+   
     class PersonalIndustryJob < IndustryJob; end
     class CorporateIndustryJob < IndustryJob; end
 
@@ -1507,6 +1516,22 @@ module Reve #:nodoc:
       end
     end
 
+
+    #upcoming calendar events 
+    class UpcomingCalendarEvents 
+     attr_reader :id, :name, :owner_ID, :owner_Name, :event_Date, :event_Title, :duration, :importance, :response, :event_Text, :owner_Type_ID
+     def initialize(elem) #:nodoc:
+        @id = elem['eventID'].to_i
+        @owner_ID = elem['ownerID'].to_i
+        @owner_Name = elem['ownerName']
+        @event_Date = elem['eventDate'].to_time
+        @event_Title = elem['eventTitle']
+        @duration = elem['duration'].to_i
+        @importance = elem['importance']
+        @response = elem['response']
+        @event_Text = elem['eventText']
+        @owner_Type_ID = elem['ownerTypeID'].to_i
+
     # Represents a Notification for
     # Reve::API#personal_notifications
     # Attributes
@@ -1596,6 +1621,7 @@ module Reve #:nodoc:
         @last_known_location = (elem/'lastKnownLocation').inner_html == "" ? nil : (elem/'lastKnownLocation').inner_html
         @acount_balance = (elem/'accountBalance').inner_html == "" ? nil : (elem/'accountBalance').inner_html.to_f
       end
+
 
       def type
         if self.acount_balance
