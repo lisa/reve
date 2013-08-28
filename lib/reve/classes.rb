@@ -1531,6 +1531,8 @@ module Reve #:nodoc:
         @response = elem['response']
         @event_Text = elem['eventText']
         @owner_Type_ID = elem['ownerTypeID'].to_i
+      end
+    end
 
     # Represents a Notification for
     # Reve::API#personal_notifications

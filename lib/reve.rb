@@ -119,7 +119,7 @@ module Reve
                    :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url,
                    :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url,
                    :research_url, :personal_contacts_url, :corporate_contacts_url,
-                   :account_status_url, :character_info_url
+                   :account_status_url, :character_info_url,
                    :upcoming_calendar_events_url
 
 
