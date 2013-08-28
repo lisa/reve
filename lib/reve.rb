@@ -67,7 +67,7 @@ module Reve
     @@personal_kills_url              = BASE_URL + '/char/KillLog.xml.aspx'
     @@personal_faction_war_stats_url  = BASE_URL + '/char/FacWarStats.xml.aspx'
     @@character_medals_url            = BASE_URL + '/char/Medals.xml.aspx'
-    @@upcoming_calendar_events        = BASE_URL + '/char/UpcomingCalendarEvents.xml.aspx'
+    @@upcoming_calendar_events_url       = BASE_URL + '/char/UpcomingCalendarEvents.xml.aspx'
 
     @@member_tracking_url             = BASE_URL + '/corp/MemberTracking.xml.aspx'
     @@corporate_wallet_balance_url    = BASE_URL + '/corp/AccountBalance.xml.aspx'
@@ -120,6 +120,7 @@ module Reve
                    :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url,
                    :research_url, :personal_contacts_url, :corporate_contacts_url,
                    :account_status_url, :character_info_url
+                   :upcoming_calendar_events_url
 
 
     attr_accessor :key, :keyid, :cak, :charid
