@@ -1462,8 +1462,7 @@ class TestReve < Test::Unit::TestCase
     assert_equal "0", events.first.importance
     assert_equal "foo_eventText", events.first.event_Text
     assert_equal "Undecided", events.first.response
-    assert_equal "2013-09-03 11:13:34", events.first.event_Date.to_s
-    
+    assert_equal "2013-09-03 11:13:34", events.first.event_Date.strftime('%Y-%m-%d %I:%M:%S')
   end  
 
 #This test verifies that we can connect to the CPP API Server. 
