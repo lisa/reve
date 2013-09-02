@@ -54,6 +54,7 @@ module Reve
     @@personal_notification_url       = BASE_URL + '/char/Notifications.xml.aspx'
     @@personal_mailing_lists_url      = BASE_URL + '/char/mailinglists.xml.aspx'
     @@personal_mail_messages_url      = BASE_URL + '/char/MailMessages.xml.aspx'
+    @@personal_mail_message_bodies_url= BASE_URL + '/char/MailBodies.xml.aspx'
     @@personal_contacts_url           = BASE_URL + '/char/ContactList.xml.aspx'
     @@personal_wallet_balance_url     = BASE_URL + '/char/AccountBalance.xml.aspx' 
     @@personal_wallet_trans_url       = BASE_URL + '/char/WalletTransactions.xml.aspx'
@@ -67,7 +68,7 @@ module Reve
     @@personal_kills_url              = BASE_URL + '/char/KillLog.xml.aspx'
     @@personal_faction_war_stats_url  = BASE_URL + '/char/FacWarStats.xml.aspx'
     @@character_medals_url            = BASE_URL + '/char/Medals.xml.aspx'
-    @@upcoming_calendar_events_url       = BASE_URL + '/char/UpcomingCalendarEvents.xml.aspx'
+    @@upcoming_calendar_events_url    = BASE_URL + '/char/UpcomingCalendarEvents.xml.aspx'
 
     @@member_tracking_url             = BASE_URL + '/corp/MemberTracking.xml.aspx'
     @@corporate_wallet_balance_url    = BASE_URL + '/corp/AccountBalance.xml.aspx'
@@ -118,10 +119,8 @@ module Reve
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
                    :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url,
                    :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url,
-                   :research_url, :personal_contacts_url, :corporate_contacts_url,
-                   :account_status_url, :character_info_url,
-                   :upcoming_calendar_events_url
-
+                   :personal_mail_message_bodies_url, :research_url, :personal_contacts_url, :corporate_contacts_url,
+                   :account_status_url, :character_info_url, :upcoming_calendar_events_url
 
     attr_accessor :key, :keyid, :cak, :charid
     alias :userid :keyid
@@ -972,10 +971,44 @@ module Reve
     # * characterid ( Integer | String ) - Get the MailMessages for this Character
     # See also: Reve::Classes::MailMessage
     def personal_mail_messages(opts = { :characterid => nil })
+      with_bodies = opts.include?(:with_bodies) ? opts.delete(:with_bodies) : false
       args = postfields(opts)
       h = compute_hash(args.merge(:url => @@personal_mail_messages_url))
       return h if h
-      process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
+      messages = process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
+      if with_bodies
+        ids = messages.collect{|m| m.id }
+        bodies = personal_mail_message_bodies(:ids => ids)
+        messages.each do |msg|
+          # For now we are ignoring messages that come back saying
+          # body is missing. So use fetch to assign body to message
+          msg.body = bodies.fetch(msg.id.to_s, nil)
+        end
+      end
+      messages
+    end
+
+    # Gets the bodies for mail messages. NB this API call does not
+    # return objects.  It returns a hash with messageID strings as the keys -
+    # suitable for merging into a Reve::Classes::MailMessage object
+    # 
+    # Note from the Eve API docs: 
+    #   Bodies cannot be accessed if you have not called for their headers recently.
+    # 
+    # Expects:
+    # * ids ( List of Integers ) - List of message ids for which we want bodies
+    # See also: Reve::Classes::MailMessage
+    def personal_mail_message_bodies(opts = { :ids => [] })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_mail_message_bodies_url))
+      return h if h
+      just_xml = true
+      xml = process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_message_bodies_url,just_xml,args)
+      results = {}
+      xml.search("//rowset/row").each do |el| 
+        results[el.attributes['messageID']] = el.inner_text
+      end
+      results
     end
 
 

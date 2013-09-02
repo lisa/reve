@@ -1505,6 +1505,9 @@ module Reve #:nodoc:
     # * to_list_ids ( [Fixnum] ) - Array of mailing lists that the mail was sent to. (use Reve::API#personal_mailing_lists to get their names)
     class MailMessage
       attr_reader :id, :name, :sender_id, :send_date, :title, :to_corp_or_alliance_id, :to_character_ids, :to_list_ids
+      # Getting the text of a mail message requires a separate Eve API call
+      # Done in Reve::API#personal_mail_bodies
+      attr_accessor :body
       def initialize(elem) #:nodoc:
         @id = elem['messageID'].to_i
         @sender_id = elem['senderID'].to_i

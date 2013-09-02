@@ -1224,8 +1224,7 @@ class TestReve < Test::Unit::TestCase
     assert_equal Reve::Classes::MailMessage, mails.first.class
     # Corp Mail
     assert_equal 1, mails.first.sender_id
-    #assert_equal Time.parse('2013-07-31 18:04:00 -0700 UTC'), mails.first.send_date
-    assert_equal Time.parse('2013-07-31 18:04:00 -0700'), mails.first.send_date
+    assert_equal Time.parse('2013-08-01 01:04:00 UTC').localtime, mails.first.send_date
     assert_equal "Corp mail", mails.first.title
     assert_equal 4, mails.first.to_corp_or_alliance_id
     assert_equal nil, mails.first.to_character_ids
@@ -1244,6 +1243,39 @@ class TestReve < Test::Unit::TestCase
     assert_equal [5,6,7], mails[3].to_character_ids
     # multi list
     assert_equal [128250439,141157801], mails[4].to_list_ids
+  end
+
+  def test_personal_mail_messages_with_bodies
+    Reve::API.personal_mail_messages_url = XML_BASE + 'mail_messages.xml'
+    Reve::API.personal_mail_message_bodies_url = XML_BASE + 'mail_message_bodies.xml'
+    mails = nil
+    assert_nothing_raised do
+      mails = @api.personal_mail_messages(:characterid => 1, :with_bodies => true)
+    end
+    assert_equal 5, mails.length
+    assert_equal Reve::Classes::MailMessage, mails.first.class
+    # First
+    assert_equal 1, mails.first.sender_id
+    assert_equal Time.parse('2013-08-01 01:04:00 UTC').localtime, mails.first.send_date
+    assert_equal "Corp mail", mails.first.title
+    assert_equal 4, mails.first.to_corp_or_alliance_id
+    assert_equal nil, mails.first.to_character_ids
+    assert_equal nil, mails.first.to_list_ids
+    assert_equal "Hi.<br><br>This is a message about something corporate.<br><br>", mails.first.body
+  end
+
+  def test_personal_mail_message_bodies
+    Reve::API.personal_mail_message_bodies_url = XML_BASE + 'mail_message_bodies.xml'
+    bodies = nil
+    assert_nothing_raised do
+      bodies = @api.personal_mail_message_bodies(:characterid => 1, :ids => [290285276, 290285275, 290285274, 290285278, 290285279])
+    end
+    assert_equal 4, bodies.size
+    assert_equal ["290285276", "290285275", "290285274", "290285278"], bodies.keys
+    assert_equal "Hi.<br><br>This is a message about something corporate.<br><br>", bodies.values.first
+    assert_equal '<p>Another message - more personal.</p>', bodies["290285275"]
+    # test for the message we did not get a body back for
+    assert_nil bodies.fetch("290285279", nil)
   end
 
   def test_account_status_cleanly
