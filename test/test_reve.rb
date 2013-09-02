@@ -62,15 +62,15 @@ class TestReve < Test::Unit::TestCase
 #    assert_equal("CharID", Reve::API.new('uid','key','CharID').send(:postfields,{})['characterid'])
 #  end
 
-#####Test moved to test_reve_failing.rb
-#  def test_makes_a_complex_hash
-#    Reve::API.corporate_wallet_trans_url = XML_BASE + 'market_transactions.xml'
-#    @api.userid = 999
-#    @api.key = 'aaa'
-#    h = @api.corporate_wallet_transactions :accountkey => '1001', :characterid => 123, :beforerefid => 456, :just_hash => true
-#    assert_instance_of String, h
-#    assert_equal 'xml/market_transactions.xml:accountkey:1001:apikey:aaa:beforerefid:456:characterid:123:userid:999',h
-#  end
+  def test_makes_a_complex_hash
+    Reve::API.corporate_wallet_trans_url = XML_BASE + 'market_transactions.xml'
+    @api.userid = 999
+    @api.key = 'aaa'
+    h = @api.corporate_wallet_transactions :accountkey => '1001', :characterid => 123, :beforerefid => 456, :just_hash => true
+    assert_instance_of String, h
+    assert_equal 'xml/market_transactions.xml:accountkey:1001:beforerefid:456:characterid:123:keyid:999:vcode:aaa',h
+  end
+
 
   def test_bad_xml
     Reve::API.training_skill_url = XML_BASE + 'badxml.xml'

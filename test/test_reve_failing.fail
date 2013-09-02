@@ -13,6 +13,21 @@ class TestReve < Test::Unit::TestCase
 #DISABLED SO AUTOMATIC TESTING IGNORES THEM
 #
 
+
+
+def setup
+    @api = get_api
+    assert_nil @api.last_hash
+    FileUtils.mkdir(SAVE_PATH) rescue nil
+  end
+  def teardown
+    FileUtils.rm_rf(SAVE_PATH)
+  end
+
+
+
+
+
 #line 56 - 60 of test_reve.rb
   
   def test_charid_default_works_when_characterid_is_nil
@@ -28,7 +43,7 @@ class TestReve < Test::Unit::TestCase
     @api.key = 'aaa'
     h = @api.corporate_wallet_transactions :accountkey => '1001', :characterid => 123, :beforerefid => 456, :just_hash => true
     assert_instance_of String, h
-    assert_equal 'xml/market_transactions.xml:accountkey:1001:apikey:aaa:beforerefid:456:characterid:123:userid:999',h
+    assert_equal 'xml/market_transactions.xml:accountkey:1001:beforerefid:456:characterid:123:keyid:999:vcode:aaa',h
   end
 
 
@@ -47,5 +62,16 @@ class TestReve < Test::Unit::TestCase
     assert_equal 1, first.titles.size
     last = members.members.last
     assert_equal 5, last.titles.size
+  end
+
+
+
+
+  
+  protected
+  def get_api(userid = nil, apikey = nil, charid = nil)
+    api = Reve::API.new(userid, apikey, charid)
+    api.save_path = nil
+    api
   end
 end
