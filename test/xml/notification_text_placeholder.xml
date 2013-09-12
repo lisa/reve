@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+    <currentTime>2013-09-03 20:53:07</currentTime>
+    <result>
+        <rowset name="notifications" key="notificationID" columns="notificationID">
+            <row notificationID="1"><![CDATA[stuff goes here]]></row>
+            <row notificationID="2"><![CDATA[stuff goes here]]></row>
+        </rowset>
+    </result>
+    <cachedUntil>2023-09-01 20:53:07</cachedUntil>
+</eveapi>
