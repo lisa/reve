@@ -51,6 +51,7 @@ module Reve
     @@account_status_url              = BASE_URL + '/account/AccountStatus.xml.aspx'
 
     @@research_url                    = BASE_URL + '/char/Research.xml.aspx'
+    @@contracts_url                   = BASE_URL + '/char/Contracts.xml.aspx'
     @@personal_notification_url       = BASE_URL + '/char/Notifications.xml.aspx'
     @@personal_mailing_lists_url      = BASE_URL + '/char/mailinglists.xml.aspx'
     @@personal_mail_messages_url      = BASE_URL + '/char/MailMessages.xml.aspx'
@@ -411,6 +412,20 @@ module Reve
       return h if h
       process_query(Reve::Classes::Research,opts[:url] || @@research_url,false,args)      
     end
+
+    #
+    #gets contracts
+    # http://api.eve-online/char/Contracts.xml.aspx
+    # * characterid ( Integer | String ) - Get stats for this Character
+    # See also: Reve::Classes::Contract
+
+    def contracts(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@contracts_url))
+      return h if h
+      process_query(Reve::Classes::Contracts,opts[:url] || @@contracts_url,false,args)      
+    end
+
 
     # Gets one's own personal WalletBalance from
     # http://api.eve-online.com/char/AccountBalance.xml.aspx
