@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2010-10-05 21:31:58</currentTime>
+  <result>
+    <rowset name="messages" key="messageID" columns="messageID">
+      <row messageID="290285276"><![CDATA[Hi.<br><br>This is a message about something corporate.<br><br>]]></row>
+      <row messageID="290285275"><![CDATA[<p>Another message - more personal.</p>]]></row>
+      <row messageID="290285274"><![CDATA[<p>Text of a message to a mailing list.</p>]]></row>
+      <row messageID="290285278"><![CDATA[<p>Personal mail to several people.</p>]]></row>
+    </rowset>
+    <missingMessageIDs>290285279</missingMessageIDs>
+  </result>
+  <cachedUntil>2020-10-02 21:31:58</cachedUntil>
+</eveapi>
+ 

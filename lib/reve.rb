@@ -11,7 +11,7 @@ rescue LoadError
   require 'rubygems'
   require 'hpricot'
 end
-require 'net/http'
+require 'net/https'
 require 'uri'
 require 'cgi'
 require 'digest'
@@ -45,58 +45,66 @@ module Reve
   # All API methods have the functionality to read XML from an arbitrary location. This could be another webserver, or a XML file on disk.
   # To use this pass the hash option :url => +location+ where +location+ is a String or URI class. See format_url_request documentation for more details.
   class API
+    BASE_URL = 'https://api.eveonline.com'
+    
+    @@characters_url                  = BASE_URL + '/account/Characters.xml.aspx'
+    @@account_status_url              = BASE_URL + '/account/AccountStatus.xml.aspx'
 
-    @@alliances_url                = 'http://api.eve-online.com/eve/AllianceList.xml.aspx'
-    @@sovereignty_url              = 'http://api.eve-online.com/map/Sovereignty.xml.aspx'
-    @@reftypes_url                 = 'http://api.eve-online.com/eve/RefTypes.xml.aspx'
-    @@skill_tree_url               = 'http://api.eve-online.com/eve/SkillTree.xml.aspx'
-    @@member_tracking_url          = 'http://api.eve-online.com/corp/MemberTracking.xml.aspx'
-    @@corporate_wallet_balance_url = 'http://api.eve-online.com/corp/AccountBalance.xml.aspx'
-    @@personal_wallet_balance_url  = 'http://api.eve-online.com/char/AccountBalance.xml.aspx'
-    @@corporate_wallet_trans_url   = 'http://api.eve-online.com/corp/WalletTransactions.xml.aspx'
-    @@personal_wallet_trans_url    = 'http://api.eve-online.com/char/WalletTransactions.xml.aspx'
-    @@corporate_wallet_journal_url = 'http://api.eve-online.com/corp/WalletJournal.xml.aspx'
-    @@personal_wallet_journal_url  = 'http://api.eve-online.com/char/WalletJournal.xml.aspx'
-    @@characters_url               = 'http://api.eve-online.com/account/Characters.xml.aspx'
-    @@training_skill_url           = 'http://api.eve-online.com/char/SkillInTraining.xml.aspx'
-    @@skill_queue_url              = 'http://api.eve-online.com/char/SkillQueue.xml.aspx'
-    @@character_sheet_url          = 'http://api.eve-online.com/char/CharacterSheet.xml.aspx'
-    @@starbases_url                = 'http://api.eve-online.com/corp/StarbaseList.xml.aspx'
-    @@starbasedetail_url           = 'http://api.eve-online.com/corp/StarbaseDetail.xml.aspx'
-    @@conqurable_outposts_url      = 'http://api.eve-online.com/eve/ConquerableStationList.xml.aspx'
-    @@corporation_sheet_url        = 'http://api.eve-online.com/corp/CorporationSheet.xml.aspx'
-    @@corporation_member_security_url = 'http://api.eve-online.com/corp/MemberSecurity.xml.aspx'
-    @@errors_url                   = 'http://api.eve-online.com/eve/ErrorList.xml.aspx'
-    @@map_jumps_url                = 'http://api.eve-online.com/map/Jumps.xml.aspx'
-    @@map_kills_url                = 'http://api.eve-online.com/map/Kills.xml.aspx'
-    @@personal_market_orders_url   = 'http://api.eve-online.com/char/MarketOrders.xml.aspx'
-    @@corporate_market_orders_url  = 'http://api.eve-online.com/corp/MarketOrders.xml.aspx'
-    @@personal_industry_jobs_url   = 'http://api.eve-online.com/char/IndustryJobs.xml.aspx'
-    @@corporate_industry_jobs_url  = 'http://api.eve-online.com/corp/IndustryJobs.xml.aspx'
-    @@personal_assets_url          = 'http://api.eve-online.com/char/AssetList.xml.aspx'
-    @@corporate_assets_url         = 'http://api.eve-online.com/corp/AssetList.xml.aspx'
-    @@personal_kills_url           = 'http://api.eve-online.com/char/KillLog.xml.aspx'
-    @@corporate_kills_url          = 'http://api.eve-online.com/corp/KillLog.xml.aspx'
-    @@character_id_url             = 'http://api.eve-online.com/eve/CharacterID.xml.aspx'   # ?names=CCP%20Garthagk
-    @@character_name_url           = 'http://api.eve-online.com/eve/CharacterName.xml.aspx' # ?ids=797400947
-    @@personal_faction_war_stats_url= 'http://api.eve-online.com/char/FacWarStats.xml.aspx'
-    @@corporate_faction_war_stats_url= 'http://api.eve-online.com/corp/FacWarStats.xml.aspx'
-    @@general_faction_war_stats_url= 'http://api.eve-online.com/eve/FacWarStats.xml.aspx'
-    @@top_faction_war_stats_url    = 'http://api.eve-online.com/eve/FacWarTopStats.xml.aspx'
-    @@faction_war_occupancy_url    = 'http://api.eve-online.com/map/FacWarSystems.xml.aspx'
-    @@certificate_tree_url         = 'http://api.eve-online.com/eve/CertificateTree.xml.aspx'
-    @@character_medals_url         = 'http://api.eve-online.com/char/Medals.xml.aspx'
-    @@corporate_medals_url         = 'http://api.eve-online.com/corp/Medals.xml.aspx'
-    @@corp_member_medals_url       = 'http://api.eve-online.com/corp/MemberMedals.xml.aspx'
-    @@server_status_url            = 'http://api.eve-online.com/Server/ServerStatus.xml.aspx'
-    @@research_url                 = 'http://api.eve-online.com/char/Research.xml.aspx'
-    @@personal_notification_url    = 'http://api.eve-online.com/char/Notifications.xml.aspx'
-    @@personal_mailing_lists_url   = 'http://api.eve-online.com/char/mailinglists.xml.aspx'
-    @@personal_mail_messages_url   = 'http://api.eve-online.com/char/MailMessages.xml.aspx'
-    @@personal_contacts_url        = 'http://api.eve-online.com/char/ContactList.xml.aspx'
-    @@corporate_contacts_url       = 'http://api.eve-online.com/corp/ContactList.xml.aspx'
-    @@account_status_url           = 'http://api.eve-online.com/account/AccountStatus.xml.aspx'
-    @@character_info_url           = 'http://api.eve-online.com/eve/CharacterInfo.xml.aspx'
+    @@research_url                    = BASE_URL + '/char/Research.xml.aspx'
+    @@personal_notification_url       = BASE_URL + '/char/Notifications.xml.aspx'
+    @@personal_mailing_lists_url      = BASE_URL + '/char/mailinglists.xml.aspx'
+    @@personal_mail_messages_url      = BASE_URL + '/char/MailMessages.xml.aspx'
+    @@personal_mail_message_bodies_url= BASE_URL + '/char/MailBodies.xml.aspx'
+    @@personal_contacts_url           = BASE_URL + '/char/ContactList.xml.aspx'
+    @@personal_wallet_balance_url     = BASE_URL + '/char/AccountBalance.xml.aspx' 
+    @@personal_wallet_trans_url       = BASE_URL + '/char/WalletTransactions.xml.aspx'
+    @@personal_wallet_journal_url     = BASE_URL + '/char/WalletJournal.xml.aspx'
+    @@training_skill_url              = BASE_URL + '/char/SkillInTraining.xml.aspx'
+    @@skill_queue_url                 = BASE_URL + '/char/SkillQueue.xml.aspx'
+    @@character_sheet_url             = BASE_URL + '/char/CharacterSheet.xml.aspx'
+    @@personal_market_orders_url      = BASE_URL + '/char/MarketOrders.xml.aspx'
+    @@personal_industry_jobs_url      = BASE_URL + '/char/IndustryJobs.xml.aspx'
+    @@personal_assets_url             = BASE_URL + '/char/AssetList.xml.aspx'
+    @@personal_kills_url              = BASE_URL + '/char/KillLog.xml.aspx'
+    @@personal_faction_war_stats_url  = BASE_URL + '/char/FacWarStats.xml.aspx'
+    @@character_medals_url            = BASE_URL + '/char/Medals.xml.aspx'
+    @@upcoming_calendar_events_url    = BASE_URL + '/char/UpcomingCalendarEvents.xml.aspx'
+
+    @@member_tracking_url             = BASE_URL + '/corp/MemberTracking.xml.aspx'
+    @@corporate_wallet_balance_url    = BASE_URL + '/corp/AccountBalance.xml.aspx'
+    @@corporate_wallet_trans_url      = BASE_URL + '/corp/WalletTransactions.xml.aspx'
+    @@corporate_wallet_journal_url    = BASE_URL + '/corp/WalletJournal.xml.aspx'
+    @@starbases_url                   = BASE_URL + '/corp/StarbaseList.xml.aspx'
+    @@starbasedetail_url              = BASE_URL + '/corp/StarbaseDetail.xml.aspx'
+    @@corporation_sheet_url           = BASE_URL + '/corp/CorporationSheet.xml.aspx'
+    @@corporation_member_security_url = BASE_URL + '/corp/MemberSecurity.xml.aspx'
+    @@corporate_market_orders_url     = BASE_URL + '/corp/MarketOrders.xml.aspx'
+    @@corporate_industry_jobs_url     = BASE_URL + '/corp/IndustryJobs.xml.aspx'
+    @@corporate_assets_url            = BASE_URL + '/corp/AssetList.xml.aspx'
+    @@corporate_kills_url             = BASE_URL + '/corp/KillLog.xml.aspx'
+    @@corporate_faction_war_stats_url = BASE_URL + '/corp/FacWarStats.xml.aspx'
+    @@corporate_medals_url            = BASE_URL + '/corp/Medals.xml.aspx'
+    @@corp_member_medals_url          = BASE_URL + '/corp/MemberMedals.xml.aspx'
+    @@corporate_contacts_url          = BASE_URL + '/corp/ContactList.xml.aspx'
+
+    @@alliances_url                   = BASE_URL + '/eve/AllianceList.xml.aspx'
+    @@reftypes_url                    = BASE_URL + '/eve/RefTypes.xml.aspx'
+    @@skill_tree_url                  = BASE_URL + '/eve/SkillTree.xml.aspx'
+    @@conqurable_outposts_url         = BASE_URL + '/eve/ConquerableStationList.xml.aspx'
+    @@errors_url                      = BASE_URL + '/eve/ErrorList.xml.aspx'
+    @@character_id_url                = BASE_URL + '/eve/CharacterID.xml.aspx'   # ?names=CCP%20Garthagk
+    @@general_faction_war_stats_url   = BASE_URL + '/eve/FacWarStats.xml.aspx'
+    @@top_faction_war_stats_url       = BASE_URL + '/eve/FacWarTopStats.xml.aspx'
+    @@certificate_tree_url            = BASE_URL + '/eve/CertificateTree.xml.aspx'
+    @@character_name_url              = BASE_URL + '/eve/CharacterName.xml.aspx' # ?ids=797400947
+    @@character_info_url              = BASE_URL + '/eve/CharacterInfo.xml.aspx'
+    
+    @@sovereignty_url                 = BASE_URL + '/map/Sovereignty.xml.aspx'
+    @@map_jumps_url                   = BASE_URL + '/map/Jumps.xml.aspx'
+    @@map_kills_url                   = BASE_URL + '/map/Kills.xml.aspx'
+    @@faction_war_occupancy_url       = BASE_URL + '/map/FacWarSystems.xml.aspx'
+    
+    @@server_status_url               = BASE_URL + '/Server/ServerStatus.xml.aspx'    
     
     cattr_accessor :character_sheet_url, :training_skill_url, :characters_url, :personal_wallet_journal_url,
                    :corporate_wallet_journal_url, :personal_wallet_trans_url, :corporate_wallet_trans_url,
@@ -111,15 +119,14 @@ module Reve
                    :certificate_tree_url, :character_medals_url, :corporate_medals_url, 
                    :corp_member_medals_url, :server_status_url, :skill_queue_url, :corporation_member_security_url,
                    :personal_notification_url, :personal_mailing_lists_url, :personal_mail_messages_url,
-                   :research_url, :personal_contacts_url, :corporate_contacts_url,
-                   :account_status_url, :character_info_url
-
+                   :personal_mail_message_bodies_url, :research_url, :personal_contacts_url, :corporate_contacts_url,
+                   :account_status_url, :character_info_url, :upcoming_calendar_events_url
 
     attr_accessor :key, :keyid, :cak, :charid
     alias :userid :keyid
     alias :userid= :keyid=
     attr_accessor :http_user_agent, :save_path, :timeout
-    attr_reader :current_time, :cached_until, :last_hash, :reve_version
+    attr_reader :current_time, :cached_until, :last_hash, :last_xml, :reve_version
     
     # Create a new API instance.
     # current_time and cached_until are meaningful only for the LAST call made.
@@ -145,6 +152,7 @@ module Reve
       @current_time = nil
       @cached_until = nil
       @last_hash = nil
+      @last_xml  = nil
       @reve_version = File.read(File.join(File.dirname(__FILE__),'../','VERSION')).chomp
       @http_user_agent = "Reve v#{@reve_version}; http://github.com/lisa/reve"
     end
@@ -196,14 +204,24 @@ module Reve
     # Expects a Hash as a parameter with these keys:
     # * ids ( Array ) - An Array of Character IDs to fetch the names of.
     # See Also: character_name, Reve::Classes::Character, character_sheet
-    def character_name(opts = {})
-      ids = opts[:ids] || []
-      return [] if ids.empty?
-      opts[:ids] = ids.join(',')
-      compute_hash(  opts.merge(:url => @@character_name_url) ) ||
-        process_query(Reve::Classes::Character,opts[:url] || @@character_name_url,false,opts)
-    end
 
+    def ids_to_names(opts = {})
+      ids = opts[:ids] || []
+      return [] if ids.empty? #No ids where passed
+      opts[:ids] = ids.join(',')
+      args = postfields(opts)
+      h = compute_hash(  opts.merge(:url => @@character_name_url) )
+      return h if h
+      xml = process_query(nil,opts[:url] || @@character_name_url, true,opts)
+      ret = []
+        xml.search("//rowset/row").each do |elem|
+          ret << Reve::Classes::Character.new(elem)
+        end
+        ret
+      end      
+    
+    alias_method :character_name, :ids_to_names
+    
     # Return a list of Alliances and member Corporations from
     # http://api.eve-online.com/eve/AllianceList.xml.aspx
     # Use the corporation_sheet method to get information for each member
@@ -953,11 +971,62 @@ module Reve
     # * characterid ( Integer | String ) - Get the MailMessages for this Character
     # See also: Reve::Classes::MailMessage
     def personal_mail_messages(opts = { :characterid => nil })
+      with_bodies = opts.include?(:with_bodies) ? opts.delete(:with_bodies) : false
       args = postfields(opts)
       h = compute_hash(args.merge(:url => @@personal_mail_messages_url))
       return h if h
-      process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
+      messages = process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_messages_url,false,args)
+      if with_bodies
+        ids = messages.collect{|m| m.id }
+        bodies = personal_mail_message_bodies(:ids => ids)
+        messages.each do |msg|
+          # For now we are ignoring messages that come back saying
+          # body is missing. So use fetch to assign body to message
+          msg.body = bodies.fetch(msg.id.to_s, nil)
+        end
+      end
+      messages
     end
+
+    # Gets the bodies for mail messages. NB this API call does not
+    # return objects.  It returns a hash with messageID strings as the keys -
+    # suitable for merging into a Reve::Classes::MailMessage object
+    # 
+    # Note from the Eve API docs: 
+    #   Bodies cannot be accessed if you have not called for their headers recently.
+    # 
+    # Expects:
+    # * ids ( List of Integers ) - List of message ids for which we want bodies
+    # See also: Reve::Classes::MailMessage
+    def personal_mail_message_bodies(opts = { :ids => [] })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@personal_mail_message_bodies_url))
+      return h if h
+      just_xml = true
+      xml = process_query(Reve::Classes::MailMessage, opts[:url] || @@personal_mail_message_bodies_url,just_xml,args)
+      results = {}
+      xml.search("//rowset/row").each do |el| 
+        results[el.attributes['messageID']] = el.inner_text
+      end
+      results
+    end
+
+
+
+
+    #Gets upcoming calendar events
+    #Reve::Classes::UpcomingCalendarEvents
+    def upcoming_calendar_events(opts = { :characterid => nil })
+      args = postfields(opts)
+      h = compute_hash(args.merge(:url => @@upcoming_calendar_events_url))
+      return h if h
+      process_query(Reve::Classes::UpcomingCalendarEvents, opts[:url] || @@upcoming_calendar_events_url,false,args)
+    end
+
+
+
+
+
 
     # Gets the status of the selected account. Returns
     # Reve::Classes::AccountStatus
@@ -1109,6 +1178,8 @@ module Reve
             # ||= to prevent making a new Net::HTTP object, the res = nil above should reset this for the next request.
             # the request needs to be here to rescue exceptions from it.
             http ||= Net::HTTP.new(source.host, source.port)
+            http.use_ssl = true
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE  ##rework to use proper cert
             http.open_timeout = 3
             http.read_timeout = @timeout
             res = http.start {|http| http.request(req) }
@@ -1132,6 +1203,8 @@ module Reve
       else
         raise Reve::Exceptions::ReveNetworkStatusException.new("Don't know how to deal with a #{source.class} XML source. I expect a URI or String")
       end
+      @last_xml = xml
+
       xml
     end
 

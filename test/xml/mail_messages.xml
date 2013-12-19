@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <eveapi version="2">
-  <currentTime>2009-12-02 00:46:10</currentTime>
+  <currentTime>2013-08-02 00:46:10</currentTime>
   <result>
-    <rowset name="mailMessages" key="messageID" columns="messageID,senderID,sentDate,title,toCorpOrAllianceID,toCharacterIDs,toListID,read">
-      <row messageID="290285276" senderID="1" sentDate="2009-12-01 01:04:00" title="Corp mail" toCorpOrAllianceID="4" toCharacterIDs="" toListID="" read="1" />
-      <row messageID="290285275" senderID="2" sentDate="2009-12-01 01:04:00" title="Personal mail" toCorpOrAllianceID="" toCharacterIDs="5" toListID="" read="1" />
-      <row messageID="290285274" senderID="2" sentDate="2009-12-01 01:04:00" title="Message to mailing list" toCorpOrAllianceID="" toCharacterIDs="" toListID="128250439" read="0" />
-      <row messageID="290285278" senderID="2" sentDate="2009-12-01 01:04:00" title="Multi Personal mail" toCorpOrAllianceID="" toCharacterIDs="5,6,7" toListID="" read="1" />
-      <row messageID="290285279" senderID="2" sentDate="2009-12-01 01:04:00" title="Multi Message to mailing list" toCorpOrAllianceID="" toCharacterIDs="" toListID="128250439,141157801" read="0" />
+    <rowset name="messages" key="messageID" columns="messageID,senderID,sentDate,title,toCorpOrAllianceID,toCharacterIDs,toListID">
+      <row messageID="290285276" senderID="1" sentDate="2013-08-01 01:04:00" title="Corp mail" toCorpOrAllianceID="4" toCharacterIDs="" toListID="" senderTypeID="1380" />
+      <row messageID="290285275" senderID="2" sentDate="2013-08-01 01:04:00" title="Personal mail" toCorpOrAllianceID="" toCharacterIDs="5" toListID="" senderTypeID="1380" />
+      <row messageID="290285274" senderID="2" sentDate="2013-08-01 01:04:00" title="Message to mailing list" toCorpOrAllianceID="" toCharacterIDs="" toListID="128250439" read="0" />
+      <row messageID="290285278" senderID="2" sentDate="2013-08-01 01:04:00" title="Multi Personal mail" toCorpOrAllianceID="" toCharacterIDs="5,6,7" toListID="" senderTypeID="1386" />
+      <row messageID="290285279" senderID="2" sentDate="2013-08-01 01:04:00" title="Multi Message to mailing list" toCorpOrAllianceID="" toCharacterIDs="" toListID="128250439,141157801" senderTypeID="1376" />
     </rowset>
   </result>
-  <cachedUntil>2009-12-02 01:16:10</cachedUntil>
+  <cachedUntil>2013-08-02 01:16:10</cachedUntil>
 </eveapi>
  

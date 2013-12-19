@@ -10,15 +10,15 @@
 #++
 module Reve #:nodoc:
   module Classes #:nodoc:
-    
+
     class Name
       attr_reader :id, :name
       def initialize(elem) #:nodoc:
         @id = elem['id'].to_i
-        @id = elem['name']        
+        @id = elem['name']
       end
     end
-    
+
     # Represents an Alliance as it appears in the Reve::API#alliances call.
     # Attributes
     # * name ( String ) - Full Name of the Alliance
@@ -51,9 +51,9 @@ module Reve #:nodoc:
       def initialize(elem) #:nodoc:
         @id = elem['corporationID'].to_i
         @start_date = elem['startDate'].to_time
-      end      
+      end
     end
-    
+
     class EveFactionWarStat
       attr_accessor :faction_participants, :faction_wars
       attr_reader :kills_yesterday, :kills_last_week, :kills_total,
@@ -70,7 +70,7 @@ module Reve #:nodoc:
         @victory_points_total = elem['victoryPointsTotal'].to_i
       end
     end
-    
+
     # Maps a participant in a FactionWar. Can be a:
     # * PersonalFactionWarParticpant
     # * CorporateFactionWarParticpant
@@ -85,8 +85,8 @@ module Reve #:nodoc:
     # * victory_points_last_week ( Fixnum )
     # * victory_points_total ( Fixnum )
     class FactionWarParticpant
-      attr_reader :faction_id, :faction_name, :enlisted_at, :kills_yesterday, 
-                  :kills_last_week, :kills_total, :victory_points_yesterday, 
+      attr_reader :faction_id, :faction_name, :enlisted_at, :kills_yesterday,
+                  :kills_last_week, :kills_total, :victory_points_yesterday,
                   :victory_points_last_week, :victory_points_total
       def initialize(elem) #:nodoc:
         @faction_id = elem['factionID'].to_i
@@ -99,7 +99,7 @@ module Reve #:nodoc:
         @victory_points_total = elem['victoryPointsTotal'].to_i
       end
     end
-    
+
     # Represents a Character's stats as a FactionWarParticpant.
     # Attributes:
     # * (See FactionWarParticpant for more)
@@ -115,7 +115,7 @@ module Reve #:nodoc:
         @enlisted_at = elem['enlisted'].to_time
       end
     end
-    
+
     # Represents a Corpration's stats as a FactionWarParticpant.
     # Attributes:
     # * (See FactionWarParticpant for more)
@@ -129,7 +129,7 @@ module Reve #:nodoc:
         @enlisted_at = elem['enlisted'].to_time
       end
     end
-    
+
     # Represents an entire Faction's stats as a FactionWarParticpant.
     # Attributes:
     # * (See FactionWarParticpant for more)
@@ -142,7 +142,7 @@ module Reve #:nodoc:
         @systems_controlled = elem['systemsControlled'].to_i
       end
     end
-    
+
     # Represents a single FactionWar between two Factions (e.g., Gallente v. Caldari)
     # Attributes:
     # * faction_id ( Fixnum ) - ID of the belligerant Faction
@@ -156,9 +156,9 @@ module Reve #:nodoc:
         @faction_name = elem['factionName']
         @against_id = elem['againstID'].to_i
         @against_name = elem['againstName']
-      end      
+      end
     end
-    
+
     # Represents a single Contact
     # Attributes:
     # * contact_id ( Fixnum ) - ID of the Contact.
@@ -172,13 +172,13 @@ module Reve #:nodoc:
         @contact_name = elem['contactName']
         @in_watchlist = elem['inWatchlist'] == 'True' ?  true : false
         @standing     = elem['standing'].to_i
-      end      
+      end
     end
-    
+
     class CorporateContact < PersonalContact; end
     class AllianceContact < PersonalContact; end
-    
-    # The status of a System with regards to a FactionWar. Who controls what 
+
+    # The status of a System with regards to a FactionWar. Who controls what
     # and what System is contested
     # Attributes:
     # * system_id ( Fixnum ) - ID of the System
@@ -200,14 +200,14 @@ module Reve #:nodoc:
         end
       end
     end
-    
+
     class FactionWarKills
       attr_reader :kills
       def initialize(elem) #:nodoc:
         @kills = elem['kills'].to_i
       end
     end
-    
+
     class CharacterFactionKills < FactionWarKills
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -216,6 +216,7 @@ module Reve #:nodoc:
         @id = elem['characterID'].to_i
       end
     end
+   
     class CorporationFactionKills < FactionWarKills
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -224,6 +225,7 @@ module Reve #:nodoc:
         @id = elem['corporationID'].to_i
       end
     end
+   
     class FactionKills < FactionWarKills
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -231,14 +233,15 @@ module Reve #:nodoc:
         @name = elem['factionName']
         @id = elem['factionID'].to_i
       end
-    end  
-    
+    end
+
     class FactionWarVictoryPoints
       attr_reader :victory_points
       def initialize(elem) #:nodoc:
         @victory_points = elem['victoryPoints'].to_i
       end
     end
+   
     class CharacterFactionVictoryPoints < FactionWarVictoryPoints
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -247,6 +250,7 @@ module Reve #:nodoc:
         @id = elem['characterID'].to_i
       end
     end
+   
     class CorporationFactionVictoryPoints < FactionWarVictoryPoints
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -255,6 +259,7 @@ module Reve #:nodoc:
         @id = elem['corporationID'].to_i
       end
     end
+   
     class FactionVictoryPoints < FactionWarVictoryPoints
       attr_reader :name, :id
       def initialize(elem) #:nodoc:
@@ -263,7 +268,7 @@ module Reve #:nodoc:
         @id = elem['factionID'].to_i
       end
     end
-    
+
     # Faction War Top Stats. This is different than the rest of the classes.
     # Each attribute on this class is a Hash with the following keys:
     # * yesterday_kills ( Array )
@@ -283,11 +288,11 @@ module Reve #:nodoc:
       def initialize(characters, corporations, factions) #:nodoc:
         @characters = characters
         @corporations = corporations
-        @factions = factions        
+        @factions = factions
       end
-      
+
     end
-    
+
     # A Research object holds information about Agents the Character is doing research with.
     # Attributes
     # * agent_id ( Fixnum ) - ID of the Agent
@@ -306,7 +311,7 @@ module Reve #:nodoc:
         @remainder_points    = elem['remainderPoints'].to_f
       end
     end
-    
+
     # A Skill has a RequiredAttribute, either a PrimaryAttribute or SecondaryAttribute, which both derrive from this.
     # Attributes
     # * name ( String ) - Name of the required Attribute
@@ -325,7 +330,7 @@ module Reve #:nodoc:
     # PrimaryAttribute and RequiredAttribute
     class SecondaryAttribute < RequiredAttribute
     end
-    
+
     # Represents the victim of a Kill.
     # Attributes:
     # * id ( Fixnum ) - ID of the Character that was killed.
@@ -353,8 +358,8 @@ module Reve #:nodoc:
         @ship_type_id = elem['shipTypeID'].to_i
       end
     end
-    
-    # It's possible to be killed/attacked by an NPC. In this case character_id, character_name, 
+
+    # It's possible to be killed/attacked by an NPC. In this case character_id, character_name,
     # alliance_id, alliance_name and weapon_type_id will be nil
     # Represents an attacker (attacking a KillVictim) in a Kill
     # Attributes
@@ -388,7 +393,7 @@ module Reve #:nodoc:
         @ship_type_id = elem['shipTypeID'].to_i
       end
     end
-    
+
     # A model to represent losses from being killed.
     # Attributes
     # * type_id ( Fixnum ) - Type ID of the KillLoss. (Refer to CCP database dump invtypes)
@@ -405,11 +410,11 @@ module Reve #:nodoc:
         @flag = elem['flag'].to_i
         @quantity_dropped = elem['qtyDropped'].to_i
         @quantity_destroyed = elem['qtyDestroyed'].to_i
-        @contained_losses = []        
+        @contained_losses = []
       end
     end
-    
-    
+
+
     # Simple class to contain the information relevant to a single Kill.
     # Comprised of an array of KillLoss, an array of KillAttacker and one KillVictim
     # Attributes
@@ -431,8 +436,8 @@ module Reve #:nodoc:
         @moon_id = elem['moonID'] == "0" ? nil : elem['moonID'].to_i
       end
     end
-    
-    
+
+
     # A container or singleton (unpackaged thing).
     # Attributes
     # * item_id ( Fixnum ) - A CCP-specific ID for the Asset/AssetContainer
@@ -444,7 +449,7 @@ module Reve #:nodoc:
     # * assets ( [Asset] ) - A list of Asset objects that are contained in this AssetContainer.
     # See Also: Asset, Reve::API#corporate_assets_list, Reve::API#personal_assets_list
     class AssetContainer
-      attr_reader :item_id, :location_id, :type_id, :quantity, :flag, :singleton, :xml_hash
+      attr_reader :item_id, :location_id, :type_id, :quantity, :flag, :singleton, :rawQuantity, :xml_hash
       attr_accessor :assets
       def initialize(elem)
         @item_id = elem['itemID'].to_i
@@ -453,13 +458,14 @@ module Reve #:nodoc:
         @quantity = elem['quantity'].to_i
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'] == "1"
+        @rawQuantity = elem['rawQuantity'].to_i
         @assets = []
         # This ::Digest::SHA1 is a bit of custom code for Eve Metrics that will
         # probably find its way to all classes since it could prove handy.
         @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
       end
     end
-    
+
     # An item contained within an AssetContainer (ship, or container)
     # Attributes
     # * item_id ( Fixnum ) - A CCP-specific ID for the Asset/AssetContainer
@@ -468,13 +474,14 @@ module Reve #:nodoc:
     # * flag ( Fixnum ) - Inventory flag, refer to http://wiki.eve-dev.net/API_Inventory_Flags (See also KillLoss's flag)
     # See Also: AssetContainer, Reve::API#corporate_assets_list, Reve::API#personal_assets_list
     class Asset
-      attr_reader :item_id, :type_id, :quantity, :flag, :singleton, :xml_hash
+      attr_reader :item_id, :type_id, :quantity, :flag, :singleton, :rawQuantity, :xml_hash
       def initialize(elem) #:nodoc:
         @item_id = elem['itemID'].to_i
         @type_id = elem['typeID'].to_i
         @quantity = elem['quantity'].to_i
         @flag = elem['flag'].to_i
         @singleton = elem['singleton'].to_i
+        @rawQuantity = elem['rawQuantity'].to_i
         # This ::Digest::SHA1 is a bit of custom code for Eve Metrics that will
         # probably find its way to all classes since it could prove handy.
         @xml_hash = ::Digest::SHA1.hexdigest elem.to_s.gsub(/\n|\r|\s/,'')
@@ -483,8 +490,8 @@ module Reve #:nodoc:
 
     # Used for attribute enhancers (in-game Implants)
     # IntelligenceEnhancer, MemoryEnhancer, PerceptionEnhancer, CharismaEnhancer
-    # and WillpowerEnhancer all subclass this class as this AttributeEnhancer 
-    # class is never used (except in a fault-case). Use the kind_of? method 
+    # and WillpowerEnhancer all subclass this class as this AttributeEnhancer
+    # class is never used (except in a fault-case). Use the kind_of? method
     # to determine what kind of AttributeEnhancer one is dealing with.
     # Attributes
     # * name ( String ) - The name of the AttributeEnhancer (implant)
@@ -502,8 +509,8 @@ module Reve #:nodoc:
     class PerceptionEnhancer < AttributeEnhancer; end
     class CharismaEnhancer < AttributeEnhancer; end
     class WillpowerEnhancer < AttributeEnhancer; end
-    
-    
+
+
     # Certificate tree container. This looks like:
     # [CertificateCategory]
     #   [CertificateClass]
@@ -516,7 +523,7 @@ module Reve #:nodoc:
         @categories = categories
       end
     end
-    
+
     # Category of Certificates.
     # Attributes:
     # * id ( Fixnum ) - ID of the CertificateCategory
@@ -531,7 +538,7 @@ module Reve #:nodoc:
         @classes = []
       end
     end
-    
+
     # A class of Certificates.
     # Attributes:
     # * id ( Fixnum ) - ID of the CertificateClass
@@ -546,6 +553,7 @@ module Reve #:nodoc:
         @certificates = []
       end
     end
+    
     class Certificate
       attr_reader :id, :grade, :corporation_id, :description
       attr_accessor :required_skills, :required_certificates
@@ -558,6 +566,7 @@ module Reve #:nodoc:
         @required_skills = []
       end
     end
+    
     class CertificateRequiredSkill
       attr_reader :id, :level
       def initialize(elem)
@@ -565,7 +574,7 @@ module Reve #:nodoc:
         @level = elem["level"].to_i
       end
     end
-    
+
     class CertificateRequiredCertificate
       attr_reader :id, :grade
       def initialize(elem)
@@ -573,7 +582,7 @@ module Reve #:nodoc:
         @grade = elem["grade"].to_i
       end
     end
-    
+
     # Represents a Character for the Reve::API#characters, Reve::API#character_name and Reve::API#character_id calls.
     # Attributes
     # * name ( String ) - Name of the Character
@@ -590,7 +599,7 @@ module Reve #:nodoc:
         @corporation_id   = elem['corporationID'].to_i
       end
     end
-  
+
 
     # Holds the result of the Reve::API#character_sheet call.
     # This has all of the stuff that appears in the in-game 'character sheet'
@@ -606,10 +615,10 @@ module Reve #:nodoc:
     # * corporation_id ( Fixnum ) - ID of the Corporation the Character is in
     # * balance ( Float ) - How much ISK the Character has
     # * intelligence ( Fixnum ) - Character's Intelligence level
-    # * memory ( Fixnum ) - 
-    # * charisma ( Fixnum ) - 
-    # * perception ( Fixnum ) - 
-    # * willpower ( Fixnum ) - 
+    # * memory ( Fixnum ) -
+    # * charisma ( Fixnum ) -
+    # * perception ( Fixnum ) -
+    # * willpower ( Fixnum ) -
     # * skills ( [Skill] ) - An Array of Skill objects that the Character has trained.
     # * enhancers ( [AttributeEnhancer] ) - An Array of any implants (AttributeEnhancer) the Character has in its head.
     # See Also: Reve::API#character_sheet, AttributeEnhancer (and subclasses), Skill
@@ -649,19 +658,19 @@ module Reve #:nodoc:
         @corporation_id = i.to_i
       end
     end
-    
+
     # Holds the result of the Reve::API#corporate_member_security call.
     # Attributes
     # * members ( [CorporationMember] ) - Array of CorporationMember
     # See Also: CorporationMember, CorporateRole, CorporateTitle
     class CorporationMemberSecurity
       attr_accessor :members
-      
+
       def initialize
         @members = []
       end
     end
-    
+
     # Part of the CorporationMemberSecurity; represnets a Corporation's member
     # All of these values are internal to CCP; +shape_1+ matches with +color_1+ and so on.
     # Attributes
@@ -672,18 +681,18 @@ module Reve #:nodoc:
       attr_accessor :roles, :grantableRoles, :rolesAtHQ, :grantableRolesAtHQ, :rolesAtBase
       attr_accessor :grantableRolesAtBase, :rolesAtOther, :grantableRolesAtOther, :titles
       attr_accessor :id, :name
-      
+
       alias_method :roles_at_hq,    :rolesAtHQ
       alias_method :grantable_roles_at_hq,    :grantableRolesAtHQ
       alias_method :roles_at_base,  :rolesAtBase
       alias_method :grantable_roles_at_base,  :grantableRolesAtBase
       alias_method :roles_at_other, :rolesAtOther
       alias_method :grantable_roles_at_other, :grantableRolesAtOther
-    
+
       def initialize(elem) #:nodoc:
         @id = elem['characterID'].to_i
         @name = elem['name']
-        
+
         @roles = []
         @grantableRoles = []
         @rolesAtHQ = []
@@ -695,7 +704,7 @@ module Reve #:nodoc:
         @titles = []
       end
     end
-    
+
     # Holds the result of the Reve::API#conqurable_stations call.
     # Attributes
     # * id ( Fixnum ) - ID of the ConqurableStation
@@ -717,12 +726,12 @@ module Reve #:nodoc:
       end
     end
     class ConquerableStation < ConqurableStation; end
-    
+
     # Part of the CorporationSheet; represnets a Corporation's in-game logo
     # All of these values are internal to CCP; +shape_1+ matches with +color_1+ and so on.
     # Attributes
-    # * graphic_id ( Fixnum ) 
-    # * shape_1 ( Fixnum ) 
+    # * graphic_id ( Fixnum )
+    # * shape_1 ( Fixnum )
     # * shape_2 ( Fixnum )
     # * shape_3 ( Fixnum )
     # * color_1 ( Fixnum )
@@ -737,11 +746,11 @@ module Reve #:nodoc:
         @shape_3    = elem['shape3'].to_i
         @color_1    = elem['color1'].to_i
         @color_2    = elem['color2'].to_i
-        @color_3    = elem['color3'].to_i                
-      end      
+        @color_3    = elem['color3'].to_i
+      end
     end
-    
-    
+
+
     # Part of the CharacterSheet; represents a grantable Corporation role to a
     # Character.
     # Attributes:
@@ -754,7 +763,7 @@ module Reve #:nodoc:
         @name = elem['roleName']
       end
     end
-    
+
     # Part of the CharacterSheet; represents a grantable Corporation title to a
     # Character.
     # Attributes:
@@ -767,7 +776,7 @@ module Reve #:nodoc:
         @name = elem['titleName']
       end
     end
-    
+
     # Part of the CorporationSheet. Describes a division in the wallet
     # Attributes
     # * key ( Fixnum ) - Account key. Used for things like WalletBalance and such.
@@ -780,7 +789,7 @@ module Reve #:nodoc:
         @description = elem['description'].split(/\n/).collect { |s| s.strip }.join(' ') # newlines to spaces
       end
     end
-    
+
     # Part of the CorporationSheet. Describes a division of the Corporation
     # Attributes
     # * key ( Fixnum ) - Account key.
@@ -793,7 +802,7 @@ module Reve #:nodoc:
         @description = elem['description'].split(/\n/).collect { |s| s.strip }.join(' ') # newlines to spaces
       end
     end
-    
+
     # Describes a Corporation. The public listing when a Corporation is in an Alliance is limited. When the requestor is in the Corporation for which the CorporationSheet is for then the details are full.
     # Attributes
     # * id ( Fixnum ) - ID of the Corporation
@@ -819,7 +828,7 @@ module Reve #:nodoc:
       attr_reader   :id, :name, :ticker, :ceo_id, :ceo_name, :station_id, :station_name, :description, :url,
                     :alliance_id, :alliance_name, :tax_rate, :member_count, :member_limit, :shares
       attr_accessor :divisions, :wallet_divisions, :logo
-      
+
       # Call it +h+ here cos it's a Hash and not any Hpricot object like in other constructors
       def initialize(h, divisions = [],wallet_divisions = [], logo =Reve::Classes::CorporateLogo.new(Hash.new(0)) ) #:nodoc:
         @divisions = divisions
@@ -840,9 +849,9 @@ module Reve #:nodoc:
         @member_count = h[:member_count].to_i
         @member_limit = h[:member_limit].to_i
         @shares = h[:shares].to_i
-      end                              
+      end
     end
-    
+
     # This is just for getting the list and writing to test/xml/errors
     class APIError #:nodoc:
       attr_reader :code, :text
@@ -851,8 +860,8 @@ module Reve #:nodoc:
         @text = elem['errorText']
       end
     end
-    
-    
+
+
     # Container for the CharacterMedal since there's two kinds returned in XML
     # Attributes:
     # * current_corporation ( [ CharacterMedal ] ) - Array of CharacterMedal for the Corporation this Character is currently in
@@ -863,9 +872,9 @@ module Reve #:nodoc:
       def initialize(current, other)
         @current_corporation = current
         @other_corporation = other
-      end      
+      end
     end
-    
+
     # Parent class for Medals
     # Attributes:
     # * id ( Fixnum ) - ID for the Medal
@@ -878,7 +887,7 @@ module Reve #:nodoc:
         @issued_at = elem["issued"].to_time
       end
     end
-    
+
     # Composed in CharacterMedals. Issued by the Corporation the Character is a member
     # Attributes:
     # * reason ( String ) - Why the CharacterMedal was issued
@@ -902,7 +911,7 @@ module Reve #:nodoc:
         ! is_public?
       end
     end
-    
+
     # Composed in CharacterMedals. Issued by the Corporation the Character is a member
     # Attributes:
     # * corporation_id ( Fixnum ) - ID of the Corporation that issued the CharacterOtherCorporateMedal
@@ -916,9 +925,9 @@ module Reve #:nodoc:
         @corporation_id = elem["corporationID"].to_i
         @title = elem["title"]
         @description = elem["description"]
-      end      
+      end
     end
-    
+
     # All of the Medals that the members of a Corporation have.
     # Attributes:
     # * character_id ( Fixnum ) - ID of the Character that has this CorporateMemberMedal
@@ -944,14 +953,14 @@ module Reve #:nodoc:
         ! is_public?
       end
     end
-    
+
     # The medals a Corporation can give out.
     # Attributes
     # * title ( String ) - Title that this CorporateMedal gives
     # * creator_id ( Fixnum ) - Who created the CorporateMedal
     # * description ( String ) Description of the CorporateMedal
     # * created_at ( Time ) - When the CorporateMedal was created.
-    # See Also: Medal, CharacterMedal, CharacterOtherCorporateMedal, CorporateMemberMedal, 
+    # See Also: Medal, CharacterMedal, CharacterOtherCorporateMedal, CorporateMemberMedal,
     class CorporateMedal < Medal
       attr_reader :title, :creator_id, :description, :created_at
       def initialize(elem) #:nodoc:
@@ -962,7 +971,7 @@ module Reve #:nodoc:
         @created_at = elem["created"].to_time
       end
     end
-    
+
     # Used for the Reve::API#map_jumps method. If there are no jumps it is not listed.
     # Attributes
     # * system_id ( Fixnum ) - ID of the System
@@ -975,7 +984,7 @@ module Reve #:nodoc:
         @jumps     = elem['shipJumps'].to_i
       end
     end
-    
+
     # Used for the Reve::API#personal_market_orders and Reve::API#corporate_market_orders
     # Each of those derrive from this parent class.
     # Attributes
@@ -1029,10 +1038,11 @@ module Reve #:nodoc:
         @created_at = elem['issued'].to_time
       end
     end
+    
     class PersonalMarketOrder < MarketOrder; end
     class CorporateMarketOrder < MarketOrder; end
-    
-    
+
+
     # Used in Reve::API#personal_industry_jobs and Reve::API#corporate_industry_jobs. PersonalIndustryJob and CorporateIndustryJob
     # subclass this for more logical containment.
     # These attributes should be largely self-explanatory. There are so many of them that it's soulcrushing to document each one! (Sorry ;)
@@ -1043,8 +1053,8 @@ module Reve #:nodoc:
                   :installed_item_licensed_production_runs_remaining, :output_location_id, :installer_id, :runs,
                   :licensed_production_runs, :installed_system_id, :container_location_id, :material_multiplier,
                   :char_material_multiplier, :time_multiplier, :char_time_multiplier, :installed_item_type_id,
-                  :output_type_id, :container_type_id, :installed_item_copy, :completed, :completed_successfully, 
-                  :installed_item_flag, :output_flag, :activity_id, :completed_status, :installed_at, 
+                  :output_type_id, :container_type_id, :installed_item_copy, :completed, :completed_successfully,
+                  :installed_item_flag, :output_flag, :activity_id, :completed_status, :installed_at,
                   :begin_production_at, :end_production_at, :pause_production_time
       def initialize(elem) #:nodoc:
         @id = elem['jobID'].to_i; @assembly_line_id = elem['assemblyLineID'].to_i ; @container_id = elem['containerID'].to_i
@@ -1068,9 +1078,10 @@ module Reve #:nodoc:
         @pause_production_time = elem['pauseProductionTime'].to_time
       end
     end
+   
     class PersonalIndustryJob < IndustryJob; end
     class CorporateIndustryJob < IndustryJob; end
-      
+
     # Used for the Reve::API#map_kills method. If there are no kills it's not listed.
     # Attributes
     # * system_id ( Fixnum ) - ID of the System
@@ -1080,12 +1091,12 @@ module Reve #:nodoc:
     # See also Reve::API#map_kills, MapJump
     class MapKill
       attr_reader :system_id, :ship_kills, :faction_kills, :pod_kills
-      def initialize(elem) #:nodoc:        
+      def initialize(elem) #:nodoc:
         @system_id     = elem['solarSystemID'].to_i
         @ship_kills    = elem['shipKills'].to_i
         @faction_kills = elem['factionKills'].to_i
         @pod_kills     = elem['podKills'].to_i
-      end            
+      end
     end
 
     # Holds the result of the Reve::API#member_tracking call for big brother.
@@ -1105,7 +1116,7 @@ module Reve #:nodoc:
     # * grantable_roles ( String ) - List of grantable roles for the Character
     # See Also: Reve::API#member_tracking
     class MemberTracking
-      attr_reader :character_id, :character_name, :start_time, :base_id, :base, :title, :logon_time, :logoff_time, 
+      attr_reader :character_id, :character_name, :start_time, :base_id, :base, :title, :logon_time, :logoff_time,
                   :location_id, :location, :ship_type_id, :ship_type, :roles, :grantable_roles
       def initialize(elem) #:nodoc:
         @character_id    = elem['characterID'].to_i
@@ -1137,7 +1148,7 @@ module Reve #:nodoc:
         @name = elem['refTypeName']
       end
     end
-    
+
     # ServerStatus object. Simple
     # Attributes:
     # * open ( Boolean ) - true if the server is up, false if it's down
@@ -1181,7 +1192,7 @@ module Reve #:nodoc:
         @value = elem['bonusValue']
       end
     end
-    
+
     # A SkillRequirement, for SkillTree and Reve::API#skill_tree
     # Attributes
     # * type_id ( Fixnum ) - ID of the Skill that is the SkillRequirement (Refer to CCP database dump invtypes)
@@ -1272,7 +1283,7 @@ module Reve #:nodoc:
         @to_level         = elem['level'].to_i
       end
     end
-    
+
     # Used for the Reve::API#sovereignty call.
     # Attributes
     # * system_id ( Fixnum ) - ID of the System
@@ -1293,7 +1304,7 @@ module Reve #:nodoc:
         @system_name               = elem['solarSystemName']
       end
     end
-    
+
     # Used for a list of Starbases, Reve::API#starbases
     # Attributes
     # * type_id ( Fixnum ) - Type of Starbase (Refer to CCP database dump invtypes)
@@ -1318,7 +1329,7 @@ module Reve #:nodoc:
         @online_timestamp = elem['onlineTimestamp'].to_time
       end
     end
-    
+
     # Returns the starbase details for the Starbase whose item id is starbase_id
     # Attributes
     # * state ( Fixnum ) - State of the starbase (Refer to CCP database dump invtypes)
@@ -1331,7 +1342,7 @@ module Reve #:nodoc:
     class StarbaseDetails
       attr_reader :state, :state_timestamp, :online_timestamp
       attr_accessor :general_settings, :combat_settings, :fuel
-      
+
       def initialize(elem, general_settings, combat_settings, fuel) #:nodoc:
         @state = elem[:state].to_i
         @state_timestamp = elem[:state_timestamp].to_time
@@ -1341,7 +1352,7 @@ module Reve #:nodoc:
         @fuel = fuel
       end
     end
-    
+
     class StarbaseGeneralSettings
       attr_reader :usage_flags, :deploy_flags, :allow_corporation_members,
                   :allow_alliance_members, :claim_sovereignty
@@ -1353,7 +1364,7 @@ module Reve #:nodoc:
         @claim_sovereignty          = elem['claimSovereignty'] == '1'
       end
     end
-    
+
     class StarbaseCombatSettings
       attr_reader :on_standings_drop, :on_status_drop, :on_aggression, :on_corporation_war
       def initialize(elem) #:nodoc:
@@ -1363,7 +1374,7 @@ module Reve #:nodoc:
         @on_corporation_war = elem['onCorporationWar'].attr('enabled') == '1'
       end
     end
-    
+
     class StarbaseFuel
       attr_reader :type_id, :quantity
       def initialize(elem) #:nodoc:
@@ -1388,7 +1399,7 @@ module Reve #:nodoc:
       end
     end
     # Corporation or Character WalletJournal for
-    # Reve::API#personal_wallet_journal and 
+    # Reve::API#personal_wallet_journal and
     # Reve::API#corporate_wallet_journal
     # Attributes:
     # * date ( Time ) - Time the action occured
@@ -1432,7 +1443,7 @@ module Reve #:nodoc:
     # * quantity ( Fixnum ) - Number of +type_id+ transacted
     # * type_name ( String ) - Name of the transacted thing
     # * price ( Float) - Price of the transacted thing
-    # * client_id ( Fixnum ) - ID of the client 
+    # * client_id ( Fixnum ) - ID of the client
     # * client_name ( String ) - Name of the client
     # * character_id ( Fixnum ) - ID of the Character
     # * station_id ( Fixnum ) - ID of the Station where the WalletTransaction took place
@@ -1440,7 +1451,7 @@ module Reve #:nodoc:
     # * type ( String ) - Not sure?
     # * transaction_for ( String ) - This is corporate or personal, mirrors the subclasses.
     class WalletTransaction
-      attr_reader :created_at, :id, :quantity, :type_name, :type_id, :price, 
+      attr_reader :created_at, :id, :quantity, :type_name, :type_id, :price,
                   :client_id, :client_name, :character_id, :station_id, :station_name, :type,
                   :transaction_for, :character_name
       def initialize(elem) #:nodoc:
@@ -1468,7 +1479,7 @@ module Reve #:nodoc:
     # See WalletTransaction
     class PersonalWalletTransaction < WalletTransaction
     end
-    
+
     # Represents a MailingList for
     # Reve::API#personal_mailing_lists
     # Attributes
@@ -1479,22 +1490,24 @@ module Reve #:nodoc:
       def initialize(elem) #:nodoc:
         @id = elem['listID'].to_i
         @name = elem['displayName']
-      end      
+      end
     end
-    
+
     # Represents a MailMessage for
     # Reve::API#personal_mail_messages
     # Attributes
-    # * id ( Fixnum ) - The unique message ID number. 
+    # * id ( Fixnum ) - The unique message ID number.
     # * sender_id ( Fixnum ) - The character ID of the message originator. (use Reve::API#character_name to get their names)
-    # * send_date ( Time ) - The date the message was sent. 
-    # * title ( String ) - The title of the message 
-    # * to_corp_or_alliance_id ( Fixnum ) - The ID of a corporation/alliance that the message was sent to. 
-    # * to_character_ids ( [Fixnum] ) - Array of character IDs of the characters that received the message. 
+    # * send_date ( Time ) - The date the message was sent.
+    # * title ( String ) - The title of the message
+    # * to_corp_or_alliance_id ( Fixnum ) - The ID of a corporation/alliance that the message was sent to.
+    # * to_character_ids ( [Fixnum] ) - Array of character IDs of the characters that received the message.
     # * to_list_ids ( [Fixnum] ) - Array of mailing lists that the mail was sent to. (use Reve::API#personal_mailing_lists to get their names)
-    # * read ( Boolean ) - Whether the mail/notification has been read in the EVE client. This does not change when you get it through the API. 
     class MailMessage
-      attr_reader :id, :name, :sender_id, :send_date, :title, :to_corp_or_alliance_id, :to_character_ids, :to_list_ids, :read
+      attr_reader :id, :name, :sender_id, :send_date, :title, :to_corp_or_alliance_id, :to_character_ids, :to_list_ids
+      # Getting the text of a mail message requires a separate Eve API call
+      # Done in Reve::API#personal_mail_bodies
+      attr_accessor :body
       def initialize(elem) #:nodoc:
         @id = elem['messageID'].to_i
         @sender_id = elem['senderID'].to_i
@@ -1503,18 +1516,35 @@ module Reve #:nodoc:
         @to_corp_or_alliance_id = elem['toCorpOrAllianceID'] == '' ? nil : elem['toCorpOrAllianceID'].to_i
         @to_character_ids = elem['toCharacterIDs'] == '' ? nil : elem['toCharacterIDs'].split(',').collect {|id| id.to_i }
         @to_list_ids = elem['toListID'] == '' ? nil : elem['toListID'].split(',').collect {|id| id.to_i }
-        @read = elem['read'] == '1'
-      end      
+      end
     end
-    
+
+
+    #upcoming calendar events 
+    class UpcomingCalendarEvents 
+     attr_reader :id, :name, :owner_ID, :owner_Name, :event_Date, :event_Title, :duration, :importance, :response, :event_Text, :owner_Type_ID
+     def initialize(elem) #:nodoc:
+        @id = elem['eventID'].to_i
+        @owner_ID = elem['ownerID'].to_i
+        @owner_Name = elem['ownerName']
+        @event_Date = elem['eventDate'].to_time
+        @event_Title = elem['eventTitle']
+        @duration = elem['duration'].to_i
+        @importance = elem['importance']
+        @response = elem['response']
+        @event_Text = elem['eventText']
+        @owner_Type_ID = elem['ownerTypeID'].to_i
+      end
+    end
+
     # Represents a Notification for
     # Reve::API#personal_notifications
     # Attributes
     # * id ( Fixnum ) - The unique notification ID number.
     # * notification_type_id ( Fixnum ) - The notification type indicates what has happened but not who performed the action in question nor upon whom the action was performed. See http://wiki.eve-id.net/APIv2_Char_Notifications_XML for a list of ids
-    # * sender_id ( Fixnum ) - TThe ID of the entity that sent the notification. 
-    # * send_date ( Time ) - The ID of the entity that sent the notification. 
-    # * read ( Boolean ) - Whether the notification has been read in the EVE client. This does not change when you get it through the API. 
+    # * sender_id ( Fixnum ) - TThe ID of the entity that sent the notification.
+    # * send_date ( Time ) - The ID of the entity that sent the notification.
+    # * read ( Boolean ) - Whether the notification has been read in the EVE client. This does not change when you get it through the API.
     class Notification
       attr_reader :id, :name, :notification_type_id, :sender_id, :send_date, :read
       def initialize(elem) #:nodoc:
@@ -1523,9 +1553,9 @@ module Reve #:nodoc:
         @sender_id = elem['senderID'].to_i
         @send_date = elem['sentDate'].to_time
         @read = elem['read'] == '1'
-      end      
+      end
     end
-    
+
     # Represents a AccountStatus for
     # Reve::API#account_status
     # Attributes
@@ -1534,7 +1564,7 @@ module Reve #:nodoc:
     # * created_at ( Time ) - DateTime when the account was created.
     # * logon_count ( Fixnum ) - The amount of times the User logged in.
     # * logon_minutes ( Fixnum ) - The amount of minutes the user was logged in.
-    # GTC buy offers not yet inplemented 
+    # GTC buy offers not yet inplemented
     class AccountStatus
       attr_reader :user_id, :paid_until, :created_at, :logon_count, :logon_minutes
       def initialize(elem) #:nodoc:
@@ -1545,7 +1575,7 @@ module Reve #:nodoc:
         @logon_minutes = (elem/'logonMinutes').inner_html.to_i
       end
     end
-    
+
     # Represents a CharacterInfo for
     # Reve::API#character_info
     # Basic Attributes
@@ -1562,16 +1592,17 @@ module Reve #:nodoc:
     # * security_status ( Float ) - Security status of the Character
     # Limited Attributes
     # * skillpoints ( Fixnum ) - The amount of Skillpoints
-    # * skill_training_ends ( Time )- 
-    # * ship_name ( String ) - 
+    # * skill_training_ends ( Time )-
+    # * ship_name ( String ) -
     # * ship_type_id ( Fixnum ) -
-    # * ship_type_name ( String ) - 
+    # * ship_type_name ( String ) -
     # Full Attributes
     # * last_known_location ( String ) -
     # * acount_balance ( Float )
     class CharacterInfo
-      attr_reader :id, :name, :race, :bloodline, :corporation_id, :corporation_name, :corporation_date, :alliance_id, :alliance_name, :alliance_date, :dob, :ancestry
-      attr_reader :security_status, :skillpoints, :skill_training_ends, :ship_name, :ship_type_id, :ship_type_name, :last_known_location, :acount_balance
+      attr_reader :id, :name, :race, :bloodline, :corporation_id, :corporation_name, :corporation_date, :alliance_id, :alliance_name, :alliance_date, :security_status
+      attr_reader :skillpoints, :skill_training_ends, :ship_name, :ship_type_id, :ship_type_name
+      attr_reader :last_known_location, :acount_balance
 
       def initialize(elem) #:nodoc:
         @id = (elem/'characterID').inner_html.to_i
@@ -1595,7 +1626,8 @@ module Reve #:nodoc:
         @last_known_location = (elem/'lastKnownLocation').inner_html == "" ? nil : (elem/'lastKnownLocation').inner_html
         @acount_balance = (elem/'accountBalance').inner_html == "" ? nil : (elem/'accountBalance').inner_html.to_f
       end
-      
+
+
       def type
         if self.acount_balance
           return :full

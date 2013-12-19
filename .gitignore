@@ -14,10 +14,14 @@ tmtags
 ## VIM
 *.swp
 
+## APTANA
+.project
+
 ## PROJECT::GENERAL
 coverage
 rdoc
 pkg
-reve.gemspec
 ## PROJECT::SPECIFIC
 
+Guardfile
+foo_test.rb
