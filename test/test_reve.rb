@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 # Tests designed to run with autotest.
+require 'simplecov'
+SimpleCov.start
 require 'test/unit'
 require 'fileutils' # for saving downloaded XML
 $LOAD_PATH << './lib'
 require 'reve'
+
+
 
 
 XML_BASE = File.join(File.dirname(__FILE__),'xml/')
