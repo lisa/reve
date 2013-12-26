@@ -5,6 +5,7 @@ before_script: pwd
 script: 
   #- ruby test/test_reve.rb
   - ruby -v
+  - bundle
   - gem list
   - ruby test/test_test.rb
 
