@@ -1,9 +1,10 @@
 language: ruby
 rvm:
   - "1.9.2"
-before_script: bundle exec gem list
+before_script: pwd
 script: 
-  - ruby test/test_reve.rb
+  #- ruby test/test_reve.rb
+  - ruby test/test_test.rb
 
 
 
