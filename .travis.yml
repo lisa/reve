@@ -8,6 +8,6 @@ rvm:
   - rbx
 # uncomment this line if your project needs to run something other than `rake`:
  script: 
-  - ruby test/test_reve.rb
-  - ruby test/extensions.rb 
-  - ruby test/test_integration.rb 
+#  - ruby test/test_reve.rb
+#  - ruby test/extensions.rb 
+#  - ruby test/test_integration.rb 
