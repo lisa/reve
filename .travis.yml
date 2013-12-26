@@ -4,6 +4,8 @@ rvm:
 before_script: pwd
 script: 
   #- ruby test/test_reve.rb
+  - ruby -v
+  - gem list
   - ruby test/test_test.rb
 
 
