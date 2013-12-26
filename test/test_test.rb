@@ -1,8 +1,8 @@
 require 'simplecov'
 SimpleCov.start
 require 'test/unit'
-require 'fileutils' # for saving downloaded XML
-$LOAD_PATH << './lib'
+#require 'fileutils' # for saving downloaded XML
+#$LOAD_PATH << './lib'
 #require 'reve'
 
 
