@@ -1,8 +1,8 @@
-begin
+#begin
 	require 'simplecov'
-rescue LoadError
-	gem install 'simplecov'
-end	
+#rescue LoadError
+#	gem install 'simplecov'
+#end	
 SimpleCov.start
 require 'test/unit'
 #require 'fileutils' # for saving downloaded XML

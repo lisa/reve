@@ -1,28 +1,20 @@
 language: ruby
 rvm:
   - "1.9.2"
-before_script: pwd
+before_script: 
+  - puts "**THIS IS THE before_script BLOCK**"
+  - pwd
+  - gem list
+  - puts "**THIS IS THE before_script BLOCK**"
 script: 
-  #- ruby test/test_reve.rb
+  - puts "**THIS IS THE script BLOCK**"
   - ruby -v
-  - bundle
   - gem list
   #- cd ./vendor/bundle
   - ruby test/test_test.rb
-  - gem list
+  #- gem list
+  - puts "**THIS IS THE script BLOCK**"
 
 
 
-# language: ruby
-# rvm:
-#   - "1.8.7"
-#   - "1.9.2"
-#   - "1.9.3"
-#   - jruby-18mode # JRuby in 1.8 mode
-#   - jruby-19mode # JRuby in 1.9 mode
-#   - rbx
-# # uncomment this line if your project needs to run something other than `rake`:
-# script: 
-#   - ruby test/test_reve.rb
-# #  - ruby test/extensions.rb 
-# #  - ruby test/test_integration.rb 
+
