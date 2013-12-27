@@ -2,10 +2,10 @@ language: ruby
 rvm:
   - "1.9.2"
 before_script: 
-  - puts "BEGIN before_script BLOCK"
+  - echo "BEGIN before_script BLOCK"
   - gem list
 script: 
-  - puts "BEGIN script BLOCK"
+  - echo "BEGIN script BLOCK"
   - ruby -v
   - gem list
   #- cd ./vendor/bundle
