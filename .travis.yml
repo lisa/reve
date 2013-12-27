@@ -6,7 +6,7 @@ before_script:
 script: 
   - echo "BEGIN script BLOCK"
   - bundle exec ruby test/test_reve.rb
-  - bundle exec ruby test/test_extensions.rb
+  #- bundle exec ruby test/test_extensions.rb
 
 
  
