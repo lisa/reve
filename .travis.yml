@@ -8,7 +8,6 @@ script:
   - bundle
   - gem list
   #- cd ./vendor/bundle
-  - gem list
   - ruby test/test_test.rb
   - gem list
 
