@@ -2,18 +2,16 @@ language: ruby
 rvm:
   - "1.9.2"
 before_script: 
-  - puts "**THIS IS THE before_script BLOCK**"
-  - pwd
+  - puts "BEGIN before_script BLOCK"
   - gem list
-  - puts "**THIS IS THE before_script BLOCK**"
 script: 
-  - puts "**THIS IS THE script BLOCK**"
+  - puts "BEGIN script BLOCK"
   - ruby -v
   - gem list
   #- cd ./vendor/bundle
   - ruby test/test_test.rb
   #- gem list
-  - puts "**THIS IS THE script BLOCK**"
+ 
 
 
 
