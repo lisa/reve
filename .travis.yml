@@ -3,13 +3,13 @@ rvm:
   - "1.9.2"
 before_script: 
   - echo "BEGIN before_script BLOCK"
-  - gem list
+  - bundle exec gem list
 script: 
   - echo "BEGIN script BLOCK"
   - ruby -v
-  - gem list
+  - bundle exec gem list
   #- cd ./vendor/bundle
-  - ruby test/test_test.rb
+  - bundle exec ruby test/test_test.rb
   #- gem list
  
 
