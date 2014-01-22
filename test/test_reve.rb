@@ -1504,11 +1504,15 @@ class TestReve < Test::Unit::TestCase
 #This test verifies that we can connect to the CPP API Server. 
 #Dont care what data comes back, just as long as data comes back.
 #This is expensive and ugly, but important
-  def test_End_to_End_Connectivity_Test
-    api = Reve::API.new
-    errors = api.errors 
-    assert_not_nil(errors.inspect)
-  end
+  
+  #This is commented out in this test filebecause is is being run to much and causing the server to get grumpy
+  #Run it from the test_integration.rb file instead and run it less often.
+
+  # def test_End_to_End_Connectivity_Test
+  #   api = Reve::API.new
+  #   errors = api.errors 
+  #   assert_not_nil(errors.inspect)
+  # end
 
   #### All tests above this method.
   protected

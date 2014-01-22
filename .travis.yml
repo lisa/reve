@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - "1.9.2"
+before_script: 
+  - echo "Remember your flashlight! Watch out for the lurking Grue!"
+script: 
+  - echo "BEGIN script BLOCK"
+  - bundle exec ruby test/test_reve.rb
+  #- bundle exec ruby test/test_extensions.rb
+
+
+ 
+
+
+
+
