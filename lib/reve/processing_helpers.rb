@@ -1,4 +1,5 @@
-module ProcessingHelpers
+module REVE
+  module ProcessingHelpers
 
 # Helper method to handle nested assets
     def recur_through_assets(rows)
@@ -196,4 +197,5 @@ module ProcessingHelpers
 	  end
 	end
   
+  end
 end
