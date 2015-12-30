@@ -121,7 +121,7 @@ module REVE
           opts.merge({ :version => 2, :url => nil }) #the uri bit will now ignored in format_url_request
           req_args =  format_url_request(opts)
           req = Net::HTTP::Get.new(source.path + req_args)
-          req['User-Agent'] = @http_referer_agent || "Reve v#{@reve_version}; http://github.com/lisa/reve"
+          req['User-Agent'] = @http_referer_agent || "Reve v#{@reve_version}; https://github.com/lisa/reve"
 
           res = nil
           response = nil
