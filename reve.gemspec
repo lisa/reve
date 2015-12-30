@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "lib/reve/classes.rb",
      "lib/reve/exceptions.rb",
      "lib/reve/extensions.rb",
+     "lib/reve/processing_helpers.rb",
      "reve.rb",
      "tester.rb"
   ]
