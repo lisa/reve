@@ -6,6 +6,7 @@ require 'test/unit'
 require 'fileutils' # for saving downloaded XML
 $LOAD_PATH << './lib'
 require 'reve'
+require 'pp'
 
 
 
@@ -86,9 +87,13 @@ class TestReve < Test::Unit::TestCase
     @api.save_path = SAVE_PATH
     alliances = @api.alliances :url => File.join(XML_BASE,'alliances.xml')
     assert File.exists?(File.join(SAVE_PATH,'alliances',@api.cached_until.to_i.to_s + '.xml'))
+    # Force the documents to be read with Nokogiri and "standardized" into a 
+    # uniform XML understood by Nokogiri. We don't really care if the documents 
+    # are byte-for-byte the same, only if Nokogiri parses them the same.    
     assert_equal(
-      File.open(File.join(XML_BASE,'alliances.xml')).read,
-      File.open(File.join(SAVE_PATH,'alliances',@api.cached_until.to_i.to_s + '.xml')).read)
+      Nokogiri::XML(File.open(File.join(XML_BASE,'alliances.xml')).read).to_xml,
+      Nokogiri::XML(File.open(File.join(SAVE_PATH, 'alliances', @api.cached_until.to_i.to_s + '.xml')).read).to_xml
+    )
   end
   
 
@@ -98,12 +103,12 @@ class TestReve < Test::Unit::TestCase
     assert ! File.exists?(File.join(SAVE_PATH,'alliances',@api.cached_until.to_i.to_s + '.xml'))
   end
   
-  # We want to see <url /> in the saved XML because that's what came from the source
+  # We want to see <url/> in the saved XML because that's what came from the source
   def test_saving_xml_with_bad_short_tag
     @api.save_path = SAVE_PATH
     @corpsheet = @api.corporation_sheet :url => File.join(XML_BASE,'corporation_sheet.xml')
     assert_equal "", @corpsheet.url
-    assert File.open(File.join(SAVE_PATH,'corporation_sheet',@api.cached_until.to_i.to_s + '.xml')).read.include?("<url />")  
+    assert File.open(File.join(SAVE_PATH,'corporation_sheet',@api.cached_until.to_i.to_s + '.xml')).read.include?("<url/>")  
   end
   
   def test_saving_xml_when_404
@@ -939,6 +944,15 @@ class TestReve < Test::Unit::TestCase
     assert_kind_of Time, @api.cached_until
     assert_equal 7, sheet.divisions.size
     assert_equal 7, sheet.wallet_divisions.size
+    
+    assert_equal 0, sheet.logo.graphic_id
+    assert_equal 448, sheet.logo.shape_1
+    assert_equal 0, sheet.logo.shape_2
+    assert_equal 418, sheet.logo.shape_3
+    assert_equal 681, sheet.logo.color_1
+    assert_equal 676, sheet.logo.color_2
+    assert_equal 0, sheet.logo.color_3
+    
   end
   
   def test_nonmember_corporation_sheet_clean
@@ -951,6 +965,16 @@ class TestReve < Test::Unit::TestCase
     assert_kind_of Time, @api.cached_until
     assert_equal 0, sheet.divisions.size
     assert_equal 0, sheet.wallet_divisions.size
+    assert_equal 0, sheet.member_limit
+    
+    assert_equal 0, sheet.logo.graphic_id
+    assert_equal 531, sheet.logo.shape_1
+    assert_equal 512, sheet.logo.shape_2
+    assert_equal 0, sheet.logo.shape_3
+    assert_equal 678, sheet.logo.color_1
+    assert_equal 671, sheet.logo.color_2
+    assert_equal 0, sheet.logo.color_3
+    
   end
 
   def test_no_skill_in_training_clean
@@ -1374,29 +1398,14 @@ class TestReve < Test::Unit::TestCase
     assert_equal File.open(File.join(XML_BASE, 'skill_in_training-none.xml')).read, xmldoc
   end
   
-=begin
-    def test_get_xml_from_web
-      xmldoc = @api.send(:get_xml, 'http://svn.crudvision.com/reve/trunk/test/xml/skill_in_training-none.xml', {} )
-      assert_equal File.open(File.join(XML_BASE, 'skill_in_training-none.xml')).read, xmldoc
-    end
-=end
+
   
   def test_get_xml_from_filesystem_missing_file
     assert_raise Errno::ENOENT do
       xmldoc = @api.send(:get_xml, File.join(XML_BASE,rand.to_s), {} )
     end    
   end
-=begin  
-  # if this starts to fail make sure the 404 ErrorDocument includes '404 Not Found'
-  def test_get_xml_from_web_missing_file
-    begin
-      xmldoc = @api.send(:get_xml, 'http://svn.crudvision.com/reve/trunk/test/' + rand.to_s, {} )
-    rescue Exception => e
-      assert e.kind_of?(Reve::Exceptions::ReveNetworkStatusException)
-      assert e.message.include?('404 Not Found')
-    end    
-  end
-=end
+
 
   def test_format_url_request_one_arg
     req = @api.send(:format_url_request, { :a => "Hello" })
@@ -1437,7 +1446,8 @@ class TestReve < Test::Unit::TestCase
   
   # no need to test corporate cos they're the same.
   # TODO: Test with nested losses
-  def kills_cleanly(meth = :personal_kills,url = File.join(XML_BASE,'kills.xml'))
+  def kills_cleanly(meth = :personal_kills, url = File.join(XML_BASE,"kills.xml"))
+    # "
     kills = nil
     assert_nothing_raised do
       kills = @api.send(meth,{:url =>url})
