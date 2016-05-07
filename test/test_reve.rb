@@ -6,10 +6,6 @@ require 'test/unit'
 require 'fileutils' # for saving downloaded XML
 $LOAD_PATH << './lib'
 require 'reve'
-require 'pp'
-
-
-
 
 XML_BASE = File.join(File.dirname(__FILE__),'xml/')
 SAVE_PATH = File.join(File.dirname(__FILE__),'downloads')
@@ -60,12 +56,6 @@ class TestReve < Test::Unit::TestCase
     assert_instance_of String, h
     assert_equal "xml/alliances.xml", h    
   end
-
-######Test moved to test_reve_failing.rb#########  
-#  def test_charid_default_works_when_characterid_is_nil
-    # this line of code is wrong on so many levels.
-#    assert_equal("CharID", Reve::API.new('uid','key','CharID').send(:postfields,{})['characterid'])
-#  end
 
   def test_makes_a_complex_hash
     Reve::API.corporate_wallet_trans_url = XML_BASE + 'market_transactions.xml'
