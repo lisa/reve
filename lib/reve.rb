@@ -376,12 +376,8 @@ module Reve
         required_attribs = []
         pri = skill.search('requiredAttributes/primaryAttribute')
         sec = skill.search('requiredAttributes/secondaryAttribute')
-#        skill.search('requiredAttributes').each do |req|
-#        pri = req.search("doc.at(req.xpath + "/primaryAttribute")
-#        sec = doc.at(req.xpath + "/secondaryAttribute")
-          required_attribs << Reve::Classes::PrimaryAttribute.new(pri.text)
-          required_attribs << Reve::Classes::SecondaryAttribute.new(sec.text)
-#        end
+        required_attribs << Reve::Classes::PrimaryAttribute.new(pri.text)
+        required_attribs << Reve::Classes::SecondaryAttribute.new(sec.text)
         bonuses = []
         res = skill.search("rowset[@name=skillBonusCollection]/row")
         res.each do |bonus|
