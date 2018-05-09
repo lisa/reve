@@ -4,6 +4,10 @@
 
 Reve is a library for the Eve Online API written in Ruby.
 
+## Status of the Library
+
+[On May 8th, 2018](https://developers.eveonline.com/blog/article/a-eulogy-for-xml-crest) CCP Games retired the API for which this library was created. There may still be open pull requests and issues for this project due to a focus of the maintaner's time elsewhere (apologies for that, truly), but it is time to finally retire this project for good. There are no plans to migrate this codebase to the new API. Thank you to everyone that has used and contributed to the library over the years. - @lisa, original library creator and maintainer.
+
 # Examples
 
 The following are examples using the library.
