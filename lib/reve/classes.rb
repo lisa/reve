@@ -883,7 +883,7 @@ module Reve #:nodoc:
         @alliance_name = h[:alliance_name] rescue nil
         @tax_rate = h[:tax_rate].to_f
         @member_count = h[:member_count].to_i
-        @member_limit = h[:member_limit].to_i
+        @member_limit = h[:member_limit].to_i rescue 0
         @shares = h[:shares].to_i
       end
     end
@@ -1404,10 +1404,10 @@ module Reve #:nodoc:
     class StarbaseCombatSettings
       attr_reader :on_standings_drop, :on_status_drop, :on_aggression, :on_corporation_war
       def initialize(elem) #:nodoc:
-        @on_standings_drop  = elem['onStandingDrop'].attr('standing').to_i
-        @on_status_drop     = (elem['onStatusDrop'].attr('enabled') == '1' ? elem['onStatusDrop'].attr('standing').to_i : false)
-        @on_aggression      = elem['onAggression'].attr('enabled') == '1'
-        @on_corporation_war = elem['onCorporationWar'].attr('enabled') == '1'
+        @on_standings_drop  = elem['onStandingDrop'].attr('standing').value.to_i
+        @on_status_drop     = (elem['onStatusDrop'].attr('enabled').value == '1' ? elem['onStatusDrop'].attr('standing').value.to_i : false)
+        @on_aggression      = elem['onAggression'].attr('enabled').value == '1'
+        @on_corporation_war = elem['onCorporationWar'].attr('enabled').value == '1'
       end
     end
 

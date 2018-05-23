@@ -5,9 +5,9 @@ module REVE
       def recur_through_assets(rows)
         assets = []
         rows.each do |container|
-          unless container.empty?
+          unless container.children.empty?
             asset_container = Reve::Classes::AssetContainer.new(container)
-            asset_container.assets = self.recur_through_assets(container.search("/rowset/row"))
+            asset_container.assets = recur_through_assets(container.search("#{container.path}/rowset/row"))
             assets << asset_container
           else
             assets << Reve::Classes::Asset.new(container)
@@ -163,7 +163,8 @@ module REVE
       # Raises the proper exception (if there is one), otherwise it returns the
       # XML response.
       def check_exception(xml)
-        x = Hpricot::XML(xml)
+        raise ArgumentError.new("Got a nil XML document. What happened?") unless xml
+        x = Nokogiri::XML(xml)
         begin
           out = x.search("//error") # If this fails then there are some big problems with Hpricot#search ?
         rescue Exception => e
@@ -181,7 +182,8 @@ module REVE
       def save_xml(xml)
         path = build_save_filename
         FileUtils.mkdir_p(File.dirname(path))
-        File.open(path,'w') { |f| f.print xml.to_original_html }
+        File.open(path,'w') { |f| xml.write_xml_to f}
+#        File.open(path,'w') { |f| f.print xml.to_xml }
       end
 
       def build_save_filename

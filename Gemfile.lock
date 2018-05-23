@@ -2,8 +2,10 @@ GEM
   remote: https://rubygems.org/
   specs:
     docile (1.1.1)
-    hpricot (0.8.6)
+    mini_portile2 (2.0.0)
     multi_json (1.8.2)
+    nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -14,5 +16,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  hpricot
+  nokogiri
   simplecov
+
+BUNDLED WITH
+   1.11.2
